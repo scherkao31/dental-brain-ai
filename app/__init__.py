@@ -76,7 +76,7 @@ def create_app(config_name=None):
         from app.services import init_services
         init_services(app)
         
-        # Initialize database
-        db.create_all()
+        # Note: Database initialization is handled by build.sh/init_production_db.py
+        # This prevents conflicts with existing database schemas
     
     return app
