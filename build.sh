@@ -18,13 +18,9 @@ mkdir -p temp
 mkdir -p uploads
 mkdir -p chroma_db
 
-# Run database migrations
-echo "Running database migrations..."
-flask db upgrade
-
-# Initialize database with admin user
-echo "Initializing database with admin user..."
-python init_db.py
+# Initialize database (handles both migrations and fresh installs)
+echo "Initializing database..."
+python init_production_db.py
 
 # Initialize RAG system if needed
 echo "Initializing RAG system..."
