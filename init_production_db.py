@@ -3,9 +3,14 @@
 
 import os
 import sys
+import logging
 from app import create_app, db
 from sqlalchemy import text
 from app.models import User
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def init_database():
     """Initialize the database with required data"""
@@ -18,30 +23,42 @@ def init_database():
             inspector = db.inspect(db.engine)
             existing_tables = inspector.get_table_names()
             
+            logger.info(f"Checking database state...")
+            
             if existing_tables:
-                print(f"Found existing tables: {existing_tables}")
+                logger.info(f"Found existing tables: {existing_tables}")
                 
-                # Check for schema conflicts by trying to query
-                try:
-                    # Try to query the users table
-                    user_count = User.query.count()
-                    print(f"Database appears healthy with {user_count} existing users")
-                except Exception as e:
-                    print(f"Database schema conflict detected: {e}")
-                    print("Dropping all tables and recreating...")
-                    
-                    # Drop all tables
-                    db.session.execute(text('DROP SCHEMA public CASCADE'))
-                    db.session.execute(text('CREATE SCHEMA public'))
-                    db.session.commit()
-                    
-                    # Recreate tables
+                # Check if critical tables exist
+                required_tables = ['users', 'patients', 'conversations', 'messages']
+                missing_tables = [t for t in required_tables if t not in existing_tables]
+                
+                if missing_tables:
+                    logger.warning(f"Missing required tables: {missing_tables}")
+                    logger.info("Creating missing tables...")
                     db.create_all()
-                    print("Database tables recreated successfully")
+                    logger.info("Database tables created successfully")
+                else:
+                    # Check for schema conflicts by trying to query
+                    try:
+                        # Try to query the users table
+                        user_count = User.query.count()
+                        logger.info(f"Database appears healthy with {user_count} existing users")
+                    except Exception as e:
+                        logger.error(f"Database schema conflict detected: {e}")
+                        logger.info("Dropping all tables and recreating...")
+                        
+                        # Drop all tables
+                        db.session.execute(text('DROP SCHEMA public CASCADE'))
+                        db.session.execute(text('CREATE SCHEMA public'))
+                        db.session.commit()
+                        
+                        # Recreate tables
+                        db.create_all()
+                        logger.info("Database tables recreated successfully")
             else:
-                print("No existing tables found, creating new database schema...")
+                logger.info("No existing tables found, creating new database schema...")
                 db.create_all()
-                print("Database tables created successfully")
+                logger.info("Database tables created successfully")
             
             # Now check if we need to create admin user
             if User.query.count() == 0:

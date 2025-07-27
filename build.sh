@@ -20,7 +20,21 @@ mkdir -p chroma_db
 
 # Initialize database (handles both migrations and fresh installs)
 echo "Initializing database..."
-python init_production_db.py
+python init_production_db.py || {
+    echo "Database initialization failed, trying alternative method..."
+    python -c "
+from app import create_app, db
+app = create_app('production')
+with app.app_context():
+    try:
+        db.create_all()
+        print('Database tables created successfully via fallback method')
+    except Exception as e:
+        print(f'Error creating tables: {e}')
+        exit(1)
+"
+    python init_db.py
+}
 
 # Initialize RAG system if needed
 echo "Initializing RAG system..."
