@@ -22,6 +22,10 @@ mkdir -p chroma_db
 echo "Running database migrations..."
 flask db upgrade
 
+# Initialize database with admin user
+echo "Initializing database with admin user..."
+python init_db.py
+
 # Initialize RAG system if needed
 echo "Initializing RAG system..."
 python -c "

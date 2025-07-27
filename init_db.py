@@ -19,18 +19,31 @@ def init_database():
         # Check if we need to create a default admin user
         if User.query.count() == 0:
             print("Creating default admin user...")
+            
+            # Use environment variables if available, otherwise use defaults
+            admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
+            admin_email = os.environ.get('ADMIN_EMAIL', 'admin@dentalbrain.ai')
+            admin_password = os.environ.get('ADMIN_PASSWORD', 'changeme123!')
+            
             admin = User(
-                username='admin',
-                email='admin@dentalbrain.ai',
+                username=admin_username,
+                email=admin_email,
                 role='admin'
             )
-            admin.set_password('changeme123!')  # IMPORTANT: Change this password immediately!
+            admin.set_password(admin_password)
             db.session.add(admin)
             db.session.commit()
+            
             print("Default admin user created:")
-            print("  Username: admin")
-            print("  Password: changeme123!")
-            print("  IMPORTANT: Change this password immediately after first login!")
+            print(f"  Username: {admin_username}")
+            print(f"  Email: {admin_email}")
+            
+            # Only show password if using default
+            if admin_password == 'changeme123!':
+                print("  Password: changeme123!")
+                print("  IMPORTANT: Change this password immediately after first login!")
+            else:
+                print("  Password: [Set via environment variable]")
         else:
             print(f"Database already has {User.query.count()} users.")
         
