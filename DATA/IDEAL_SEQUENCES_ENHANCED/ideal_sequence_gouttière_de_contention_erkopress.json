@@ -1,0 +1,64 @@
+{
+  "consultation_text": "Gouttière de contention / erkopress",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Empreinte 1 arcade",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner gouttière",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_gouttière_de_contention_erkopress.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Gouttière de contention / erkopress",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Empreinte 1 arcade",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Empreinte 1 arcade",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Général"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner gouttière",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Donner gouttière",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Orthodontie"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Gouttière de contention / erkopress\nSéquence idéale étendue: Gouttière de contention / erkopress\nTraitements: Empreinte 1 arcade; Donner gouttière\nTraitements étendus: Empreinte 1 arcade; Donner gouttière\nCatégories: Général, Orthodontie",
+  "content": "Séquence idéale: Gouttière de contention / erkopress\nSéquence idéale étendue: Gouttière de contention / erkopress\nTraitements: Empreinte 1 arcade; Donner gouttière\nTraitements étendus: Empreinte 1 arcade; Donner gouttière\nCatégories: Général, Orthodontie"
+}

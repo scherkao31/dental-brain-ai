@@ -1,0 +1,59 @@
+{
+  "consultation_text": "Plan de tt:\n18-28-38 AV\n46 cpr OML\n41-42 BNV + cpr",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "18 Extraction",
+      "duree": "1h00",
+      "delai": "2 mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "28-38 Extractions",
+      "duree": "2h00",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "46 Composites OML",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "31 Test de vitalité; 41-42 Blanchiment interne 1ère séance",
+      "duree": "45min",
+      "delai": "1 sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "41-42 Blanchiment interne 2ème séance",
+      "duree": "30min",
+      "delai": "1 sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "41-42 Blanchiment interne 3ème séance + Composite L",
+      "duree": "45min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

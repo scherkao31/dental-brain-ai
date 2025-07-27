@@ -1,0 +1,45 @@
+{
+  "consultation_text": "Greffe conjonctif",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage pre greffe + documentation",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Greffe",
+      "duree": "1h15",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "10 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl à 1 mois",
+      "duree": "",
+      "delai": "3 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_greffe_conjonctif.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx"
+}

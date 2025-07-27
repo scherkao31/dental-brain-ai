@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Gouttière Michigan",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Empreinte 2 arcades + occlusion",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner + régler gouttière",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_gouttière_michigan.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

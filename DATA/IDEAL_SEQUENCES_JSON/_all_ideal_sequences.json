@@ -1,0 +1,2156 @@
+{
+  "total_sequences": 61,
+  "sequences": [
+    {
+      "consultation_text": "Composite 1 face",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr O",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_1_face.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite collet",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si nécessaire + donner curasept"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Cpr collet",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_collet.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite 2 faces",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr OM",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_2_faces.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite 3 faces",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr MOD",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_3_faces.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Onlay",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Preparation onlay",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Scellement onlay",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_onlay.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite inter proximal",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr M",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_inter_proximal.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite d angle",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Cpr angle",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Polissage",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_d_angle.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite bord libre",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment (wax-up si nécessaire)",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Cpr bord libre",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Polissage",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_bord_libre.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Scellement de fissure 2 dents",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Sc fissure 2 dents",
+          "duree": "",
+          "delai": "30 min",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_scellement_de_fissure_2_dents.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Scellement de fissure 4 dents",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Sc fissure 4 dents",
+          "duree": "",
+          "delai": "1h",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_scellement_de_fissure_4_dents.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Couronne",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Démonter couronne  + moignon adhesif + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Empreinte pour couronne céramique",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Scellement",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_couronne.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Facette",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment et wax-up + clés",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Mock-up  Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": "Valider le mock-up sinon demander modification wax-up"
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Preparation pour facette + empreinte + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Scellement + empreinte pour gouttière de contention",
+          "duree": "1h",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Ctl post op + donner gouttière et organiser recall",
+          "duree": "",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_facette.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Couronne sur implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Démonter/dévisser couronne + empreinte + provisoire si nécessaire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Vérifier si on a le bon scan body / marque implant"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Essai",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Scellement",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Revisser à 35 Nm + teflon + cpr",
+          "duree": "30 min",
+          "delai": "2 à 6 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_couronne_sur_implant.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Gouttière de contention / erkopress",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Empreinte 1 arcade",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttière",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_gouttière_de_contention_erkopress.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Gouttière Michigan",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Empreinte 2 arcades + occlusion",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner + régler gouttière",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_gouttière_michigan.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Prothèse complète sur implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Radio panoramique + empreintes initiales + cone beam",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Envoyer fichers à Etkon pour chirurgie implantaire guidée"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Pose d’implants sup et inf (4 + 4) avec mise en charge immédiate (extractions si nécessaire)",
+          "duree": "3h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl pre empreinte",
+          "duree": "15 min",
+          "delai": "2 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Empreinte définitive",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Essai",
+          "duree": "45 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Scellement sup et inf",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 8,
+          "traitement": "Revisser à 35 Nm + teflon + cpr et organiser programme recall",
+          "duree": "45 min",
+          "delai": "1 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_prothèse_complète_sur_implant.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Pont collé",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment et wax-up + clé pour mock-up",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Discussion si greffe conjonctif necessaire"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Mock-up et gérer le provisoire : soit pont collé armature métallique soit provisoire existant Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": "Ou envoyer doc poru wax-up digital"
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Preparation pour pont collé + empreinte + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Scellement + empreinte pour gouttière de contention",
+          "duree": "1h",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Ctl post op + donner gouttière et organiser recall",
+          "duree": "",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_pont_collé.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Extraction simple",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_simple.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Extraction complexe",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "1 h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_complexe.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Extraction simple x 2",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_simple_x_2.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Extraction complexe x 2",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "1h30",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_complexe_x_2.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 1 canal",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_1_canal.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 2 canaux",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h15",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_2_canaux.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 3 canaux",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h30",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h15",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_3_canaux.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Résection apicale",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Seance information + discussion + organiser cone beam",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Seance analyse cone beam + prise de decision",
+          "duree": "15 min",
+          "delai": "3 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Chirurgie resection apicale",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "10 j",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Ctl à 3 mois avec cone beam",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_résection_apicale.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Curetage paro par quadrant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Mesure de poche + explications",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Curetage avec anesthesie",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl à 1 mois",
+          "duree": "15 min",
+          "delai": "1 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl à 3 mois avec mesure de poche",
+          "duree": "15 min",
+          "delai": "2 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_curetage_paro_par_quadrant.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Greffe conjonctif",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage pre greffe + documentation",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Greffe",
+          "duree": "1h15",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "10 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl à 1 mois",
+          "duree": "",
+          "delai": "3 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_greffe_conjonctif.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Blanchiment interne – BNV",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "BNV – 1ère séance",
+          "duree": "45min.",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "BNV – 2ème séance",
+          "duree": "30min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "BNV – 3ème séance si besoin ou Composite",
+          "duree": "30min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Réserve pour composite si pas fait au rdv d’avant",
+          "duree": "30min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_blanchiment_interne_bnv.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Blanchiment – Home bleaching",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage si besoin Empreintes pour gouttières de blanchiment",
+          "duree": "1h/30 min.",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Remise gouttières de blanch. avec le produit",
+          "duree": "15min.",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_blanchiment_home_bleaching.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Blanchiment – au cabinet",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage si besoin  Blanchiment – 1ère séance",
+          "duree": "1h45/ 1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Blanchiment – 2ème séance",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_blanchiment_au_cabinet.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Micro abrasion",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Microabrasion séance 1",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "À associer avec un home Bleaching"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Microabrasion séance 2",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_micro_abrasion.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Pose implant",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Ordonnance complète"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Contrôle post op",
+          "duree": "15min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_implant.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Implant avec greffe osseuse",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Pose implant avec greffe osseuse",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Ordonnance complète"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Contrôle post op",
+          "duree": "15min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Contrôle avant couronne",
+          "duree": "15 min",
+          "delai": "3.5 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_implant_avec_greffe_osseuse.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Ablation implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Ablation de l’implant avec bio oss",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Contrôle post op",
+          "duree": "15min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_ablation_implant.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Implant avec sinus lift",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_2.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Pose implant avec sinus lift et bio oss",
+          "duree": "2h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Contrôle post op",
+          "duree": "15min.",
+          "delai": "1sem.",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Contrôle pré couronne sur implant",
+          "duree": "15min.",
+          "delai": "3 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_implant_avec_sinus_lift.json",
+      "original_docx": "sequence de_traitement_ideal_2.docx"
+    },
+    {
+      "consultation_text": "Composite 1 face",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr O",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_1_face.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite collet",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si nécessaire  + donner curasept"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Cpr collet",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_collet.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite 2 faces",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr OM",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_2_faces.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite 3 faces",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr MOD",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_3_faces.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Onlay",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Preparation onlay",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Scellement onlay",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_onlay.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite inter proximal",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Cpr M",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_inter_proximal.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite d angle",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Cpr angle",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Polissage",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_d_angle.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Composite bord libre",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment (wax-up si nécessaire)",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Cpr bord libre",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Polissage",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_composite_bord_libre.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Scellement de fissure 2 dents",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Sc fissure 2 dents",
+          "duree": "",
+          "delai": "30 min",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_scellement_de_fissure_2_dents.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Scellement de fissure 4 dents",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Sc fissure 4 dents",
+          "duree": "",
+          "delai": "1h",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_scellement_de_fissure_4_dents.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Couronne",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Démonter couronne  + moignon adhesif + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Empreinte pour couronne céramique",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Scellement",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_couronne.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Facette",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment et wax-up + clés",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Mock-up  Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": "Valider le mock-up sinon demander modification wax-up"
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Preparation pour facette + empreinte + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Scellement + empreinte pour gouttière de contention",
+          "duree": "1h",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Ctl post op + donner gouttière et organiser recall",
+          "duree": "",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_facette.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Couronne sur implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Démonter/dévisser couronne + empreinte + provisoire si nécessaire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Vérifier si on a le bon scan body / marque implant"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Essai",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Scellement",
+          "duree": "15 min",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Revisser à 35 Nm + teflon + cpr",
+          "duree": "30 min",
+          "delai": "2 à 6 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_couronne_sur_implant.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Gouttière de contention / erkopress",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Empreinte 1 arcade",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner gouttière",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_gouttière_de_contention_erkopress.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Gouttière Michigan",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Empreinte 2 arcades + occlusion",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Donner + régler gouttière",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_gouttière_michigan.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Prothèse complète sur implant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Radio panoramique + empreintes initiales + cone beam",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Envoyer fichers à Etkon pour chirurgie implantaire guidée"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Pose d’implants sup et inf (4 + 4) avec mise en charge immédiate (extractions si nécessaire)",
+          "duree": "3h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl pre empreinte",
+          "duree": "15 min",
+          "delai": "2 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Empreinte définitive",
+          "duree": "1h",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Essai",
+          "duree": "45 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Scellement sup et inf",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 8,
+          "traitement": "Revisser à 35 Nm + teflon + cpr et organiser programme recall",
+          "duree": "45 min",
+          "delai": "1 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_prothèse_complète_sur_implant.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Pont collé",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Détartrage + empreinte pour blanchiment et wax-up + clé pour mock-up",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Discussion si greffe conjonctif necessaire"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Mock-up et gérer le provisoire : soit pont collé armature métallique soit provisoire existant Donner gouttières de blanchiment + gel",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": "Ou envoyer doc poru wax-up digital"
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl post blanchiment",
+          "duree": "15 min",
+          "delai": "2 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Preparation pour pont collé + empreinte + provisoire",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Essai",
+          "duree": "30 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 6,
+          "traitement": "Scellement + empreinte pour gouttière de contention",
+          "duree": "1h",
+          "delai": "2 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 7,
+          "traitement": "Ctl post op + donner gouttière et organiser recall",
+          "duree": "",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_pont_collé.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Extraction simple",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_simple.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Extraction complexe",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "1 h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_complexe.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Extraction simple x 2",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_simple_x_2.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Extraction complexe x 2",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Extraction",
+          "duree": "1h30",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": "Donner ordonnance"
+        },
+        {
+          "rdv": 2,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_extraction_complexe_x_2.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 1 canal",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_1_canal.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 2 canaux",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h15",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h15",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_2_canaux.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Traitement de racine 3 canaux",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "TR séance 1 désobturation + désinfection",
+          "duree": "1h30",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "TR séance 2 obturation + cpr O",
+          "duree": "1h15",
+          "delai": "1 sem",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_traitement_de_racine_3_canaux.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Résection apicale",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Seance information + discussion + organiser cone beam",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Seance analyse cone beam + prise de decision",
+          "duree": "15 min",
+          "delai": "3 jours",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Chirurgie resection apicale",
+          "duree": "1h",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl post op",
+          "duree": "15 min",
+          "delai": "10 j",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 5,
+          "traitement": "Ctl à 3 mois avec cone beam",
+          "duree": "15 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_résection_apicale.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    },
+    {
+      "consultation_text": "Curetage paro par quadrant",
+      "type": "ideal_sequence",
+      "source": "sequence de_traitement_ideal_1.docx",
+      "treatment_sequence": [
+        {
+          "rdv": 1,
+          "traitement": "Mesure de poche + explications",
+          "duree": "30 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 2,
+          "traitement": "Curetage avec anesthesie",
+          "duree": "45 min",
+          "delai": "",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 3,
+          "traitement": "Ctl à 1 mois",
+          "duree": "15 min",
+          "delai": "1 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        },
+        {
+          "rdv": 4,
+          "traitement": "Ctl à 3 mois avec mesure de poche",
+          "duree": "15 min",
+          "delai": "2 mois",
+          "dr": "",
+          "date": "",
+          "remarque": ""
+        }
+      ],
+      "filename": "ideal_sequence_curetage_paro_par_quadrant.json",
+      "original_docx": "sequence de_traitement_ideal_1.docx"
+    }
+  ]
+}

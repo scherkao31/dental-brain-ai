@@ -1,0 +1,45 @@
+{
+  "consultation_text": "Couronne",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Démonter couronne  + moignon adhesif + provisoire",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Empreinte pour couronne céramique",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Essai",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Scellement",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_couronne.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

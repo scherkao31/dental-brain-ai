@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Scellement de fissure 4 dents",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 4 dents",
+      "duree": "",
+      "delai": "1h",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_scellement_de_fissure_4_dents.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Scellement de fissure 4 dents",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 4 dents",
+      "duree": "",
+      "delai": "1h",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Sc fissure 4 dents",
+      "delai_expanded": "1h",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prévention"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Scellement de fissure 4 dents\nSéquence idéale étendue: Scellement de fissure 4 dents\nTraitements: Sc fissure 4 dents\nTraitements étendus: Sc fissure 4 dents\nCatégories: Prévention",
+  "content": "Séquence idéale: Scellement de fissure 4 dents\nSéquence idéale étendue: Scellement de fissure 4 dents\nTraitements: Sc fissure 4 dents\nTraitements étendus: Sc fissure 4 dents\nCatégories: Prévention"
+}

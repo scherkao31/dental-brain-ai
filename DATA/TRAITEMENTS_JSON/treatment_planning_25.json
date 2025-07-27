@@ -1,0 +1,122 @@
+{
+  "consultation_text": "Plan de tt :\n35-37 pont avec MA / 35 TR\n24-25 composite collet\n15-17 pont avec MA / 17 TR\n47TR\n44 cpr collet\n11 SC CCi / reçu\n24-25 cpr collet\n27 O\n26 I avec GBR + CCi\nInvisalign",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cleaning; Impression for models",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "Lundi 24.07 à 13h",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "35–37 : remove old bridge & adhesive build-up",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "Lundi 24.07 à 10h",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "35 Root canal & temporary bridge; 24-25 : cervical composites",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "Lundi 24.07 à 16h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "15–17 : remove old bridge & adhesive build-up & temporary bridge; 17 Root canal",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mardi 25.07 à 11h",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "45–47 : remove old bridge & adhesive build-up & temporary bridge; 47 Root canal; 44 : cervical composite",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mardi 25.07 à 14h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "24-25 collet; 27 cpr O",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mercredi 26.07 à 9h",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "47 + 17 Endo; 26 pose implant",
+      "duree": "2h30",
+      "delai": "",
+      "dr": "",
+      "date": "Mercredi 26.07 à 13h",
+      "remarque": ""
+    },
+    {
+      "rdv": 8,
+      "traitement": "17–47 endo obturation; Q1 + Q3 + Q4 : Sc ponts provisoires; Doc Invisalign",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Vendredi 28.07 à 15h",
+      "remarque": ""
+    },
+    {
+      "rdv": 9,
+      "traitement": "Start Invisalign",
+      "duree": "30min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 10,
+      "traitement": "End of Invisalign + bleaching ?",
+      "duree": "30min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 11,
+      "traitement": "Impressions for ceramic crowns",
+      "duree": "2h00",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 12,
+      "traitement": "Try-in of the ceramic crowns",
+      "duree": "1h00",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 13,
+      "traitement": "Cementation of the ceramic crowns",
+      "duree": "1h00",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

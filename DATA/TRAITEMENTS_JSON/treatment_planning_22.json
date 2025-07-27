@@ -1,0 +1,68 @@
+{
+  "consultation_text": "Plan de tt\n37 TR + onlay\n14-15-16 Collet / 24-25-26 collet / 34-35 collet / 45 collet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "37 Traitement de racine – Désinfection",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "37 Traitement de racine – Obturation + TE onlay",
+      "duree": "1h30",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "37 Scellement onlay",
+      "duree": "45min.",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "14-15-16 Composite de collet",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "24-25-26 Composite de collet",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "34-35 Composite de collet",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "45 Composite de collet",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

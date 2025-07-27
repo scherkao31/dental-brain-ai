@@ -1,0 +1,18 @@
+{
+  "consultation_text": "Composite 2 faces",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr OM",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_2_faces.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

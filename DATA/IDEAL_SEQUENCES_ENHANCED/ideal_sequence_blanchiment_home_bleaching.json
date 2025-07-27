@@ -1,0 +1,66 @@
+{
+  "consultation_text": "Blanchiment – Home bleaching",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage si besoin Empreintes pour gouttières de blanchiment",
+      "duree": "1h/30 min.",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Remise gouttières de blanch. avec le produit",
+      "duree": "15min.",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_blanchiment_home_bleaching.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx",
+  "consultation_text_expanded": "Blanchiment – Home bleaching",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage si besoin Empreintes pour gouttières de blanchiment",
+      "duree": "1h/30 min.",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Détartrage si besoin Empreintes pour gouttières de blanchiment",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Parodontologie",
+        "Esthétique",
+        "Orthodontie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Remise gouttières de blanch. avec le produit",
+      "duree": "15min.",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Remise gouttières de blanch. avec le produit",
+      "delai_expanded": "1 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Orthodontie"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Blanchiment – Home bleaching\nSéquence idéale étendue: Blanchiment – Home bleaching\nTraitements: Détartrage si besoin Empreintes pour gouttières de blanchiment; Remise gouttières de blanch. avec le produit\nTraitements étendus: Détartrage si besoin Empreintes pour gouttières de blanchiment; Remise gouttières de blanch. avec le produit\nCatégories: Esthétique, Orthodontie, Parodontologie",
+  "content": "Séquence idéale: Blanchiment – Home bleaching\nSéquence idéale étendue: Blanchiment – Home bleaching\nTraitements: Détartrage si besoin Empreintes pour gouttières de blanchiment; Remise gouttières de blanch. avec le produit\nTraitements étendus: Détartrage si besoin Empreintes pour gouttières de blanchiment; Remise gouttières de blanch. avec le produit\nCatégories: Esthétique, Orthodontie, Parodontologie"
+}

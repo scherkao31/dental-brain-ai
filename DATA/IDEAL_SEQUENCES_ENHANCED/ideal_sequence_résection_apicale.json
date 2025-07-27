@@ -1,0 +1,140 @@
+{
+  "consultation_text": "Résection apicale",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Seance information + discussion + organiser cone beam",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Seance analyse cone beam + prise de decision",
+      "duree": "15 min",
+      "delai": "3 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Chirurgie resection apicale",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "10 j",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Ctl à 3 mois avec cone beam",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_résection_apicale.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Résection apicale",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Seance information + discussion + organiser cone beam",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Seance information + discussion + organiser cone beam",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Radiologie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Seance analyse cone beam + prise de decision",
+      "duree": "15 min",
+      "delai": "3 jours",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Seance analyse cone beam + prise de decision",
+      "delai_expanded": "3 jours",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Radiologie"
+      ]
+    },
+    {
+      "rdv": 3,
+      "traitement": "Chirurgie resection apicale",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Chirurgie resection apicale",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Général"
+      ]
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "10 j",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl post op",
+      "delai_expanded": "10 j",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles"
+      ]
+    },
+    {
+      "rdv": 5,
+      "traitement": "Ctl à 3 mois avec cone beam",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl à 3 mois avec cone beam",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles",
+        "Radiologie"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Résection apicale\nSéquence idéale étendue: Résection apicale\nTraitements: Seance information + discussion + organiser cone beam; Seance analyse cone beam + prise de decision; Chirurgie resection apicale; Ctl post op; Ctl à 3 mois avec cone beam\nTraitements étendus: Seance information + discussion + organiser cone beam; Seance analyse cone beam + prise de decision; Chirurgie resection apicale; Ctl post op; Ctl à 3 mois avec cone beam\nCatégories: Contrôles, Général, Radiologie",
+  "content": "Séquence idéale: Résection apicale\nSéquence idéale étendue: Résection apicale\nTraitements: Seance information + discussion + organiser cone beam; Seance analyse cone beam + prise de decision; Chirurgie resection apicale; Ctl post op; Ctl à 3 mois avec cone beam\nTraitements étendus: Seance information + discussion + organiser cone beam; Seance analyse cone beam + prise de decision; Chirurgie resection apicale; Ctl post op; Ctl à 3 mois avec cone beam\nCatégories: Contrôles, Général, Radiologie"
+}

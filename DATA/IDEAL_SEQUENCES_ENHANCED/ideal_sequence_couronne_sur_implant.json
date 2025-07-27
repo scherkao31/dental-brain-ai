@@ -1,0 +1,115 @@
+{
+  "consultation_text": "Couronne sur implant",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Démonter/dévisser couronne + empreinte + provisoire si nécessaire",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Vérifier si on a le bon scan body / marque implant"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Essai",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Scellement",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Revisser à 35 Nm + teflon + cpr",
+      "duree": "30 min",
+      "delai": "2 à 6 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_couronne_sur_implant.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Couronne sur implant",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Démonter/dévisser couronne + empreinte + provisoire si nécessaire",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Vérifier si on a le bon scan body / marque implant",
+      "traitement_expanded": "Démonter/dévisser couronne + empreinte + provisoire si nécessaire",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "Vérifier si on a le bon scan body / marque implant",
+      "categories": [
+        "Prothèse",
+        "Contrôles"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Essai",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Essai",
+      "delai_expanded": "1 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles"
+      ]
+    },
+    {
+      "rdv": 3,
+      "traitement": "Scellement",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Scellement",
+      "delai_expanded": "2 jours",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prévention"
+      ]
+    },
+    {
+      "rdv": 4,
+      "traitement": "Revisser à 35 Nm + teflon + cpr",
+      "duree": "30 min",
+      "delai": "2 à 6 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Revisser à 35 Nm + teflon + cpr",
+      "delai_expanded": "2 à 6 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Couronne sur implant\nSéquence idéale étendue: Couronne sur implant\nTraitements: Démonter/dévisser couronne + empreinte + provisoire si nécessaire; Essai; Scellement; Revisser à 35 Nm + teflon + cpr\nTraitements étendus: Démonter/dévisser couronne + empreinte + provisoire si nécessaire; Essai; Scellement; Revisser à 35 Nm + teflon + cpr\nCatégories: Composite, Contrôles, Prothèse, Prévention",
+  "content": "Séquence idéale: Couronne sur implant\nSéquence idéale étendue: Couronne sur implant\nTraitements: Démonter/dévisser couronne + empreinte + provisoire si nécessaire; Essai; Scellement; Revisser à 35 Nm + teflon + cpr\nTraitements étendus: Démonter/dévisser couronne + empreinte + provisoire si nécessaire; Essai; Scellement; Revisser à 35 Nm + teflon + cpr\nCatégories: Composite, Contrôles, Prothèse, Prévention"
+}

@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Scellement de fissure 2 dents",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 2 dents",
+      "duree": "",
+      "delai": "30 min",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_scellement_de_fissure_2_dents.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Scellement de fissure 2 dents",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 2 dents",
+      "duree": "",
+      "delai": "30 min",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Sc fissure 2 dents",
+      "delai_expanded": "30 min",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prévention"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Scellement de fissure 2 dents\nSéquence idéale étendue: Scellement de fissure 2 dents\nTraitements: Sc fissure 2 dents\nTraitements étendus: Sc fissure 2 dents\nCatégories: Prévention",
+  "content": "Séquence idéale: Scellement de fissure 2 dents\nSéquence idéale étendue: Scellement de fissure 2 dents\nTraitements: Sc fissure 2 dents\nTraitements étendus: Sc fissure 2 dents\nCatégories: Prévention"
+}

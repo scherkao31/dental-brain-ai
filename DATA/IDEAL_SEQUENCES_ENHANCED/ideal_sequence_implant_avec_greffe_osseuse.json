@@ -1,0 +1,90 @@
+{
+  "consultation_text": "Implant avec greffe osseuse",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Pose implant avec greffe osseuse",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Ordonnance complète"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Contrôle post op",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Contrôle avant couronne",
+      "duree": "15 min",
+      "delai": "3.5 mois",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_implant_avec_greffe_osseuse.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx",
+  "consultation_text_expanded": "Implant avec greffe osseuse",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Pose implant avec greffe osseuse",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Ordonnance complète",
+      "traitement_expanded": "Pose implant avec greffe osseuse",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "Ordonnance complète",
+      "categories": [
+        "Chirurgie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Contrôle post op",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Contrôle post op",
+      "delai_expanded": "1sem.",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles"
+      ]
+    },
+    {
+      "rdv": 3,
+      "traitement": "Contrôle avant couronne",
+      "duree": "15 min",
+      "delai": "3.5 mois",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Contrôle avant couronne",
+      "delai_expanded": "3.5 mois",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prothèse",
+        "Contrôles"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Implant avec greffe osseuse\nSéquence idéale étendue: Implant avec greffe osseuse\nTraitements: Pose implant avec greffe osseuse; Contrôle post op; Contrôle avant couronne\nTraitements étendus: Pose implant avec greffe osseuse; Contrôle post op; Contrôle avant couronne\nCatégories: Chirurgie, Contrôles, Prothèse",
+  "content": "Séquence idéale: Implant avec greffe osseuse\nSéquence idéale étendue: Implant avec greffe osseuse\nTraitements: Pose implant avec greffe osseuse; Contrôle post op; Contrôle avant couronne\nTraitements étendus: Pose implant avec greffe osseuse; Contrôle post op; Contrôle avant couronne\nCatégories: Chirurgie, Contrôles, Prothèse"
+}

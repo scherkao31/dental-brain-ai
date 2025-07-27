@@ -1,0 +1,32 @@
+{
+  "consultation_text": "Plan de tt\n24-25 cpr MOD\n26 onlay\n27 cpr OM\n14OD\n15OM\n36MOD",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "24-25 cpr MOD; 26 Taille empreinte Onlay; 27 cpr OM",
+      "duree": "3h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "14 cpr OD; 15 cpr OM; 36 cpr MOD",
+      "duree": "3h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "26 Scellement Onlay",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

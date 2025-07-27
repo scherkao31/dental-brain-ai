@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Brain AI - Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/luxury-theme.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" onclick="startNewChat()">
+                    <i class="fas fa-plus"></i>
+                    Nouvelle conversation
+                </button>
+                <button class="sidebar-toggle mobile-only" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Case Filters -->
+            <div class="case-filters collapsed" id="caseFilters">
+                <div class="filter-header" onclick="toggleFilters()">
+                    <div class="filter-title">
+                        <i class="fas fa-filter"></i>
+                        <span>Filtres</span>
+                        <i class="fas fa-chevron-down filter-toggle-icon" id="filterToggleIcon"></i>
+                    </div>
+                    <button class="clear-filters-btn" onclick="clearFilters(event)" style="display: none;">
+                        Effacer
+                    </button>
+                </div>
+                <div class="filter-options" id="filterOptions">
+                    <select id="patientFilter" onchange="applyFilters()" class="filter-select">
+                        <option value="">Tous les patients</option>
+                    </select>
+                    <select id="statusFilter" onchange="applyFilters()" class="filter-select">
+                        <option value="">Tous les statuts</option>
+                        <option value="active">Actif</option>
+                        <option value="completed">Complété</option>
+                        <option value="archived">Archivé</option>
+                    </select>
+                    <div class="filter-checkboxes">
+                        <label>
+                            <input type="checkbox" id="treatmentPlanFilter" onchange="applyFilters()">
+                            <span>Avec plan de traitement</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="approvedFilter" onchange="applyFilters()">
+                            <span>Plan approuvé</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conversations-list" id="conversationsList">
+                <!-- Conversations will be loaded here -->
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <button class="user-menu-item" onclick="showUserProfile()">
+                        <i class="fas fa-user"></i>
+                        <span id="userDisplayName">Mon profil</span>
+                    </button>
+                    <button class="user-menu-item" onclick="showSettings()">
+                        <i class="fas fa-cog"></i>
+                        <span>Paramètres</span>
+                    </button>
+                    <button class="user-menu-item" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Déconnexion</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="main-content">
+            <div class="chat-header">
+                <button class="sidebar-toggle desktop-hidden" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="chat-title">
+                    <h2 id="chatTitle">Dental Brain AI</h2>
+                    <p class="chat-subtitle">Assistant de planification dentaire</p>
+                </div>
+                <div class="chat-actions">
+                    <button class="icon-btn" onclick="window.location.href='/patients'" title="Gestion des patients">
+                        <i class="fas fa-users"></i>
+                    </button>
+                    <button class="icon-btn" onclick="showSearchPanel()" title="Rechercher">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Patient Selection Bar -->
+            <div class="patient-selection-bar" id="patientSelectionBar" style="display: none;">
+                <div class="patient-selection-content">
+                    <div class="patient-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="selectedPatientInfo">Aucun patient sélectionné</span>
+                    </div>
+                    <div class="patient-actions">
+                        <button class="select-patient-btn" onclick="showPatientSelector()">
+                            <i class="fas fa-user-plus"></i>
+                            Sélectionner un patient
+                        </button>
+                        <button class="clear-patient-btn" id="clearPatientBtn" onclick="clearPatientSelection()" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be displayed here -->
+                    <div class="welcome-message" id="welcomeMessage">
+                        <div class="welcome-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Bienvenue dans Dental Brain AI</h3>
+                        <p>Je suis votre assistant spécialisé en planification de traitements dentaires.</p>
+                        <div class="suggestions">
+                            <p>Essayez ces exemples:</p>
+                            <button class="suggestion-chip" onclick="sendSuggestion('Plan de TT 12 à 22 F')">
+                                Plan de TT 12 à 22 F
+                            </button>
+                            <button class="suggestion-chip" onclick="sendSuggestion('Traitement de racine 3 canaux')">
+                                Traitement de racine 3 canaux
+                            </button>
+                            <button class="suggestion-chip" onclick="sendSuggestion('26 CC')">
+                                26 CC (Couronne céramique)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Bar -->
+                <div class="quick-action-bar" id="quickActionBar">
+                    <div class="quick-action-container">
+                        <button class="quick-action-btn" data-action="suggest-plan" onclick="sendQuickAction('suggest-plan')" disabled>
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Suggest Plan</span>
+                        </button>
+                        <button class="quick-action-btn" data-action="generate-note" onclick="sendQuickAction('generate-note')" disabled>
+                            <i class="fas fa-file-medical"></i>
+                            <span>Generate Note</span>
+                        </button>
+                        <button class="quick-action-btn" data-action="clinical-tips" onclick="sendQuickAction('clinical-tips')" disabled>
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Clinical Tips</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea 
+                            id="chatInput" 
+                            class="chat-input" 
+                            placeholder="Décrivez le traitement ou posez votre question..."
+                            rows="1"
+                            onkeydown="handleInputKeydown(event)"
+                            oninput="autoResizeTextarea(this)"
+                        ></textarea>
+                        <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-hint">
+                        <span>Appuyez sur Entrée pour envoyer, Shift+Entrée pour nouvelle ligne</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treatment Plan Display -->
+            <div class="treatment-plan-panel" id="treatmentPlanPanel" style="display: none;">
+                <div class="panel-header">
+                    <h3>📋 Séquence de Traitement</h3>
+                    <button class="close-btn" onclick="closeTreatmentPanel()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="panel-content" id="treatmentPlanContent">
+                    <!-- Treatment plan will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Search Panel -->
+            <div class="search-panel" id="searchPanel" style="display: none;">
+                <div class="panel-header">
+                    <h3>🔍 Recherche dans la base</h3>
+                    <button class="close-btn" onclick="closeSearchPanel()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Rechercher des cas cliniques ou séquences..."
+                        onkeydown="handleSearchKeydown(event)"
+                    >
+                    <button class="search-btn" onclick="performSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <!-- Search results will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Action Button for Treatment Plan -->
+        <button class="treatment-plan-fab" id="treatmentPlanFAB" onclick="reopenTreatmentPanel()" style="display: none;" title="Rouvrir le plan de traitement">
+            <i class="fas fa-clipboard-list"></i>
+        </button>
+
+        <!-- User Profile Modal -->
+        <div class="modal" id="userProfileModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Mon Profil</h3>
+                    <button class="close-btn" onclick="closeUserProfile()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="profileForm" onsubmit="updateProfile(event)">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="profileEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nom complet</label>
+                            <input type="text" id="profileFullName" name="full_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom d'utilisateur</label>
+                            <input type="text" id="profileUsername" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Thème</label>
+                            <div class="theme-toggle">
+                                <label class="switch">
+                                    <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                                    <span class="slider"></span>
+                                </label>
+                                <span id="themeLabel" class="theme-label">Mode sombre</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="primary-btn">Mettre à jour</button>
+                    </form>
+                    
+                    <div class="divider"></div>
+                    
+                    <h4>Changer le mot de passe</h4>
+                    <form id="passwordForm" onsubmit="changePassword(event)">
+                        <div class="form-group">
+                            <label>Mot de passe actuel</label>
+                            <input type="password" name="current_password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nouveau mot de passe</label>
+                            <input type="password" name="new_password" required minlength="6">
+                        </div>
+                        <button type="submit" class="primary-btn">Changer le mot de passe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RAG Source Detail Modal -->
+    <div class="modal" id="ragSourceModal" style="display: none;">
+        <div class="modal-content rag-modal-content">
+            <div class="modal-header">
+                <h3 id="ragSourceTitle">Détails de la source</h3>
+                <button class="close-btn" onclick="closeRagSourceModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="ragSourceContent">
+                <!-- Source content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal" style="display: none;">
+        <div class="modal-content settings-modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cog"></i> Paramètres</h3>
+                <button class="close-btn" onclick="closeSettings()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Settings Tabs -->
+                <div class="settings-tabs">
+                    <button class="settings-tab active" onclick="switchSettingsTab('rag')">
+                        <i class="fas fa-brain"></i> Configuration IA
+                    </button>
+                    <button class="settings-tab" onclick="switchSettingsTab('pricing')">
+                        <i class="fas fa-euro-sign"></i> Tarification
+                    </button>
+                    <button class="settings-tab" onclick="switchSettingsTab('display')">
+                        <i class="fas fa-eye"></i> Affichage
+                    </button>
+                </div>
+                
+                <!-- RAG Settings Tab -->
+                <div class="settings-tab-content active" id="ragSettings">
+                    <div class="settings-section">
+                    <h4>Configuration RAG (Retrieval-Augmented Generation)</h4>
+                    
+                    <div class="setting-group">
+                        <label>Préférence de source</label>
+                        <p class="setting-description">Ajustez l'influence entre les cas cliniques réels et les séquences idéales théoriques</p>
+                        
+                        <div class="rag-preference-slider">
+                            <div class="slider-labels">
+                                <span class="slider-label">Cas cliniques</span>
+                                <span class="slider-label">Équilibré</span>
+                                <span class="slider-label">Séquences idéales</span>
+                            </div>
+                            <input type="range" id="ragPreference" min="-100" max="100" value="0" step="10"
+                                   oninput="updateRagPreferenceDisplay(this.value)">
+                            <div class="slider-value" id="ragPreferenceValue">Équilibré (0)</div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Seuil de similarité minimum</label>
+                        <p class="setting-description">Score minimum pour inclure une référence (0-100%)</p>
+                        <div class="inline-setting">
+                            <input type="range" id="similarityThreshold" min="0" max="100" value="60" step="5"
+                                   oninput="updateSimilarityDisplay(this.value)">
+                            <span class="setting-value" id="similarityValue">60%</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Nombre de résultats</label>
+                        <p class="setting-description">Nombre de références à utiliser pour chaque type</p>
+                        
+                        <div class="results-config">
+                            <div class="result-type-setting">
+                                <label>Cas cliniques:</label>
+                                <input type="number" id="clinicalCasesCount" min="1" max="10" value="3" class="small-input">
+                            </div>
+                            <div class="result-type-setting">
+                                <label>Séquences idéales:</label>
+                                <input type="number" id="idealSequencesCount" min="1" max="10" value="2" class="small-input">
+                            </div>
+                            <div class="result-type-setting">
+                                <label>Connaissances générales:</label>
+                                <input type="number" id="knowledgeCount" min="1" max="10" value="2" class="small-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Mode de raisonnement</label>
+                        <p class="setting-description">Comment l'IA doit interpréter les références</p>
+                        <select id="reasoningMode" class="setting-select">
+                            <option value="strict">Strict - Suivre exactement les cas similaires</option>
+                            <option value="adaptive" selected>Adaptatif - Ajuster selon le contexte</option>
+                            <option value="creative">Créatif - Plus de liberté d'interprétation</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="showSimilarityScores" checked>
+                            Afficher les scores de similarité
+                        </label>
+                        <p class="setting-description">Voir le pourcentage de correspondance des références</p>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="explainReasoning" checked>
+                            Expliquer le raisonnement clinique
+                        </label>
+                        <p class="setting-description">Inclure des explications sur le choix des références</p>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Pricing Settings Tab -->
+                <div class="settings-tab-content" id="pricingSettings" style="display: none;">
+                    <div class="settings-section">
+                        <h4>Configuration de la tarification</h4>
+                        
+                        <!-- Hourly Rates Section -->
+                        <div class="pricing-subsection">
+                            <h5><i class="fas fa-clock"></i> Tarifs horaires</h5>
+                            <div class="hourly-rates-grid">
+                                <div class="rate-input-group">
+                                    <label>Dentiste (CHF/h)</label>
+                                    <input type="number" id="rateDentist" value="450" min="0" step="10" class="rate-input">
+                                </div>
+                                <div class="rate-input-group">
+                                    <label>Hygiéniste (CHF/h)</label>
+                                    <input type="number" id="rateHygienist" value="120" min="0" step="10" class="rate-input">
+                                </div>
+                                <div class="rate-input-group">
+                                    <label>Assistant(e) (CHF/h)</label>
+                                    <input type="number" id="rateAssistant" value="80" min="0" step="10" class="rate-input">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fixed Costs Section -->
+                        <div class="pricing-subsection">
+                            <h5><i class="fas fa-calculator"></i> Frais fixes par séance</h5>
+                            <div class="fixed-costs-grid">
+                                <div class="cost-input-group">
+                                    <label>Matériaux moyens</label>
+                                    <input type="number" id="costMaterials" value="50" min="0" step="5" class="cost-input">
+                                </div>
+                                <div class="cost-input-group">
+                                    <label>Stérilisation</label>
+                                    <input type="number" id="costSterilization" value="20" min="0" step="5" class="cost-input">
+                                </div>
+                                <div class="cost-input-group">
+                                    <label>Frais généraux</label>
+                                    <input type="number" id="costOverhead" value="30" min="0" step="5" class="cost-input">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Procedures Pricing Section -->
+                        <div class="pricing-subsection">
+                            <h5><i class="fas fa-tooth"></i> Tarifs des procédures</h5>
+                            <div class="procedures-search">
+                                <input type="text" id="procedureSearch" placeholder="Rechercher une procédure..." class="procedure-search-input">
+                                <button class="add-procedure-btn" onclick="showAddProcedureModal()">
+                                    <i class="fas fa-plus"></i> Ajouter
+                                </button>
+                            </div>
+                            <div id="proceduresList" class="procedures-list">
+                                <!-- Procedures will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Import/Export Section -->
+                        <div class="pricing-actions">
+                            <div class="import-export-group">
+                                <button class="secondary-btn" onclick="exportPricing()">
+                                    <i class="fas fa-download"></i> Exporter
+                                </button>
+                                <button class="secondary-btn" onclick="importPricing()">
+                                    <i class="fas fa-upload"></i> Importer
+                                </button>
+                            </div>
+                            <button class="primary-btn" onclick="savePricingConfig()">
+                                <i class="fas fa-save"></i> Enregistrer les tarifs
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Optimization Rules Section -->
+                    <div class="pricing-subsection">
+                        <h5><i class="fas fa-sliders-h"></i> Règles d'optimisation financière</h5>
+                        <p class="setting-description">Définissez comment les traitements peuvent être optimisés pour différents budgets</p>
+                        
+                        <div class="optimization-rules">
+                            <div class="rule-group">
+                                <label>Alternatives de matériaux</label>
+                                <div id="materialAlternatives" class="alternatives-list">
+                                    <!-- Material alternatives will be loaded here -->
+                                </div>
+                                <button class="add-alternative-btn" onclick="showAddAlternativeModal()">
+                                    <i class="fas fa-plus"></i> Ajouter une alternative
+                                </button>
+                            </div>
+                            
+                            <div class="rule-group">
+                                <label>Regroupement de séances</label>
+                                <div class="setting-inline">
+                                    <input type="checkbox" id="allowBundling" checked>
+                                    <label for="allowBundling">Permettre le regroupement pour réduire les coûts</label>
+                                </div>
+                                <div class="setting-inline">
+                                    <label>Durée max par séance:</label>
+                                    <input type="number" id="maxSessionDuration" value="120" min="60" max="240" step="30" class="small-input">
+                                    <span>minutes</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rule-group">
+                                <label>Flexibilité des marges</label>
+                                <div class="margin-flexibility">
+                                    <label>Réduction maximale:</label>
+                                    <input type="range" id="maxMarginReduction" min="0" max="30" value="15" step="5"
+                                           oninput="updateMarginDisplay(this.value)">
+                                    <span id="marginReductionValue">15%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Display Settings Tab -->
+                <div class="settings-tab-content" id="displaySettings" style="display: none;">
+                    <div class="settings-section">
+                        <h4>Préférences d'affichage</h4>
+                        
+                        <div class="setting-group">
+                            <label>
+                                <input type="checkbox" id="autoExpandTreatment" checked>
+                                Ouvrir automatiquement les plans de traitement
+                            </label>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>
+                                <input type="checkbox" id="compactView">
+                                Vue compacte des messages
+                            </label>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <label>
+                                <input type="checkbox" id="showFinancialAnalysis" checked>
+                                Afficher l'analyse financière
+                            </label>
+                            <p class="setting-description">Inclure l'analyse financière dans les plans de traitement</p>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <label>Devise</label>
+                            <select id="currencySelect" class="setting-select">
+                                <option value="CHF" selected>CHF - Franc suisse</option>
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="USD">USD - Dollar américain</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="secondary-btn" onclick="resetSettings()">
+                        <i class="fas fa-undo"></i> Réinitialiser
+                    </button>
+                    <button class="primary-btn" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Enregistrer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Procedure Modal -->
+    <div class="modal" id="procedureModal" style="display: none;">
+        <div class="modal-content procedure-modal-content">
+            <div class="modal-header">
+                <h3 id="procedureModalTitle">Ajouter une procédure</h3>
+                <button class="close-btn" onclick="closeProcedureModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="procedureForm" onsubmit="saveProcedure(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom de la procédure *</label>
+                            <input type="text" id="procedureName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Catégorie *</label>
+                            <select id="procedureCategory" name="category" required>
+                                <option value="diagnostic">Diagnostic</option>
+                                <option value="preventive">Préventif</option>
+                                <option value="restorative">Restaurateur</option>
+                                <option value="endodontic">Endodontique</option>
+                                <option value="prosthetic">Prothétique</option>
+                                <option value="surgical">Chirurgical</option>
+                                <option value="implant">Implantologie</option>
+                                <option value="auxiliary">Auxiliaire</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prix de base (CHF) *</label>
+                            <input type="number" id="procedurePrice" name="basePrice" min="0" step="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Durée (minutes) *</label>
+                            <input type="number" id="procedureDuration" name="duration" min="5" step="5" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Coût matériaux (CHF)</label>
+                            <input type="number" id="procedureMaterials" name="materials" min="0" step="5" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Coût laboratoire (CHF)</label>
+                            <input type="number" id="procedureLabCost" name="labCost" min="0" step="10" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Exécutant</label>
+                        <select id="procedurePerformer" name="performer">
+                            <option value="dentist" selected>Dentiste</option>
+                            <option value="hygienist">Hygiéniste</option>
+                            <option value="assistant">Assistant(e)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="secondary-btn" onclick="closeProcedureModal()">
+                            Annuler
+                        </button>
+                        <button type="submit" class="primary-btn">
+                            <i class="fas fa-save"></i> Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Selector Modal -->
+    <div class="modal" id="patientSelectorModal" style="display: none;">
+        <div class="modal-content patient-selector-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-circle"></i> Sélectionner un patient</h3>
+                <button class="close-btn" onclick="closePatientSelector()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="patient-search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="patientSearchInput" placeholder="Rechercher par nom, numéro ou email..." onkeyup="searchPatientsForSelection()">
+                </div>
+                <div class="patient-list" id="patientList">
+                    <!-- Patient items will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <a href="/patients" class="link-btn">
+                        <i class="fas fa-plus"></i> Créer un nouveau patient
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/pricing-config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chat-app.js') }}"></script>
+</body>
+</html>

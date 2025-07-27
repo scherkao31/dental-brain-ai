@@ -1,0 +1,86 @@
+{
+  "consultation_text": "48 AV\n47 OMV\n45 Onlay + démonter tenon + TR\n44 collet\n43 M\n42 + 31 AV + ajouter à un stellite existant\n27 AV",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "27 Avulsion",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Contrôle post op; 42 + 31 Avulsion; Empreintes pour ajouter sur stellite",
+      "duree": "1h",
+      "delai": "1sem./matin",
+      "dr": "NB",
+      "date": "",
+      "remarque": "Empreintes alginate pour le laboratoire Siro"
+    },
+    {
+      "rdv": 3,
+      "traitement": "Remise de l’appareil",
+      "duree": "15min.",
+      "delai": "Après-midi",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "43 Composite M; 44 Composite de collet",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "45 Ablation tenon + Traitement de racine – désinfection",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "45 Traitement de racine – obturation + TE onlay",
+      "duree": "1h15",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "45 Scellement onlay; 47 Composite OMV",
+      "duree": "1h45",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 8,
+      "traitement": "48 Avulsion",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 9,
+      "traitement": "Contrôle post op",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

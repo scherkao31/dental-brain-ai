@@ -1,0 +1,59 @@
+{
+  "consultation_text": "Plan de tt\n46 CC\n26 CC\n34 OD\n35 onlay\n17 P\n24 GC\nDet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "46 Démonter couronne + Empreintes + Provisoire",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "46 Scellement couronne céramique; 26 Démonter couronne + Empreintes + Provisoire; 34 Composite OD; 35 TE onlay",
+      "duree": "3h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "26 Scellement couronne céramique; 35 Scellement onlay; 17 Composite P",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "24 Greffe",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "BC",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Contrôle post op",
+      "duree": "15min",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

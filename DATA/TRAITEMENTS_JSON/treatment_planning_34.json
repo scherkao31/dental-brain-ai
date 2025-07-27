@@ -1,0 +1,50 @@
+{
+  "consultation_text": "Plan de tt\n24 OM\n46 BNV + onlay + collet\n47 onlay\n17 OD\n13 collet\n47 onlay\n44-43-42 collet\n33-34 collet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "24 Composite OM; 46 BNV – 1ère séance",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "46 BNV – 2ème séance; 17 Composite OD",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "46 Composite de collet; 46 – 47 TE + Scellement onlay; 36 TE + Scellement onlay",
+      "duree": "3h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "44 – 43 – 42 Composite de collet; 13 Composite de collet",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "33 – 34 Composite de collet",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

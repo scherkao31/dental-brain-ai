@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Traitement de racine 1 canal",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "TR séance 1 désobturation + désinfection",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "TR séance 2 obturation + cpr O",
+      "duree": "1h",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_traitement_de_racine_1_canal.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

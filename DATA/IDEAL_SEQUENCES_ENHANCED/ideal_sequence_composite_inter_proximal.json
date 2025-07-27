@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Composite inter proximal",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr M",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_inter_proximal.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite inter proximal",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr M",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr M",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite inter proximal\nSéquence idéale étendue: Composite inter proximal\nTraitements: Cpr M\nTraitements étendus: Cpr M\nCatégories: Composite",
+  "content": "Séquence idéale: Composite inter proximal\nSéquence idéale étendue: Composite inter proximal\nTraitements: Cpr M\nTraitements étendus: Cpr M\nCatégories: Composite"
+}

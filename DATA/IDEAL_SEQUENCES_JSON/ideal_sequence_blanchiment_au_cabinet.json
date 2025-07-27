@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Blanchiment – au cabinet",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage si besoin  Blanchiment – 1ère séance",
+      "duree": "1h45/ 1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Blanchiment – 2ème séance",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_blanchiment_au_cabinet.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx"
+}

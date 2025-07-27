@@ -1,0 +1,185 @@
+{
+  "consultation_text": "Plan de tt\n44 I + GBR + Cci\n35-37 onlay\n25-27 CC\n26 CC + MA\n17 P\n16 CC + TR + MA\n32 à 42 collet\n23-22 cpr D + collet\n13 M\n45 collet + onlay\n46i + 47i CCi\nDét\nBlanch",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": "Prévoir ordonnance implant"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Pose implant 44 avec GBR",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "35-37 TE onlay",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mardi 17.10 à 14h",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "35-37 Sc onlay; empreintes pour blanchiment",
+      "duree": "1h30",
+      "delai": "2 jours",
+      "dr": "NB",
+      "date": "Mercredi 18.10 à 9h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Remise gouttières + produit de blanchiment",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "VR",
+      "date": "Vendredi 20.10 à 13h45",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "25-27 : démonter couronne + provisoire + empreinte",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Jeudi 9.11 à 9h",
+      "remarque": "6 sem après rdv 2"
+    },
+    {
+      "rdv": 8,
+      "traitement": "16 : démonter couronne + provisoire + empreinte; 17 : cpr P",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mercredi 15.11 à 15h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 9,
+      "traitement": "16 Endo + moignon adhésif + empreinte",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "Jeudi 16.11 à 14h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 10,
+      "traitement": "25-27 Scellement couronnes; 16 moignon adhésif + empreintes",
+      "duree": "2h",
+      "delai": "1 sem",
+      "dr": "NB",
+      "date": "Vendredi 24.11 à 10h",
+      "remarque": ""
+    },
+    {
+      "rdv": 11,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "Val",
+      "date": "Lundi 27.11 à 9h",
+      "remarque": ""
+    },
+    {
+      "rdv": 12,
+      "traitement": "32 à 42 composites collets; 16 Scellement couronne",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "Vendredi 5.12",
+      "remarque": ""
+    },
+    {
+      "rdv": 13,
+      "traitement": "22 Cpr D + collet; 23 Cpr M + collet",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mercredi 6.12 à 12h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 14,
+      "traitement": "13 Composite M",
+      "duree": "",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mercredi 6.12 à 12h00",
+      "remarque": "En même temps que le RDV 13"
+    },
+    {
+      "rdv": 15,
+      "traitement": "45 Composite collet + TE onlay; 46i-47i : démonter couronnes + empreinte pour CC/i transvissées",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mardi 12.12 à 12h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 16,
+      "traitement": "45 Sc onlay; 46i-47i : Sc couronnes",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "Mercredi 20.12 à 12h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 17,
+      "traitement": "44i : empreinte pour couronne",
+      "duree": "30 min",
+      "delai": "6 sem",
+      "dr": "NB",
+      "date": "Mardi 9.01.24 à 14h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 18,
+      "traitement": "44i : Scellement couronne",
+      "duree": "30 min",
+      "delai": "1 sem",
+      "dr": "NB",
+      "date": "Mardi 16.01.24 à 14h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 19,
+      "traitement": "Documentation Invisalign",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 20,
+      "traitement": "Début Invisalign",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

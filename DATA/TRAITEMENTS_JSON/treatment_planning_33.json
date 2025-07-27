@@ -1,0 +1,59 @@
+{
+  "consultation_text": "Plan de tt\n11 BNV + cpr bord libre",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "11 Blanchiment interne - 1ère séance; Empreinte pour wax-up et clé",
+      "duree": "30min.",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "11 Blanchiment interne - 2ème séance",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "11 Blanchiment interne - 2ème séance",
+      "duree": "15min.",
+      "delai": "1mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "11 Composites",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Polissage – retouche teinte",
+      "duree": "30min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Réserve pour retouche teinte si besoin",
+      "duree": "30min.",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

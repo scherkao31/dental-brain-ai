@@ -1,0 +1,41 @@
+{
+  "consultation_text": "Plan de tt\n26 onlay\n27 O\n37 MOD\n12 – 11 – 21 angle M + D\n22 collet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "26 TE onlay; 27 Composite O",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "26 Scellement onlay; 37 Composite MOD",
+      "duree": "1h45",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "12 Angle M + D; 11 Angle M + D; 21 Angle M + D; 22 Composite de collet",
+      "duree": "2h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Polissage",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "consultation_text": "Scellement de fissure 2 dents",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 2 dents",
+      "duree": "",
+      "delai": "30 min",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_scellement_de_fissure_2_dents.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

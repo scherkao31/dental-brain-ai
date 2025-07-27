@@ -1,0 +1,64 @@
+{
+  "consultation_text": "Extraction complexe",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Extraction",
+      "duree": "1 h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Donner ordonnance"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_extraction_complexe.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Extraction complexe",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Extraction",
+      "duree": "1 h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Donner ordonnance",
+      "traitement_expanded": "Extraction",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "Donner ordonnance",
+      "categories": [
+        "Chirurgie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl post op",
+      "delai_expanded": "1 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Extraction complexe\nSéquence idéale étendue: Extraction complexe\nTraitements: Extraction; Ctl post op\nTraitements étendus: Extraction; Ctl post op\nCatégories: Chirurgie, Contrôles",
+  "content": "Séquence idéale: Extraction complexe\nSéquence idéale étendue: Extraction complexe\nTraitements: Extraction; Ctl post op\nTraitements étendus: Extraction; Ctl post op\nCatégories: Chirurgie, Contrôles"
+}

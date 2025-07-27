@@ -1,0 +1,50 @@
+{
+  "consultation_text": "Plan de tt\n15 BNV + onlay\n11 Cpr angle M\n46 OD\n31 GC\ndet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "15 Blanchiment interne – 1ère séance; 11 Composite angle M",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "15 Blanchiment interne – 2ème séance; 46 Composite OD",
+      "duree": "2h",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "15 TE onlay; Détartrage",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB/VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "15 Scellement onlay; 31 Greffe",
+      "duree": "2h",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Contrôle post greffe",
+      "duree": "15min.",
+      "delai": "10jours",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

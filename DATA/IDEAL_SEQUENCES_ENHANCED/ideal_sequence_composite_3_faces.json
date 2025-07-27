@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Composite 3 faces",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr MOD",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_3_faces.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite 3 faces",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr MOD",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr MOD",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite 3 faces\nSéquence idéale étendue: Composite 3 faces\nTraitements: Cpr MOD\nTraitements étendus: Cpr MOD\nCatégories: Composite",
+  "content": "Séquence idéale: Composite 3 faces\nSéquence idéale étendue: Composite 3 faces\nTraitements: Cpr MOD\nTraitements étendus: Cpr MOD\nCatégories: Composite"
+}

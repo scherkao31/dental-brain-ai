@@ -1,0 +1,68 @@
+{
+  "consultation_text": "Plan de tt:\n37 O+V\n27 O+O+P\n17 O+O+P\n48-38 AV incluse",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "37 Cpr O+V",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "24/02/14 à 13h",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "27 Cpr O+O+P",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "26/02/14 à 15h30",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "17 Cpr O+O+P",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "27/02/14 à 9h",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "48 Avulsion incluse",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Ctl post-op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "38 Avulsion incluse",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "Ctl post-op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

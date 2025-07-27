@@ -1,0 +1,54 @@
+{
+  "consultation_text": "Composite d angle",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage + empreinte pour blanchiment",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner gouttières de blanchiment + gel",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post blanchiment",
+      "duree": "15 min",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Cpr angle",
+      "duree": "1h",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Polissage",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_d_angle.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

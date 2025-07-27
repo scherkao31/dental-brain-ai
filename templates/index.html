@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Brain AI - Assistant de Planification Dentaire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Dental Brain AI</h1>
+                    <span class="subtitle">Assistant de Planification de Traitement</span>
+                </div>
+                <div class="header-info">
+                    <span class="knowledge-badge">
+                        <i class="fas fa-database"></i>
+                        <span id="knowledge-count">Chargement...</span> cas de traitement
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Dental Brain Chat Interface -->
+            <div class="tab-content active" id="dental-brain">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2><i class="fas fa-brain"></i> Assistant Dental Brain</h2>
+                        <p>Planification de traitement basée sur des cas cliniques réels</p>
+                    </div>
+                    
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Messages will be dynamically added here -->
+                    </div>
+                    
+                    <div class="chat-input-wrapper">
+                        <textarea 
+                            id="chat-input" 
+                            class="chat-input" 
+                            placeholder="Posez votre question ou décrivez le traitement (ex: Plan de TT 12 à 22 F)..."
+                            rows="1"
+                        ></textarea>
+                        <button id="chat-send" class="chat-send" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Treatment Plan Display Area -->
+                    <div id="treatment-plan-display" class="treatment-plan-display" style="display: none;">
+                        <!-- Treatment plan table will be inserted here -->
+                    </div>
+                </div>
+                
+                <!-- Search Panel -->
+                <div class="search-panel">
+                    <div class="search-header">
+                        <h3><i class="fas fa-search"></i> Recherche dans la base de connaissances</h3>
+                    </div>
+                    <div class="search-input-wrapper">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="Rechercher des cas cliniques ou séquences idéales..."
+                        >
+                        <button id="search-button" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div id="search-results" class="search-results">
+                        <!-- Search results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/core/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/core/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/features/dental-brain/dental-brain.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app-loader.js') }}"></script>
+</body>
+</html>

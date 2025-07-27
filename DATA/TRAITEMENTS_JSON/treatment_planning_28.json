@@ -1,0 +1,149 @@
+{
+  "consultation_text": "Plan de tt\n11-12-13 + 23 + 33 bilan paro\n11-13 gingivectomie\n12 allongement Couronne\n15 CC\n16 TR + onlay\n27 TR onlay\n24-25-26 CC\n44 CC\n14 à 23 facettes\n43 à 35 facettes\ngoutt",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Consultation Paro (11-12-13 + 23 + 33); Détartrage; 15 : Démonter couronne + couronne provisoire; 16 : Cavité d’accès + évaluation du TR",
+      "duree": "3h",
+      "delai": "",
+      "dr": "",
+      "date": "Vendredi 18-07 à 9h00",
+      "remarque": "Décision + organisation chirurgies muco-gingivales avec Norbert; Éventuellement le 24.07"
+    },
+    {
+      "rdv": 2,
+      "traitement": "24-25-26 : Démonter couronnes + couronnes provisoires + empreinte pour couronnes provisoires labo",
+      "duree": "3h",
+      "delai": "",
+      "dr": "",
+      "date": "Vendredi 18-07 à 14h00",
+      "remarque": ""
+    },
+    {
+      "rdv": 2.1,
+      "traitement": "11-13 gingivectomie; 12 : allongement couronne",
+      "duree": "2h",
+      "delai": "",
+      "dr": "",
+      "date": "Jeudi 24-07",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "16 + 27 : Traitement de racine",
+      "duree": "3h",
+      "delai": "",
+      "dr": "",
+      "date": "Vendredi 25-07 à 8h45",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "44 : Démonter couronne + couronne provisoire; 15-24-25-26 : Scellement couronnes provisoires labo",
+      "duree": "2h",
+      "delai": "",
+      "dr": "",
+      "date": "Vendredi 25-07 à 14h00",
+      "remarque": "Organiser rdv hygiéniste juste avant début du tt en septembre"
+    },
+    {
+      "rdv": 5,
+      "traitement": "Lambeau déplacé coronairement 33",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "09.09.2014",
+      "remarque": "Fixer contrôle post-op"
+    },
+    {
+      "rdv": 6,
+      "traitement": "14 : Préparation pour onlay; 16 : Préparation pour onlay",
+      "duree": "3h",
+      "delai": "",
+      "dr": "",
+      "date": "matin",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "27 : Préparation pour onlay",
+      "duree": "3h",
+      "delai": "",
+      "dr": "",
+      "date": "après-midi",
+      "remarque": ""
+    },
+    {
+      "rdv": 8,
+      "traitement": "Empreinte sup 14-15-16-24-25-26-27",
+      "duree": "2h",
+      "delai": "1 jour",
+      "dr": "",
+      "date": "matin",
+      "remarque": ""
+    },
+    {
+      "rdv": 9,
+      "traitement": "Scellement sup 14-15-16-24-25-26-27",
+      "duree": "6h",
+      "delai": "1 semaine",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 10,
+      "traitement": "14 à 23 : Préparation pour Facettes céramique",
+      "duree": "½ jour",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 11,
+      "traitement": "14 à 23 : Scellement Facettes céramique",
+      "duree": "½ jour",
+      "delai": "1 semaine",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 12,
+      "traitement": "44 à 35 : Préparation pour Facettes céramique (44 : couronne céramique)",
+      "duree": "½ jour",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Après délais cicatrisation 33 - voir avec Norbert"
+    },
+    {
+      "rdv": 13,
+      "traitement": "44 à 35 : Scellement Facettes céramique (44 : couronne céramique)",
+      "duree": "½ jour",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 14,
+      "traitement": "Polissage + empreinte pour gouttière de protection",
+      "duree": "1h",
+      "delai": "1 jour",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 15,
+      "traitement": "Mise en bouche gouttière de protection + contrôle final",
+      "duree": "1h",
+      "delai": "1 jour",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

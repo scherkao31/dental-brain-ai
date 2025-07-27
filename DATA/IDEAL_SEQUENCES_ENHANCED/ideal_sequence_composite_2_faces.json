@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Composite 2 faces",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr OM",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_2_faces.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite 2 faces",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr OM",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr OM",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite 2 faces\nSéquence idéale étendue: Composite 2 faces\nTraitements: Cpr OM\nTraitements étendus: Cpr OM\nCatégories: Composite",
+  "content": "Séquence idéale: Composite 2 faces\nSéquence idéale étendue: Composite 2 faces\nTraitements: Cpr OM\nTraitements étendus: Cpr OM\nCatégories: Composite"
+}

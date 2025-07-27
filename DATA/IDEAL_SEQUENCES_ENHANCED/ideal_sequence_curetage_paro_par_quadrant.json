@@ -1,0 +1,115 @@
+{
+  "consultation_text": "Curetage paro par quadrant",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Mesure de poche + explications",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Curetage avec anesthesie",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl à 1 mois",
+      "duree": "15 min",
+      "delai": "1 mois",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl à 3 mois avec mesure de poche",
+      "duree": "15 min",
+      "delai": "2 mois",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_curetage_paro_par_quadrant.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Curetage paro par quadrant",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Mesure de poche + explications",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Mesure de poche + explications",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Parodontologie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Curetage avec anesthesie",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Curetage avec anesthesie",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Parodontologie"
+      ]
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl à 1 mois",
+      "duree": "15 min",
+      "delai": "1 mois",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl à 1 mois",
+      "delai_expanded": "1 mois",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles"
+      ]
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl à 3 mois avec mesure de poche",
+      "duree": "15 min",
+      "delai": "2 mois",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl à 3 mois avec mesure de poche",
+      "delai_expanded": "2 mois",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles",
+        "Parodontologie"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Curetage paro par quadrant\nSéquence idéale étendue: Curetage paro par quadrant\nTraitements: Mesure de poche + explications; Curetage avec anesthesie; Ctl à 1 mois; Ctl à 3 mois avec mesure de poche\nTraitements étendus: Mesure de poche + explications; Curetage avec anesthesie; Ctl à 1 mois; Ctl à 3 mois avec mesure de poche\nCatégories: Contrôles, Parodontologie",
+  "content": "Séquence idéale: Curetage paro par quadrant\nSéquence idéale étendue: Curetage paro par quadrant\nTraitements: Mesure de poche + explications; Curetage avec anesthesie; Ctl à 1 mois; Ctl à 3 mois avec mesure de poche\nTraitements étendus: Mesure de poche + explications; Curetage avec anesthesie; Ctl à 1 mois; Ctl à 3 mois avec mesure de poche\nCatégories: Contrôles, Parodontologie"
+}

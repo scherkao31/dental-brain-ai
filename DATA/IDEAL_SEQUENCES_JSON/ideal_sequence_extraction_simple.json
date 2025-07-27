@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Extraction simple",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Extraction",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Donner ordonnance"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_extraction_simple.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

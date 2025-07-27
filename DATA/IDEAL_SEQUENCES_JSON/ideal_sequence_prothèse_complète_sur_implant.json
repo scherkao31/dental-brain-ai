@@ -1,0 +1,81 @@
+{
+  "consultation_text": "Prothèse complète sur implant",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Radio panoramique + empreintes initiales + cone beam",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Envoyer fichers à Etkon pour chirurgie implantaire guidée"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Pose d’implants sup et inf (4 + 4) avec mise en charge immédiate (extractions si nécessaire)",
+      "duree": "3h",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl pre empreinte",
+      "duree": "15 min",
+      "delai": "2 mois",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Empreinte définitive",
+      "duree": "1h",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Essai",
+      "duree": "45 min",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "Scellement sup et inf",
+      "duree": "30 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 8,
+      "traitement": "Revisser à 35 Nm + teflon + cpr et organiser programme recall",
+      "duree": "45 min",
+      "delai": "1 mois",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_prothèse_complète_sur_implant.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

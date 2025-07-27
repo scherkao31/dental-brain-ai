@@ -1,0 +1,68 @@
+{
+  "consultation_text": "Plan de tt\n36 AV + I + GBR + Cci\n26 TR + OP\n15 onlay\n47 OV\n35 O\n37 OV",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "36 Extraction avec pose implant et greffe osseuse",
+      "duree": "",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "36i Contrôle post op; 26 Traitement de racine",
+      "duree": "",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "15 TE onlay; 16 Cpr OP",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "15-01",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "15 Sc onlay; 47 cpr OV",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "22-01",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "35 Cpr O; 37 Cpr OV",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "36i Empreintes pour couronne transvissée céramique",
+      "duree": "",
+      "delai": "3mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "36i Scellement couronne transvissée céramique",
+      "duree": "",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

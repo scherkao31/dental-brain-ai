@@ -1,0 +1,30 @@
+databases:
+  - name: dental-brain-db
+    databaseName: dental_brain_db
+    user: dental_brain_user
+    region: oregon # Change if you prefer another region
+    plan: starter # Free tier
+
+services:
+  - type: web
+    name: dental-brain-app
+    runtime: python
+    region: oregon # Same region as database
+    plan: starter # Free tier
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn run:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dental-brain-db
+          property: connectionString
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false # You'll set this manually in Render dashboard
+      - key: PORT
+        value: 10000 # Render's default port

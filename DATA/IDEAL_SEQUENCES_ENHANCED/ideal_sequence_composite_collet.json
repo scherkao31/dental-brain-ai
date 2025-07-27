@@ -1,0 +1,64 @@
+{
+  "consultation_text": "Composite collet",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si nécessaire  + donner curasept"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Cpr collet",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_collet.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite collet",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si nécessaire  + donner curasept",
+      "traitement_expanded": "Détartrage",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "Si nécessaire  + donner curasept",
+      "categories": [
+        "Parodontologie"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Cpr collet",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr collet",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite collet\nSéquence idéale étendue: Composite collet\nTraitements: Détartrage; Cpr collet\nTraitements étendus: Détartrage; Cpr collet\nCatégories: Composite, Parodontologie",
+  "content": "Séquence idéale: Composite collet\nSéquence idéale étendue: Composite collet\nTraitements: Détartrage; Cpr collet\nTraitements étendus: Détartrage; Cpr collet\nCatégories: Composite, Parodontologie"
+}

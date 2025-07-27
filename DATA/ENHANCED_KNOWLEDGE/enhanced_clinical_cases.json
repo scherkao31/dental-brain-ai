@@ -1,0 +1,2469 @@
+[
+  {
+    "consultation_text": "Plan de TT\n14 collet\n24 25 collet\n44 collet\n34 collet",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "14 Composite de collet; 44 Composite de collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "23-24 Composite de collet; 34 Composite de collet",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_8.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nPremière prémolaire supérieure droite collet\nPremière prémolaire supérieure gauche Deuxième prémolaire supérieure gauche collet\nPremière prémolaire inférieure droite collet\nPremière prémolaire inférieure gauche collet",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "14 Composite de collet; 44 Composite de collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première prémolaire supérieure droite Composite de collet; Première prémolaire inférieure droite Composite de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "23-24 Composite de collet; 34 Composite de collet",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Canine supérieure gauche-Première prémolaire supérieure gauche Composite de collet; Première prémolaire inférieure gauche Composite de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n14 collet\n24 25 collet\n44 collet\n34 collet\nConsultation étendue: Plan de TT\nPremière prémolaire supérieure droite collet\nPremière prémolaire supérieure gauche Deuxième prémolaire supérieure gauche collet\nPremière prémolaire inférieure droite collet\nPremière prémolaire inférieure gauche collet\nTraitements: 14 Composite de collet; 44 Composite de collet, 23-24 Composite de collet; 34 Composite de collet\nTraitements étendus: Première prémolaire supérieure droite Composite de collet; Première prémolaire inférieure droite Composite de collet, Canine supérieure gauche-Première prémolaire supérieure gauche Composite de collet; Première prémolaire inférieure gauche Composite de collet\nCatégories: Général"
+  },
+  {
+    "consultation_text": "Plan de TT\ninvisalign + fil de contention\nblanch.\n12-22 facette céram",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Empreintes pour Invisalign; Empreintes pour blanchiment",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Remise gouttières et produit de blanchiment; Détartrage",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Contrôle post blanchiment",
+        "duree": "",
+        "delai": "",
+        "dr": "",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "Début traitement Invisalign",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Fin traitement Invisalign; Empreinte pour Waxup",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "Mock-up",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "12-22 Préparation pour facette",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "12-22 Essai",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 9,
+        "traitement": "12-22 Scellement facettes; Empreintes pour fil de contention SUP – INF",
+        "duree": "2h",
+        "delai": "2jours",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 10,
+        "traitement": "12-22 Polissage; Scellement fil de contention SUP - INF",
+        "duree": "1h15",
+        "delai": "5jours",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_4.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\ninvisalign + fil de contention\nblanch.\nIncisive latérale supérieure droite-Incisive latérale supérieure gauche facette céram",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Empreintes pour Invisalign; Empreintes pour blanchiment",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Empreintes pour Invisalign; Empreintes pour blanchiment",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Remise gouttières et produit de blanchiment; Détartrage",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Remise gouttières et produit de blanchiment; Détartrage",
+        "categories": [
+          "Endodontie",
+          "Prévention",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 3,
+        "traitement": "Contrôle post blanchiment",
+        "duree": "",
+        "delai": "",
+        "dr": "",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle post blanchiment",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "Début traitement Invisalign",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Début traitement Invisalign",
+        "categories": [
+          "Endodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Fin traitement Invisalign; Empreinte pour Waxup",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Fin traitement Invisalign; Prise Distal'empreinte pour Waxup",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller/Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "Mock-up",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Mock-up esthétique",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 7,
+        "traitement": "12-22 Préparation pour facette",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite-Incisive latérale supérieure gauche Préparation pour facette",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "12-22 Essai",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite-Incisive latérale supérieure gauche Essai prothétique",
+        "categories": [
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 9,
+        "traitement": "12-22 Scellement facettes; Empreintes pour fil de contention SUP – INF",
+        "duree": "2h",
+        "delai": "2jours",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite-Incisive latérale supérieure gauche Scellement définitif facettes; Empreintes pour fil de contention supérieur – inférieur",
+        "categories": [
+          "Prothèse",
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir/Dr. Virginie Rouiller",
+        "delai_expanded": "2jours"
+      },
+      {
+        "rdv": 10,
+        "traitement": "12-22 Polissage; Scellement fil de contention SUP - INF",
+        "duree": "1h15",
+        "delai": "5jours",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite-Incisive latérale supérieure gauche Polissage final; Scellement définitif fil de contention supérieur - inférieur",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir/Dr. Virginie Rouiller",
+        "delai_expanded": "5jours"
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\ninvisalign + fil de contention\nblanch.\n12-22 facette céram\nConsultation étendue: Plan de TT\ninvisalign + fil de contention\nblanch.\nIncisive latérale supérieure droite-Incisive latérale supérieure gauche facette céram\nTraitements: Empreintes pour Invisalign; Empreintes pour blanchiment, Remise gouttières et produit de blanchiment; Détartrage, Contrôle post blanchiment, Début traitement Invisalign, Fin traitement Invisalign; Empreinte pour Waxup, Mock-up, 12-22 Préparation pour facette, 12-22 Essai, 12-22 Scellement facettes; Empreintes pour fil de contention SUP – INF, 12-22 Polissage; Scellement fil de contention SUP - INF\nTraitements étendus: Empreintes pour Invisalign; Empreintes pour blanchiment, Remise gouttières et produit de blanchiment; Détartrage, Contrôle post blanchiment, Début traitement Invisalign, Fin traitement Invisalign; Prise Distal'empreinte pour Waxup, Mock-up esthétique, Incisive latérale supérieure droite-Incisive latérale supérieure gauche Préparation pour facette, Incisive latérale supérieure droite-Incisive latérale supérieure gauche Essai prothétique, Incisive latérale supérieure droite-Incisive latérale supérieure gauche Scellement définitif facettes; Empreintes pour fil de contention supérieur – inférieur, Incisive latérale supérieure droite-Incisive latérale supérieure gauche Polissage final; Scellement définitif fil de contention supérieur - inférieur\nCatégories: Endodontie, Prothèse, Prévention, Contrôles, Esthétique"
+  },
+  {
+    "consultation_text": "Plan de TT\n34 Collet + Onlay\n35 Dém.CC + MA + CC\n36 Dém CC + MA + CC\n33 Collet\n32 Collet\n31-41 BL\n24 Collet\n25-26-27 CC\n24 OD\n13 D\n14 à 17 CC",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage + empreintes pour modèles",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "Lundi 17 Mars à 10h",
+        "remarque": "Donner antibiotiques"
+      },
+      {
+        "rdv": 2,
+        "traitement": "35-36-37 démonter couronnes + provisoires",
+        "duree": "2h",
+        "delai": "2 jours",
+        "dr": "NB",
+        "date": "Mercredi 19 Mars à 11h",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "14-15-16-17 démonter couronnes + provisoires; 15 Séance de désinfection endo",
+        "duree": "2h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "Mercredi 19 Mars à 14h45",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "22-25-26-27 démonter couronnes + provisoires",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Jeudi 20 Mars à 10h",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "32-33-34 composite collet; 31-41 composite bord libre",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "Jeudi 20 Mars à 15h30",
+        "remarque": "Discussion formes 11-21"
+      },
+      {
+        "rdv": 6,
+        "traitement": "13 Composite D; 24 Composite OD + V; 15 Obturation endo + Cpr",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Lundi 24 Mars à 10h",
+        "remarque": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "Empreintes pour couronnes Sup et Inf",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Lundi 24 Mars à 15h",
+        "remarque": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "Scellement sup et inf",
+        "duree": "2h",
+        "delai": "3 jours",
+        "dr": "NB",
+        "date": "Jeudi 27 Mars à 12h",
+        "remarque": ""
+      },
+      {
+        "rdv": 9,
+        "traitement": "PHASE 2 – GESTION OSTEONECROSE",
+        "duree": "",
+        "delai": "6 mois après dernière injection - courant juin",
+        "dr": "NB",
+        "date": "",
+        "remarque": "Débuter traitement ATB 2 jours avant et continuer pendant 2 semaines"
+      }
+    ],
+    "filename": "treatment_planning_14.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nPremière prémolaire inférieure gauche Collet + Onlay\nDeuxième prémolaire inférieure gauche Démonter.Couronne céramique + Moignon adhésif + Couronne céramique\nPremière molaire inférieure gauche Démonter Couronne céramique + Moignon adhésif + Couronne céramique\nCanine inférieure gauche Collet\nIncisive latérale inférieure gauche Collet\nIncisive centrale inférieure gauche-Incisive centrale inférieure droite BL\nPremière prémolaire supérieure gauche Collet\nDeuxième prémolaire supérieure gauche-Première molaire supérieure gauche-Deuxième molaire supérieure gauche Couronne céramique\nPremière prémolaire supérieure gauche OD\nCanine supérieure droite Distal\nPremière prémolaire supérieure droite à Deuxième molaire supérieure droite Couronne céramique",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage + empreintes pour modèles",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "Lundi 17 Mars à 10h",
+        "remarque": "Donner antibiotiques",
+        "traitement_expanded": "Détartrage + empreintes pour modèles",
+        "categories": [
+          "Endodontie",
+          "Prévention"
+        ],
+        "remarque_expanded": "Donner antibiotiques",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "35-36-37 démonter couronnes + provisoires",
+        "duree": "2h",
+        "delai": "2 jours",
+        "dr": "NB",
+        "date": "Mercredi 19 Mars à 11h",
+        "remarque": "",
+        "traitement_expanded": "Deuxième prémolaire inférieure gauche-Première molaire inférieure gauche-Deuxième molaire inférieure gauche Démonter ancienne restauration couronnes + provisoires",
+        "categories": [
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "2 jours"
+      },
+      {
+        "rdv": 3,
+        "traitement": "14-15-16-17 démonter couronnes + provisoires; 15 Séance de désinfection endo",
+        "duree": "2h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "Mercredi 19 Mars à 14h45",
+        "remarque": "",
+        "traitement_expanded": "Première prémolaire supérieure droite-Deuxième prémolaire supérieure droite-Première molaire supérieure droite-Deuxième molaire supérieure droite Démonter ancienne restauration couronnes + provisoires; Deuxième prémolaire supérieure droite Séance de Désinfection canalaire Endodontie",
+        "categories": [
+          "Endodontie",
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "22-25-26-27 démonter couronnes + provisoires",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Jeudi 20 Mars à 10h",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure gauche-Deuxième prémolaire supérieure gauche-Première molaire supérieure gauche-Deuxième molaire supérieure gauche Démonter ancienne restauration couronnes + provisoires",
+        "categories": [
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "32-33-34 composite collet; 31-41 composite bord libre",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "Jeudi 20 Mars à 15h30",
+        "remarque": "Discussion formes 11-21",
+        "traitement_expanded": "Incisive latérale inférieure gauche-Canine inférieure gauche-Première prémolaire inférieure gauche composite collet; Incisive centrale inférieure gauche-Incisive centrale inférieure droite composite bord libre",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "Discussion formes Incisive centrale supérieure droite-Incisive centrale supérieure gauche",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "13 Composite D; 24 Composite OD + V; 15 Obturation endo + Cpr",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Lundi 24 Mars à 10h",
+        "remarque": "",
+        "traitement_expanded": "Canine supérieure droite Composite Distal; Première prémolaire supérieure gauche Composite OD + Vestibulaire; Deuxième prémolaire supérieure droite Obturation canalaire Endodontie + Composite",
+        "categories": [
+          "Endodontie",
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "Empreintes pour couronnes Sup et Inf",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "Lundi 24 Mars à 15h",
+        "remarque": "",
+        "traitement_expanded": "Empreintes pour couronnes supérieur et inférieur",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "Scellement sup et inf",
+        "duree": "2h",
+        "delai": "3 jours",
+        "dr": "NB",
+        "date": "Jeudi 27 Mars à 12h",
+        "remarque": "",
+        "traitement_expanded": "Scellement définitif supérieur et inférieur",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "3 jours"
+      },
+      {
+        "rdv": 9,
+        "traitement": "PHASE 2 – GESTION OSTEONECROSE",
+        "duree": "",
+        "delai": "6 mois après dernière injection - courant juin",
+        "dr": "NB",
+        "date": "",
+        "remarque": "Débuter traitement ATB 2 jours avant et continuer pendant 2 semaines",
+        "traitement_expanded": "PHASE 2 – GESTION OSTEONECROSE",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "Débuter traitement ATB 2 jours avant et continuer pendant 2 semaines",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "6 mois après dernière injection - courant juin"
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n34 Collet + Onlay\n35 Dém.CC + MA + CC\n36 Dém CC + MA + CC\n33 Collet\n32 Collet\n31-41 BL\n24 Collet\n25-26-27 CC\n24 OD\n13 D\n14 à 17 CC\nConsultation étendue: Plan de TT\nPremière prémolaire inférieure gauche Collet + Onlay\nDeuxième prémolaire inférieure gauche Démonter.Couronne céramique + Moignon adhésif + Couronne céramique\nPremière molaire inférieure gauche Démonter Couronne céramique + Moignon adhésif + Couronne céramique\nCanine inférieure gauche Collet\nIncisive latérale inférieure gauche Collet\nIncisive centrale inférieure gauche-Incisive centrale inférieure droite BL\nPremière prémolaire supérieure gauche Collet\nDeuxième prémolaire supérieure gauche-Première molaire supérieure gauche-Deuxième molaire supérieure gauche Couronne céramique\nPremière prémolaire supérieure gauche OD\nCanine supérieure droite Distal\nPremière prémolaire supérieure droite à Deuxième molaire supérieure droite Couronne céramique\nTraitements: Détartrage + empreintes pour modèles, 35-36-37 démonter couronnes + provisoires, 14-15-16-17 démonter couronnes + provisoires; 15 Séance de désinfection endo, 22-25-26-27 démonter couronnes + provisoires, 32-33-34 composite collet; 31-41 composite bord libre, 13 Composite D; 24 Composite OD + V; 15 Obturation endo + Cpr, Empreintes pour couronnes Sup et Inf, Scellement sup et inf, PHASE 2 – GESTION OSTEONECROSE\nTraitements étendus: Détartrage + empreintes pour modèles, Deuxième prémolaire inférieure gauche-Première molaire inférieure gauche-Deuxième molaire inférieure gauche Démonter ancienne restauration couronnes + provisoires, Première prémolaire supérieure droite-Deuxième prémolaire supérieure droite-Première molaire supérieure droite-Deuxième molaire supérieure droite Démonter ancienne restauration couronnes + provisoires; Deuxième prémolaire supérieure droite Séance de Désinfection canalaire Endodontie, Incisive latérale supérieure gauche-Deuxième prémolaire supérieure gauche-Première molaire supérieure gauche-Deuxième molaire supérieure gauche Démonter ancienne restauration couronnes + provisoires, Incisive latérale inférieure gauche-Canine inférieure gauche-Première prémolaire inférieure gauche composite collet; Incisive centrale inférieure gauche-Incisive centrale inférieure droite composite bord libre, Canine supérieure droite Composite Distal; Première prémolaire supérieure gauche Composite OD + Vestibulaire; Deuxième prémolaire supérieure droite Obturation canalaire Endodontie + Composite, Empreintes pour couronnes supérieur et inférieur, Scellement définitif supérieur et inférieur, PHASE 2 – GESTION OSTEONECROSE\nCatégories: Endodontie, Général, Prothèse, Prévention, Contrôles, Esthétique"
+  },
+  {
+    "consultation_text": "Plan de TT\nBlanchiment\n46 Cpr collet\n16 Cpr V\nInvisalign Sup + Fil de contention sup et inf",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "16-46 Cpr Collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Det + empreinte Invisalign et blanchiment",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Donner gouttières blanchiment",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "Contrôle fin blanchiment",
+        "duree": "15 min",
+        "delai": "2 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Début Invisalign",
+        "duree": "1h",
+        "delai": "3 mois",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": "Attention à partir d’Avril"
+      },
+      {
+        "rdv": 6,
+        "traitement": "Fin Invisalign + enlever taquets + empreinte pour fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "Scellement fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "Contrôle final",
+        "duree": "15 min",
+        "delai": "1 mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_15.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nBlanchiment\nPremière molaire inférieure droite Composite collet\nPremière molaire supérieure droite Composite Vestibulaire\nInvisalign supérieur + Fil de contention supérieur et inférieur",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "16-46 Cpr Collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite-Première molaire inférieure droite Composite collet",
+        "categories": [
+          "Composite",
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Det + empreinte Invisalign et blanchiment",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Détartrage + Prise Distal'empreinte Invisalign et blanchiment",
+        "categories": [
+          "Prévention",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Donner gouttières blanchiment",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Donner gouttières blanchiment",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 4,
+        "traitement": "Contrôle fin blanchiment",
+        "duree": "15 min",
+        "delai": "2 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle fin blanchiment",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "2 semaine"
+      },
+      {
+        "rdv": 5,
+        "traitement": "Début Invisalign",
+        "duree": "1h",
+        "delai": "3 mois",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": "Attention à partir d’Avril",
+        "traitement_expanded": "Début Invisalign",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "Attention à partir Distal’Avril",
+        "dr_expanded": "Dr. Virginie Rouiller/Dr. Nacer Benbachir",
+        "delai_expanded": "3 mois"
+      },
+      {
+        "rdv": 6,
+        "traitement": "Fin Invisalign + enlever taquets + empreinte pour fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR/NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Fin Invisalign + enlever taquets + Prise Distal'empreinte pour fil de contention supérieur et inférieur",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller/Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "Scellement fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Scellement définitif fil de contention supérieur et inférieur",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 8,
+        "traitement": "Contrôle final",
+        "duree": "15 min",
+        "delai": "1 mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle final",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 mois"
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\nBlanchiment\n46 Cpr collet\n16 Cpr V\nInvisalign Sup + Fil de contention sup et inf\nConsultation étendue: Plan de TT\nBlanchiment\nPremière molaire inférieure droite Composite collet\nPremière molaire supérieure droite Composite Vestibulaire\nInvisalign supérieur + Fil de contention supérieur et inférieur\nTraitements: 16-46 Cpr Collet, Det + empreinte Invisalign et blanchiment, Donner gouttières blanchiment, Contrôle fin blanchiment, Début Invisalign, Fin Invisalign + enlever taquets + empreinte pour fil de contention sup et inf, Scellement fil de contention sup et inf, Contrôle final\nTraitements étendus: Première molaire supérieure droite-Première molaire inférieure droite Composite collet, Détartrage + Prise Distal'empreinte Invisalign et blanchiment, Donner gouttières blanchiment, Contrôle fin blanchiment, Début Invisalign, Fin Invisalign + enlever taquets + Prise Distal'empreinte pour fil de contention supérieur et inférieur, Scellement définitif fil de contention supérieur et inférieur, Contrôle final\nCatégories: Composite, Endodontie, Général, Prothèse, Prévention, Contrôles, Esthétique"
+  },
+  {
+    "consultation_text": "Plan de TT\n11 AV + implant + CC\n22 Implant + CC\n21-34 Curtage",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "11 Avulsion",
+        "duree": "30min",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "11 Pose implant immédiat et Bio oss; 22 Pose implant",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Contrôle postop; 34 - 21 Curetage",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "11i-22i Empreintes pour couronnes transvissées sur implant",
+        "duree": "30min.",
+        "delai": "2mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "11i-22i Scellement couronnes transvissées sur implant",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_5.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nIncisive centrale supérieure droite Avulsion + implant + Couronne céramique\nIncisive latérale supérieure gauche Implant + Couronne céramique\nIncisive centrale supérieure gauche-Première prémolaire inférieure gauche Curtage",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "11 Avulsion",
+        "duree": "30min",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite Avulsion",
+        "categories": [
+          "Chirurgie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "11 Pose implant immédiat et Bio oss; 22 Pose implant",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite Pose implant immédiat et Substitut osseux; Incisive latérale supérieure gauche Pose implant",
+        "categories": [
+          "Chirurgie",
+          "Implantologie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Contrôle postop; 34 - 21 Curetage",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB/VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle postop; Première prémolaire inférieure gauche - Incisive centrale supérieure gauche Curetage",
+        "categories": [
+          "Endodontie",
+          "Parodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir/Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 4,
+        "traitement": "11i-22i Empreintes pour couronnes transvissées sur implant",
+        "duree": "30min.",
+        "delai": "2mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "11i-22i Empreintes pour couronnes transvissées sur implant",
+        "categories": [
+          "Endodontie",
+          "Prothèse",
+          "Chirurgie",
+          "Implantologie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "2 mois"
+      },
+      {
+        "rdv": 5,
+        "traitement": "11i-22i Scellement couronnes transvissées sur implant",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "11i-22i Scellement définitif couronnes transvissées sur implant",
+        "categories": [
+          "Endodontie",
+          "Prothèse",
+          "Chirurgie",
+          "Implantologie",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n11 AV + implant + CC\n22 Implant + CC\n21-34 Curtage\nConsultation étendue: Plan de TT\nIncisive centrale supérieure droite Avulsion + implant + Couronne céramique\nIncisive latérale supérieure gauche Implant + Couronne céramique\nIncisive centrale supérieure gauche-Première prémolaire inférieure gauche Curtage\nTraitements: 11 Avulsion, 11 Pose implant immédiat et Bio oss; 22 Pose implant, Contrôle postop; 34 - 21 Curetage, 11i-22i Empreintes pour couronnes transvissées sur implant, 11i-22i Scellement couronnes transvissées sur implant\nTraitements étendus: Incisive centrale supérieure droite Avulsion, Incisive centrale supérieure droite Pose implant immédiat et Substitut osseux; Incisive latérale supérieure gauche Pose implant, Contrôle postop; Première prémolaire inférieure gauche - Incisive centrale supérieure gauche Curetage, 11i-22i Empreintes pour couronnes transvissées sur implant, 11i-22i Scellement définitif couronnes transvissées sur implant\nCatégories: Endodontie, Implantologie, Prothèse, Chirurgie, Contrôles, Parodontie"
+  },
+  {
+    "consultation_text": "Plan de TT\n45 extr + pose implant immédiate\n41 cassé + à extraire solidarisée à 31 + pose impl immédiate",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "41 Extraction avec séparation radiculaire + Pose implant avec greffe osseuse; 45 Pose implant avec greffe osseuse",
+        "duree": "3h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Contrôle post op",
+        "duree": "1sem.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Détartrage",
+        "duree": "1h",
+        "delai": "3mois",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "41i-45i Empreintes pour couronnes céramiques",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "41i-45i Scellement couronnes céramiques",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "Contrôle; 41i-45i Composites O",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_9.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nDeuxième prémolaire inférieure droite extr + pose implant immédiate\nIncisive centrale inférieure droite cassé + à extraire solidarisée à Incisive centrale inférieure gauche + pose impl immédiate",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "41 Extraction avec séparation radiculaire + Pose implant avec greffe osseuse; 45 Pose implant avec greffe osseuse",
+        "duree": "3h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale inférieure droite Extraction avec séparation radiculaire + Pose implant avec greffe osseuse; Deuxième prémolaire inférieure droite Pose implant avec greffe osseuse",
+        "categories": [
+          "Endodontie",
+          "Chirurgie",
+          "Esthétique",
+          "Implantologie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Contrôle post op",
+        "duree": "1sem.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle post op",
+        "categories": [
+          "Endodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 3,
+        "traitement": "Détartrage",
+        "duree": "1h",
+        "delai": "3mois",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Détartrage",
+        "categories": [
+          "Endodontie",
+          "Prévention"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "3 mois"
+      },
+      {
+        "rdv": 4,
+        "traitement": "41i-45i Empreintes pour couronnes céramiques",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "41i-45i Empreintes pour couronnes céramiques",
+        "categories": [
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 5,
+        "traitement": "41i-45i Scellement couronnes céramiques",
+        "duree": "30min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "41i-45i Scellement définitif couronnes céramiques",
+        "categories": [
+          "Prothèse",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 6,
+        "traitement": "Contrôle; 41i-45i Composites O",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle; 41i-45i Composites Occlusal",
+        "categories": [
+          "Endodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n45 extr + pose implant immédiate\n41 cassé + à extraire solidarisée à 31 + pose impl immédiate\nConsultation étendue: Plan de TT\nDeuxième prémolaire inférieure droite extr + pose implant immédiate\nIncisive centrale inférieure droite cassé + à extraire solidarisée à Incisive centrale inférieure gauche + pose impl immédiate\nTraitements: 41 Extraction avec séparation radiculaire + Pose implant avec greffe osseuse; 45 Pose implant avec greffe osseuse, Contrôle post op, Détartrage, 41i-45i Empreintes pour couronnes céramiques, 41i-45i Scellement couronnes céramiques, Contrôle; 41i-45i Composites O\nTraitements étendus: Incisive centrale inférieure droite Extraction avec séparation radiculaire + Pose implant avec greffe osseuse; Deuxième prémolaire inférieure droite Pose implant avec greffe osseuse, Contrôle post op, Détartrage, 41i-45i Empreintes pour couronnes céramiques, 41i-45i Scellement définitif couronnes céramiques, Contrôle; 41i-45i Composites Occlusal\nCatégories: Endodontie, Implantologie, Prothèse, Chirurgie, Prévention, Contrôles, Esthétique"
+  },
+  {
+    "consultation_text": "Plan de TT\n12 à 22 F",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Mock-up",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "12 à 22 Préparation pour facette",
+        "duree": "3h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "12 à 22 Essai",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "12 à 22 Scellement facettes",
+        "duree": "3h",
+        "delai": "2jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_2.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nIncisive latérale supérieure droite à Incisive latérale supérieure gauche Facette",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Mock-up",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Mock-up esthétique",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "12 à 22 Préparation pour facette",
+        "duree": "3h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite à Incisive latérale supérieure gauche Préparation pour facette",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "12 à 22 Essai",
+        "duree": "1h",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite à Incisive latérale supérieure gauche Essai prothétique",
+        "categories": [
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 4,
+        "traitement": "12 à 22 Scellement facettes",
+        "duree": "3h",
+        "delai": "2jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive latérale supérieure droite à Incisive latérale supérieure gauche Scellement définitif facettes",
+        "categories": [
+          "Prothèse",
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "2jours"
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Polissage final",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n12 à 22 F\nConsultation étendue: Plan de TT\nIncisive latérale supérieure droite à Incisive latérale supérieure gauche Facette\nTraitements: Mock-up, 12 à 22 Préparation pour facette, 12 à 22 Essai, 12 à 22 Scellement facettes, Polissage\nTraitements étendus: Mock-up esthétique, Incisive latérale supérieure droite à Incisive latérale supérieure gauche Préparation pour facette, Incisive latérale supérieure droite à Incisive latérale supérieure gauche Essai prothétique, Incisive latérale supérieure droite à Incisive latérale supérieure gauche Scellement définitif facettes, Polissage final\nCatégories: Esthétique, Contrôles, Général, Prothèse"
+  },
+  {
+    "consultation_text": "Plan de ttt:\n17 OMP\n16 OM\n15 Onlay\n14 OD\n13 collet\n23 collet\n27 OMP\n36 collet\n47 OV\n46 collet\nDet + sondage paro",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Sondage paro",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "17 Composite OMP; 16 Composite OM; 15 TE onlay; 14 Composite OD",
+        "duree": "2h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "15 Scellement onlay; 13 Composite de collet; 23 Composite de collet",
+        "duree": "1h15",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "27 Composite OMV",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "36 Composite de collet",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "47 Composite OV; 46 Composite de collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_12.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de ttt:\nDeuxième molaire supérieure droite OMP\nPremière molaire supérieure droite OM\nDeuxième prémolaire supérieure droite Onlay\nPremière prémolaire supérieure droite OD\nCanine supérieure droite collet\nCanine supérieure gauche collet\nDeuxième molaire supérieure gauche OMP\nPremière molaire inférieure gauche collet\nDeuxième molaire inférieure droite OV\nPremière molaire inférieure droite collet\nDétartrage + sondage paro",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Détartrage",
+        "categories": [
+          "Endodontie",
+          "Prévention"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Sondage paro",
+        "duree": "1h",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Sondage paro",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "17 Composite OMP; 16 Composite OM; 15 TE onlay; 14 Composite OD",
+        "duree": "2h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Deuxième molaire supérieure droite Composite OMP; Première molaire supérieure droite Composite OM; Deuxième prémolaire supérieure droite TE Onlay; Première prémolaire supérieure droite Composite OD",
+        "categories": [
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "15 Scellement onlay; 13 Composite de collet; 23 Composite de collet",
+        "duree": "1h15",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Deuxième prémolaire supérieure droite Scellement définitif Onlay; Canine supérieure droite Composite de collet; Canine supérieure gauche Composite de collet",
+        "categories": [
+          "Prothèse",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 5,
+        "traitement": "27 Composite OMV",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Deuxième molaire supérieure gauche Composite OMV",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "36 Composite de collet",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire inférieure gauche Composite de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "47 Composite OV; 46 Composite de collet",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Deuxième molaire inférieure droite Composite OV; Première molaire inférieure droite Composite de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de ttt:\n17 OMP\n16 OM\n15 Onlay\n14 OD\n13 collet\n23 collet\n27 OMP\n36 collet\n47 OV\n46 collet\nDet + sondage paro\nConsultation étendue: Plan de ttt:\nDeuxième molaire supérieure droite OMP\nPremière molaire supérieure droite OM\nDeuxième prémolaire supérieure droite Onlay\nPremière prémolaire supérieure droite OD\nCanine supérieure droite collet\nCanine supérieure gauche collet\nDeuxième molaire supérieure gauche OMP\nPremière molaire inférieure gauche collet\nDeuxième molaire inférieure droite OV\nPremière molaire inférieure droite collet\nDétartrage + sondage paro\nTraitements: Détartrage, Sondage paro, 17 Composite OMP; 16 Composite OM; 15 TE onlay; 14 Composite OD, 15 Scellement onlay; 13 Composite de collet; 23 Composite de collet, 27 Composite OMV, 36 Composite de collet, 47 Composite OV; 46 Composite de collet\nTraitements étendus: Détartrage, Sondage paro, Deuxième molaire supérieure droite Composite OMP; Première molaire supérieure droite Composite OM; Deuxième prémolaire supérieure droite TE Onlay; Première prémolaire supérieure droite Composite OD, Deuxième prémolaire supérieure droite Scellement définitif Onlay; Canine supérieure droite Composite de collet; Canine supérieure gauche Composite de collet, Deuxième molaire supérieure gauche Composite OMV, Première molaire inférieure gauche Composite de collet, Deuxième molaire inférieure droite Composite OV; Première molaire inférieure droite Composite de collet\nCatégories: Endodontie, Général, Prothèse, Prévention, Contrôles"
+  },
+  {
+    "consultation_text": "Plan de ttt:\n11 refaire cpr\n21 BNV + cpr",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "21 Blanchiment interne - 1ère séance; Empreinte pour wax-up et clé",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "21 Blanchiment interne - 2ème séance",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "21 Blanchiment interne - 2ème séance",
+        "duree": "15min.",
+        "delai": "1mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "11-21 Composites",
+        "duree": "2h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage – retouche teinte",
+        "duree": "30min",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "Réserve pour retouche teinte si besoin",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_13.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de ttt:\nIncisive centrale supérieure droite refaire Composite\nIncisive centrale supérieure gauche Blanchiment Non Vital + Composite",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "21 Blanchiment interne - 1ère séance; Empreinte pour wax-up et clé",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure gauche Blanchiment interne - 1ère séance; Prise Distal'empreinte pour Wax-up prothétique et clé",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "21 Blanchiment interne - 2ème séance",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure gauche Blanchiment interne - 2ème séance",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 3,
+        "traitement": "21 Blanchiment interne - 2ème séance",
+        "duree": "15min.",
+        "delai": "1mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure gauche Blanchiment interne - 2ème séance",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 mois"
+      },
+      {
+        "rdv": 4,
+        "traitement": "11-21 Composites",
+        "duree": "2h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite-Incisive centrale supérieure gauche Composites",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage – retouche teinte",
+        "duree": "30min",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Polissage final – retouche teinte",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "Réserve pour retouche teinte si besoin",
+        "duree": "30min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Réserve pour retouche teinte si besoin",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de ttt:\n11 refaire cpr\n21 BNV + cpr\nConsultation étendue: Plan de ttt:\nIncisive centrale supérieure droite refaire Composite\nIncisive centrale supérieure gauche Blanchiment Non Vital + Composite\nTraitements: 21 Blanchiment interne - 1ère séance; Empreinte pour wax-up et clé, 21 Blanchiment interne - 2ème séance, 21 Blanchiment interne - 2ème séance, 11-21 Composites, Polissage – retouche teinte, Réserve pour retouche teinte si besoin\nTraitements étendus: Incisive centrale supérieure gauche Blanchiment interne - 1ère séance; Prise Distal'empreinte pour Wax-up prothétique et clé, Incisive centrale supérieure gauche Blanchiment interne - 2ème séance, Incisive centrale supérieure gauche Blanchiment interne - 2ème séance, Incisive centrale supérieure droite-Incisive centrale supérieure gauche Composites, Polissage final – retouche teinte, Réserve pour retouche teinte si besoin\nCatégories: Esthétique, Général"
+  },
+  {
+    "consultation_text": "Plan de TT\n46 TR - 2 séance + Cpr O",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "46 Traitement de racine - Désinfection",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "IN",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "46 Traitement de racine - Obturation",
+        "duree": "1h15",
+        "delai": "2jours",
+        "dr": "IN",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "46 Composite O",
+        "duree": "1h",
+        "delai": "",
+        "dr": "IN",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_3.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nPremière molaire inférieure droite Traitement de racine - 2 séance + Composite Occlusal",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "46 Traitement de racine - Désinfection",
+        "duree": "1h15",
+        "delai": "",
+        "dr": "IN",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire inférieure droite Traitement de racine - Désinfection canalaire",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "IN",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "46 Traitement de racine - Obturation",
+        "duree": "1h15",
+        "delai": "2jours",
+        "dr": "IN",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire inférieure droite Traitement de racine - Obturation canalaire",
+        "categories": [
+          "Endodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "IN",
+        "delai_expanded": "2jours"
+      },
+      {
+        "rdv": 3,
+        "traitement": "46 Composite O",
+        "duree": "1h",
+        "delai": "",
+        "dr": "IN",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire inférieure droite Composite Occlusal",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "IN",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\n46 TR - 2 séance + Cpr O\nConsultation étendue: Plan de TT\nPremière molaire inférieure droite Traitement de racine - 2 séance + Composite Occlusal\nTraitements: 46 Traitement de racine - Désinfection, 46 Traitement de racine - Obturation, 46 Composite O\nTraitements étendus: Première molaire inférieure droite Traitement de racine - Désinfection canalaire, Première molaire inférieure droite Traitement de racine - Obturation canalaire, Première molaire inférieure droite Composite Occlusal\nCatégories: Esthétique, Endodontie, Général"
+  },
+  {
+    "consultation_text": "Dét\n16 réprise TR + BNV + Onlay\n14 Collet + OD\n26 Collet\n35 Onlay\n45 OD\n47 OD\n48 OD + V",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "16 BNV 1ère séance; 14 Composite V",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "16 BNV 2ème séance; 45 Composite OD; 47 Composite OD; 48 Composite OD + V",
+        "duree": "2h30",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "16 BNV 3ème séance; 35 TE Onlay; 26 Composite V",
+        "duree": "1h30",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "16 BNV 4ème séance; 35 Scellement Onlay",
+        "duree": "1h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "14 Composite OD; 16 TE Onlay",
+        "duree": "2h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "16 Scellement Onlay",
+        "duree": "1h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_10.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Dét\nPremière molaire supérieure droite réprise Traitement de racine + Blanchiment Non Vital + Onlay\nPremière prémolaire supérieure droite Collet + OD\nPremière molaire supérieure gauche Collet\nDeuxième prémolaire inférieure gauche Onlay\nDeuxième prémolaire inférieure droite OD\nDeuxième molaire inférieure droite OD\nTroisième molaire inférieure droite OD + Vestibulaire",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "16 BNV 1ère séance; 14 Composite V",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite Blanchiment Non Vital 1ère séance; Première prémolaire supérieure droite Composite Vestibulaire",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "16 BNV 2ème séance; 45 Composite OD; 47 Composite OD; 48 Composite OD + V",
+        "duree": "2h30",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite Blanchiment Non Vital 2ème séance; Deuxième prémolaire inférieure droite Composite OD; Deuxième molaire inférieure droite Composite OD; Troisième molaire inférieure droite Composite OD + Vestibulaire",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 3,
+        "traitement": "16 BNV 3ème séance; 35 TE Onlay; 26 Composite V",
+        "duree": "1h30",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite Blanchiment Non Vital 3ème séance; Deuxième prémolaire inférieure gauche TE Onlay; Première molaire supérieure gauche Composite Vestibulaire",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 4,
+        "traitement": "16 BNV 4ème séance; 35 Scellement Onlay",
+        "duree": "1h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite Blanchiment Non Vital 4ème séance; Deuxième prémolaire inférieure gauche Scellement définitif Onlay",
+        "categories": [
+          "Prothèse",
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 5,
+        "traitement": "14 Composite OD; 16 TE Onlay",
+        "duree": "2h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première prémolaire supérieure droite Composite OD; Première molaire supérieure droite TE Onlay",
+        "categories": [
+          "Prothèse"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 6,
+        "traitement": "16 Scellement Onlay",
+        "duree": "1h",
+        "delai": "1 sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure droite Scellement définitif Onlay",
+        "categories": [
+          "Prothèse",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      }
+    ],
+    "searchable_content": "Consultation: Dét\n16 réprise TR + BNV + Onlay\n14 Collet + OD\n26 Collet\n35 Onlay\n45 OD\n47 OD\n48 OD + V\nConsultation étendue: Dét\nPremière molaire supérieure droite réprise Traitement de racine + Blanchiment Non Vital + Onlay\nPremière prémolaire supérieure droite Collet + OD\nPremière molaire supérieure gauche Collet\nDeuxième prémolaire inférieure gauche Onlay\nDeuxième prémolaire inférieure droite OD\nDeuxième molaire inférieure droite OD\nTroisième molaire inférieure droite OD + Vestibulaire\nTraitements: 16 BNV 1ère séance; 14 Composite V, 16 BNV 2ème séance; 45 Composite OD; 47 Composite OD; 48 Composite OD + V, 16 BNV 3ème séance; 35 TE Onlay; 26 Composite V, 16 BNV 4ème séance; 35 Scellement Onlay, 14 Composite OD; 16 TE Onlay, 16 Scellement Onlay\nTraitements étendus: Première molaire supérieure droite Blanchiment Non Vital 1ère séance; Première prémolaire supérieure droite Composite Vestibulaire, Première molaire supérieure droite Blanchiment Non Vital 2ème séance; Deuxième prémolaire inférieure droite Composite OD; Deuxième molaire inférieure droite Composite OD; Troisième molaire inférieure droite Composite OD + Vestibulaire, Première molaire supérieure droite Blanchiment Non Vital 3ème séance; Deuxième prémolaire inférieure gauche TE Onlay; Première molaire supérieure gauche Composite Vestibulaire, Première molaire supérieure droite Blanchiment Non Vital 4ème séance; Deuxième prémolaire inférieure gauche Scellement définitif Onlay, Première prémolaire supérieure droite Composite OD; Première molaire supérieure droite TE Onlay, Première molaire supérieure droite Scellement définitif Onlay\nCatégories: Esthétique, Contrôles, Prothèse"
+  },
+  {
+    "consultation_text": "Plan de ttt pour la 26:\n26 dém. CC + dém. tenons + TR 3 canaux + MA + CC",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "26 Ablation Couronne + Ablation tenons x2; Traitement radiculaire – Désinfection; Couronne provisoire",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "26 Traitement radiculaire – Désinfection",
+        "duree": "1h15",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "26 Traitement radiculaire – Désinfection",
+        "duree": "1h15",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "26 Obturation + Moignon + Empreinte et Nouvelle provisoire",
+        "duree": "2h",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "26 Essai couronne",
+        "duree": "30 min",
+        "delai": "3 jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "26 Scellement couronne",
+        "duree": "30 min",
+        "delai": "1 jour",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_1.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de ttt pour la Première molaire supérieure gauche:\nPremière molaire supérieure gauche Démonter. Couronne céramique + Démonter. tenons + Traitement de racine 3 canaux + Moignon adhésif + Couronne céramique",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "26 Ablation Couronne + Ablation tenons x2; Traitement radiculaire – Désinfection; Couronne provisoire",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Ablation Couronne + Ablation tenons x2; Traitement radiculaire – Désinfection canalaire; Couronne Couronne provisoire",
+        "categories": [
+          "Endodontie",
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "26 Traitement radiculaire – Désinfection",
+        "duree": "1h15",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Traitement radiculaire – Désinfection canalaire",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 3,
+        "traitement": "26 Traitement radiculaire – Désinfection",
+        "duree": "1h15",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Traitement radiculaire – Désinfection canalaire",
+        "categories": [
+          "Endodontie",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 4,
+        "traitement": "26 Obturation + Moignon + Empreinte et Nouvelle provisoire",
+        "duree": "2h",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Obturation canalaire + Moignon + Prise Distal'empreinte et Nouvelle Couronne provisoire",
+        "categories": [
+          "Endodontie"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 5,
+        "traitement": "26 Essai couronne",
+        "duree": "30 min",
+        "delai": "3 jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Essai prothétique couronne",
+        "categories": [
+          "Prothèse",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "3 jours"
+      },
+      {
+        "rdv": 6,
+        "traitement": "26 Scellement couronne",
+        "duree": "30 min",
+        "delai": "1 jour",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première molaire supérieure gauche Scellement définitif couronne",
+        "categories": [
+          "Prothèse",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 jour"
+      }
+    ],
+    "searchable_content": "Consultation: Plan de ttt pour la 26:\n26 dém. CC + dém. tenons + TR 3 canaux + MA + CC\nConsultation étendue: Plan de ttt pour la Première molaire supérieure gauche:\nPremière molaire supérieure gauche Démonter. Couronne céramique + Démonter. tenons + Traitement de racine 3 canaux + Moignon adhésif + Couronne céramique\nTraitements: 26 Ablation Couronne + Ablation tenons x2; Traitement radiculaire – Désinfection; Couronne provisoire, 26 Traitement radiculaire – Désinfection, 26 Traitement radiculaire – Désinfection, 26 Obturation + Moignon + Empreinte et Nouvelle provisoire, 26 Essai couronne, 26 Scellement couronne\nTraitements étendus: Première molaire supérieure gauche Ablation Couronne + Ablation tenons x2; Traitement radiculaire – Désinfection canalaire; Couronne Couronne provisoire, Première molaire supérieure gauche Traitement radiculaire – Désinfection canalaire, Première molaire supérieure gauche Traitement radiculaire – Désinfection canalaire, Première molaire supérieure gauche Obturation canalaire + Moignon + Prise Distal'empreinte et Nouvelle Couronne provisoire, Première molaire supérieure gauche Essai prothétique couronne, Première molaire supérieure gauche Scellement définitif couronne\nCatégories: Esthétique, Contrôles, Endodontie, Prothèse"
+  },
+  {
+    "consultation_text": "Plan de TT\nAblation fil de contention sup et inf\nBlanchiment\n12 Carie M\n11-21 Facette\nNew fil de contention sup et inf",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage à organiser avec votre hygiéniste; Empreinte pour blanchiment",
+        "duree": "30 min",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "1er Virement"
+      },
+      {
+        "rdv": 2,
+        "traitement": "Donner gouttières + produit de blanchiment",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "Ctl post blanchiment; 12 cpr M; Déposer fil de contention sup; Empreinte pour wax-up",
+        "duree": "1h15",
+        "delai": "3 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "11-21 preparation pour facettes + empreinte + provisoires",
+        "duree": "2h",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "2ème virement"
+      },
+      {
+        "rdv": 5,
+        "traitement": "11-21 essai",
+        "duree": "30 min",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "11-21 Scellement; Déposer fil de contention inf; Empreinte pour fil de contention sup et inf",
+        "duree": "2h",
+        "delai": "2 jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 7,
+        "traitement": "Scellement fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": "3ème virement"
+      },
+      {
+        "rdv": 8,
+        "traitement": "Ctl final + organiser recall",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_11.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de TT\nAblation fil de contention supérieur et inférieur\nBlanchiment\nIncisive latérale supérieure droite Carie Mésial\nIncisive centrale supérieure droite-Incisive centrale supérieure gauche Facette\nNew fil de contention supérieur et inférieur",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Détartrage à organiser avec votre hygiéniste; Empreinte pour blanchiment",
+        "duree": "30 min",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "1er Virement",
+        "traitement_expanded": "Détartrage à organiser avec votre hygiéniste; Prise Distal'empreinte pour blanchiment",
+        "categories": [
+          "Endodontie",
+          "Chirurgie",
+          "Prévention",
+          "Esthétique"
+        ],
+        "remarque_expanded": "1er Virement",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Donner gouttières + produit de blanchiment",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Donner gouttières + produit de blanchiment",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 3,
+        "traitement": "Ctl post blanchiment; 12 cpr M; Déposer fil de contention sup; Empreinte pour wax-up",
+        "duree": "1h15",
+        "delai": "3 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle post-blanchiment; Incisive latérale supérieure droite Composite Mésial; Déposer fil de contention supérieur; Prise Distal'empreinte pour Wax-up prothétique",
+        "categories": [
+          "Composite",
+          "Prothèse",
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "3 semaine"
+      },
+      {
+        "rdv": 4,
+        "traitement": "11-21 preparation pour facettes + empreinte + provisoires",
+        "duree": "2h",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "2ème virement",
+        "traitement_expanded": "Incisive centrale supérieure droite-Incisive centrale supérieure gauche preparation pour facettes + Prise Distal'empreinte + provisoires",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "2ème virement",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 5,
+        "traitement": "11-21 essai",
+        "duree": "30 min",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite-Incisive centrale supérieure gauche Essai prothétique",
+        "categories": [
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 6,
+        "traitement": "11-21 Scellement; Déposer fil de contention inf; Empreinte pour fil de contention sup et inf",
+        "duree": "2h",
+        "delai": "2 jours",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite-Incisive centrale supérieure gauche Scellement définitif; Déposer fil de contention inférieur; Prise Distal'empreinte pour fil de contention supérieur et inférieur",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "2 jours"
+      },
+      {
+        "rdv": 7,
+        "traitement": "Scellement fil de contention sup et inf",
+        "duree": "1h",
+        "delai": "1 sem",
+        "dr": "VR",
+        "date": "",
+        "remarque": "3ème virement",
+        "traitement_expanded": "Scellement définitif fil de contention supérieur et inférieur",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "3ème virement",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine"
+      },
+      {
+        "rdv": 8,
+        "traitement": "Ctl final + organiser recall",
+        "duree": "15 min",
+        "delai": "1 sem",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Contrôle final + organiser recall",
+        "categories": [
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine"
+      }
+    ],
+    "searchable_content": "Consultation: Plan de TT\nAblation fil de contention sup et inf\nBlanchiment\n12 Carie M\n11-21 Facette\nNew fil de contention sup et inf\nConsultation étendue: Plan de TT\nAblation fil de contention supérieur et inférieur\nBlanchiment\nIncisive latérale supérieure droite Carie Mésial\nIncisive centrale supérieure droite-Incisive centrale supérieure gauche Facette\nNew fil de contention supérieur et inférieur\nTraitements: Détartrage à organiser avec votre hygiéniste; Empreinte pour blanchiment, Donner gouttières + produit de blanchiment, Ctl post blanchiment; 12 cpr M; Déposer fil de contention sup; Empreinte pour wax-up, 11-21 preparation pour facettes + empreinte + provisoires, 11-21 essai, 11-21 Scellement; Déposer fil de contention inf; Empreinte pour fil de contention sup et inf, Scellement fil de contention sup et inf, Ctl final + organiser recall\nTraitements étendus: Détartrage à organiser avec votre hygiéniste; Prise Distal'empreinte pour blanchiment, Donner gouttières + produit de blanchiment, Contrôle post-blanchiment; Incisive latérale supérieure droite Composite Mésial; Déposer fil de contention supérieur; Prise Distal'empreinte pour Wax-up prothétique, Incisive centrale supérieure droite-Incisive centrale supérieure gauche preparation pour facettes + Prise Distal'empreinte + provisoires, Incisive centrale supérieure droite-Incisive centrale supérieure gauche Essai prothétique, Incisive centrale supérieure droite-Incisive centrale supérieure gauche Scellement définitif; Déposer fil de contention inférieur; Prise Distal'empreinte pour fil de contention supérieur et inférieur, Scellement définitif fil de contention supérieur et inférieur, Contrôle final + organiser recall\nCatégories: Composite, Endodontie, Prothèse, Chirurgie, Prévention, Contrôles, Esthétique"
+  },
+  {
+    "consultation_text": "Plan de tt:\n13-14 /44-45 / 34 cpr collet",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "13-14 composites de collet",
+        "duree": "45 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "44-45 composites de collet",
+        "duree": "45 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "34 composite de collet",
+        "duree": "30 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_6.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de tt:\nCanine supérieure droite-Première prémolaire supérieure droite /Première prémolaire inférieure droite-Deuxième prémolaire inférieure droite / Première prémolaire inférieure gauche Composite collet",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "13-14 composites de collet",
+        "duree": "45 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Canine supérieure droite-Première prémolaire supérieure droite composites de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "44-45 composites de collet",
+        "duree": "45 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première prémolaire inférieure droite-Deuxième prémolaire inférieure droite composites de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "34 composite de collet",
+        "duree": "30 min.",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Première prémolaire inférieure gauche composite de collet",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de tt:\n13-14 /44-45 / 34 cpr collet\nConsultation étendue: Plan de tt:\nCanine supérieure droite-Première prémolaire supérieure droite /Première prémolaire inférieure droite-Deuxième prémolaire inférieure droite / Première prémolaire inférieure gauche Composite collet\nTraitements: 13-14 composites de collet, 44-45 composites de collet, 34 composite de collet\nTraitements étendus: Canine supérieure droite-Première prémolaire supérieure droite composites de collet, Première prémolaire inférieure droite-Deuxième prémolaire inférieure droite composites de collet, Première prémolaire inférieure gauche composite de collet\nCatégories: Général"
+  },
+  {
+    "consultation_text": "Plan de ttt:\nBlanchiment\n11-21 facettes\n13-23 cpr\nGouttière sup",
+    "treatment_sequence": [
+      {
+        "rdv": 1,
+        "traitement": "Empreintes pour blanchiment",
+        "duree": "15min.",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "Préparer un wax avec les empreintes"
+      },
+      {
+        "rdv": 2,
+        "traitement": "Remise gouttières + produit de blanchiment",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "VR",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "11-21 Préparation pour facettes; 13–23 Composites V",
+        "duree": "2h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "11–21 Scellement facettes céramiques; Empreintes pour gouttière Erkopress",
+        "duree": "2h15",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage; Remise gouttière Erkopress",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "filename": "treatment_planning_7.json",
+    "source": "clinical_cases",
+    "type": "clinical_case",
+    "consultation_text_expanded": "Plan de ttt:\nBlanchiment\nIncisive centrale supérieure droite-Incisive centrale supérieure gauche facettes\nCanine supérieure droite-Canine supérieure gauche Composite\nGouttière supérieur",
+    "treatment_sequence_enhanced": [
+      {
+        "rdv": 1,
+        "traitement": "Empreintes pour blanchiment",
+        "duree": "15min.",
+        "delai": "",
+        "dr": "VR",
+        "date": "",
+        "remarque": "Préparer un wax avec les empreintes",
+        "traitement_expanded": "Empreintes pour blanchiment",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "Préparer un wax avec les empreintes",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "Remise gouttières + produit de blanchiment",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "VR",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Remise gouttières + produit de blanchiment",
+        "categories": [
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Virginie Rouiller",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 3,
+        "traitement": "11-21 Préparation pour facettes; 13–23 Composites V",
+        "duree": "2h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite-Incisive centrale supérieure gauche Préparation pour facettes; Canine supérieure droite–Canine supérieure gauche Composites Vestibulaire",
+        "categories": [
+          "Prothèse",
+          "Esthétique"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "11–21 Scellement facettes céramiques; Empreintes pour gouttière Erkopress",
+        "duree": "2h15",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Incisive centrale supérieure droite–Incisive centrale supérieure gauche Scellement définitif facettes céramiques; Empreintes pour gouttière Erkopress",
+        "categories": [
+          "Prothèse",
+          "Esthétique",
+          "Contrôles"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": "1 semaine."
+      },
+      {
+        "rdv": 5,
+        "traitement": "Polissage; Remise gouttière Erkopress",
+        "duree": "1h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": "",
+        "traitement_expanded": "Polissage final; Remise gouttière Erkopress",
+        "categories": [
+          "Général"
+        ],
+        "remarque_expanded": "",
+        "dr_expanded": "Dr. Nacer Benbachir",
+        "delai_expanded": ""
+      }
+    ],
+    "searchable_content": "Consultation: Plan de ttt:\nBlanchiment\n11-21 facettes\n13-23 cpr\nGouttière sup\nConsultation étendue: Plan de ttt:\nBlanchiment\nIncisive centrale supérieure droite-Incisive centrale supérieure gauche facettes\nCanine supérieure droite-Canine supérieure gauche Composite\nGouttière supérieur\nTraitements: Empreintes pour blanchiment, Remise gouttières + produit de blanchiment, 11-21 Préparation pour facettes; 13–23 Composites V, 11–21 Scellement facettes céramiques; Empreintes pour gouttière Erkopress, Polissage; Remise gouttière Erkopress\nTraitements étendus: Empreintes pour blanchiment, Remise gouttières + produit de blanchiment, Incisive centrale supérieure droite-Incisive centrale supérieure gauche Préparation pour facettes; Canine supérieure droite–Canine supérieure gauche Composites Vestibulaire, Incisive centrale supérieure droite–Incisive centrale supérieure gauche Scellement définitif facettes céramiques; Empreintes pour gouttière Erkopress, Polissage final; Remise gouttière Erkopress\nCatégories: Esthétique, Contrôles, Général, Prothèse"
+  }
+]

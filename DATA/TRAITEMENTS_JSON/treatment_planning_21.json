@@ -1,0 +1,77 @@
+{
+  "consultation_text": "Plan de tt\n37i AV\nApres 6 semaine faire Greffe de gencive\nPuis 37 i pose d'implant + GBR + CCi",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "37i Avulsion",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Contrôle post op",
+      "duree": "15min",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "37 Greffe osseuse",
+      "duree": "1h15",
+      "delai": "6sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Contrôle post op",
+      "duree": "15min",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "37 Pose implant avec greffe osseuse",
+      "duree": "1h15",
+      "delai": "3mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Contrôle post op",
+      "duree": "15min",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "37i Empreintes pour couronne céramique",
+      "duree": "30min",
+      "delai": "3mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 8,
+      "traitement": "37 Scellement couronne céramique",
+      "duree": "30min",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

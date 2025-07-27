@@ -1,0 +1,39 @@
+{
+  "consultation_text": "Composite 1 face",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr O",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_1_face.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite 1 face",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr O",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr O",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite 1 face\nSéquence idéale étendue: Composite 1 face\nTraitements: Cpr O\nTraitements étendus: Cpr O\nCatégories: Composite",
+  "content": "Séquence idéale: Composite 1 face\nSéquence idéale étendue: Composite 1 face\nTraitements: Cpr O\nTraitements étendus: Cpr O\nCatégories: Composite"
+}

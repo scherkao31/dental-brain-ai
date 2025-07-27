@@ -1,0 +1,32 @@
+{
+  "consultation_text": "Plan de ttt:\n16 OD\n17 OM\n43-45 cpr collet\n15 cpr collet\n24 cpr collet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "16 Composite OD; 17 Composite OM; 15 Composite de collet",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "43-45 Composites de collet",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "24 Composite de collet",
+      "duree": "45min.",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

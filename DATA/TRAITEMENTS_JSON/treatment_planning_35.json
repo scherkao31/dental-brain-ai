@@ -1,0 +1,32 @@
+{
+  "consultation_text": "Plan de tt\n13-14 CC + MA\n12 cpr M",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "13-14 Démonter couronnes + MA + Provisoires; 12 Composite M",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "13-14 Empreintes",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "13-14 Scellement couronnes céramiques",
+      "duree": "30min.",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

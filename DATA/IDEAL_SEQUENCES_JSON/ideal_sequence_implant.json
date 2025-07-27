@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Implant",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Pose implant",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Ordonnance complète"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Contrôle post op",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_implant.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx"
+}

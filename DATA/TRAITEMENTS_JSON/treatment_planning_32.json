@@ -1,0 +1,59 @@
+{
+  "consultation_text": "12-11-21-22 Gingivectomie\n38-48 AV\n12 BL\n21 BL\nInvisalign light pour aligner incisives du bas\nContentions\nGouttière de protection",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "12 à 22 Gingivectomie; 12 + 21 Composite bord libre; Empreintes Invisalign",
+      "duree": "2h30",
+      "delai": "",
+      "dr": "NB/VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Début Invisalign",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Fin Invisalign; Empreintes pour contentions",
+      "duree": "45min.",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Scellement contention SUP + INF; Empreintes pour gouttière Erkopress",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Remise gouttière Erkopress",
+      "duree": "15min.",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "consultation_text": "Gouttière Michigan",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Empreinte 2 arcades + occlusion",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner + régler gouttière",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_gouttière_michigan.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Gouttière Michigan",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Empreinte 2 arcades + occlusion",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Empreinte 2 arcades + occlusion",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Général"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner + régler gouttière",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Donner + régler gouttière",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Orthodontie"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Gouttière Michigan\nSéquence idéale étendue: Gouttière Michigan\nTraitements: Empreinte 2 arcades + occlusion; Donner + régler gouttière\nTraitements étendus: Empreinte 2 arcades + occlusion; Donner + régler gouttière\nCatégories: Général, Orthodontie",
+  "content": "Séquence idéale: Gouttière Michigan\nSéquence idéale étendue: Gouttière Michigan\nTraitements: Empreinte 2 arcades + occlusion; Donner + régler gouttière\nTraitements étendus: Empreinte 2 arcades + occlusion; Donner + régler gouttière\nCatégories: Général, Orthodontie"
+}

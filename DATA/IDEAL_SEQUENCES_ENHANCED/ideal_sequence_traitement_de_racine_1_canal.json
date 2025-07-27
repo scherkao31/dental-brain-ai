@@ -1,0 +1,66 @@
+{
+  "consultation_text": "Traitement de racine 1 canal",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "TR séance 1 désobturation + désinfection",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "TR séance 2 obturation + cpr O",
+      "duree": "1h",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_traitement_de_racine_1_canal.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Traitement de racine 1 canal",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "TR séance 1 désobturation + désinfection",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "TR séance 1 désobturation + désinfection",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Endodontie",
+        "Composite"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "TR séance 2 obturation + cpr O",
+      "duree": "1h",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "TR séance 2 obturation + cpr O",
+      "delai_expanded": "1 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Endodontie",
+        "Composite"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Traitement de racine 1 canal\nSéquence idéale étendue: Traitement de racine 1 canal\nTraitements: TR séance 1 désobturation + désinfection; TR séance 2 obturation + cpr O\nTraitements étendus: TR séance 1 désobturation + désinfection; TR séance 2 obturation + cpr O\nCatégories: Composite, Endodontie",
+  "content": "Séquence idéale: Traitement de racine 1 canal\nSéquence idéale étendue: Traitement de racine 1 canal\nTraitements: TR séance 1 désobturation + désinfection; TR séance 2 obturation + cpr O\nTraitements étendus: TR séance 1 désobturation + désinfection; TR séance 2 obturation + cpr O\nCatégories: Composite, Endodontie"
+}

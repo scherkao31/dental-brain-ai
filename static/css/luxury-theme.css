@@ -1,0 +1,629 @@
+/* Luxury Theme Enhancements for Dental AI */
+
+/* Premium Effects Variables */
+:root {
+    /* Glass Effects */
+    --glass-white: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-blur: blur(10px);
+    
+    /* Premium Shadows */
+    --shadow-elegant: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --shadow-luxury: 0 8px 40px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.2);
+    
+    /* Animations */
+    --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-smooth: 350ms;
+}
+
+/* Light theme glass effects */
+[data-theme="light"] {
+    --glass-white: rgba(0, 0, 0, 0.02);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --shadow-elegant: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-luxury: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Glassmorphism Base */
+.glass-panel {
+    background: var(--glass-white);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Enhanced Sidebar with Glass Effect */
+.sidebar {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Header Premium */
+.sidebar-header {
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1.5rem;
+}
+
+/* New Chat Button - Luxury Style */
+.new-chat-btn {
+    background: var(--gradient);
+    border: none;
+    border-radius: 12px;
+    padding: 0.875rem 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-elegant);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+    position: relative;
+    overflow: hidden;
+}
+
+.new-chat-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.5s;
+}
+
+.new-chat-btn:hover::before {
+    left: 100%;
+}
+
+.new-chat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury), var(--shadow-glow);
+}
+
+/* Conversation Items - Elegant */
+.conversation-item {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin: 0.25rem 0.75rem;
+    padding: 0.875rem 1rem;
+    transition: all var(--duration-smooth) var(--ease-luxury);
+    position: relative;
+}
+
+.conversation-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: var(--glass-white);
+    opacity: 0;
+    transition: opacity var(--duration-smooth);
+}
+
+.conversation-item:hover {
+    border-color: var(--glass-border);
+    transform: translateX(4px);
+}
+
+.conversation-item:hover::before {
+    opacity: 1;
+}
+
+.conversation-item.active {
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.1), 
+        rgba(118, 75, 162, 0.05));
+    border-color: var(--accent-primary);
+    box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.1);
+}
+
+/* Chat Header - Premium Glass */
+.chat-header {
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    height: var(--header-height);
+    padding: 0 2rem;
+}
+
+.chat-title h2 {
+    font-weight: 300;
+    letter-spacing: 1px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.chat-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Messages - Elegant Cards */
+.message {
+    animation: messageSlideIn var(--duration-smooth) var(--ease-luxury);
+    margin: 1.5rem auto;
+    max-width: var(--message-max-width);
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-wrapper {
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-elegant);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+}
+
+.message.user .message-wrapper {
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.08), 
+        rgba(118, 75, 162, 0.04));
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.message-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury);
+}
+
+/* Avatar - Premium Style */
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-elegant);
+    font-size: 1.125rem;
+}
+
+.message.user .message-avatar {
+    background: var(--gradient);
+    box-shadow: var(--shadow-elegant);
+}
+
+/* Input Area - Luxury Glass */
+.chat-input-container {
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    padding: 1.5rem 2rem;
+}
+
+.chat-input-wrapper {
+    background: var(--input-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+}
+
+.chat-input-wrapper:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(102, 126, 234, 0.2),
+        var(--shadow-glow);
+}
+
+.chat-input {
+    background: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+/* Send Button - Premium */
+.send-btn {
+    background: var(--gradient);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    margin: 0.5rem;
+    transition: all var(--duration-smooth) var(--ease-luxury);
+    box-shadow: var(--shadow-elegant);
+}
+
+.send-btn:not(:disabled):hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-luxury), var(--shadow-glow);
+}
+
+.send-btn:disabled {
+    opacity: 0.5;
+    background: var(--bg-tertiary);
+}
+
+/* Treatment Panel - Luxury Card */
+.treatment-plan-panel {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-luxury);
+    margin: 2rem;
+}
+
+.panel-header {
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1.5rem 2rem;
+    border-radius: 20px 20px 0 0;
+}
+
+.panel-header h3 {
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 1.375rem;
+}
+
+/* Treatment Table - Elegant */
+.treatment-table {
+    background: var(--glass-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-elegant);
+}
+
+.treatment-table th {
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.1), 
+        rgba(118, 75, 162, 0.05));
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--accent-primary);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.treatment-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+}
+
+.treatment-table tr:hover td {
+    background: var(--glass-white);
+}
+
+/* Modals - Premium Glass */
+.modal {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background: var(--modal-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-luxury);
+    animation: modalSlideIn var(--duration-smooth) var(--ease-luxury);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    background: var(--glass-white);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Buttons - Luxury Style */
+.primary-btn {
+    background: var(--gradient);
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-elegant);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.primary-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury), var(--shadow-glow);
+}
+
+/* Secondary Button */
+.secondary-btn {
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+}
+
+.secondary-btn:hover {
+    background: var(--glass-white);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-elegant), inset 0 0 20px rgba(102, 126, 234, 0.1);
+}
+
+/* Loading States - Premium */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 0.5rem 0;
+    align-items: center;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: typingPulse 1.4s infinite;
+    box-shadow: 0 0 10px var(--accent-primary);
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingPulse {
+    0%, 60%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    30% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+.typing-text {
+    margin-left: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-style: italic;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Score Indicators - Luxury */
+.score-bar-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.score-bar {
+    height: 100%;
+    background: var(--gradient);
+    box-shadow: 0 0 10px var(--accent-primary);
+    transition: width var(--duration-smooth) var(--ease-luxury);
+}
+
+.score-bar.score-high {
+    background: linear-gradient(90deg, var(--success-color), #2ecc71);
+    box-shadow: 0 0 10px var(--success-color);
+}
+
+/* Tooltips - Elegant */
+.tooltip {
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-elegant);
+}
+
+/* Scrollbar - Luxury Style */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+    border: 1px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-color);
+}
+
+/* Focus States - Premium Glow */
+input:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.4);
+}
+
+/* Notification Container */
+.notification-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Notification - Luxury Toast */
+.notification {
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-luxury);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 300px;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all var(--duration-smooth) var(--ease-luxury);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification i {
+    font-size: 1.25rem;
+}
+
+.notification-success {
+    border-left: 4px solid var(--success-color);
+}
+
+.notification-success i {
+    color: var(--success-color);
+}
+
+.notification-error {
+    border-left: 4px solid var(--danger-color);
+}
+
+.notification-error i {
+    color: var(--danger-color);
+}
+
+.notification-info {
+    border-left: 4px solid var(--accent-primary);
+}
+
+.notification-info i {
+    color: var(--accent-primary);
+}
+
+.notification-warning {
+    border-left: 4px solid var(--warning-color);
+}
+
+.notification-warning i {
+    color: var(--warning-color);
+}
+
+@keyframes notificationSlide {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Light Theme Adjustments */
+[data-theme="light"] .message-avatar,
+[data-theme="light"] .new-chat-btn,
+[data-theme="light"] .primary-btn {
+    box-shadow: var(--shadow-elegant);
+}
+
+[data-theme="light"] .chat-title h2 {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive Luxury */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 100%;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        border-radius: 16px;
+    }
+    
+    .treatment-plan-panel {
+        margin: 1rem;
+        border-radius: 16px;
+    }
+}

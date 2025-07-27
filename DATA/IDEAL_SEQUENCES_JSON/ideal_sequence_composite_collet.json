@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Composite collet",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si nécessaire  + donner curasept"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Cpr collet",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_collet.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

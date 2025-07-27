@@ -1,0 +1,23 @@
+{
+  "consultation_text": "Plan de tt\n37 onlay",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "37 Taille empreinte Onlay",
+      "duree": "1h30",
+      "delai": "1 sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "37 Scellement Onlay",
+      "duree": "1h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

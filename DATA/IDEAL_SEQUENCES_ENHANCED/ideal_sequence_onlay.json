@@ -1,0 +1,65 @@
+{
+  "consultation_text": "Onlay",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Preparation onlay",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Scellement onlay",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_onlay.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Onlay",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Preparation onlay",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Preparation onlay",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prothèse"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Scellement onlay",
+      "duree": "45 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Scellement onlay",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Prothèse",
+        "Prévention"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Onlay\nSéquence idéale étendue: Onlay\nTraitements: Preparation onlay; Scellement onlay\nTraitements étendus: Preparation onlay; Scellement onlay\nCatégories: Prothèse, Prévention",
+  "content": "Séquence idéale: Onlay\nSéquence idéale étendue: Onlay\nTraitements: Preparation onlay; Scellement onlay\nTraitements étendus: Preparation onlay; Scellement onlay\nCatégories: Prothèse, Prévention"
+}

@@ -1,0 +1,18 @@
+{
+  "consultation_text": "Scellement de fissure 4 dents",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Sc fissure 4 dents",
+      "duree": "",
+      "delai": "1h",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_scellement_de_fissure_4_dents.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

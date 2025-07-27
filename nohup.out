@@ -1,0 +1,228 @@
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/run.py", line 13, in <module>
+    app = create_app(config_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/__init__.py", line 63, in create_app
+    init_services(app)
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/__init__.py", line 28, in init_services
+    rag_service.initialize()
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/enhanced_rag_service.py", line 50, in initialize
+    self._index_enhanced_knowledge()
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/enhanced_rag_service.py", line 116, in _index_enhanced_knowledge
+    self.enhanced_collection.add(
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/chromadb/api/models/Collection.py", line 147, in add
+    embeddings = self._embed(input=documents)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/chromadb/api/models/Collection.py", line 587, in _embed
+    return self._embedding_function(input=input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/chromadb/utils/embedding_functions.py", line 166, in __call__
+    embeddings = self._client.create(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/openai/resources/embeddings.py", line 105, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/openai/_base_client.py", line 1055, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/openai/_base_client.py", line 834, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/openai/_base_client.py", line 858, in _request
+    response = self._client.send(request, auth=self.custom_auth, stream=stream)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpx/_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpx/_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpx/_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpx/_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpx/_transports/default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/venv_dental/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 1296, in recv
+    return self.read(buflen)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 1169, in read
+    return self._sslobj.read(len)
+           ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 20:51:39,588] INFO in __init__: All services initialized successfully
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.58:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 20:51:40,969] INFO in __init__: All services initialized successfully
+ * Debugger is active!
+ * Debugger PIN: 460-525-000
+127.0.0.1 - - [16/Jul/2025 20:51:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:43] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:43] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:44] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:44] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:44] "GET /api/patients/?search= HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:51:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+127.0.0.1 - - [16/Jul/2025 20:52:05] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:52:46] "POST /api/ai/schedule-treatment-plan HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 20:53:09] "POST /api/ai/chat HTTP/1.1" 200 -
+ * Detected change in '/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/ai_service.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/run.py", line 13, in <module>
+    app = create_app(config_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/__init__.py", line 48, in create_app
+    from app.api import (
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/api/__init__.py", line 4, in <module>
+    from app.api.treatments import treatments_bp
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/api/treatments.py", line 2, in <module>
+    from app.services import treatment_service, pdf_service, powerpoint_service
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/__init__.py", line 5, in <module>
+    from app.services.ai_service import AIService
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/ai_service.py", line 10, in <module>
+    class SpecializedLLM:
+  File "/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/ai_service.py", line 13, in SpecializedLLM
+    def __init__(self, tab_name: str, system_prompt: str, rag_service: RAGService):
+                                                                       ^^^^^^^^^^
+NameError: name 'RAGService' is not defined
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:11:16,650] INFO in __init__: All services initialized successfully
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.58:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:11:18,000] INFO in __init__: All services initialized successfully
+ * Debugger is active!
+ * Debugger PIN: 460-525-000
+127.0.0.1 - - [16/Jul/2025 21:11:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:22] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:22] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:11:26] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:26] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:26] "GET /api/patients/?search= HTTP/1.1" 200 -
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+127.0.0.1 - - [16/Jul/2025 21:11:41] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:11:55] "[33mGET /get-reference-details/enhanced_6 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:12:51] "[33mGET /get-reference-details/enhanced_6 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:13:15] "[33mGET /get-reference-details/enhanced_15 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:13:21] "GET /api/ai/reference/enhanced_0 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:13:57] "GET /api/ai/reference/enhanced_5 HTTP/1.1" 200 -
+ * Detected change in '/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/enhanced_rag_service.py', reloading
+ * Restarting with stat
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:14:56,172] INFO in __init__: All services initialized successfully
+ * Debugger is active!
+ * Debugger PIN: 460-525-000
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+127.0.0.1 - - [16/Jul/2025 21:15:20] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:16:54] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:35] "GET /api/patients/?search= HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:57] "GET /api/patients/?search= HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:17:58] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:18:12] "[33mGET /get-reference-details/enhanced_15 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:18:33] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:18:53] "[33mGET /get-reference-details/enhanced_6 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:20:11] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:20:21] "GET /api/ai/reference/enhanced_6 HTTP/1.1" 200 -
+ * Detected change in '/Users/salimcherkaoui/Desktop/WORK/AGENT-DENT/CLAUDE-CODE/MVP_TOUTE_FUNCTION_CLAUDE/dental-app/app/services/enhanced_rag_service.py', reloading
+ * Restarting with stat
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:21:39,659] INFO in __init__: All services initialized successfully
+ * Debugger is active!
+ * Debugger PIN: 460-525-000
+[2025-07-16 21:22:40,973] ERROR in enhanced_rag_service: ❌ Error searching by type: Collection b7e592a8-3a06-40fe-b688-8935ea7cd14f does not exist.
+[2025-07-16 21:22:41,354] ERROR in enhanced_rag_service: ❌ Error searching by type: Collection b7e592a8-3a06-40fe-b688-8935ea7cd14f does not exist.
+[2025-07-16 21:22:41,894] ERROR in enhanced_rag_service: ❌ Error searching enhanced knowledge: Collection b7e592a8-3a06-40fe-b688-8935ea7cd14f does not exist.
+127.0.0.1 - - [16/Jul/2025 21:23:00] "POST /api/ai/chat HTTP/1.1" 200 -
+/usr/local/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/usr/local/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:26:12,848] INFO in __init__: All services initialized successfully
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.58:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[2025-07-16 21:26:14,259] INFO in __init__: All services initialized successfully
+ * Debugger is active!
+ * Debugger PIN: 460-525-000
+127.0.0.1 - - [16/Jul/2025 21:26:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:26:17] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:26:17] "GET /static/app.js?v=20250716213000 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:26:18] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:26:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:26:18] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:26:18] "GET /api/patients/?search= HTTP/1.1" 200 -
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+127.0.0.1 - - [16/Jul/2025 21:27:32] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:27:50] "[33mGET /get-reference-details/enhanced_15 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "GET /static/app.js?v=20250716213000 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "GET /knowledge HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "GET /api/appointments/?week_start=2025-07-14 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:01] "GET /api/patients/?search= HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:21] "POST /api/ai/chat HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jul/2025 21:28:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [16/Jul/2025 21:28:57] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [16/Jul/2025 21:29:57] "POST /api/ai/chat HTTP/1.1" 200 -

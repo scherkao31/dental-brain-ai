@@ -1,0 +1,99 @@
+{
+  "consultation_text": "Plan de tt :\nOption I\n26-27 AV + I avec GBR + CCI\nOption II :\n26-27 AV avec biooss – 3.5 mois après I avec GBR + CCI",
+  "treatment_sequence": {
+    "option_I": [
+      {
+        "rdv": 1,
+        "traitement": "26-27 Avulsion + Pose implant avec greffe osseuse",
+        "duree": "2h",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "26i-27i Contrôle post op",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "26i-27i Empreintes pour couronnes transvissées céramiques",
+        "duree": "45min.",
+        "delai": "3.5mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "26i-27i Scellement couronnes transvissées céramiques",
+        "duree": "45min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ],
+    "option_II": [
+      {
+        "rdv": 1,
+        "traitement": "26-27 Avulsion avec bio oss",
+        "duree": "1h30",
+        "delai": "",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 2,
+        "traitement": "26-27 Contrôle post op",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 3,
+        "traitement": "26-27 Pose implant avec greffe osseuse",
+        "duree": "1h30",
+        "delai": "3.5mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 4,
+        "traitement": "26i-27i Contrôle post op",
+        "duree": "15min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 5,
+        "traitement": "26i-27i Empreintes pour couronnes transvissées céramiques",
+        "duree": "45min.",
+        "delai": "2mois",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      },
+      {
+        "rdv": 6,
+        "traitement": "26i-27i Scellement couronnes transvissées céramiques",
+        "duree": "45min.",
+        "delai": "1sem.",
+        "dr": "NB",
+        "date": "",
+        "remarque": ""
+      }
+    ]
+  }
+}

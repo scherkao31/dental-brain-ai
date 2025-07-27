@@ -1,0 +1,54 @@
+{
+  "consultation_text": "Résection apicale",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Seance information + discussion + organiser cone beam",
+      "duree": "30 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "Seance analyse cone beam + prise de decision",
+      "duree": "15 min",
+      "delai": "3 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Chirurgie resection apicale",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Ctl post op",
+      "duree": "15 min",
+      "delai": "10 j",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Ctl à 3 mois avec cone beam",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_résection_apicale.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

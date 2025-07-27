@@ -1,0 +1,50 @@
+{
+  "consultation_text": "Plan de tt:\n16 AV + I avec GBR + CCi",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "16 Avulsion + Pose implant avec greffe osseuse",
+      "duree": "2h",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "16i Contrôle post op",
+      "duree": "15min.",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "16i Empreintes pour couronne transvissée",
+      "duree": "30min.",
+      "delai": "2mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "16i Scellement couronne transvissée",
+      "duree": "3min.",
+      "delai": "1sem.",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "16i Composite O",
+      "duree": "30min.",
+      "delai": "2-3mois",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

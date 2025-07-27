@@ -1,0 +1,72 @@
+{
+  "consultation_text": "Pont collé",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage + empreinte pour blanchiment et wax-up + clé pour mock-up",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Discussion si greffe conjonctif necessaire"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Mock-up et gérer le provisoire : soit pont collé armature métallique soit provisoire existant Donner gouttières de blanchiment + gel",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "Ou envoyer doc poru wax-up digital"
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post blanchiment",
+      "duree": "15 min",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Preparation pour pont collé + empreinte + provisoire",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Essai",
+      "duree": "30 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 6,
+      "traitement": "Scellement + empreinte pour gouttière de contention",
+      "duree": "1h",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 7,
+      "traitement": "Ctl post op + donner gouttière et organiser recall",
+      "duree": "",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_pont_collé.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}

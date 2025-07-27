@@ -1,0 +1,41 @@
+{
+  "consultation_text": "Plan de tt :\nDet\n46i-47i Cci\n46 GC",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage",
+      "duree": "1h",
+      "delai": "",
+      "dr": "VR",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "46i-47i démonter couronne + provisoire + empreinte",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "46i GC",
+      "duree": "1h15",
+      "delai": "2 jours",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Sc 46i-47i + contrôle post op",
+      "duree": "1h15",
+      "delai": "10 jours",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

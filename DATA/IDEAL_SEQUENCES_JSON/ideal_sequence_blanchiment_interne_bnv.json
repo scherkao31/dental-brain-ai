@@ -1,0 +1,45 @@
+{
+  "consultation_text": "Blanchiment interne – BNV",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "BNV – 1ère séance",
+      "duree": "45min.",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 2,
+      "traitement": "BNV – 2ème séance",
+      "duree": "30min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "BNV – 3ème séance si besoin ou Composite",
+      "duree": "30min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Réserve pour composite si pas fait au rdv d’avant",
+      "duree": "30min.",
+      "delai": "1sem.",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_blanchiment_interne_bnv.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx"
+}

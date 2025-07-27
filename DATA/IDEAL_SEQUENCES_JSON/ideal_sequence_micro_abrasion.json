@@ -1,0 +1,27 @@
+{
+  "consultation_text": "Micro abrasion",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_2.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Microabrasion séance 1",
+      "duree": "15 min",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "À associer avec un home Bleaching"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Microabrasion séance 2",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_micro_abrasion.json",
+  "original_docx": "sequence de_traitement_ideal_2.docx"
+}

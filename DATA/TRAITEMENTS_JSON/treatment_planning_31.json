@@ -1,0 +1,41 @@
+{
+  "consultation_text": "16-15-13-12 collet\n16-18 pont\n22-23-26 collet\n26 onlay\n46-47 collet\nInvisalign\nAbl cont SUP\ndet",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "16-15-13-12 Composite collet; 16-18 démonter pont + pont provisoire + empreinte",
+      "duree": "1h30",
+      "delai": "",
+      "dr": "NB",
+      "date": "",
+      "remarque": "Prévoir détartrage quand possible"
+    },
+    {
+      "rdv": 2,
+      "traitement": "16-18 Scellement pont; 22-23-26 Composite collet; 26 TE onlay",
+      "duree": "1h30",
+      "delai": "3 jours",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "26 Scellement onlay; 46-47 Composite collet; Déposer ancien fil de contention et documentation pour Invisalign",
+      "duree": "1h30",
+      "delai": "2 jours",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Début Invisalign",
+      "duree": "",
+      "delai": "2 à 3 sem",
+      "dr": "NB",
+      "date": "",
+      "remarque": ""
+    }
+  ]
+}

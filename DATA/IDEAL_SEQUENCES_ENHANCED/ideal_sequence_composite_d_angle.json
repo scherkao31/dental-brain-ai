@@ -1,0 +1,142 @@
+{
+  "consultation_text": "Composite d angle",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage + empreinte pour blanchiment",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3"
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner gouttières de blanchiment + gel",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post blanchiment",
+      "duree": "15 min",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 4,
+      "traitement": "Cpr angle",
+      "duree": "1h",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    },
+    {
+      "rdv": 5,
+      "traitement": "Polissage",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_d_angle.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx",
+  "consultation_text_expanded": "Composite d angle",
+  "treatment_sequence_enhanced": [
+    {
+      "rdv": 1,
+      "traitement": "Détartrage + empreinte pour blanchiment",
+      "duree": "1h",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": "Si pas blanchiment alors pas besoin des rdv 1-2-3",
+      "traitement_expanded": "Détartrage + empreinte pour blanchiment",
+      "delai_expanded": "",
+      "dr_expanded": "",
+      "remarque_expanded": "Si pas blanchiment alors pas besoin des rdv 1-2-3",
+      "categories": [
+        "Parodontologie",
+        "Esthétique"
+      ]
+    },
+    {
+      "rdv": 2,
+      "traitement": "Donner gouttières de blanchiment + gel",
+      "duree": "15 min",
+      "delai": "1 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Donner gouttières de blanchiment + gel",
+      "delai_expanded": "1 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Esthétique",
+        "Orthodontie"
+      ]
+    },
+    {
+      "rdv": 3,
+      "traitement": "Ctl post blanchiment",
+      "duree": "15 min",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Ctl post blanchiment",
+      "delai_expanded": "2 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Contrôles",
+        "Esthétique"
+      ]
+    },
+    {
+      "rdv": 4,
+      "traitement": "Cpr angle",
+      "duree": "1h",
+      "delai": "2 sem",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Cpr angle",
+      "delai_expanded": "2 sem",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Composite"
+      ]
+    },
+    {
+      "rdv": 5,
+      "traitement": "Polissage",
+      "duree": "15 min",
+      "delai": "2 jours",
+      "dr": "",
+      "date": "",
+      "remarque": "",
+      "traitement_expanded": "Polissage",
+      "delai_expanded": "2 jours",
+      "dr_expanded": "",
+      "remarque_expanded": "",
+      "categories": [
+        "Général"
+      ]
+    }
+  ],
+  "searchable_content": "Séquence idéale: Composite d angle\nSéquence idéale étendue: Composite d angle\nTraitements: Détartrage + empreinte pour blanchiment; Donner gouttières de blanchiment + gel; Ctl post blanchiment; Cpr angle; Polissage\nTraitements étendus: Détartrage + empreinte pour blanchiment; Donner gouttières de blanchiment + gel; Ctl post blanchiment; Cpr angle; Polissage\nCatégories: Composite, Contrôles, Esthétique, Général, Orthodontie, Parodontologie",
+  "content": "Séquence idéale: Composite d angle\nSéquence idéale étendue: Composite d angle\nTraitements: Détartrage + empreinte pour blanchiment; Donner gouttières de blanchiment + gel; Ctl post blanchiment; Cpr angle; Polissage\nTraitements étendus: Détartrage + empreinte pour blanchiment; Donner gouttières de blanchiment + gel; Ctl post blanchiment; Cpr angle; Polissage\nCatégories: Composite, Contrôles, Esthétique, Général, Orthodontie, Parodontologie"
+}

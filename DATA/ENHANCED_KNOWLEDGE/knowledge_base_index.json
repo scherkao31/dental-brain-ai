@@ -1,0 +1,352 @@
+[
+  {
+    "id": "clinical_case_0",
+    "type": "clinical_case",
+    "title": "Plan de TT\n14 collet\n24 25 collet\n44 collet\n34 collet",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_8.json"
+  },
+  {
+    "id": "clinical_case_1",
+    "type": "clinical_case",
+    "title": "Plan de TT\ninvisalign + fil de contention\nblanch.\n12-22 facette céram",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_4.json"
+  },
+  {
+    "id": "clinical_case_2",
+    "type": "clinical_case",
+    "title": "Plan de TT\n34 Collet + Onlay\n35 Dém.CC + MA + CC\n36 Dém CC + MA + CC\n33 Collet\n32 Collet\n31-41 BL\n24 Collet\n25-26-27 CC\n24 OD\n13 D\n14 à 17 CC",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_14.json"
+  },
+  {
+    "id": "clinical_case_3",
+    "type": "clinical_case",
+    "title": "Plan de TT\nBlanchiment\n46 Cpr collet\n16 Cpr V\nInvisalign Sup + Fil de contention sup et inf",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_15.json"
+  },
+  {
+    "id": "clinical_case_4",
+    "type": "clinical_case",
+    "title": "Plan de TT\n11 AV + implant + CC\n22 Implant + CC\n21-34 Curtage",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_5.json"
+  },
+  {
+    "id": "clinical_case_5",
+    "type": "clinical_case",
+    "title": "Plan de TT\n45 extr + pose implant immédiate\n41 cassé + à extraire solidarisée à 31 + pose impl immédiate",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_9.json"
+  },
+  {
+    "id": "clinical_case_6",
+    "type": "clinical_case",
+    "title": "Plan de TT\n12 à 22 F",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_2.json"
+  },
+  {
+    "id": "clinical_case_7",
+    "type": "clinical_case",
+    "title": "Plan de ttt:\n17 OMP\n16 OM\n15 Onlay\n14 OD\n13 collet\n23 collet\n27 OMP\n36 collet\n47 OV\n46 collet\nDet + sondage paro",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_12.json"
+  },
+  {
+    "id": "clinical_case_8",
+    "type": "clinical_case",
+    "title": "Plan de ttt:\n11 refaire cpr\n21 BNV + cpr",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_13.json"
+  },
+  {
+    "id": "clinical_case_9",
+    "type": "clinical_case",
+    "title": "Plan de TT\n46 TR - 2 séance + Cpr O",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_3.json"
+  },
+  {
+    "id": "clinical_case_10",
+    "type": "clinical_case",
+    "title": "Dét\n16 réprise TR + BNV + Onlay\n14 Collet + OD\n26 Collet\n35 Onlay\n45 OD\n47 OD\n48 OD + V",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_10.json"
+  },
+  {
+    "id": "clinical_case_11",
+    "type": "clinical_case",
+    "title": "Plan de ttt pour la 26:\n26 dém. CC + dém. tenons + TR 3 canaux + MA + CC",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_1.json"
+  },
+  {
+    "id": "clinical_case_12",
+    "type": "clinical_case",
+    "title": "Plan de TT\nAblation fil de contention sup et inf\nBlanchiment\n12 Carie M\n11-21 Facette\nNew fil de contention sup et inf",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_11.json"
+  },
+  {
+    "id": "clinical_case_13",
+    "type": "clinical_case",
+    "title": "Plan de tt:\n13-14 /44-45 / 34 cpr collet",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_6.json"
+  },
+  {
+    "id": "clinical_case_14",
+    "type": "clinical_case",
+    "title": "Plan de ttt:\nBlanchiment\n11-21 facettes\n13-23 cpr\nGouttière sup",
+    "source": "clinical_cases",
+    "filename": "treatment_planning_7.json"
+  },
+  {
+    "id": "ideal_sequence_15",
+    "type": "ideal_sequence",
+    "title": "Blanchiment – au cabinet",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_blanchiment_au_cabinet.json"
+  },
+  {
+    "id": "ideal_sequence_16",
+    "type": "ideal_sequence",
+    "title": "Composite 2 faces",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_2_faces.json"
+  },
+  {
+    "id": "ideal_sequence_17",
+    "type": "ideal_sequence",
+    "title": "Composite bord libre",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_bord_libre.json"
+  },
+  {
+    "id": "ideal_sequence_18",
+    "type": "ideal_sequence",
+    "title": "Facette",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_facette.json"
+  },
+  {
+    "id": "ideal_sequence_19",
+    "type": "ideal_sequence",
+    "title": "Blanchiment – Home bleaching",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_blanchiment_home_bleaching.json"
+  },
+  {
+    "id": "ideal_sequence_20",
+    "type": "ideal_sequence",
+    "title": "Implant",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_implant.json"
+  },
+  {
+    "id": "ideal_sequence_21",
+    "type": "ideal_sequence",
+    "title": "Blanchiment interne – BNV",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_blanchiment_interne_bnv.json"
+  },
+  {
+    "id": "ideal_sequence_22",
+    "type": "ideal_sequence",
+    "title": "Ablation implant",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_ablation_implant.json"
+  },
+  {
+    "id": "ideal_sequence_23",
+    "type": "ideal_sequence",
+    "title": "Implant avec greffe osseuse",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_implant_avec_greffe_osseuse.json"
+  },
+  {
+    "id": "ideal_sequence_24",
+    "type": "ideal_sequence",
+    "title": "Extraction simple",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_extraction_simple.json"
+  },
+  {
+    "id": "ideal_sequence_25",
+    "type": "ideal_sequence",
+    "title": "Traitement de racine 1 canal",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_traitement_de_racine_1_canal.json"
+  },
+  {
+    "id": "ideal_sequence_26",
+    "type": "ideal_sequence",
+    "title": "Traitement de racine 3 canaux",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_traitement_de_racine_3_canaux.json"
+  },
+  {
+    "id": "ideal_sequence_27",
+    "type": "ideal_sequence",
+    "title": "Implant avec sinus lift",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_implant_avec_sinus_lift.json"
+  },
+  {
+    "id": "ideal_sequence_28",
+    "type": "ideal_sequence",
+    "title": "Couronne sur implant",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_couronne_sur_implant.json"
+  },
+  {
+    "id": "ideal_sequence_29",
+    "type": "ideal_sequence",
+    "title": "Résection apicale",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_résection_apicale.json"
+  },
+  {
+    "id": "ideal_sequence_30",
+    "type": "ideal_sequence",
+    "title": "Gouttière de contention / erkopress",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_gouttière_de_contention_erkopress.json"
+  },
+  {
+    "id": "ideal_sequence_31",
+    "type": "ideal_sequence",
+    "title": "Scellement de fissure 4 dents",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_scellement_de_fissure_4_dents.json"
+  },
+  {
+    "id": "ideal_sequence_32",
+    "type": "ideal_sequence",
+    "title": "Composite inter proximal",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_inter_proximal.json"
+  },
+  {
+    "id": "ideal_sequence_33",
+    "type": "ideal_sequence",
+    "title": "Traitement de racine 2 canaux",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_traitement_de_racine_2_canaux.json"
+  },
+  {
+    "id": "ideal_sequence_34",
+    "type": "ideal_sequence",
+    "title": "Couronne",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_couronne.json"
+  },
+  {
+    "id": "ideal_sequence_35",
+    "type": "ideal_sequence",
+    "title": "Extraction complexe",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_extraction_complexe.json"
+  },
+  {
+    "id": "ideal_sequence_36",
+    "type": "ideal_sequence",
+    "title": "Curetage paro par quadrant",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_curetage_paro_par_quadrant.json"
+  },
+  {
+    "id": "ideal_sequence_37",
+    "type": "ideal_sequence",
+    "title": "Composite 3 faces",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_3_faces.json"
+  },
+  {
+    "id": "ideal_sequence_38",
+    "type": "ideal_sequence",
+    "title": "Scellement de fissure 2 dents",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_scellement_de_fissure_2_dents.json"
+  },
+  {
+    "id": "ideal_sequence_39",
+    "type": "ideal_sequence",
+    "title": "Pont collé",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_pont_collé.json"
+  },
+  {
+    "id": "ideal_sequence_40",
+    "type": "ideal_sequence",
+    "title": "Onlay",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_onlay.json"
+  },
+  {
+    "id": "ideal_sequence_41",
+    "type": "ideal_sequence",
+    "title": "Gouttière Michigan",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_gouttière_michigan.json"
+  },
+  {
+    "id": "ideal_sequence_42",
+    "type": "ideal_sequence",
+    "title": "Composite 1 face",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_1_face.json"
+  },
+  {
+    "id": "ideal_sequence_43",
+    "type": "ideal_sequence",
+    "title": "Composite collet",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_collet.json"
+  },
+  {
+    "id": "ideal_sequence_44",
+    "type": "ideal_sequence",
+    "title": "Greffe conjonctif",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_greffe_conjonctif.json"
+  },
+  {
+    "id": "ideal_sequence_45",
+    "type": "ideal_sequence",
+    "title": "Micro abrasion",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_micro_abrasion.json"
+  },
+  {
+    "id": "ideal_sequence_46",
+    "type": "ideal_sequence",
+    "title": "Extraction simple x 2",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_extraction_simple_x_2.json"
+  },
+  {
+    "id": "ideal_sequence_47",
+    "type": "ideal_sequence",
+    "title": "Prothèse complète sur implant",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_prothèse_complète_sur_implant.json"
+  },
+  {
+    "id": "ideal_sequence_48",
+    "type": "ideal_sequence",
+    "title": "Composite d angle",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_composite_d_angle.json"
+  },
+  {
+    "id": "ideal_sequence_49",
+    "type": "ideal_sequence",
+    "title": "Extraction complexe x 2",
+    "source": "dentist_guidelines",
+    "filename": "ideal_sequence_extraction_complexe_x_2.json"
+  }
+]

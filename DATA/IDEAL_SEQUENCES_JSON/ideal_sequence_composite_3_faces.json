@@ -1,0 +1,18 @@
+{
+  "consultation_text": "Composite 3 faces",
+  "type": "ideal_sequence",
+  "source": "sequence de_traitement_ideal_1.docx",
+  "treatment_sequence": [
+    {
+      "rdv": 1,
+      "traitement": "Cpr MOD",
+      "duree": "1h15",
+      "delai": "",
+      "dr": "",
+      "date": "",
+      "remarque": ""
+    }
+  ],
+  "filename": "ideal_sequence_composite_3_faces.json",
+  "original_docx": "sequence de_traitement_ideal_1.docx"
+}
