@@ -708,8 +708,33 @@ function createTreatmentRow(appointment, index) {
     return row;
 }
 
-// Display treatment plan
+// Display treatment plan inline
 function displayTreatmentPlan(plan, references = []) {
+    // Find the last assistant message
+    const messages = document.getElementById('chatMessages');
+    const assistantMessages = messages.querySelectorAll('.message.assistant');
+    const lastAssistantMessage = assistantMessages[assistantMessages.length - 1];
+    
+    if (lastAssistantMessage && window.inlineTreatment) {
+        // Use inline treatment display
+        window.inlineTreatment.displayTreatmentPlan(plan, references, lastAssistantMessage.querySelector('.message-content'));
+        
+        // Store the current plan globally for compatibility
+        window.currentTreatmentPlan = JSON.parse(JSON.stringify(plan));
+    } else {
+        // Fallback to side panel if inline treatment not available
+        displayTreatmentPlanSidePanel(plan, references);
+        showTreatmentPanel();
+    }
+    
+    // Hide the FAB button when using inline display
+    if (window.inlineTreatment) {
+        updateTreatmentPlanFAB();
+    }
+}
+
+// Keep the original function for backward compatibility but rename it
+function displayTreatmentPlanSidePanel(plan, references = []) {
     const content = document.getElementById('treatmentPlanContent');
     
     // Store the current plan globally for editing
@@ -729,7 +754,7 @@ function displayTreatmentPlan(plan, references = []) {
             <button class="toolbar-btn" onclick="addNewRow()" title="Ajouter une ligne">
                 <i class="fas fa-plus"></i> Ajouter
             </button>
-            <button class="toolbar-btn merge-selected-btn" onclick="mergeSelectedRows()" title="Fusionner les lignes sélectionnées" disabled>
+            <button class="toolbar-btn merge-selected-btn" onclick="mergeSelectedRows()" title="Fusionner les lignes sélectionnées" disabled
                 <i class="fas fa-compress-alt"></i> Fusionner <span id="mergeCount"></span>
             </button>
             <button class="toolbar-btn" onclick="saveTreatmentPlan()" title="Sauvegarder">
