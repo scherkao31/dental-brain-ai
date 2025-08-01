@@ -207,8 +207,6 @@ function displayMessages(messages) {
         }
     });
     
-    // Update FAB visibility after loading all messages
-    updateTreatmentPlanFAB();
     
     scrollToBottom();
 }
@@ -727,10 +725,6 @@ function displayTreatmentPlan(plan, references = []) {
         showTreatmentPanel();
     }
     
-    // Hide the FAB button when using inline display
-    if (window.inlineTreatment) {
-        updateTreatmentPlanFAB();
-    }
 }
 
 // Keep the original function for backward compatibility but rename it
@@ -862,8 +856,6 @@ function displayTreatmentPlanSidePanel(plan, references = []) {
     } else {
         // Add a notification that a treatment plan is available
         showNotification('info', 'Plan de traitement généré. Cliquez pour voir les détails.');
-        // Update FAB visibility since panel is not auto-shown
-        updateTreatmentPlanFAB();
     }
     
     // Add event listeners to all editable cells
@@ -881,11 +873,6 @@ function showTreatmentPanel() {
     panel.style.display = 'flex';
     setTimeout(() => panel.classList.add('show'), 10);
     
-    // Hide FAB when panel is shown
-    const fab = document.getElementById('treatmentPlanFAB');
-    if (fab) {
-        fab.style.display = 'none';
-    }
 }
 
 function closeTreatmentPanel() {
@@ -893,60 +880,9 @@ function closeTreatmentPanel() {
     panel.classList.remove('show');
     setTimeout(() => panel.style.display = 'none', 300);
     
-    // Show FAB if there's a treatment plan
-    updateTreatmentPlanFAB();
 }
 
-// Reopen treatment panel from FAB
-function reopenTreatmentPanel() {
-    if (window.currentTreatmentPlan) {
-        // Get the last references if available
-        const lastMessage = document.querySelector('.message:last-child');
-        let references = [];
-        if (lastMessage && lastMessage.dataset.metadata) {
-            try {
-                const metadata = JSON.parse(lastMessage.dataset.metadata);
-                references = metadata.references || [];
-            } catch (e) {
-                console.error('Error parsing metadata:', e);
-            }
-        }
-        
-        displayTreatmentPlan(window.currentTreatmentPlan, references);
-        
-        // Add pulse animation to indicate reopening
-        const panel = document.getElementById('treatmentPlanPanel');
-        panel.classList.add('pulse');
-        setTimeout(() => panel.classList.remove('pulse'), 1000);
-    }
-}
 
-// Update FAB visibility based on treatment plan state
-function updateTreatmentPlanFAB() {
-    const fab = document.getElementById('treatmentPlanFAB');
-    const panel = document.getElementById('treatmentPlanPanel');
-    
-    if (!fab || !panel) {
-        console.error('FAB or panel element not found');
-        return;
-    }
-    
-    // Check if we have a treatment plan and panel is not visible
-    const panelHidden = !panel.classList.contains('show');
-    
-    if (window.currentTreatmentPlan && panelHidden) {
-        fab.style.display = 'flex';
-        // Add pulse animation on first show
-        if (!fab.classList.contains('shown')) {
-            fab.classList.add('pulse', 'shown');
-            setTimeout(() => fab.classList.remove('pulse'), 3000);
-        }
-        console.log('FAB shown - treatment plan exists and panel is hidden');
-    } else {
-        fab.style.display = 'none';
-        console.log('FAB hidden - no plan or panel is visible');
-    }
-}
 
 function showSearchPanel() {
     const panel = document.getElementById('searchPanel');
@@ -1140,7 +1076,6 @@ async function startNewChat() {
     // Clear treatment plan and conversation data
     window.currentTreatmentPlan = null;
     window.currentConversation = null;
-    updateTreatmentPlanFAB();
     
     // Also close the treatment panel if it's open
     const panel = document.getElementById('treatmentPlanPanel');

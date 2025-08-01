@@ -1,0 +1,702 @@
+/* Mobile Responsive Styles for Dental Brain AI */
+
+/* Mobile breakpoints:
+   - Mobile: < 768px
+   - Tablet: 768px - 1024px
+   - Desktop: > 1024px (unchanged)
+*/
+
+/* Base Mobile Styles (< 768px) */
+@media (max-width: 768px) {
+    /* Force show hamburger menu on mobile */
+    button.sidebar-toggle.desktop-hidden {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 9999 !important;
+    }
+    /* Reset and base adjustments */
+    body {
+        font-size: 16px; /* Prevent zoom on iOS */
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Main container */
+    .app-container {
+        flex-direction: column;
+        height: 100vh;
+        height: -webkit-fill-available; /* iOS fix */
+    }
+    
+    /* Mobile Header */
+    .chat-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 56px;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    /* Hamburger Menu Button */
+    .sidebar-toggle {
+        display: flex !important;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 20px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Show hamburger on mobile */
+    .sidebar-toggle.desktop-hidden {
+        display: flex !important;
+    }
+    
+    /* Ensure hamburger button is visible */
+    .chat-header .sidebar-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Mobile Sidebar */
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        height: -webkit-fill-available;
+        background: var(--bg-secondary);
+        transition: transform 0.3s ease;
+        z-index: 2000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0) !important;
+    }
+    
+    /* Sidebar Overlay */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .sidebar-overlay.active {
+        display: block !important;
+    }
+    
+    /* Mobile Sidebar Header */
+    .sidebar-header {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .sidebar-header .mobile-only {
+        display: block;
+    }
+    
+    /* New Chat Button - Full Width on Mobile */
+    .new-chat-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+    
+    /* Main Content Area */
+    .main-content {
+        margin-top: 56px; /* Header height */
+        height: calc(100vh - 56px);
+        height: calc(-webkit-fill-available - 56px);
+    }
+    
+    /* Chat Container */
+    .chat-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-primary);
+    }
+    
+    /* Chat Messages */
+    .chat-messages {
+        padding: 1rem;
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Center content on larger phones */
+    .chat-messages > * {
+        max-width: 600px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Message Bubbles - Chat App Style */
+    .message-wrapper {
+        max-width: 85%;
+        padding: 8px 12px;
+    }
+    
+    .message-wrapper.user {
+        margin-left: auto;
+        margin-right: 0;
+    }
+    
+    .message-wrapper.assistant {
+        margin-right: auto;
+        margin-left: 0;
+    }
+    
+    .message {
+        border-radius: 18px;
+        padding: 10px 14px;
+        margin: 4px 0;
+    }
+    
+    .message.user {
+        background: var(--primary, #667eea);
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+    }
+    
+    .message.assistant {
+        background: var(--bg-secondary, rgba(255, 255, 255, 0.05));
+        border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+        margin-right: auto;
+        border-bottom-left-radius: 4px;
+    }
+    
+    .message-content {
+        font-size: 16px;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+    
+    /* Avatar for assistant messages */
+    .message-wrapper.assistant::before {
+        content: "🤖";
+        position: absolute;
+        left: -30px;
+        top: 0;
+        font-size: 20px;
+        display: none; /* Hidden for now, can be enabled */
+    }
+    
+    /* Time stamps */
+    .message-time {
+        font-size: 11px;
+        color: var(--text-secondary);
+        margin-top: 4px;
+        opacity: 0.7;
+    }
+    
+    /* Welcome Message */
+    .welcome-message {
+        max-width: 100% !important;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .welcome-message h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .welcome-message p {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    .suggestions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .suggestion-chip {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 20px;
+        min-height: 44px;
+    }
+    
+    /* Touch-Friendly Inputs */
+    .chat-input-container {
+        position: sticky;
+        bottom: 0;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+        padding: 12px;
+        padding-bottom: env(safe-area-inset-bottom, 12px); /* iOS safe area */
+    }
+    
+    .chat-input {
+        font-size: 16px; /* Prevent zoom */
+        min-height: 44px;
+        padding: 12px;
+        border-radius: 22px;
+    }
+    
+    .send-btn {
+        min-width: 44px;
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+    
+    /* Patient Selection Bar */
+    .patient-selection-bar {
+        position: sticky;
+        top: 56px;
+        z-index: 100;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 8px 12px;
+    }
+    
+    .patient-selection-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .select-patient-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        min-height: 44px;
+    }
+    
+    /* Quick Action Bar - Horizontal Scroll */
+    .quick-action-bar {
+        position: sticky;
+        bottom: 60px;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+        padding: 8px 0;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .quick-action-container {
+        display: flex;
+        gap: 8px;
+        padding: 0 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .quick-action-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .quick-action-btn {
+        flex-shrink: 0;
+        min-height: 44px;
+        padding: 10px 16px;
+        white-space: nowrap;
+    }
+    
+    /* Hide desktop-only elements */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .chat-subtitle {
+        display: none;
+    }
+    
+    .input-hint {
+        display: none;
+    }
+    
+    /* Modals - Full Screen on Mobile */
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    /* Search Panel - Bottom Sheet Style */
+    .search-panel {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        right: 0;
+        height: 80%;
+        max-height: 600px;
+        border-radius: 20px 20px 0 0;
+        transition: bottom 0.3s ease;
+        background: var(--bg-secondary);
+        z-index: 1001;
+    }
+    
+    .search-panel.show {
+        bottom: 0;
+    }
+    
+    /* Settings Modal - Full Screen */
+    .settings-modal-content {
+        border-radius: 0;
+        height: 100vh;
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .settings-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .settings-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .settings-tab {
+        flex-shrink: 0;
+        padding: 16px 20px;
+        min-height: 56px;
+        white-space: nowrap;
+    }
+    
+    /* Inline Treatment Display - Mobile Optimized */
+    .inline-treatment-container {
+        margin: 12px 0;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+    
+    /* For assistant messages with treatment plans */
+    .message.assistant .inline-treatment-container {
+        margin: 16px -14px 0 -14px; /* Extend slightly beyond message padding */
+        max-width: calc(100% + 28px);
+    }
+    
+    /* Treatment Tabs - Dropdown on Mobile */
+    .inline-treatment-tabs {
+        display: none;
+    }
+    
+    .mobile-treatment-dropdown {
+        display: block;
+        padding: 12px 16px;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .treatment-dropdown-select {
+        width: 100%;
+        padding: 10px 16px;
+        background: var(--bg-primary);
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: 500;
+        min-height: 44px;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 20px;
+        padding-right: 45px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .treatment-dropdown-select:hover,
+    .treatment-dropdown-select:focus {
+        border-color: var(--primary);
+        background-color: var(--bg-secondary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Treatment Table - Card View on Mobile */
+    .inline-treatment-table {
+        display: none;
+    }
+    
+    .mobile-treatment-cards {
+        display: block;
+        padding: 16px;
+    }
+    
+    .treatment-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .treatment-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    
+    .treatment-card-rdv {
+        font-weight: 600;
+        color: var(--primary);
+    }
+    
+    .treatment-card-actions {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .treatment-card-field {
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .treatment-card-label {
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+    }
+    
+    .treatment-card-value {
+        font-size: 14px;
+        color: var(--text-primary);
+        padding: 8px 12px;
+        background: var(--bg-primary);
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .treatment-card-value[contenteditable="true"]:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: -2px;
+    }
+    
+    /* Toolbar - Mobile Optimized */
+    .inline-treatment-toolbar {
+        padding: 12px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .inline-toolbar-group {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .inline-toolbar-btn {
+        width: 100%;
+        min-height: 44px;
+        justify-content: center;
+    }
+    
+    /* Financial Cards - Stack on Mobile */
+    .financial-summary-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 16px;
+    }
+    
+    .financial-card {
+        padding: 16px;
+    }
+    
+    /* Charts - Stack Vertically */
+    .financial-charts {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    /* Performance Metrics - 2 Column Grid */
+    .performance-metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .performance-metrics .metric {
+        font-size: 13px;
+    }
+    
+    /* References - Mobile Optimized */
+    .rag-source-item {
+        padding: 12px;
+        margin: 0 0 8px 0;
+        font-size: 13px;
+    }
+    
+    .rag-source-title {
+        font-size: 14px;
+    }
+    
+    /* RAG Sources Container */
+    .rag-sources-list {
+        padding: 0;
+    }
+    
+    /* Floating Action Button */
+    .treatment-plan-fab {
+        bottom: 80px;
+        right: 16px;
+        width: 56px;
+        height: 56px;
+    }
+    
+    /* Conversation List */
+    .conversations-list {
+        padding: 8px;
+    }
+    
+    .conversation-item {
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+    }
+    
+    .conversation-title {
+        font-size: 14px;
+    }
+    
+    .conversation-info {
+        font-size: 12px;
+    }
+    
+    /* Filters - Collapsible by Default */
+    .case-filters {
+        margin: 0 16px 16px 16px;
+    }
+    
+    .case-filters:not(.expanded) .filter-options {
+        display: none;
+    }
+}
+
+/* Tablet Styles (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Sidebar visible but narrower */
+    .sidebar {
+        width: 280px;
+        position: relative;
+    }
+    
+    /* Adjust main content */
+    .main-content {
+        margin-left: 280px;
+    }
+    
+    /* Treatment tables can remain as tables */
+    .mobile-treatment-cards {
+        display: none;
+    }
+    
+    .inline-treatment-table {
+        display: table;
+        font-size: 14px;
+    }
+    
+    /* Keep tabs but make them scrollable */
+    .inline-treatment-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .mobile-treatment-dropdown {
+        display: none;
+    }
+    
+    /* Financial grid adjustments */
+    .financial-summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* iOS Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    /* iOS status bar spacing */
+    .chat-header {
+        padding-top: env(safe-area-inset-top, 0);
+        height: calc(56px + env(safe-area-inset-top, 0));
+    }
+    
+    .main-content {
+        margin-top: calc(56px + env(safe-area-inset-top, 0));
+        height: calc(100vh - 56px - env(safe-area-inset-top, 0));
+    }
+    
+    /* iOS keyboard handling */
+    .chat-input-container {
+        padding-bottom: env(safe-area-inset-bottom, 12px);
+    }
+}
+
+/* Animations for Mobile */
+@media (prefers-reduced-motion: no-preference) {
+    .sidebar {
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .search-panel {
+        transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Dark mode adjustments for mobile */
+@media (max-width: 767px) and (prefers-color-scheme: dark) {
+    .treatment-dropdown-select {
+        background-color: var(--bg-primary);
+    }
+    
+    .treatment-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+}

@@ -5,7 +5,37 @@ export class InlineTreatmentDisplay {
     constructor() {
         this.currentTreatmentPlan = null;
         this.activeTab = 'sequence';
+        this.lastWindowWidth = window.innerWidth;
+        
+        // Handle window resize for mobile/desktop switch
+        this.handleResize = this.debounce(() => {
+            const currentWidth = window.innerWidth;
+            const wasMobile = this.lastWindowWidth < 768;
+            const isMobile = currentWidth < 768;
+            
+            // Only refresh if we crossed the mobile/desktop boundary
+            if (wasMobile !== isMobile && this.currentContainer) {
+                this.lastWindowWidth = currentWidth;
+                this.refreshTable();
+            }
+        }, 250);
+        
+        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('orientationchange', this.handleResize);
+        
         this.initializeStyles();
+    }
+    
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
 
     initializeStyles() {
@@ -214,24 +244,45 @@ export class InlineTreatmentDisplay {
 
     generateTreatmentHTML(plan, references) {
         const isApproved = window.currentConversation && window.currentConversation.treatment_plan_approved;
+        const isMobile = window.innerWidth < 768;
+        
+        // Generate unique ID for this treatment instance
+        const instanceId = 'treatment-' + Date.now();
         
         return `
-            <div class="inline-treatment-tabs">
-                <button class="inline-treatment-tab active" data-tab="sequence" onclick="window.inlineTreatment.switchTab('sequence')">
-                    <i class="fas fa-list-ol"></i> Séquence
-                </button>
-                <button class="inline-treatment-tab" data-tab="finance" onclick="window.inlineTreatment.switchTab('finance')">
-                    <i class="fas fa-euro-sign"></i> Analyse Financière
-                </button>
-                <button class="inline-treatment-tab" data-tab="optimized" onclick="window.inlineTreatment.switchTab('optimized')">
-                    <i class="fas fa-chart-line"></i> Optimisé
-                </button>
-                <button class="inline-treatment-tab" data-tab="references" onclick="window.inlineTreatment.switchTab('references')">
-                    <i class="fas fa-book"></i> Références
-                </button>
-            </div>
+            ${isMobile ? `
+                <!-- Mobile Dropdown for Tabs -->
+                <div class="mobile-treatment-dropdown">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Changer de vue:</span>
+                    </label>
+                    <select class="treatment-dropdown-select" id="${instanceId}-select" onchange="window.inlineTreatment.switchTabMobile('${instanceId}', this.value)">
+                        <option value="sequence">📋 Séquence de traitement</option>
+                        <option value="finance">💰 Analyse financière</option>
+                        <option value="optimized">📊 Version optimisée</option>
+                        <option value="references">📚 Références RAG</option>
+                    </select>
+                </div>
+            ` : `
+                <!-- Desktop Tabs -->
+                <div class="inline-treatment-tabs">
+                    <button class="inline-treatment-tab active" data-tab="sequence" onclick="window.inlineTreatment.switchTab('sequence')">
+                        <i class="fas fa-list-ol"></i> Séquence
+                    </button>
+                    <button class="inline-treatment-tab" data-tab="finance" onclick="window.inlineTreatment.switchTab('finance')">
+                        <i class="fas fa-euro-sign"></i> Analyse Financière
+                    </button>
+                    <button class="inline-treatment-tab" data-tab="optimized" onclick="window.inlineTreatment.switchTab('optimized')">
+                        <i class="fas fa-chart-line"></i> Optimisé
+                    </button>
+                    <button class="inline-treatment-tab" data-tab="references" onclick="window.inlineTreatment.switchTab('references')">
+                        <i class="fas fa-book"></i> Références
+                    </button>
+                </div>
+            `}
             
-            <div class="inline-treatment-content">
+            <div class="inline-treatment-content" data-instance="${instanceId}">
                 <div class="inline-tab-content" id="inline-sequence-tab" style="display: block;">
                     ${this.generateSequenceContent(plan, isApproved)}
                 </div>
@@ -290,30 +341,44 @@ export class InlineTreatmentDisplay {
             </div>
         `;
         
-        // Treatment table
-        html += `
-            <table class="inline-treatment-table">
-                <thead>
-                    <tr>
-                        <th style="width: 40px;">
-                            <input type="checkbox" id="inline-selectAllRows" onchange="window.inlineTreatment.toggleSelectAll()">
-                        </th>
-                        <th style="width: 60px;">RDV</th>
-                        <th>Traitement</th>
-                        <th style="width: 80px;">Durée</th>
-                        <th style="width: 100px;">Délai</th>
-                        <th style="width: 60px;">Dr</th>
-                        <th style="width: 150px;">Remarque</th>
-                        <th style="width: 80px;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="inline-treatmentTableBody">
+        // Check if mobile
+        const isMobile = window.innerWidth < 768;
+        
+        if (isMobile) {
+            // Mobile Card View
+            html += `
+                <div class="mobile-treatment-cards" id="mobile-treatmentCards">
                     ${(plan.treatment_sequence || []).map((appointment, index) => 
-                        this.createTreatmentRow(appointment, index)
+                        this.createTreatmentCard(appointment, index)
                     ).join('')}
-                </tbody>
-            </table>
-        `;
+                </div>
+            `;
+        } else {
+            // Desktop Table View
+            html += `
+                <table class="inline-treatment-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;">
+                                <input type="checkbox" id="inline-selectAllRows" onchange="window.inlineTreatment.toggleSelectAll()">
+                            </th>
+                            <th style="width: 60px;">RDV</th>
+                            <th>Traitement</th>
+                            <th style="width: 80px;">Durée</th>
+                            <th style="width: 100px;">Délai</th>
+                            <th style="width: 60px;">Dr</th>
+                            <th style="width: 150px;">Remarque</th>
+                            <th style="width: 80px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inline-treatmentTableBody">
+                        ${(plan.treatment_sequence || []).map((appointment, index) => 
+                            this.createTreatmentRow(appointment, index)
+                        ).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
         
         return html;
     }
@@ -626,6 +691,57 @@ export class InlineTreatmentDisplay {
             </tr>
         `;
     }
+    
+    createTreatmentCard(appointment, index) {
+        return `
+            <div class="treatment-card" data-index="${index}">
+                <div class="treatment-card-header">
+                    <div class="treatment-card-rdv">RDV ${appointment.rdv || index + 1}</div>
+                    <div class="treatment-card-actions">
+                        <input type="checkbox" class="card-checkbox" onchange="window.inlineTreatment.updateSelectedRows()">
+                        <button class="action-btn delete-btn" onclick="window.inlineTreatment.deleteRow(${index})" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="treatment-card-field">
+                    <div class="treatment-card-label">Traitement</div>
+                    <div class="treatment-card-value editable" contenteditable="true" data-field="traitement" data-index="${index}">
+                        ${this.escapeHtml(appointment.traitement || '')}
+                    </div>
+                </div>
+                
+                <div class="treatment-card-field">
+                    <div class="treatment-card-label">Durée</div>
+                    <div class="treatment-card-value editable" contenteditable="true" data-field="duree" data-index="${index}">
+                        ${this.escapeHtml(appointment.duree || '-')}
+                    </div>
+                </div>
+                
+                <div class="treatment-card-field">
+                    <div class="treatment-card-label">Délai</div>
+                    <div class="treatment-card-value editable" contenteditable="true" data-field="delai" data-index="${index}">
+                        ${this.escapeHtml(appointment.delai || '-')}
+                    </div>
+                </div>
+                
+                <div class="treatment-card-field">
+                    <div class="treatment-card-label">Docteur</div>
+                    <div class="treatment-card-value editable" contenteditable="true" data-field="dr" data-index="${index}">
+                        ${this.escapeHtml(appointment.dr || '-')}
+                    </div>
+                </div>
+                
+                <div class="treatment-card-field">
+                    <div class="treatment-card-label">Remarque</div>
+                    <div class="treatment-card-value editable" contenteditable="true" data-field="remarque" data-index="${index}">
+                        ${this.escapeHtml(appointment.remarque || '-')}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
 
     switchTab(tabName) {
         // Update tab buttons
@@ -639,6 +755,24 @@ export class InlineTreatmentDisplay {
         });
         
         const activeContent = this.currentContainer.querySelector(`#inline-${tabName}-tab`);
+        if (activeContent) {
+            activeContent.style.display = 'block';
+        }
+        
+        this.activeTab = tabName;
+    }
+    
+    switchTabMobile(instanceId, tabName) {
+        // Find the specific container
+        const container = document.querySelector(`[data-instance="${instanceId}"]`);
+        if (!container) return;
+        
+        // Update tab content
+        container.querySelectorAll('.inline-tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        const activeContent = container.querySelector(`#inline-${tabName}-tab`);
         if (activeContent) {
             activeContent.style.display = 'block';
         }
@@ -683,7 +817,9 @@ export class InlineTreatmentDisplay {
     }
 
     updateSelectedRows() {
-        const selected = this.currentContainer.querySelectorAll('.row-checkbox:checked').length;
+        // Support both desktop (.row-checkbox) and mobile (.card-checkbox) checkboxes
+        const checkboxSelector = window.innerWidth < 768 ? '.card-checkbox:checked' : '.row-checkbox:checked';
+        const selected = this.currentContainer.querySelectorAll(checkboxSelector).length;
         const mergeBtn = this.currentContainer.querySelector('.merge-selected-btn');
         
         if (mergeBtn) {
@@ -692,8 +828,10 @@ export class InlineTreatmentDisplay {
     }
 
     mergeSelectedRows() {
-        const selectedRows = Array.from(this.currentContainer.querySelectorAll('.row-checkbox:checked'))
-            .map(cb => parseInt(cb.closest('tr').dataset.index));
+        const isMobile = window.innerWidth < 768;
+        const checkboxSelector = isMobile ? '.card-checkbox:checked' : '.row-checkbox:checked';
+        const selectedRows = Array.from(this.currentContainer.querySelectorAll(checkboxSelector))
+            .map(cb => parseInt(cb.closest(isMobile ? '.treatment-card' : 'tr').dataset.index));
         
         if (selectedRows.length < 2) return;
         
@@ -840,19 +978,39 @@ export class InlineTreatmentDisplay {
     }
 
     refreshTable() {
-        const tbody = this.currentContainer.querySelector('#inline-treatmentTableBody');
-        tbody.innerHTML = '';
+        const isMobile = window.innerWidth < 768;
         
-        this.currentTreatmentPlan.treatment_sequence.forEach((appointment, index) => {
-            tbody.insertAdjacentHTML('beforeend', this.createTreatmentRow(appointment, index));
-        });
-        
-        // Re-add event listeners
-        this.initializeEditListeners(tbody);
-        
-        // Reset select all checkbox
-        const selectAll = this.currentContainer.querySelector('#inline-selectAllRows');
-        if (selectAll) selectAll.checked = false;
+        if (isMobile) {
+            // Refresh mobile cards
+            const cardsContainer = this.currentContainer.querySelector('#mobile-treatmentCards');
+            if (cardsContainer) {
+                cardsContainer.innerHTML = '';
+                
+                this.currentTreatmentPlan.treatment_sequence.forEach((appointment, index) => {
+                    cardsContainer.insertAdjacentHTML('beforeend', this.createTreatmentCard(appointment, index));
+                });
+                
+                // Re-add event listeners for cards
+                this.initializeEditListenersForCards(cardsContainer);
+            }
+        } else {
+            // Refresh desktop table
+            const tbody = this.currentContainer.querySelector('#inline-treatmentTableBody');
+            if (tbody) {
+                tbody.innerHTML = '';
+                
+                this.currentTreatmentPlan.treatment_sequence.forEach((appointment, index) => {
+                    tbody.insertAdjacentHTML('beforeend', this.createTreatmentRow(appointment, index));
+                });
+                
+                // Re-add event listeners
+                this.initializeEditListeners(tbody);
+                
+                // Reset select all checkbox
+                const selectAll = this.currentContainer.querySelector('#inline-selectAllRows');
+                if (selectAll) selectAll.checked = false;
+            }
+        }
         
         // Update merge button state
         this.updateSelectedRows();
@@ -875,6 +1033,27 @@ export class InlineTreatmentDisplay {
                 
                 if (this.currentTreatmentPlan.treatment_sequence[rowIndex]) {
                     this.currentTreatmentPlan.treatment_sequence[rowIndex][field] = value || '-';
+                }
+            });
+            
+            cell.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    cell.blur();
+                }
+            });
+        });
+    }
+    
+    initializeEditListenersForCards(container) {
+        container.querySelectorAll('.editable').forEach(cell => {
+            cell.addEventListener('blur', () => {
+                const field = cell.getAttribute('data-field');
+                const index = parseInt(cell.getAttribute('data-index'));
+                const value = cell.textContent.trim();
+                
+                if (this.currentTreatmentPlan.treatment_sequence[index]) {
+                    this.currentTreatmentPlan.treatment_sequence[index][field] = value || '-';
                 }
             });
             
