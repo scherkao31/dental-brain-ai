@@ -78,7 +78,7 @@ class DentalBrainChat {
                 <li>Diagnostics et traitements dentaires</li>
                 <li>Planification de traitements complexes</li>
                 <li>Conseils cliniques et meilleures pratiques</li>
-                <li>Gestion des cas patients</li>
+                <li>Gestion des cas cliniques</li>
             </ul>
             <p class="welcome-hint">💡 Astuce: Soyez précis dans vos questions pour obtenir des réponses détaillées</p>
         `;

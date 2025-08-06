@@ -70,21 +70,6 @@ class APIClient {
     }
 
     /**
-     * Patient-related API calls
-     */
-    async searchPatients(query) {
-        return await this.get('/api/patients/search', { q: query });
-    }
-
-    async getPatient(patientId) {
-        return await this.get(`/api/patients/${patientId}`);
-    }
-
-    async savePatient(patientData) {
-        return await this.post('/api/patients', patientData);
-    }
-
-    /**
      * Appointment-related API calls
      */
     async getAppointments(date) {
@@ -102,8 +87,8 @@ class APIClient {
         return await this.post('/api/treatments', treatmentData);
     }
 
-    async generateTreatmentPlan(patientId, description) {
-        return await this.post('/api/ai/treatment-plan', { patient_id: patientId, description });
+    async generateTreatmentPlan(description) {
+        return await this.post('/api/ai/treatment-plan', { description });
     }
 }
 

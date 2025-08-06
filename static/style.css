@@ -224,15 +224,6 @@ body {
 }
 
 /* Specific tab welcome colors */
-#swiss-law .welcome-icon {
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
-}
-
-#invisalign .welcome-icon {
-    background: linear-gradient(135deg, #059669, #047857);
-    box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
-}
 
 #office-knowledge .welcome-icon {
     background: linear-gradient(135deg, #7c3aed, #5b21b6);

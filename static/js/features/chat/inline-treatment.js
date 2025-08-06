@@ -259,8 +259,6 @@ export class InlineTreatmentDisplay {
                     </label>
                     <select class="treatment-dropdown-select" id="${instanceId}-select" onchange="window.inlineTreatment.switchTabMobile('${instanceId}', this.value)">
                         <option value="sequence">📋 Séquence de traitement</option>
-                        <option value="finance">💰 Analyse financière</option>
-                        <option value="optimized">📊 Version optimisée</option>
                         <option value="references">📚 Références RAG</option>
                     </select>
                 </div>
@@ -269,12 +267,6 @@ export class InlineTreatmentDisplay {
                 <div class="inline-treatment-tabs">
                     <button class="inline-treatment-tab active" data-tab="sequence" onclick="window.inlineTreatment.switchTab('sequence')">
                         <i class="fas fa-list-ol"></i> Séquence
-                    </button>
-                    <button class="inline-treatment-tab" data-tab="finance" onclick="window.inlineTreatment.switchTab('finance')">
-                        <i class="fas fa-euro-sign"></i> Analyse Financière
-                    </button>
-                    <button class="inline-treatment-tab" data-tab="optimized" onclick="window.inlineTreatment.switchTab('optimized')">
-                        <i class="fas fa-chart-line"></i> Optimisé
                     </button>
                     <button class="inline-treatment-tab" data-tab="references" onclick="window.inlineTreatment.switchTab('references')">
                         <i class="fas fa-book"></i> Références
@@ -285,14 +277,6 @@ export class InlineTreatmentDisplay {
             <div class="inline-treatment-content" data-instance="${instanceId}">
                 <div class="inline-tab-content" id="inline-sequence-tab" style="display: block;">
                     ${this.generateSequenceContent(plan, isApproved)}
-                </div>
-                
-                <div class="inline-tab-content" id="inline-finance-tab" style="display: none;">
-                    ${this.generateFinanceContent(plan)}
-                </div>
-                
-                <div class="inline-tab-content" id="inline-optimized-tab" style="display: none;">
-                    ${this.generateOptimizedContent(plan)}
                 </div>
                 
                 <div class="inline-tab-content" id="inline-references-tab" style="display: none;">
@@ -318,9 +302,6 @@ export class InlineTreatmentDisplay {
                     </button>
                     <button class="inline-toolbar-btn merge-selected-btn" onclick="window.inlineTreatment.mergeSelectedRows()" title="Fusionner les lignes sélectionnées" disabled>
                         <i class="fas fa-compress-arrows-alt"></i> Fusionner
-                    </button>
-                    <button class="inline-toolbar-btn" onclick="window.inlineTreatment.optimizeTreatmentPlan()" title="Optimiser la séquence">
-                        <i class="fas fa-magic"></i> Optimiser
                     </button>
                 </div>
                 
@@ -383,6 +364,12 @@ export class InlineTreatmentDisplay {
         return html;
     }
 
+    // REMOVED: Optimized content functionality
+    generateOptimizedContent(plan) {
+        return '<p class="no-data">Fonctionnalité supprimée</p>';
+    }
+    
+    /* Original code commented out:
     generateOptimizedContent(plan) {
         if (!plan.optimized_versions || plan.optimized_versions.length === 0) {
             return '<p class="no-data">Aucune version optimisée disponible. Cliquez sur "Optimiser" pour générer des alternatives.</p>';
@@ -415,6 +402,7 @@ export class InlineTreatmentDisplay {
         html += '</div>';
         return html;
     }
+    */
 
     generateReferencesContent(plan, references) {
         let html = '<div class="inline-references-content">';
@@ -500,6 +488,12 @@ export class InlineTreatmentDisplay {
         `;
     }
     
+    // REMOVED: Financial analysis functionality
+    generateFinanceContent(plan) {
+        return '<p class="no-data">Fonctionnalité supprimée</p>';
+    }
+    
+    /* Original code commented out:
     generateFinanceContent(plan) {
         let html = '<div class="inline-finance-content">';
         
@@ -644,6 +638,7 @@ export class InlineTreatmentDisplay {
         
         return html;
     }
+    */
     
     generateBreakdownTable(breakdown) {
         const formatCurrency = window.pricingConfig.formatCurrency || ((val) => `${val} CHF`);
@@ -881,6 +876,13 @@ export class InlineTreatmentDisplay {
         this.refreshTable();
     }
 
+    // REMOVED: Optimization functionality
+    async optimizeTreatmentPlan() {
+        window.showNotification('info', 'Fonctionnalité supprimée');
+        return;
+    }
+    
+    /* Original code commented out:
     async optimizeTreatmentPlan() {
         // Call the optimization API
         try {
@@ -890,8 +892,7 @@ export class InlineTreatmentDisplay {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    treatment_plan: this.currentTreatmentPlan,
-                    patient_id: window.currentPatientId
+                    treatment_plan: this.currentTreatmentPlan
                 })
             });
             
@@ -912,6 +913,7 @@ export class InlineTreatmentDisplay {
             window.showNotification('error', 'Erreur lors de l\'optimisation');
         }
     }
+    */
 
     async approveTreatmentPlan() {
         if (!window.currentConversationId) {
@@ -1132,25 +1134,18 @@ export class InlineTreatmentDisplay {
     }
     
     
+    // REMOVED: Financial optimization functionality
     optimizeFinancially(value) {
-        const valueText = document.getElementById('inline-optimizerValue');
-        const impactEl = document.getElementById('inline-optimizerImpact');
-        
-        let mode = 'Premium';
-        if (value < 40) mode = 'Économique';
-        else if (value < 80) mode = 'Équilibré';
-        
-        if (valueText) {
-            valueText.querySelector('.value-text').textContent = `${mode} (${value}%)`;
-        }
-        
-        if (impactEl) {
-            const impact = Math.round((100 - value) * 50); // Simple calculation
-            impactEl.style.display = value < 100 ? 'block' : 'none';
-            impactEl.querySelector('.impact-value').textContent = `-${impact} CHF`;
-        }
+        // Function removed
     }
     
+    // REMOVED: Financial charts functionality
+    initializeFinancialCharts(financials) {
+        // Function removed
+        return;
+    }
+    
+    /* Original code commented out:
     initializeFinancialCharts(financials) {
         if (!window.Chart) return;
         
@@ -1265,6 +1260,7 @@ export class InlineTreatmentDisplay {
             });
         }
     }
+    */
 }
 
 // Create and export instance

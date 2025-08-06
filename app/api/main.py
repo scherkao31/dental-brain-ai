@@ -64,17 +64,18 @@ def reindex_knowledge():
             'message': str(e)
         }), 500
 
-@main_bp.route('/patients')
-@login_required
-def patients():
-    """Serve the patients management page"""
-    return render_template('patients.html')
 
 @main_bp.route('/chat')
 @login_required
 def chat():
     """Serve the chat interface"""
     return render_template('chat.html')
+
+@main_bp.route('/data')
+@login_required
+def data():
+    """Serve the data management page"""
+    return render_template('data.html')
 
 @main_bp.route('/static/<path:filename>')
 def serve_static(filename):

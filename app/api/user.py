@@ -107,7 +107,7 @@ def get_conversations():
         
         return jsonify({
             'status': 'success',
-            'conversations': [conv.to_dict(summary=True, include_patient=True) for conv in conversations]
+            'conversations': [conv.to_dict(summary=True) for conv in conversations]
         })
         
     except Exception as e:
@@ -137,7 +137,7 @@ def get_conversation(conversation_id):
         
         return jsonify({
             'status': 'success',
-            'conversation': conversation.to_dict(include_patient=True),
+            'conversation': conversation.to_dict(),
             'messages': [msg.to_dict() for msg in messages]
         })
         
@@ -302,63 +302,6 @@ def update_settings():
         return jsonify({
             'status': 'success',
             'settings': current_user.settings
-        })
-        
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-@user_bp.route('/conversations/<int:conversation_id>/patient', methods=['PUT'])
-@login_required
-def link_patient_to_conversation(conversation_id):
-    """Link or update patient association with a conversation"""
-    try:
-        from app.models import Patient
-        from datetime import datetime
-        
-        conversation = Conversation.query.filter_by(
-            id=conversation_id,
-            user_id=current_user.id
-        ).first()
-        
-        if not conversation:
-            return jsonify({
-                'status': 'error',
-                'message': 'Conversation non trouvée'
-            }), 404
-        
-        data = request.json
-        patient_id = data.get('patient_id')
-        
-        if patient_id:
-            # Verify patient belongs to current user
-            patient = Patient.query.filter_by(
-                id=patient_id,
-                user_id=current_user.id
-            ).first()
-            
-            if not patient:
-                return jsonify({
-                    'status': 'error',
-                    'message': 'Patient non trouvé'
-                }), 404
-            
-            conversation.patient_id = patient_id
-            # Update patient's last visit
-            patient.last_visit = datetime.utcnow()
-        else:
-            # Remove patient association
-            conversation.patient_id = None
-        
-        # Update case metadata
-        conversation.update_case_metadata()
-        db.session.commit()
-        
-        return jsonify({
-            'status': 'success',
-            'conversation': conversation.to_dict(include_patient=True)
         })
         
     except Exception as e:

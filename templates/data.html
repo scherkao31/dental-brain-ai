@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Données - Dental Brain AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/data-management.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="data-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='/'">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour au chat
+                </button>
+                <h1><i class="fas fa-database"></i> Base de Connaissances</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="dataSearch" placeholder="Rechercher dans les données..." onkeyup="searchData(event)">
+                </div>
+                <button class="reindex-btn" onclick="reindexData()" title="Réindexer toutes les données">
+                    <i class="fas fa-sync-alt"></i>
+                    Réindexer
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="data-content">
+            <!-- Categories Grid -->
+            <div class="categories-section">
+                <h2>Catégories de Données</h2>
+                <div class="categories-grid" id="categoriesGrid">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Items List -->
+            <div class="items-section" id="itemsSection" style="display: none;">
+                <div class="section-header">
+                    <button class="back-to-categories" onclick="showCategories()">
+                        <i class="fas fa-chevron-left"></i>
+                        Catégories
+                    </button>
+                    <h2 id="categoryTitle"></h2>
+                    <button class="add-item-btn" onclick="showAddItemModal()">
+                        <i class="fas fa-plus"></i>
+                        Ajouter
+                    </button>
+                </div>
+                <div class="items-grid" id="itemsGrid">
+                    <!-- Items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Item Detail -->
+            <div class="item-detail-section" id="itemDetailSection" style="display: none;">
+                <div class="detail-header">
+                    <button class="back-to-items" onclick="showItems()">
+                        <i class="fas fa-chevron-left"></i>
+                        Retour
+                    </button>
+                    <h2 id="itemTitle"></h2>
+                    <div class="item-actions">
+                        <button class="edit-btn" onclick="editItem()">
+                            <i class="fas fa-edit"></i>
+                            Modifier
+                        </button>
+                        <button class="delete-btn" onclick="deleteItem()">
+                            <i class="fas fa-trash"></i>
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+                <div class="item-content" id="itemContent">
+                    <!-- Item content will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal" id="editModal" style="display: none;">
+            <div class="modal-content edit-modal-content">
+                <div class="modal-header">
+                    <h3 id="editModalTitle">Modifier l'élément</h3>
+                    <button class="close-btn" onclick="closeEditModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" onsubmit="saveItem(event)">
+                        <!-- Form container will be populated dynamically -->
+                        <div id="editFormContainer">
+                            <!-- Dynamic form fields will be inserted here -->
+                        </div>
+                        
+                        <!-- Toggle for advanced users -->
+                        <div class="advanced-toggle">
+                            <button type="button" class="toggle-json-btn" onclick="toggleJSONView()">
+                                <i class="fas fa-code"></i>
+                                Afficher JSON (Avancé)
+                            </button>
+                        </div>
+                        
+                        <!-- JSON editor (hidden by default) -->
+                        <div class="editor-container" id="jsonEditorContainer" style="display: none;">
+                            <textarea id="jsonEditor" class="json-editor" rows="20"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="secondary-btn" onclick="closeEditModal()">
+                                Annuler
+                            </button>
+                            <button type="submit" class="primary-btn">
+                                <i class="fas fa-save"></i>
+                                Enregistrer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Item Modal -->
+        <div class="modal" id="addItemModal" style="display: none;">
+            <div class="modal-content add-modal-content">
+                <div class="modal-header">
+                    <h3>Ajouter un nouvel élément</h3>
+                    <button class="close-btn" onclick="closeAddItemModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm" onsubmit="createItem(event)">
+                        <div class="form-group">
+                            <label>Type d'élément</label>
+                            <select id="itemTemplate" onchange="loadTemplate()">
+                                <option value="">Choisir un modèle...</option>
+                                <option value="clinical_case">Cas Clinique</option>
+                                <option value="ideal_sequence">Séquence Idéale</option>
+                                <option value="knowledge">Connaissance Générale</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Form container for new items -->
+                        <div id="newItemFormContainer" style="display: none;">
+                            <!-- Dynamic form fields will be inserted here -->
+                        </div>
+                        
+                        <!-- Toggle for advanced users -->
+                        <div class="advanced-toggle" id="newItemAdvancedToggle" style="display: none;">
+                            <button type="button" class="toggle-json-btn" onclick="toggleNewItemJSONView()">
+                                <i class="fas fa-code"></i>
+                                Afficher JSON (Avancé)
+                            </button>
+                        </div>
+                        
+                        <!-- JSON editor (hidden by default) -->
+                        <div class="editor-container" id="newItemJsonContainer" style="display: none;">
+                            <textarea id="newItemEditor" class="json-editor" rows="20" placeholder="Entrez le contenu JSON ici..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="secondary-btn" onclick="closeAddItemModal()">
+                                Annuler
+                            </button>
+                            <button type="submit" class="primary-btn">
+                                <i class="fas fa-plus"></i>
+                                Créer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Container -->
+        <div id="notificationContainer" class="notification-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="{{ url_for('static', filename='js/data-management.js') }}"></script>
+</body>
+</html>

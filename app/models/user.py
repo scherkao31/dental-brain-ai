@@ -50,7 +50,6 @@ class Conversation(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'), nullable=True)  # Optional patient link
     title = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -118,7 +117,7 @@ class Conversation(db.Model):
                     teeth.append(int(match[2]))
             self.teeth_involved = list(set(teeth))
     
-    def to_dict(self, summary=False, include_patient=False):
+    def to_dict(self, summary=False):
         """Convert conversation to dictionary"""
         data = {
             'id': self.id,
@@ -147,20 +146,11 @@ class Conversation(db.Model):
                 'insurance_coverage': self.insurance_coverage
             })
         
-        if include_patient and self.patient:
-            data['patient'] = {
-                'id': self.patient.id,
-                'patient_number': self.patient.patient_number,
-                'display_name': self.patient.display_name
-            }
-        elif self.patient_id:
-            data['patient_id'] = self.patient_id
         
         return data
     
     def __repr__(self):
-        patient_info = f" - Patient {self.patient.patient_number}" if self.patient else ""
-        return f'<Case {self.id}: {self.title}{patient_info}>'
+        return f'<Case {self.id}: {self.title}>'
 
 
 class Message(db.Model):

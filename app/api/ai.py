@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 ai_bp = Blueprint('ai', __name__)
 
-def generate_smart_title(message, patient_name=None):
+def generate_smart_title(message):
     """Generate a smart title using GPT-3.5-turbo for better understanding"""
     try:
         from openai import OpenAI
@@ -30,8 +30,6 @@ Règles:
 
 Génère uniquement le titre, rien d'autre."""
 
-        if patient_name:
-            prompt += f"\nPatient: {patient_name} (optionnel dans le titre)"
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
@@ -80,8 +78,6 @@ Génère uniquement le titre, rien d'autre."""
         else:
             title = base
             
-        if patient_name and len(title) < 40:
-            title = f"{patient_name} - {title}"
             
         if len(title) > 60:
             title = title[:57] + "..."
@@ -107,7 +103,6 @@ def chat():
         conversation_id = data.get('conversation_id')
         user_settings = data.get('settings', {})
         current_treatment_plan = data.get('current_treatment_plan')
-        patient_id = data.get('patient_id')
         
         if not message:
             return jsonify({
@@ -128,20 +123,11 @@ def chat():
                     'message': 'Conversation non trouvée'
                 }), 404
         else:
-            # Get patient name if patient_id is provided
-            patient_name = None
-            if patient_id:
-                from app.models import Patient
-                patient = Patient.query.get(patient_id)
-                if patient:
-                    patient_name = patient.last_name
-            
             # Create new conversation with smart title
-            smart_title = generate_smart_title(message, patient_name)
+            smart_title = generate_smart_title(message)
             conversation = Conversation(
                 user_id=current_user.id,
-                title=smart_title,
-                patient_id=patient_id
+                title=smart_title
             )
             db.session.add(conversation)
             db.session.flush()  # Get the ID
@@ -215,8 +201,6 @@ def chat():
                     
                     # Build better title
                     new_title_parts = []
-                    if conversation.patient:
-                        new_title_parts.append(conversation.patient.last_name)
                     
                     if procedures:
                         # Take first procedure or combine if multiple
