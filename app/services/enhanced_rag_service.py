@@ -22,9 +22,11 @@ class EnhancedRAGService:
         self.openai_client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         
         # Initialize embedding function
+        # Using text-embedding-3-small for better performance (30-50% improvement over ada-002)
+        # Compatible with ChromaDB and provides 1536-dimensional embeddings like ada-002
         self.embedding_function = embedding_functions.OpenAIEmbeddingFunction(
             api_key=os.getenv('OPENAI_API_KEY'),
-            model_name="text-embedding-ada-002"
+            model_name="text-embedding-3-small"
         )
         
         # Collections for different data types
@@ -40,22 +42,37 @@ class EnhancedRAGService:
             # Load enhanced knowledge base
             self._load_enhanced_knowledge_base()
             
-            # Enhanced collection for all data types
+            # Check if we need to migrate to new embedding model
+            collection_name = "enhanced_dental_knowledge_v2"  # New name for text-embedding-3-small
+            old_collection_name = "enhanced_dental_knowledge"
+            
+            # Try to get existing v2 collection
             try:
                 self.enhanced_collection = self.client.get_collection(
-                    name="enhanced_dental_knowledge",
+                    name=collection_name,
                     embedding_function=self.embedding_function
                 )
-                logger.info(f"✅ Loaded enhanced collection with {self.enhanced_collection.count()} items")
+                logger.info(f"✅ Loaded enhanced collection v2 with {self.enhanced_collection.count()} items")
             except:
+                # Create new v2 collection
                 self.enhanced_collection = self.client.create_collection(
-                    name="enhanced_dental_knowledge",
+                    name=collection_name,
                     embedding_function=self.embedding_function
                 )
-                logger.info("📦 Created new enhanced collection")
+                logger.info("📦 Created new enhanced collection v2 with text-embedding-3-small")
                 
-                # Index the enhanced knowledge base
+                # Check if old collection exists and offer migration
+                try:
+                    old_collection = self.client.get_collection(name=old_collection_name)
+                    old_count = old_collection.count()
+                    if old_count > 0:
+                        logger.info(f"⚠️ Found old collection with {old_count} items. Reindexing with new embeddings...")
+                except:
+                    logger.info("No old collection found, starting fresh")
+                
+                # Index the enhanced knowledge base with new embeddings
                 self._index_enhanced_knowledge()
+                logger.info("✅ Knowledge base indexed with text-embedding-3-small embeddings")
             
             return True
             
@@ -489,13 +506,15 @@ class EnhancedRAGService:
     def reindex_all(self):
         """Reindex all enhanced knowledge"""
         try:
+            collection_name = "enhanced_dental_knowledge_v2"  # Use v2 for new embeddings
+            
             # Delete existing collection
             if self.enhanced_collection:
-                self.client.delete_collection(name="enhanced_dental_knowledge")
+                self.client.delete_collection(name=collection_name)
             
-            # Recreate collection
+            # Recreate collection with new embeddings
             self.enhanced_collection = self.client.create_collection(
-                name="enhanced_dental_knowledge",
+                name=collection_name,
                 embedding_function=self.embedding_function
             )
             

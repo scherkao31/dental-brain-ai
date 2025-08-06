@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_login = db.Column(db.DateTime)
     is_active = db.Column(db.Boolean, default=True)
-    theme = db.Column(db.String(20), default='dark')  # 'dark' or 'light'
+    theme = db.Column(db.String(20), default='light')  # 'dark' or 'light'
     settings = db.Column(db.JSON, default=dict)  # User preferences including RAG settings
     
     # Relationships

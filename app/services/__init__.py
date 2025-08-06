@@ -1,16 +1,18 @@
 from app.services.ai_service import AIService
 from app.services.enhanced_rag_service import EnhancedRAGService
 from app.services.data_service import DataService
+from app.services.brain_service import BrainService
 import os
 
 # Service instances
 ai_service = None
 rag_service = None
 data_service = None
+brain_service = None
 
 def init_services(app):
     """Initialize AI services with app context"""
-    global ai_service, rag_service, data_service
+    global ai_service, rag_service, data_service, brain_service
     
     app.logger.info("Starting services initialization...")
     
@@ -49,6 +51,15 @@ def init_services(app):
                 app.logger.exception("DataService initialization error:")
                 data_service = None
         
+        # Initialize Brain service (requires RAG and Data services)
+        if rag_service and data_service:
+            app.logger.info("Initializing Brain service...")
+            brain_service = BrainService(rag_service, data_service)
+            app.logger.info("Brain service initialized successfully")
+        else:
+            app.logger.warning("Brain service not initialized due to missing dependencies")
+            brain_service = None
+        
         app.logger.info("All services initialization completed")
         
     except Exception as e:
@@ -57,7 +68,7 @@ def init_services(app):
         raise
 
 __all__ = [
-    'AIService', 'EnhancedRAGService', 'DataService',
+    'AIService', 'EnhancedRAGService', 'DataService', 'BrainService',
     'init_services',
-    'ai_service', 'rag_service', 'data_service'
+    'ai_service', 'rag_service', 'data_service', 'brain_service'
 ]

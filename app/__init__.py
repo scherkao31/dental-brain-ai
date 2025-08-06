@@ -64,12 +64,14 @@ def create_app(config_name=None):
     # Register blueprints
     from app.api import main_bp, ai_bp, auth_bp, user_bp
     from app.api.data import data_bp
+    from app.api.brain import brain_bp
     
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(user_bp, url_prefix='/api/user')
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
     app.register_blueprint(data_bp, url_prefix='/api/data')
+    app.register_blueprint(brain_bp, url_prefix='/api/brain')
     
     # Initialize services
     with app.app_context():

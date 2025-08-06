@@ -100,6 +100,9 @@
                     <button class="icon-btn" onclick="window.location.href='/data'" title="Gestion des données">
                         <i class="fas fa-database"></i>
                     </button>
+                    <button class="icon-btn" onclick="window.location.href='/brain'" title="AI Brain - Centre d'Intelligence">
+                        <i class="fas fa-brain"></i>
+                    </button>
                     <button class="icon-btn" onclick="showSearchPanel()" title="Rechercher">
                         <i class="fas fa-search"></i>
                     </button>
@@ -220,16 +223,6 @@
                             <label>Nom d'utilisateur</label>
                             <input type="text" id="profileUsername" disabled>
                         </div>
-                        <div class="form-group">
-                            <label>Thème</label>
-                            <div class="theme-toggle">
-                                <label class="switch">
-                                    <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
-                                    <span class="slider"></span>
-                                </label>
-                                <span id="themeLabel" class="theme-label">Mode sombre</span>
-                            </div>
-                        </div>
                         <button type="submit" class="primary-btn">Mettre à jour</button>
                     </form>
                     
@@ -349,6 +342,19 @@
                             <option value="adaptive" selected>Adaptatif - Ajuster selon le contexte</option>
                             <option value="creative">Créatif - Plus de liberté d'interprétation</option>
                         </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Modèle IA</label>
+                        <p class="setting-description">Choisissez entre le mode standard ou le mode pensée</p>
+                        <select id="aiModel" class="setting-select" onchange="updateModelDescription()">
+                            <option value="gpt-4o" selected>Standard (GPT-4o) - Réponses rapides et directes</option>
+                            <option value="o4-mini">Mode Pensée (O4-mini) - Réflexion approfondie pour cas complexes</option>
+                        </select>
+                        <div class="model-info" style="margin-top: 10px; padding: 10px; background: #f0f2f5; border-radius: 6px; font-size: 13px;">
+                            <i class="fas fa-info-circle" style="color: #4f46e5;"></i>
+                            <span id="modelDescription">Le mode standard est rapide et efficace pour la plupart des cas.</span>
+                        </div>
                     </div>
 
                     <div class="setting-group">
@@ -503,6 +509,16 @@
                             </label>
                         </div>
                         
+                        <div class="setting-group">
+                            <label>Thème</label>
+                            <div class="theme-toggle">
+                                <label class="switch">
+                                    <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                                    <span class="slider"></span>
+                                </label>
+                                <span id="themeLabel" class="theme-label">Mode clair</span>
+                            </div>
+                        </div>
                         
                         <div class="setting-group">
                             <label>Devise</label>

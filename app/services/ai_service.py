@@ -264,18 +264,47 @@ class AIService:
         }
     
     def get_completion(self, messages: List[Dict], tab_name: str = None, 
-                      temperature: float = 0.7, max_tokens: int = 2000) -> str:
+                      temperature: float = 0.7, max_tokens: int = 2000, model: str = None) -> str:
         """Get completion from OpenAI"""
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o",
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens
-            )
+            # Use provided model or default to gpt-4o
+            selected_model = model or "gpt-4o"
+            
+            # Adjust parameters for different models
+            if selected_model in ["o1-mini", "o1-preview"]:
+                # O1 models have different behavior - they think internally
+                # O1 models don't support temperature or max_tokens parameters
+                response = self.client.chat.completions.create(
+                    model=selected_model,
+                    messages=messages
+                )
+            elif selected_model == "o4-mini":
+                # Try O4 model - it might be similar to O1
+                try:
+                    # First try without parameters
+                    response = self.client.chat.completions.create(
+                        model=selected_model,
+                        messages=messages
+                    )
+                except Exception as e:
+                    # If that fails, try with max_tokens
+                    logger.warning(f"O4 model failed without params, trying with max_tokens: {e}")
+                    response = self.client.chat.completions.create(
+                        model=selected_model,
+                        messages=messages,
+                        max_tokens=max_tokens
+                    )
+            else:
+                # Standard GPT-4 models
+                response = self.client.chat.completions.create(
+                    model=selected_model,
+                    messages=messages,
+                    temperature=temperature,
+                    max_tokens=max_tokens
+                )
             return response.choices[0].message.content
         except Exception as e:
-            logger.error(f"Error getting AI completion: {str(e)}")
+            logger.error(f"Error getting AI completion with model {model}: {str(e)}")
             raise
     
     def _is_treatment_planning_request(self, message: str) -> bool:
@@ -499,8 +528,10 @@ class AIService:
             'is_treatment_plan': False
         }
     
-    def generate_clinical_protocol(self, treatment_description: str) -> Dict:
+    def generate_clinical_protocol(self, treatment_description: str, settings: Dict = None) -> Dict:
         """Generate detailed clinical protocol for a specific treatment"""
+        if settings is None:
+            settings = {}
         
         # Create specialized protocol generation prompt
         protocol_prompt = """Vous êtes un expert dentiste formateur spécialisé dans la création de protocoles cliniques détaillés.
@@ -531,14 +562,17 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
         ]
         
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o",
-                messages=messages,
-                temperature=0.3,  # Lower temperature for more consistent protocols
-                max_tokens=1500
-            )
+            # Get model from settings, default to gpt-4o
+            model = settings.get('aiModel', 'gpt-4o')
             
-            protocol_content = response.choices[0].message.content
+            # Use get_completion method which handles model-specific settings
+            protocol_content = self.get_completion(
+                messages, 
+                tab_name='dental-brain',
+                temperature=0.3,  # Lower temperature for more consistent protocols
+                max_tokens=1500,
+                model=model
+            )
             
             return {
                 'response': protocol_content,
@@ -593,7 +627,9 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
             {"role": "user", "content": message}
         ]
         
-        response = self.get_completion(messages, tab_name)
+        # Get model from settings, default to gpt-4o
+        model = settings.get('aiModel', 'gpt-4o')
+        response = self.get_completion(messages, tab_name, model=model)
         
         # Update chat history
         llm.chat_history.append({

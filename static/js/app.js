@@ -144,7 +144,7 @@ class DentalBrainApp {
     }
     
     initializeTheme() {
-        const theme = appState.userSettings.theme || 'dark';
+        const theme = appState.userSettings.theme || 'light';
         document.body.setAttribute('data-theme', theme);
         
         const themeToggle = document.getElementById('themeToggle');

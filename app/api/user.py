@@ -234,6 +234,7 @@ def get_settings():
             'idealSequencesCount': 2,
             'knowledgeCount': 2,
             'reasoningMode': 'adaptive',
+            'aiModel': 'gpt-4o',
             'showSimilarityScores': True,
             'explainReasoning': True,
             'autoExpandTreatment': True,
@@ -265,8 +266,8 @@ def update_settings():
         allowed_keys = {
             'ragPreference', 'similarityThreshold', 'clinicalCasesCount',
             'idealSequencesCount', 'knowledgeCount', 'reasoningMode',
-            'showSimilarityScores', 'explainReasoning', 'autoExpandTreatment',
-            'compactView'
+            'aiModel', 'showSimilarityScores', 'explainReasoning', 
+            'autoExpandTreatment', 'compactView'
         }
         
         # Filter only allowed keys
@@ -292,10 +293,18 @@ def update_settings():
             if filtered_settings['reasoningMode'] not in ['strict', 'adaptive', 'creative']:
                 filtered_settings['reasoningMode'] = 'adaptive'
         
+        if 'aiModel' in filtered_settings:
+            if filtered_settings['aiModel'] not in ['gpt-4o', 'o4-mini']:
+                filtered_settings['aiModel'] = 'gpt-4o'
+        
         # Update user settings
         current_settings = current_user.settings or {}
         current_settings.update(filtered_settings)
         current_user.settings = current_settings
+        
+        # Mark the settings field as modified for SQLAlchemy to detect changes
+        from sqlalchemy.orm.attributes import flag_modified
+        flag_modified(current_user, 'settings')
         
         db.session.commit()
         

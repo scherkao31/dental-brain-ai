@@ -77,6 +77,12 @@ def data():
     """Serve the data management page"""
     return render_template('data.html')
 
+@main_bp.route('/brain')
+@login_required
+def brain():
+    """Serve the AI Brain interface"""
+    return render_template('brain.html')
+
 @main_bp.route('/static/<path:filename>')
 def serve_static(filename):
     """Serve static files"""

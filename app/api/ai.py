@@ -146,7 +146,7 @@ def chat():
         # Process message with AI
         if action == 'generate-protocol':
             # Special handling for protocol generation
-            result = ai_service.generate_clinical_protocol(message)
+            result = ai_service.generate_clinical_protocol(message, user_settings)
         else:
             result = ai_service.process_chat_message(
                 message, 

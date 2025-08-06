@@ -1017,7 +1017,7 @@ async function showUserProfile() {
     document.getElementById('profileUsername').value = currentUser.username;
     
     // Set theme toggle state
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     document.getElementById('themeToggle').checked = currentTheme === 'light';
     document.getElementById('themeLabel').textContent = currentTheme === 'light' ? 'Mode clair' : 'Mode sombre';
     
@@ -1317,6 +1317,7 @@ let userSettings = {
     idealSequencesCount: 2,
     knowledgeCount: 2,
     reasoningMode: 'adaptive',
+    aiModel: 'gpt-4o', // Default to standard model
     showSimilarityScores: true,
     explainReasoning: true,
     autoExpandTreatment: true,
@@ -1333,6 +1334,15 @@ function showSettings() {
         document.getElementById('idealSequencesCount').value = userSettings.idealSequencesCount;
         document.getElementById('knowledgeCount').value = userSettings.knowledgeCount;
         document.getElementById('reasoningMode').value = userSettings.reasoningMode;
+        
+        // Set AI model with fallback
+        const aiModelSelect = document.getElementById('aiModel');
+        if (aiModelSelect) {
+            aiModelSelect.value = userSettings.aiModel || 'gpt-4o';
+            // Force the select to update its display
+            aiModelSelect.dispatchEvent(new Event('change'));
+        }
+        
         document.getElementById('showSimilarityScores').checked = userSettings.showSimilarityScores;
         document.getElementById('explainReasoning').checked = userSettings.explainReasoning;
         document.getElementById('autoExpandTreatment').checked = userSettings.autoExpandTreatment;
@@ -1341,6 +1351,7 @@ function showSettings() {
         // Update displays
         updateRagPreferenceDisplay(userSettings.ragPreference);
         updateSimilarityDisplay(userSettings.similarityThreshold);
+        updateModelDescription();
         
         // Show modal
         document.getElementById('settingsModal').style.display = 'flex';
@@ -1374,6 +1385,17 @@ function updateSimilarityDisplay(value) {
     document.getElementById('similarityValue').textContent = `${value}%`;
 }
 
+function updateModelDescription() {
+    const modelSelect = document.getElementById('aiModel');
+    const descriptionElement = document.getElementById('modelDescription');
+    
+    if (modelSelect.value === 'gpt-4o') {
+        descriptionElement.textContent = "Le mode standard est rapide et efficace pour la plupart des cas.";
+    } else if (modelSelect.value === 'o4-mini') {
+        descriptionElement.textContent = "Le mode pensée prend plus de temps mais offre une réflexion approfondie, idéal pour les cas complexes nécessitant une analyse détaillée.";
+    }
+}
+
 async function saveSettings() {
     // Gather settings from UI
     userSettings.ragPreference = parseInt(document.getElementById('ragPreference').value);
@@ -1382,6 +1404,7 @@ async function saveSettings() {
     userSettings.idealSequencesCount = parseInt(document.getElementById('idealSequencesCount').value);
     userSettings.knowledgeCount = parseInt(document.getElementById('knowledgeCount').value);
     userSettings.reasoningMode = document.getElementById('reasoningMode').value;
+    userSettings.aiModel = document.getElementById('aiModel').value;
     userSettings.showSimilarityScores = document.getElementById('showSimilarityScores').checked;
     userSettings.explainReasoning = document.getElementById('explainReasoning').checked;
     userSettings.autoExpandTreatment = document.getElementById('autoExpandTreatment').checked;
@@ -1435,6 +1458,7 @@ function resetSettings() {
     document.getElementById('idealSequencesCount').value = 2;
     document.getElementById('knowledgeCount').value = 2;
     document.getElementById('reasoningMode').value = 'adaptive';
+    document.getElementById('aiModel').value = 'gpt-4o';
     document.getElementById('showSimilarityScores').checked = true;
     document.getElementById('explainReasoning').checked = true;
     document.getElementById('autoExpandTreatment').checked = true;
@@ -1511,7 +1535,7 @@ function showNotification(type, message) {
 // Theme management functions
 function initializeTheme() {
     // Get theme from user profile or localStorage
-    const savedTheme = currentUser?.theme || localStorage.getItem('theme') || 'dark';
+    const savedTheme = currentUser?.theme || localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
     // Update toggle state
@@ -1524,7 +1548,7 @@ function initializeTheme() {
 }
 
 async function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     // Apply theme immediately
