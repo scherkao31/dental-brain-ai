@@ -205,6 +205,9 @@ function displayItemDetail(item) {
     } else if (currentCategory === 'ideal_sequences') {
         console.log('Rendering as ideal sequence (by category)');
         content.innerHTML = renderIdealSequence(displayData);
+    } else if (currentCategory === 'approved_sequences') {
+        console.log('Rendering as approved sequence');
+        content.innerHTML = renderApprovedSequence(displayData);
     } else {
         console.log('Rendering as generic JSON');
         content.innerHTML = renderGenericJSON(displayData);
@@ -552,6 +555,8 @@ function createEditForm(data) {
         container.innerHTML = createClinicalCaseForm(data);
     } else if (currentCategory === 'ideal_sequences' || currentCategory === 'IDEAL_SEQUENCES_ENHANCED') {
         container.innerHTML = createIdealSequenceForm(data);
+    } else if (currentCategory === 'approved_sequences') {
+        container.innerHTML = createApprovedSequenceForm(data);
     } else {
         container.innerHTML = createGenericForm(data);
     }
@@ -854,6 +859,321 @@ function createGenericForm(data) {
     return html;
 }
 
+// Render approved sequence
+function renderApprovedSequence(data) {
+    console.log('Rendering approved sequence with data:', data);
+    
+    let html = '<div class="approved-sequence-content">';
+    
+    // Header with rating and approval info
+    html += `
+        <div class="approval-header" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h3 style="margin: 0 0 10px 0; color: #212529;">
+                        <i class="fas fa-check-circle" style="color: #28a745;"></i>
+                        Séquence Approuvée
+                    </h3>
+                    <p style="margin: 0; color: #212529; font-size: 16px;">
+                        <strong>Prompt original:</strong> ${escapeHtml(data.original_prompt || 'Non spécifié')}
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="rating-display" style="font-size: 24px; color: #ffd700;">
+                        ${generateStars(data.rating || 0)}
+                    </div>
+                    <p style="margin: 5px 0 0 0; font-weight: bold; color: ${data.rating >= 9 ? '#28a745' : '#212529'};">
+                        ${data.rating || 0}/10
+                        ${data.rating >= 9 ? '<br><span style="font-size: 12px; color: #28a745;">(Utilisé pour l\'IA)</span>' : ''}
+                    </p>
+                </div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+                <p style="margin: 0; color: #495057; font-size: 14px;">
+                    <i class="fas fa-user" style="color: #6c757d;"></i> Approuvé par: <strong style="color: #212529;">${escapeHtml(data.approved_by || 'Utilisateur')}</strong>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <i class="fas fa-calendar" style="color: #6c757d;"></i> Date: <strong style="color: #212529;">${formatDate(data.approved_date || data.created_at)}</strong>
+                    ${data.use_in_rag ? '&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fas fa-brain" style="color: #28a745;"></i> <strong style="color: #28a745;">Actif dans RAG</strong>' : ''}
+                </p>
+            </div>
+        </div>
+    `;
+    
+    // Treatment sequence table
+    if (data.sequence && Array.isArray(data.sequence)) {
+        html += `
+            <div class="sequence-section">
+                <h4 style="margin-bottom: 15px; color: #212529;">
+                    <i class="fas fa-list-ol"></i> Séquence de traitement
+                </h4>
+                <table class="treatment-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #e9ecef;">
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">RDV</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">Traitement</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">Durée</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">Délai</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">Dr</th>
+                            <th style="padding: 10px; border: 1px solid #dee2e6; color: #212529; font-weight: 600;">Remarque</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        data.sequence.forEach((step, index) => {
+            html += `
+                <tr style="background: ${index % 2 === 0 ? '#ffffff' : '#f8f9fa'};">
+                    <td style="padding: 10px; border: 1px solid #dee2e6; text-align: center; color: #212529; font-weight: 500;">
+                        ${escapeHtml(step.rdv || '')}
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #dee2e6; color: #212529;">
+                        ${escapeHtml(step.traitement || '')}
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #dee2e6; color: #495057;">
+                        ${escapeHtml(step.duree || '')}
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #dee2e6; color: #495057;">
+                        ${escapeHtml(step.delai || '-')}
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #dee2e6; color: #495057;">
+                        ${escapeHtml(step.dr || '')}
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #dee2e6; color: #495057;">
+                        ${escapeHtml(step.remarque || '-')}
+                    </td>
+                </tr>
+            `;
+        });
+        
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+    
+    // Keywords if available
+    if (data.keywords && data.keywords.length > 0) {
+        html += `
+            <div style="margin-top: 20px;">
+                <h4 style="color: #212529;"><i class="fas fa-tags"></i> Mots-clés</h4>
+                <div>
+                    ${data.keywords.map(k => `<span class="keyword-tag" style="display: inline-block; padding: 5px 10px; margin: 5px; background: #e9ecef; border-radius: 4px; color: #495057; font-weight: 500;">${escapeHtml(k)}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+// Helper function to generate star display
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 10; i++) {
+        if (i <= rating) {
+            stars += '<i class="fas fa-star"></i>';
+        } else {
+            stars += '<i class="far fa-star"></i>';
+        }
+    }
+    return stars;
+}
+
+// Helper function to format date
+function formatDate(dateString) {
+    if (!dateString) return 'Non spécifié';
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    } catch (e) {
+        return dateString;
+    }
+}
+
+// Create approved sequence edit form
+function createApprovedSequenceForm(data) {
+    let html = '';
+    
+    // Basic information section
+    html += `
+        <div class="form-section">
+            <h4 class="form-section-title">
+                <i class="fas fa-info-circle"></i> Informations de base
+            </h4>
+            <div class="form-row">
+                <div class="form-group flex-1">
+                    <label for="original_prompt">Prompt original *</label>
+                    <input type="text" id="original_prompt" name="original_prompt" class="form-control" 
+                           value="${escapeHtml(data.original_prompt || '')}" required>
+                </div>
+                <div class="form-group" style="width: 150px;">
+                    <label for="rating">Note *</label>
+                    <select id="rating" name="rating" class="form-control" required>
+                        ${[1,2,3,4,5,6,7,8,9,10].map(i => 
+                            `<option value="${i}" ${data.rating === i ? 'selected' : ''}>${i}/10</option>`
+                        ).join('')}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group flex-1">
+                    <label for="approved_by">Approuvé par</label>
+                    <input type="text" id="approved_by" name="approved_by" class="form-control" 
+                           value="${escapeHtml(data.approved_by || '')}" readonly>
+                </div>
+                <div class="form-group flex-1">
+                    <label for="approved_date">Date d'approbation</label>
+                    <input type="text" id="approved_date" name="approved_date" class="form-control" 
+                           value="${formatDate(data.approved_date || data.created_at)}" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="use_in_rag" name="use_in_rag" 
+                           ${data.use_in_rag ? 'checked' : ''}>
+                    Utiliser dans le système RAG (pour les suggestions IA)
+                </label>
+            </div>
+        </div>
+    `;
+    
+    // Treatment sequence section
+    html += `
+        <div class="form-section">
+            <h4 class="form-section-title">
+                <i class="fas fa-list-ol"></i> Séquence de traitement
+            </h4>
+            <div class="table-responsive">
+                <table class="form-table">
+                    <thead>
+                        <tr>
+                            <th width="60">RDV</th>
+                            <th>Traitement *</th>
+                            <th width="100">Durée</th>
+                            <th width="100">Délai</th>
+                            <th width="80">Dr</th>
+                            <th>Remarque</th>
+                            <th width="40"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="sequenceTableBody">
+    `;
+    
+    // Add existing sequence steps
+    if (data.sequence && Array.isArray(data.sequence)) {
+        data.sequence.forEach((step, index) => {
+            html += createSequenceRow(step, index);
+        });
+    }
+    
+    html += `
+                    </tbody>
+                </table>
+                <button type="button" class="add-btn" onclick="addSequenceRow()">
+                    <i class="fas fa-plus"></i> Ajouter une étape
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Keywords section
+    html += `
+        <div class="form-section">
+            <h4 class="form-section-title">
+                <i class="fas fa-tags"></i> Mots-clés
+            </h4>
+            <div class="form-group">
+                <label for="keywords">Mots-clés (un par ligne)</label>
+                <textarea id="keywords" name="keywords" class="form-control" rows="3">${(data.keywords || []).join('\n')}</textarea>
+            </div>
+        </div>
+    `;
+    
+    return html;
+}
+
+// Create sequence row for approved sequences
+function createSequenceRow(step = {}, index) {
+    return `
+        <tr>
+            <td>
+                <input type="text" name="sequence[${index}][rdv]" 
+                       value="${escapeHtml(step.rdv || (index + 1).toString())}" 
+                       class="form-control text-center" readonly>
+            </td>
+            <td>
+                <input type="text" name="sequence[${index}][traitement]" 
+                       value="${escapeHtml(step.traitement || '')}" 
+                       class="form-control" required>
+            </td>
+            <td>
+                <input type="text" name="sequence[${index}][duree]" 
+                       value="${escapeHtml(step.duree || '')}" 
+                       class="form-control">
+            </td>
+            <td>
+                <input type="text" name="sequence[${index}][delai]" 
+                       value="${escapeHtml(step.delai || '')}" 
+                       class="form-control">
+            </td>
+            <td>
+                <input type="text" name="sequence[${index}][dr]" 
+                       value="${escapeHtml(step.dr || '')}" 
+                       class="form-control">
+            </td>
+            <td>
+                <input type="text" name="sequence[${index}][remarque]" 
+                       value="${escapeHtml(step.remarque || '')}" 
+                       class="form-control">
+            </td>
+            <td>
+                <button type="button" class="delete-btn" onclick="removeTableRow(this)" title="Supprimer">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `;
+}
+
+// Add sequence row for approved sequences
+function addSequenceRow() {
+    const tbody = document.getElementById('sequenceTableBody');
+    const rowCount = tbody.querySelectorAll('tr').length;
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = createSequenceRow({}, rowCount);
+    tbody.appendChild(newRow);
+    
+    // Update RDV numbers
+    updateSequenceNumbers();
+}
+
+// Update sequence numbers after adding/removing rows
+function updateSequenceNumbers() {
+    const rows = document.querySelectorAll('#sequenceTableBody tr');
+    rows.forEach((row, index) => {
+        const rdvInput = row.querySelector('input[name*="[rdv]"]');
+        if (rdvInput) {
+            rdvInput.value = (index + 1).toString();
+            // Update the name attribute to maintain correct index
+            row.querySelectorAll('input').forEach(input => {
+                if (input.name) {
+                    input.name = input.name.replace(/\[\d+\]/, `[${index}]`);
+                }
+            });
+        }
+    });
+}
+
 // Helper functions
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -869,6 +1189,10 @@ function formatFieldName(name) {
 
 function removeTableRow(button) {
     button.closest('tr').remove();
+    // Update sequence numbers if this is an approved sequence
+    if (currentCategory === 'approved_sequences') {
+        updateSequenceNumbers();
+    }
 }
 
 // Toggle JSON view
@@ -938,6 +1262,39 @@ function collectFormData() {
                 data.treatment_sequence.push(sequence);
             }
         });
+        
+    } else if (currentCategory === 'approved_sequences') {
+        // Basic fields
+        data.original_prompt = document.getElementById('original_prompt')?.value || '';
+        data.rating = parseInt(document.getElementById('rating')?.value) || 0;
+        data.use_in_rag = document.getElementById('use_in_rag')?.checked || false;
+        
+        // Keep readonly fields
+        data.approved_by = document.getElementById('approved_by')?.value || data.approved_by;
+        data.approved_date = data.approved_date; // Keep original date
+        
+        // Collect sequence data
+        const sequenceRows = document.querySelectorAll('#sequenceTableBody tr');
+        data.sequence = [];
+        
+        sequenceRows.forEach((row) => {
+            const step = {
+                rdv: row.querySelector('input[name*="[rdv]"]')?.value || '',
+                traitement: row.querySelector('input[name*="[traitement]"]')?.value || '',
+                duree: row.querySelector('input[name*="[duree]"]')?.value || '',
+                delai: row.querySelector('input[name*="[delai]"]')?.value || '',
+                dr: row.querySelector('input[name*="[dr]"]')?.value || '',
+                remarque: row.querySelector('input[name*="[remarque]"]')?.value || ''
+            };
+            
+            if (step.traitement) {
+                data.sequence.push(step);
+            }
+        });
+        
+        // Keywords
+        const keywordsText = document.getElementById('keywords')?.value || '';
+        data.keywords = keywordsText.split('\n').filter(k => k.trim()).map(k => k.trim());
         
     } else if (currentCategory === 'ideal_sequences' || currentCategory === 'IDEAL_SEQUENCES_ENHANCED') {
         // Basic fields

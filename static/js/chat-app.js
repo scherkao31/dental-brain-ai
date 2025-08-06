@@ -106,36 +106,21 @@ function displayConversations(conversations) {
         let badges = '';
         
         
-        // Case type badge
-        if (conv.case_type) {
-            const typeIcons = {
-                'treatment_planning': 'fa-clipboard-list',
-                'consultation': 'fa-comments',
-                'technical_question': 'fa-question-circle',
-                'follow_up': 'fa-calendar-check'
-            };
-            const typeLabels = {
-                'treatment_planning': 'Plan de traitement',
-                'consultation': 'Consultation',
-                'technical_question': 'Question technique',
-                'follow_up': 'Suivi'
-            };
-            badges += `<span class="case-badge type-badge ${conv.case_type}">
-                <i class="fas ${typeIcons[conv.case_type] || 'fa-file'}"></i> ${typeLabels[conv.case_type] || conv.case_type}
+        // Only show approved badge and rating if available
+        if (conv.treatment_plan_approved) {
+            badges += `<span class="case-badge approved-badge">
+                <i class="fas fa-check-circle"></i> Approuvé
             </span>`;
         }
         
-        // Treatment plan badge
-        if (conv.has_treatment_plan) {
-            if (conv.treatment_plan_approved) {
-                badges += `<span class="case-badge approved-badge">
-                    <i class="fas fa-check-circle"></i> Approuvé
-                </span>`;
-            } else {
-                badges += `<span class="case-badge plan-badge">
-                    <i class="fas fa-file-medical"></i> Séquence
-                </span>`;
-            }
+        // Show rating if available
+        if (conv.sequence_rating && conv.sequence_rating > 0) {
+            const ratingColor = conv.sequence_rating >= 9 ? '#28a745' : 
+                               conv.sequence_rating >= 7 ? '#17a2b8' : 
+                               conv.sequence_rating >= 5 ? '#ffc107' : '#dc3545';
+            badges += `<span class="case-badge rating-badge" style="background: ${ratingColor}20; color: ${ratingColor}; border: 1px solid ${ratingColor};">
+                <i class="fas fa-star"></i> ${conv.sequence_rating}/10
+            </span>`;
         }
         
         // Priority badge
@@ -647,12 +632,14 @@ function showTypingIndicator() {
                 <i class="fas fa-brain"></i>
             </div>
             <div class="message-content">
-                <div class="typing-indicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                </div>
-                <p class="typing-text">Analyse en cours...</p>
+                <p class="typing-text">
+                    <span class="typing-indicator">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </span>
+                    Analyse en cours...
+                </p>
             </div>
         </div>
     `;
@@ -768,9 +755,9 @@ function displayTreatmentPlanSidePanel(plan, references = []) {
             <button class="toolbar-btn" onclick="exportTreatmentPlan()" title="Exporter">
                 <i class="fas fa-download"></i> Exporter
             </button>
-            ${!isApproved && currentConversationId ? `
-                <button class="toolbar-btn approve-btn" onclick="approveTreatmentPlan()" title="Approuver le plan">
-                    <i class="fas fa-check-circle"></i> Approuver
+            ${!isApproved ? `
+                <button class="toolbar-btn approve-btn" onclick="scrollToApprovalSection()" title="Approuver le plan">
+                    <i class="fas fa-check-circle"></i> ${window.currentConversation && window.currentConversation.treatment_plan_approved ? 'Voir approbation' : 'Approuver'}
                 </button>
             ` : ''}
             ${isApproved ? `
@@ -852,6 +839,39 @@ function displayTreatmentPlanSidePanel(plan, references = []) {
         
         html += '</div></div>';
     }
+    
+    // Add approval/grading section
+    html += `
+        <div class="sequence-approval-section">
+            <h4 class="approval-title">
+                <i class="fas fa-star"></i>
+                Évaluer cette séquence
+            </h4>
+            <div class="approval-content">
+                <div class="rating-container">
+                    <label class="rating-label">Noter la qualité de cette séquence :</label>
+                    <div class="rating-stars" id="sequenceRating">
+                        ${[1,2,3,4,5,6,7,8,9,10].map(i => `
+                            <button class="rating-star" data-rating="${i}" onclick="rateSequence(${i})" title="${i}/10">
+                                <i class="far fa-star"></i>
+                            </button>
+                        `).join('')}
+                        <span class="rating-text" id="ratingText">Non évalué</span>
+                    </div>
+                </div>
+                <div class="approval-actions">
+                    <button class="approve-btn" onclick="approveSequence()" id="approveBtn">
+                        <i class="fas fa-check"></i>
+                        Approuver et sauvegarder
+                    </button>
+                    <div class="approval-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Les séquences notées 9/10 ou plus seront utilisées pour améliorer les suggestions futures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
     
     // REMOVED: Financial Analysis Section
     
@@ -2036,6 +2056,36 @@ function formatRelativeDate(date) {
     }
 }
 
+// Helper function to generate star display
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 10; i++) {
+        if (i <= rating) {
+            stars += '<i class="fas fa-star"></i>';
+        } else {
+            stars += '<i class="far fa-star"></i>';
+        }
+    }
+    return stars;
+}
+
+// Helper function to format date
+function formatDate(dateString) {
+    if (!dateString) return 'Non spécifié';
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    } catch (e) {
+        return dateString;
+    }
+}
+
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
@@ -3055,18 +3105,423 @@ function sendSuggestion(text) {
     }
 }
 
-function sendQuickAction(action) {
-    const prompts = {
-        'suggest-plan': 'Suggère un plan de traitement',
-        'generate-note': 'Génère une note clinique pour la consultation',
-        'clinical-tips': 'Donne des conseils cliniques pour ce cas'
-    };
+// Sequence approval functionality
+let currentSequenceRating = 0;
+
+function rateSequence(rating) {
+    currentSequenceRating = rating;
     
-    const prompt = prompts[action];
-    if (prompt) {
-        const input = document.getElementById('chatInput');
-        input.value = prompt;
-        sendMessage();
+    // Update stars display
+    const stars = document.querySelectorAll('.rating-star');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+            star.querySelector('i').className = 'fas fa-star';
+        } else {
+            star.classList.remove('active');
+            star.querySelector('i').className = 'far fa-star';
+        }
+    });
+    
+    // Update rating text
+    const ratingText = document.getElementById('ratingText');
+    if (rating >= 9) {
+        ratingText.textContent = `${rating}/10 - Excellent`;
+        ratingText.style.color = '#10b981';
+    } else if (rating >= 7) {
+        ratingText.textContent = `${rating}/10 - Très bien`;
+        ratingText.style.color = '#3b82f6';
+    } else if (rating >= 5) {
+        ratingText.textContent = `${rating}/10 - Correct`;
+        ratingText.style.color = '#f59e0b';
+    } else {
+        ratingText.textContent = `${rating}/10 - À améliorer`;
+        ratingText.style.color = '#ef4444';
+    }
+    
+    // Enable approve button only if rated
+    const approveBtn = document.getElementById('approveBtn');
+    if (approveBtn) {
+        approveBtn.disabled = false;
     }
 }
+
+// Show approval popup
+function scrollToApprovalSection() {
+    // Check if we have a treatment plan displayed
+    if (!window.currentTreatmentPlan || !window.currentTreatmentPlan.treatment_sequence) {
+        showNotification('warning', 'Aucune séquence de traitement à approuver');
+        return;
+    }
+    
+    // Check if already approved
+    if (window.currentConversation && window.currentConversation.treatment_plan_approved) {
+        showApprovalStatusModal();
+        return;
+    }
+    
+    // Create and show approval modal
+    const modal = document.createElement('div');
+    modal.className = 'modal approval-modal';
+    modal.style.cssText = `
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    `;
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-star"></i> Évaluer la séquence de traitement</h3>
+                <button class="close-btn" onclick="this.closest('.modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="rating-section" style="text-align: center; padding: 20px;">
+                    <p style="margin-bottom: 20px;">Veuillez noter la qualité de cette séquence de traitement :</p>
+                    <div class="star-rating-large" id="modalStarRating">
+                        ${[1,2,3,4,5,6,7,8,9,10].map(i => `
+                            <i class="fas fa-star star-large" 
+                               data-rating="${i}" 
+                               onclick="setModalRating(${i})"
+                               title="${i}/10"></i>
+                        `).join('')}
+                    </div>
+                    <p class="rating-text" id="modalRatingText" style="margin-top: 15px; font-size: 18px;">Non évalué</p>
+                    <p class="approval-info" style="margin-top: 20px; color: #666; font-size: 14px;">
+                        <i class="fas fa-info-circle"></i>
+                        Les séquences notées 9/10 ou plus seront utilisées pour améliorer les suggestions futures
+                    </p>
+                </div>
+                <div class="modal-actions" style="text-align: center; margin-top: 30px;">
+                    <button class="secondary-btn" onclick="this.closest('.modal').remove()">
+                        Annuler
+                    </button>
+                    <button class="primary-btn" id="modalApproveBtn" onclick="approveFromModal()" disabled>
+                        <i class="fas fa-check"></i> Approuver et sauvegarder
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Add click handler to close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+    
+    // Add styles for large stars
+    const style = document.createElement('style');
+    style.textContent = `
+        .star-rating-large {
+            font-size: 36px;
+            color: #ddd;
+        }
+        .star-large {
+            cursor: pointer;
+            transition: color 0.2s;
+            margin: 0 5px;
+        }
+        .star-large:hover {
+            color: #ffa500;
+        }
+        .star-large.filled {
+            color: #ffd700;
+        }
+        .approval-modal .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Show approval status modal for already approved sequences
+function showApprovalStatusModal() {
+    const conv = window.currentConversation;
+    const rating = conv.sequence_rating || 0;
+    const ratingColor = rating >= 9 ? '#28a745' : 
+                       rating >= 7 ? '#17a2b8' : 
+                       rating >= 5 ? '#ffc107' : '#dc3545';
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal approval-modal';
+    modal.style.cssText = `
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    `;
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle" style="color: #28a745;"></i> Séquence déjà approuvée</h3>
+                <button class="close-btn" onclick="this.closest('.modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div class="rating-display" style="font-size: 36px; color: #ffd700; margin-bottom: 20px;">
+                        ${generateStars(rating)}
+                    </div>
+                    <p style="font-size: 24px; font-weight: bold; color: ${ratingColor}; margin-bottom: 10px;">
+                        ${rating}/10
+                    </p>
+                    <p style="color: #666; margin-bottom: 20px;">
+                        Approuvé par <strong>${conv.approved_by || 'Utilisateur'}</strong><br>
+                        le ${formatDate(conv.approval_date)}
+                    </p>
+                    ${conv.approved_sequence_id ? `
+                        <p style="color: #666; font-size: 14px;">
+                            <i class="fas fa-database"></i> 
+                            Séquence sauvegardée ID: ${conv.approved_sequence_id}
+                        </p>
+                    ` : ''}
+                    ${rating >= 9 ? `
+                        <div style="background: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px; padding: 10px; margin-top: 20px;">
+                            <i class="fas fa-brain" style="color: #28a745;"></i>
+                            Cette séquence est utilisée pour améliorer les suggestions IA
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="modal-actions" style="text-align: center; margin-top: 30px;">
+                    <button class="secondary-btn" onclick="showUpdateRatingModal()">
+                        <i class="fas fa-edit"></i> Modifier la note
+                    </button>
+                    <button class="secondary-btn" onclick="removeApproval()">
+                        <i class="fas fa-times"></i> Retirer l'approbation
+                    </button>
+                    <button class="primary-btn" onclick="this.closest('.modal').remove()">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Add click handler to close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// Modal rating system
+let modalRating = 0;
+
+function setModalRating(rating) {
+    modalRating = rating;
+    
+    // Update stars
+    const stars = document.querySelectorAll('#modalStarRating .star-large');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('filled');
+        } else {
+            star.classList.remove('filled');
+        }
+    });
+    
+    // Update text
+    const ratingText = document.getElementById('modalRatingText');
+    if (ratingText) {
+        if (rating >= 9) {
+            ratingText.innerHTML = `<strong>${rating}/10 - Excellent</strong> (Sera utilisé pour l'IA)`;
+            ratingText.style.color = '#28a745';
+        } else if (rating >= 7) {
+            ratingText.innerHTML = `<strong>${rating}/10 - Très bien</strong>`;
+            ratingText.style.color = '#17a2b8';
+        } else if (rating >= 5) {
+            ratingText.innerHTML = `<strong>${rating}/10 - Correct</strong>`;
+            ratingText.style.color = '#ffc107';
+        } else {
+            ratingText.innerHTML = `<strong>${rating}/10 - À améliorer</strong>`;
+            ratingText.style.color = '#dc3545';
+        }
+    }
+    
+    // Enable approve button
+    const approveBtn = document.getElementById('modalApproveBtn');
+    if (approveBtn) {
+        approveBtn.disabled = false;
+    }
+}
+
+async function approveFromModal() {
+    if (!modalRating || !window.currentTreatmentPlan) {
+        showNotification('warning', 'Veuillez noter la séquence');
+        return;
+    }
+    
+    const approveBtn = document.getElementById('modalApproveBtn');
+    approveBtn.disabled = true;
+    approveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sauvegarde...';
+    
+    try {
+        // Get the original prompt
+        let originalPrompt = '';
+        
+        if (window.currentTreatmentPlan.consultation_text) {
+            originalPrompt = window.currentTreatmentPlan.consultation_text;
+        } else if (window.currentTreatmentPlan.case_title) {
+            originalPrompt = window.currentTreatmentPlan.case_title;
+        } else {
+            // Try to extract from the last user message
+            const userMessages = document.querySelectorAll('.message.user .message-content');
+            if (userMessages.length > 0) {
+                originalPrompt = userMessages[userMessages.length - 1].textContent.trim();
+            }
+        }
+        
+        // Prepare the approved sequence data
+        const approvedSequence = {
+            sequence: window.currentTreatmentPlan.treatment_sequence,
+            rating: modalRating,
+            original_prompt: originalPrompt,
+            keywords: [],
+            conversation_id: currentConversationId // Include conversation ID
+        };
+        
+        const response = await fetch('/api/data/approved-sequence', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(approvedSequence)
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            showNotification('success', `Séquence approuvée avec une note de ${modalRating}/10`);
+            
+            // If high quality, notify about RAG usage
+            if (modalRating >= 9) {
+                showNotification('info', 'Cette séquence sera utilisée pour améliorer les suggestions futures');
+            }
+            
+            // Close modal
+            document.querySelector('.approval-modal').remove();
+            
+            // Reload conversation to get updated data
+            if (currentConversationId) {
+                await loadConversation(currentConversationId);
+            }
+            
+            // Reload conversations list to show rating
+            await loadConversations();
+        } else {
+            throw new Error(result.message || 'Erreur lors de la sauvegarde');
+        }
+    } catch (error) {
+        console.error('Error approving sequence:', error);
+        showNotification('error', 'Erreur lors de la sauvegarde de la séquence');
+        approveBtn.disabled = false;
+        approveBtn.innerHTML = '<i class="fas fa-check"></i> Approuver et sauvegarder';
+    }
+}
+
+async function approveSequence() {
+    if (!currentSequenceRating || !window.currentTreatmentPlan) {
+        showNotification('warning', 'Veuillez d\'abord noter la séquence');
+        return;
+    }
+    
+    const approveBtn = document.getElementById('approveBtn');
+    approveBtn.disabled = true;
+    approveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sauvegarde...';
+    
+    try {
+        // Get the original prompt from the treatment plan or the conversation
+        let originalPrompt = '';
+        
+        if (window.currentTreatmentPlan.consultation_text) {
+            originalPrompt = window.currentTreatmentPlan.consultation_text;
+        } else if (window.currentTreatmentPlan.case_title) {
+            originalPrompt = window.currentTreatmentPlan.case_title;
+        } else {
+            // Try to extract from the first user message
+            const userMessages = document.querySelectorAll('.message.user .message-content');
+            if (userMessages.length > 0) {
+                originalPrompt = userMessages[userMessages.length - 1].textContent.trim();
+            }
+        }
+        
+        // Prepare the approved sequence data matching the API expectations
+        const approvedSequence = {
+            sequence: window.currentTreatmentPlan.treatment_sequence,
+            rating: currentSequenceRating,
+            original_prompt: originalPrompt,
+            keywords: []
+        };
+        
+        const response = await fetch('/api/data/approved-sequence', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(approvedSequence)
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            approveBtn.innerHTML = '<i class="fas fa-check"></i> Approuvé et sauvegardé';
+            approveBtn.classList.add('approved');
+            showNotification('success', `Séquence approuvée avec une note de ${currentSequenceRating}/10`);
+            
+            // If high quality, notify about RAG usage
+            if (currentSequenceRating >= 9) {
+                showNotification('info', 'Cette séquence sera utilisée pour améliorer les suggestions futures');
+            }
+        } else {
+            throw new Error(result.message || 'Erreur lors de la sauvegarde');
+        }
+    } catch (error) {
+        console.error('Error approving sequence:', error);
+        showNotification('error', 'Erreur lors de la sauvegarde de la séquence');
+        approveBtn.disabled = false;
+        approveBtn.innerHTML = '<i class="fas fa-check"></i> Approuver et sauvegarder';
+    }
+}
+
+// Quick action functionality - REMOVED
+// function sendQuickAction(action) {
+//     const prompts = {
+//         'suggest-plan': 'Suggère un plan de traitement',
+//         'generate-note': 'Génère une note clinique pour la consultation',
+//         'clinical-tips': 'Donne des conseils cliniques pour ce cas'
+//     };
+//     
+//     const prompt = prompts[action];
+//     if (prompt) {
+//         const input = document.getElementById('chatInput');
+//         input.value = prompt;
+//         sendMessage();
+//     }
+// }
 

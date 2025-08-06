@@ -61,6 +61,8 @@ class Conversation(db.Model):
     treatment_plan_approved = db.Column(db.Boolean, default=False)
     approval_date = db.Column(db.DateTime)
     approved_by = db.Column(db.String(100))  # Name of approver
+    sequence_rating = db.Column(db.Integer)  # Rating given to the sequence (1-10)
+    approved_sequence_id = db.Column(db.String(100))  # ID of the approved sequence in data management
     
     # Summary of what was discussed/done
     case_summary = db.Column(db.Text)  # Auto-generated or manual summary
@@ -128,6 +130,8 @@ class Conversation(db.Model):
             'case_type': self.case_type,
             'has_treatment_plan': self.has_treatment_plan,
             'treatment_plan_approved': self.treatment_plan_approved,
+            'sequence_rating': self.sequence_rating,
+            'approved_sequence_id': self.approved_sequence_id,
             'status': self.status,
             'priority': self.priority,
             'tags': self.tags

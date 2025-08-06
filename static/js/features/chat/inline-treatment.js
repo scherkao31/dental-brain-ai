@@ -306,18 +306,18 @@ export class InlineTreatmentDisplay {
                 </div>
                 
                 <div class="inline-toolbar-group">
+                    <button class="inline-toolbar-btn" onclick="window.inlineTreatment.exportTreatmentPlan()" title="Exporter le plan">
+                        <i class="fas fa-download"></i> Exporter
+                    </button>
                     ${!isApproved ? `
-                        <button class="inline-toolbar-btn primary" onclick="window.inlineTreatment.approveTreatmentPlan()" title="Approuver le plan">
-                            <i class="fas fa-check-circle"></i> Approuver
+                        <button class="inline-toolbar-btn primary" onclick="window.scrollToApprovalSection()" title="Approuver le plan">
+                            <i class="fas fa-check-circle"></i> ${window.currentConversation && window.currentConversation.treatment_plan_approved ? 'Voir approbation' : 'Approuver'}
                         </button>
                     ` : `
                         <span class="approved-badge">
                             <i class="fas fa-check-circle"></i> Plan approuvé
                         </span>
                     `}
-                    <button class="inline-toolbar-btn" onclick="window.inlineTreatment.exportTreatmentPlan()" title="Exporter le plan">
-                        <i class="fas fa-download"></i> Exporter
-                    </button>
                 </div>
             </div>
         `;

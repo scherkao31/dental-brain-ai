@@ -5527,6 +5527,57 @@
       ],
       "searchable_content": "Séquence idéale: Extraction complexe x 2\nSéquence idéale étendue: Extraction complexe x 2\nTraitements: Extraction; Ctl post op\nTraitements étendus: Extraction; Ctl post op\nCatégories: Chirurgie, Contrôles",
       "content": "Séquence idéale: Extraction complexe x 2\nSéquence idéale étendue: Extraction complexe x 2\nTraitements: Extraction; Ctl post op\nTraitements étendus: Extraction; Ctl post op\nCatégories: Chirurgie, Contrôles"
+    },
+    {
+      "type": "approved_sequence",
+      "source": "user_approved",
+      "filename": "approved_sequence_20250806_143500.json",
+      "title": "Approved: 26 CC (Couronne céramique)",
+      "consultation_text": "26 CC (Couronne céramique)",
+      "treatment_sequence": [
+        {
+          "rdv": "1",
+          "traitement": "26 Préparation de la dent pour couronne",
+          "duree": "1h30",
+          "delai": "",
+          "dr": "NB",
+          "date": "",
+          "remarque": "Anesthésie, préparation, empreinte"
+        },
+        {
+          "rdv": "2",
+          "traitement": "26 Essayage de la couronne",
+          "duree": "30 min",
+          "delai": "2 sem",
+          "dr": "NB",
+          "date": "",
+          "remarque": "Ajustements si nécessaire"
+        },
+        {
+          "rdv": "3",
+          "traitement": "26 Scellement définitif de la couronne",
+          "duree": "45 min",
+          "delai": "1 jour",
+          "dr": "NB",
+          "date": "",
+          "remarque": "Contrôle de l'occlusion"
+        }
+      ],
+      "rating": 9,
+      "approved_by": "Dr. Martin",
+      "approved_date": "2025-08-06T14:35:00",
+      "keywords": [
+        "couronne",
+        "céramique",
+        "26",
+        "prothèse"
+      ],
+      "searchable_content": "Consultation: 26 CC (Couronne céramique)\nSéquence approuvée avec note 9/10\nRDV 1: 26 Préparation de la dent pour couronne\nRDV 2: 26 Essayage de la couronne\nRDV 3: 26 Scellement définitif de la couronne"
     }
-  ]
+  ],
+  "metadata": {
+    "last_updated": "2025-08-06T14:35:49.308319",
+    "total_entries": 51,
+    "approved_sequences": 1
+  }
 }

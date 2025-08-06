@@ -40,6 +40,13 @@ class DataService:
                 'icon': 'fa-brain',
                 'path': 'ENHANCED_KNOWLEDGE',
                 'file_pattern': '*.json'
+            },
+            'approved_sequences': {
+                'name': 'Séquences Approuvées',
+                'description': 'Séquences de traitement validées par les utilisateurs',
+                'icon': 'fa-star',
+                'path': 'APPROVED_SEQUENCES',
+                'file_pattern': 'approved_sequence_*.json'
             }
         }
 
@@ -273,6 +280,13 @@ class DataService:
                 summary['title'] = data.get('title', filename.replace('.json', ''))
                 summary['description'] = str(data)[:200] + '...'
         
+        elif category == 'approved_sequences':
+            summary['title'] = data.get('original_prompt', 'Séquence approuvée')
+            summary['description'] = f"Note: {data.get('rating', 0)}/10 - {data.get('approved_by', 'Utilisateur')}"
+            summary['rating'] = data.get('rating', 0)
+            summary['approved_date'] = data.get('approved_date', '')
+            summary['tags'] = data.get('keywords', [])
+        
         return summary
 
     def _extract_first_content(self, data: Any) -> str:
@@ -305,6 +319,11 @@ class DataService:
             # Use timestamp for ideal sequences
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             return f"ideal_sequence_custom_{timestamp}"
+        
+        elif category == 'approved_sequences':
+            # Use timestamp for approved sequences
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            return f"approved_sequence_{timestamp}"
         
         else:
             # Use UUID for other categories
