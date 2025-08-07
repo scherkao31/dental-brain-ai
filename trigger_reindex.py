@@ -6,7 +6,7 @@ import json
 
 def trigger_reindex():
     """Trigger the reindex endpoint"""
-    url = "http://localhost:5001/api/reindex"
+    url = "http://localhost:5010/reindex"
     
     try:
         print("Triggering knowledge base reindexing...")

@@ -223,7 +223,8 @@ def chat():
             'status': 'success',
             'conversation_id': conversation.id,
             'response': result['response'],
-            'references': result.get('references', [])
+            'references': result.get('references', []),
+            'metadata': metadata  # Include metadata for frontend
         }
         
         # Add treatment plan data if available

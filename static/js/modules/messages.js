@@ -364,7 +364,12 @@ class MessageManager {
                 
                 // Add assistant response
                 this.hideTypingIndicator();
-                this.addMessageToUI('assistant', result.response, result.metadata);
+                // Ensure metadata includes references if they exist
+                const metadata = result.metadata || {};
+                if (result.references && result.references.length > 0) {
+                    metadata.references = result.references;
+                }
+                this.addMessageToUI('assistant', result.response, metadata);
                 
                 // Update treatment plan if present
                 if (result.metadata?.treatment_plan) {

@@ -39,6 +39,11 @@ class SpecializedLLM:
         similarity_threshold = settings.get('similarityThreshold', 60) / 100.0
         rag_preference = settings.get('ragPreference', 0)
         
+        # Debug: Log approved sequences before filtering
+        logger.info(f"Approved sequences before filtering: {len(rag_results.get('approved_sequences', []))}")
+        for seq in rag_results.get('approved_sequences', []):
+            logger.info(f"  - {seq.get('title', 'No title')} (score: {seq.get('similarity_score', 0):.3f})")
+        
         # Filter results based on similarity threshold
         filtered_results = {
             'clinical_cases': [
@@ -58,6 +63,9 @@ class SpecializedLLM:
                 if knowledge['similarity_score'] >= similarity_threshold
             ]
         }
+        
+        # Debug: Log approved sequences after filtering
+        logger.info(f"Approved sequences after filtering (threshold: {similarity_threshold:.2f}): {len(filtered_results['approved_sequences'])}")
         
         # Apply RAG preference weighting
         # -100 = strong preference for clinical cases
@@ -846,6 +854,10 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
         # Use filtered results if available, otherwise use original
         results_to_use = rag_results.get('filtered', rag_results)
         original_results = rag_results.get('original', rag_results)
+        
+        # Debug logging
+        logger.info(f"Formatting references - RAG results keys: {list(results_to_use.keys())}")
+        logger.info(f"Approved sequences count: {len(results_to_use.get('approved_sequences', []))}")
         
         # Add clinical cases
         for case in results_to_use.get('clinical_cases', []):
