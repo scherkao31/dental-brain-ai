@@ -233,6 +233,15 @@ function addMessageToUI(role, content, metadata = null) {
         const tabbedOutput = createTabbedOutput(content, metadata);
         contentDiv.appendChild(tabbedOutput);
         
+        // Add references if available
+        if (metadata?.references && metadata.references.length > 0) {
+            console.log('Creating references element for:', metadata.references);
+            const referencesElement = createReferencesElement(metadata.references);
+            contentDiv.appendChild(referencesElement);
+        } else {
+            console.log('No references to display:', metadata?.references);
+        }
+        
         // Display treatment plan if available
         if (metadata?.is_treatment_plan && metadata?.treatment_plan) {
             setTimeout(() => {
@@ -268,7 +277,7 @@ function createReferencesElement(references) {
         
         // Show similarity score only if setting is enabled
         let similarityDisplay = '';
-        if (userSettings.showSimilarityScores && ref.similarity_score !== undefined) {
+        if (window.userSettings.showSimilarityScores && ref.similarity_score !== undefined) {
             const score = Math.round(ref.similarity_score * 100);
             const scoreClass = score >= 90 ? 'high' : score >= 70 ? 'medium' : 'low';
             similarityDisplay = `<span class="ref-score score-${scoreClass}">${score}%</span>`;
@@ -290,7 +299,8 @@ function getRefTypeIcon(type) {
     const icons = {
         'clinical_case': '📋',
         'ideal_sequence': '📝',
-        'general_knowledge': '📚'
+        'general_knowledge': '📚',
+        'approved_sequence': '✅'
     };
     return icons[type] || '📄';
 }
@@ -575,7 +585,7 @@ async function sendMessage(action = null) {
                 message: message,
                 conversation_id: currentConversationId,
                 tab: 'dental-brain',
-                settings: userSettings,
+                settings: window.userSettings,
                 ...(action && { action }),
                 ...(window.currentTreatmentPlan && { current_treatment_plan: window.currentTreatmentPlan }),
             })
@@ -601,6 +611,8 @@ async function sendMessage(action = null) {
             };
             
             // Debug logging
+            console.log('API Response:', result);
+            console.log('References:', result.references);
             if (result.is_treatment_plan) {
                 console.log('Treatment plan detected in response:', result.treatment_plan);
             }
@@ -805,7 +817,7 @@ function displayTreatmentPlanSidePanel(plan, references = []) {
             
             // Build score section based on settings
             let scoreSection = '';
-            if (userSettings.showSimilarityScores && ref.similarity_score !== undefined) {
+            if (window.userSettings.showSimilarityScores && ref.similarity_score !== undefined) {
                 const score = Math.round(ref.similarity_score * 100);
                 const scoreClass = score >= 90 ? 'high' : score >= 70 ? 'medium' : 'low';
                 scoreSection = `
@@ -878,7 +890,7 @@ function displayTreatmentPlanSidePanel(plan, references = []) {
     content.innerHTML = html;
     
     // Only show the panel if autoExpandTreatment is enabled
-    if (userSettings.autoExpandTreatment) {
+    if (window.userSettings.autoExpandTreatment) {
         showTreatmentPanel();
     } else {
         // Add a notification that a treatment plan is available
@@ -1310,7 +1322,8 @@ function toggleSidebar() {
 }
 
 // Settings Management
-let userSettings = {
+// Make window.userSettings globally available
+window.window.userSettings = {
     ragPreference: 0, // -100 to 100 (-100 = clinical cases, 0 = balanced, 100 = ideal sequences)
     similarityThreshold: 60,
     clinicalCasesCount: 3,
@@ -1328,29 +1341,29 @@ function showSettings() {
     // Load current settings first
     loadSettings().then(() => {
         // Update UI with current settings
-        document.getElementById('ragPreference').value = userSettings.ragPreference;
-        document.getElementById('similarityThreshold').value = userSettings.similarityThreshold;
-        document.getElementById('clinicalCasesCount').value = userSettings.clinicalCasesCount;
-        document.getElementById('idealSequencesCount').value = userSettings.idealSequencesCount;
-        document.getElementById('knowledgeCount').value = userSettings.knowledgeCount;
-        document.getElementById('reasoningMode').value = userSettings.reasoningMode;
+        document.getElementById('ragPreference').value = window.userSettings.ragPreference;
+        document.getElementById('similarityThreshold').value = window.userSettings.similarityThreshold;
+        document.getElementById('clinicalCasesCount').value = window.userSettings.clinicalCasesCount;
+        document.getElementById('idealSequencesCount').value = window.userSettings.idealSequencesCount;
+        document.getElementById('knowledgeCount').value = window.userSettings.knowledgeCount;
+        document.getElementById('reasoningMode').value = window.userSettings.reasoningMode;
         
         // Set AI model with fallback
         const aiModelSelect = document.getElementById('aiModel');
         if (aiModelSelect) {
-            aiModelSelect.value = userSettings.aiModel || 'gpt-4o';
+            aiModelSelect.value = window.userSettings.aiModel || 'gpt-4o';
             // Force the select to update its display
             aiModelSelect.dispatchEvent(new Event('change'));
         }
         
-        document.getElementById('showSimilarityScores').checked = userSettings.showSimilarityScores;
-        document.getElementById('explainReasoning').checked = userSettings.explainReasoning;
-        document.getElementById('autoExpandTreatment').checked = userSettings.autoExpandTreatment;
-        document.getElementById('compactView').checked = userSettings.compactView;
+        document.getElementById('showSimilarityScores').checked = window.userSettings.showSimilarityScores;
+        document.getElementById('explainReasoning').checked = window.userSettings.explainReasoning;
+        document.getElementById('autoExpandTreatment').checked = window.userSettings.autoExpandTreatment;
+        document.getElementById('compactView').checked = window.userSettings.compactView;
         
         // Update displays
-        updateRagPreferenceDisplay(userSettings.ragPreference);
-        updateSimilarityDisplay(userSettings.similarityThreshold);
+        updateRagPreferenceDisplay(window.userSettings.ragPreference);
+        updateSimilarityDisplay(window.userSettings.similarityThreshold);
         updateModelDescription();
         
         // Show modal
@@ -1398,17 +1411,17 @@ function updateModelDescription() {
 
 async function saveSettings() {
     // Gather settings from UI
-    userSettings.ragPreference = parseInt(document.getElementById('ragPreference').value);
-    userSettings.similarityThreshold = parseInt(document.getElementById('similarityThreshold').value);
-    userSettings.clinicalCasesCount = parseInt(document.getElementById('clinicalCasesCount').value);
-    userSettings.idealSequencesCount = parseInt(document.getElementById('idealSequencesCount').value);
-    userSettings.knowledgeCount = parseInt(document.getElementById('knowledgeCount').value);
-    userSettings.reasoningMode = document.getElementById('reasoningMode').value;
-    userSettings.aiModel = document.getElementById('aiModel').value;
-    userSettings.showSimilarityScores = document.getElementById('showSimilarityScores').checked;
-    userSettings.explainReasoning = document.getElementById('explainReasoning').checked;
-    userSettings.autoExpandTreatment = document.getElementById('autoExpandTreatment').checked;
-    userSettings.compactView = document.getElementById('compactView').checked;
+    window.userSettings.ragPreference = parseInt(document.getElementById('ragPreference').value);
+    window.userSettings.similarityThreshold = parseInt(document.getElementById('similarityThreshold').value);
+    window.userSettings.clinicalCasesCount = parseInt(document.getElementById('clinicalCasesCount').value);
+    window.userSettings.idealSequencesCount = parseInt(document.getElementById('idealSequencesCount').value);
+    window.userSettings.knowledgeCount = parseInt(document.getElementById('knowledgeCount').value);
+    window.userSettings.reasoningMode = document.getElementById('reasoningMode').value;
+    window.userSettings.aiModel = document.getElementById('aiModel').value;
+    window.userSettings.showSimilarityScores = document.getElementById('showSimilarityScores').checked;
+    window.userSettings.explainReasoning = document.getElementById('explainReasoning').checked;
+    window.userSettings.autoExpandTreatment = document.getElementById('autoExpandTreatment').checked;
+    window.userSettings.compactView = document.getElementById('compactView').checked;
     
     try {
         const response = await fetch('/api/user/settings', {
@@ -1416,7 +1429,7 @@ async function saveSettings() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userSettings)
+            body: JSON.stringify(window.userSettings)
         });
         
         const data = await response.json();
@@ -1442,7 +1455,7 @@ async function loadSettings() {
         const data = await response.json();
         
         if (data.status === 'success' && data.settings) {
-            userSettings = { ...userSettings, ...data.settings };
+            window.userSettings = { ...window.userSettings, ...data.settings };
             applyDisplaySettings();
         }
     } catch (error) {
@@ -1473,7 +1486,7 @@ function resetSettings() {
 
 function applyDisplaySettings() {
     // Apply compact view
-    if (userSettings.compactView) {
+    if (window.userSettings.compactView) {
         document.body.classList.add('compact-view');
     } else {
         document.body.classList.remove('compact-view');
@@ -2710,7 +2723,7 @@ async function generateProtocol(sessionId, sessionData) {
                 message: prompt,
                 tab: 'dental-brain',
                 action: 'generate-protocol',
-                settings: userSettings
+                settings: window.userSettings
             })
         });
         

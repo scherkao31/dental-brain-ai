@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test UI References</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { margin: 20px 0; padding: 10px; background: #f0f0f0; }
+        button { padding: 10px 20px; margin: 10px 0; }
+        .response { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
+        .references { margin-top: 10px; padding: 10px; background: #e9f5ff; }
+    </style>
+</head>
+<body>
+    <h1>Test UI References for "26 CC"</h1>
+    
+    <div class="status" id="status">Ready to test...</div>
+    
+    <button onclick="testAPI()">Test API Directly</button>
+    <button onclick="openApp()">Open Dental App</button>
+    
+    <div id="response" class="response"></div>
+    
+    <script>
+        async function testAPI() {
+            const status = document.getElementById('status');
+            const responseDiv = document.getElementById('response');
+            
+            status.textContent = 'Testing API...';
+            
+            try {
+                const response = await fetch('http://localhost:5010/api/test/rag-search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: '26 CC' })
+                });
+                
+                const data = await response.json();
+                
+                status.textContent = `API Test Complete - Found ${data.results?.length || 0} results`;
+                
+                let html = '<h3>API Response:</h3>';
+                html += `<p>Status: ${data.status}</p>`;
+                html += `<p>Query: ${data.query}</p>`;
+                
+                if (data.results && data.results.length > 0) {
+                    html += '<div class="references"><h4>References Found:</h4><ul>';
+                    data.results.forEach(ref => {
+                        html += `<li><strong>${ref.type}</strong>: ${ref.title} (Score: ${(ref.similarity_score * 100).toFixed(1)}%)</li>`;
+                    });
+                    html += '</ul></div>';
+                    
+                    // Show the approved sequence
+                    const approved = data.results.find(r => r.type === 'approved_sequence');
+                    if (approved) {
+                        html += '<div style="background: #d4edda; padding: 10px; margin-top: 10px;">';
+                        html += '<h4>✅ Approved Sequence Found!</h4>';
+                        html += `<p>Title: ${approved.title}</p>`;
+                        html += `<p>Score: ${(approved.similarity_score * 100).toFixed(1)}%</p>`;
+                        html += '</div>';
+                    }
+                } else {
+                    html += '<p style="color: red;">No references found!</p>';
+                }
+                
+                responseDiv.innerHTML = html;
+                
+            } catch (error) {
+                status.textContent = 'Error: ' + error.message;
+                responseDiv.innerHTML = '<p style="color: red;">Error testing API</p>';
+            }
+        }
+        
+        function openApp() {
+            window.open('http://localhost:5010', '_blank');
+        }
+        
+        // Test on load
+        window.addEventListener('load', () => {
+            testAPI();
+        });
+    </script>
+</body>
+</html>

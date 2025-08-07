@@ -61,11 +61,21 @@ class APIClient {
     /**
      * Chat-specific API call
      */
-    async sendChatMessage(message, history = [], tab = 'dental-brain') {
+    async sendChatMessage(message, history = [], tab = 'dental-brain', settings = null) {
         if (tab === 'schedule') {
             return await this.post('/api/ai/schedule-chat', { message });
         } else {
-            return await this.post('/api/ai/chat', { message, history, tab });
+            // Get user settings if not provided
+            const userSettings = settings || window.userSettings || {
+                similarityThreshold: 60,
+                clinicalCasesCount: 3,
+                idealSequencesCount: 2,
+                knowledgeCount: 2,
+                showSimilarityScores: true,
+                ragPreference: 0,
+                aiModel: 'gpt-4o'
+            };
+            return await this.post('/api/ai/chat', { message, history, tab, settings: userSettings });
         }
     }
 

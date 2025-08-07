@@ -123,6 +123,10 @@ class DentalBrainChat {
             // Send message to API
             const response = await this.api.sendChatMessage(message, this.history, 'dental-brain');
             
+            // Debug: Log the response
+            console.log('API Response:', response);
+            console.log('References:', response.references);
+            
             // Remove typing indicator
             this.hideTypingIndicator();
             
