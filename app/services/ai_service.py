@@ -45,6 +45,10 @@ class SpecializedLLM:
                 case for case in rag_results.get('clinical_cases', [])
                 if case['similarity_score'] >= similarity_threshold
             ],
+            'approved_sequences': [
+                seq for seq in rag_results.get('approved_sequences', [])
+                if seq['similarity_score'] >= similarity_threshold
+            ],
             'ideal_sequences': [
                 seq for seq in rag_results.get('ideal_sequences', [])
                 if seq['similarity_score'] >= similarity_threshold
@@ -65,16 +69,47 @@ class SpecializedLLM:
         
         # Order based on preference
         if rag_preference < -20:  # Prefer clinical cases
-            context_order = ['clinical_cases', 'ideal_sequences', 'general_knowledge']
+            context_order = ['clinical_cases', 'approved_sequences', 'ideal_sequences', 'general_knowledge']
         elif rag_preference > 20:  # Prefer ideal sequences
-            context_order = ['ideal_sequences', 'clinical_cases', 'general_knowledge']
-        else:  # Balanced
-            context_order = ['clinical_cases', 'ideal_sequences', 'general_knowledge']
+            context_order = ['ideal_sequences', 'approved_sequences', 'clinical_cases', 'general_knowledge']
+        else:  # Balanced - approved sequences first as they're user-validated
+            context_order = ['approved_sequences', 'clinical_cases', 'ideal_sequences', 'general_knowledge']
         
         # Build context in preferred order
         for source_type in context_order:
-            if source_type == 'clinical_cases' and filtered_results.get('clinical_cases'):
-                context_parts.append("=== CAS CLINIQUES PERTINENTS ===")
+            if source_type == 'approved_sequences' and filtered_results.get('approved_sequences'):
+                context_parts.append("=== ✅ SÉQUENCES APPROUVÉES PAR L'UTILISATEUR ===")
+                context_parts.append("→ Ces séquences ont été validées et ajustées selon l'expérience clinique\n")
+                
+                for seq in filtered_results['approved_sequences']:
+                    similarity_pct = int(seq['similarity_score'] * 100)
+                    
+                    if similarity_pct >= 90:
+                        context_parts.append(f"\n🏆 Séquence validée excellente - {seq['title']}:")
+                        context_parts.append("→ Séquence déjà optimisée et approuvée pour cas similaire")
+                    elif similarity_pct >= 80:
+                        context_parts.append(f"\n✅ Séquence validée pertinente - {seq['title']}:")
+                        context_parts.append("→ Approuvée pour cas proche, adaptations mineures possibles")
+                    else:
+                        context_parts.append(f"\n📝 Séquence validée connexe - {seq['title']}:")
+                        context_parts.append("→ Éléments validés réutilisables")
+                    
+                    # Show the original prompt/consultation
+                    if seq['enhanced_data'].get('original_prompt'):
+                        context_parts.append(f"Demande originale: {seq['enhanced_data']['original_prompt']}")
+                    elif seq['enhanced_data'].get('consultation_text'):
+                        context_parts.append(f"Consultation: {seq['enhanced_data']['consultation_text']}")
+                    
+                    # Show the validated sequence
+                    if similarity_pct >= 80 and seq['enhanced_data'].get('sequence'):
+                        context_parts.append("SÉQUENCE VALIDÉE:")
+                        for appt in seq['enhanced_data']['sequence']:
+                            context_parts.append(f"  RDV {appt['rdv']}: {appt['traitement']} ({appt.get('duree', 'N/A')})")
+                            if appt.get('delai'):
+                                context_parts.append(f"    Délai: {appt['delai']}")
+            
+            elif source_type == 'clinical_cases' and filtered_results.get('clinical_cases'):
+                context_parts.append("\n=== CAS CLINIQUES PERTINENTS ===")
                 
                 # Apply preference boost for clinical cases when preferred
                 for case in filtered_results['clinical_cases']:
@@ -810,6 +845,20 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
             # Include similarity score if user wants to see it
             if settings.get('showSimilarityScores', True):
                 ref['similarity_score'] = case['similarity_score']
+            references.append(ref)
+        
+        # Add approved sequences
+        for seq in results_to_use.get('approved_sequences', []):
+            ref = {
+                'type': 'approved_sequence',
+                'title': seq['title'],
+                'id': seq['id'],
+                'source': seq.get('source', 'Séquence approuvée'),
+                'filename': seq['filename'],
+                'categories': seq.get('categories', [])
+            }
+            if settings.get('showSimilarityScores', True):
+                ref['similarity_score'] = seq['similarity_score']
             references.append(ref)
         
         # Add ideal sequences

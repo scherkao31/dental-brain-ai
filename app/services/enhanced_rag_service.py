@@ -367,6 +367,9 @@ class EnhancedRAGService:
         # Search clinical cases
         clinical_cases = self.search_by_type('clinical_case', query, case_results)
         
+        # Search approved sequences (user-validated sequences)
+        approved_sequences = self.search_by_type('approved_sequence', query, case_results)
+        
         # Search ideal sequences with multiple strategies
         all_ideal_sequences = []
         
@@ -480,18 +483,19 @@ class EnhancedRAGService:
             existing_ids = {item['id'] for item in clinical_cases + ideal_sequences}
             
             for item in all_knowledge:
-                if item['id'] not in existing_ids and item['type'] not in ['clinical_case', 'ideal_sequence']:
+                if item['id'] not in existing_ids and item['type'] not in ['clinical_case', 'ideal_sequence', 'approved_sequence']:
                     general_knowledge.append(item)
                     if len(general_knowledge) >= knowledge_results:
                         break
         
         return {
             'clinical_cases': clinical_cases,
+            'approved_sequences': approved_sequences,
             'ideal_sequences': ideal_sequences,
             'general_knowledge': general_knowledge,
-            'total_results': len(clinical_cases) + len(ideal_sequences) + len(general_knowledge),
+            'total_results': len(clinical_cases) + len(approved_sequences) + len(ideal_sequences) + len(general_knowledge),
             'query': query,
-            'sources_used': ['clinical_cases', 'ideal_sequences', 'general_knowledge']
+            'sources_used': ['clinical_cases', 'approved_sequences', 'ideal_sequences', 'general_knowledge']
         }
     
     def _format_search_results(self, results) -> List[Dict]:

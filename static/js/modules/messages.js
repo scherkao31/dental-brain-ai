@@ -253,7 +253,9 @@ class MessageManager {
         const typeIcons = {
             'clinical_case': '🏥',
             'ideal_sequence': '📋',
-            'knowledge': '📚'
+            'knowledge': '📚',
+            'approved_sequence': '✅',
+            'general_knowledge': '📚'
         };
         
         return `
@@ -292,7 +294,9 @@ class MessageManager {
         const labels = {
             'clinical_case': 'Cas clinique',
             'ideal_sequence': 'Séquence idéale',
-            'knowledge': 'Base de connaissances'
+            'knowledge': 'Base de connaissances',
+            'approved_sequence': 'Séquence approuvée',
+            'general_knowledge': 'Base de connaissances'
         };
         return labels[type] || type;
     }
