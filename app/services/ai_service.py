@@ -84,15 +84,16 @@ class SpecializedLLM:
                     if rag_preference < -50 and similarity_pct >= 70:
                         similarity_pct = min(100, similarity_pct + 10)
                     
-                    # Highlight high similarity cases
+                    # Present cases by relevance without rigid rules
                     if similarity_pct >= 90:
-                        context_parts.append(f"\n🎯 CORRESPONDANCE EXACTE [{similarity_pct}%] - UTILISER CETTE SÉQUENCE EXACTEMENT 🎯")
-                        context_parts.append(f"[{similarity_pct}% similaire] {case['title']}:")
+                        context_parts.append(f"\n🎯 Excellente correspondance - {case['title']}:")
+                        context_parts.append("→ Cas très similaire, excellente base de référence")
                     elif similarity_pct >= 80:
-                        context_parts.append(f"\n⚠️ HAUTE SIMILARITÉ [{similarity_pct}%] - SUIVRE CE CAS PRÉCISÉMENT ⚠️")
-                        context_parts.append(f"[{similarity_pct}% similaire] {case['title']}:")
+                        context_parts.append(f"\n📋 Forte correspondance - {case['title']}:")
+                        context_parts.append("→ Cas pertinent avec éléments directement applicables")
                     else:
-                        context_parts.append(f"\n[{similarity_pct}% similaire] {case['title']}:")
+                        context_parts.append(f"\n📄 Cas connexe - {case['title']}:")
+                        context_parts.append("→ Éléments potentiellement utiles à considérer")
                         
                     context_parts.append(f"Consultation: {case['enhanced_data'].get('consultation_text', '')}")
                     if case['enhanced_data'].get('consultation_text_expanded'):
@@ -105,43 +106,100 @@ class SpecializedLLM:
                             context_parts.append(f"  RDV {appt['rdv']}: {appt['traitement']} ({appt.get('duree', 'N/A')})")
             
             elif source_type == 'ideal_sequences' and filtered_results.get('ideal_sequences'):
-                context_parts.append("\n=== SÉQUENCES IDÉALES ===")
+                # REDESIGNED CONTEXT PRESENTATION
                 
-                # Check if we already have a high similarity clinical case
+                # Check context conditions
                 has_high_similarity_case = any(
-                    int(case['similarity_score'] * 100) >= 80 
+                    case['similarity_score'] >= 0.80 
                     for case in filtered_results.get('clinical_cases', [])
                 )
                 
+                # Group sequences by relevance
+                exact_matches = []
+                high_relevance = []
+                moderate_relevance = []
+                
                 for sequence in filtered_results['ideal_sequences']:
-                    similarity_pct = int(sequence['similarity_score'] * 100)
+                    similarity = sequence['similarity_score']
+                    boost_reason = sequence.get('boost_reason', '')
                     
-                    # Boost importance if ideal sequences are preferred
-                    if rag_preference > 50 and similarity_pct >= 70:
-                        similarity_pct = min(100, similarity_pct + 10)
-                    
-                    # Highlight high similarity ideal sequences
-                    if similarity_pct >= 80 and not has_high_similarity_case:
-                        context_parts.append(f"\n⚠️ SÉQUENCE IDÉALE PERTINENTE [{similarity_pct}%] ⚠️")
-                        context_parts.append(f"[{similarity_pct}% similaire] {sequence['title']}:")
+                    if boost_reason == 'exact_match' or similarity >= 0.95:
+                        exact_matches.append(sequence)
+                    elif similarity >= 0.80:
+                        high_relevance.append(sequence)
                     else:
-                        context_parts.append(f"\n[{similarity_pct}% similaire] {sequence['title']} (séquence générique):")
+                        moderate_relevance.append(sequence)
+                
+                # Present exact matches first
+                if exact_matches:
+                    context_parts.append("\n=== 🎯 PROTOCOLE STANDARDISÉ DISPONIBLE ===")
+                    for seq in exact_matches:
+                        consultation = seq.get('consultation_text', seq['title'])
+                        context_parts.append(f"Séquence idéale: {consultation}")
+                        context_parts.append("✓ Protocole correspondant exactement à votre demande")
+                        context_parts.append("✓ Séquence validée et optimisée par les experts")
                         
-                    context_parts.append(f"Source: {sequence['source']}")
-                    
-                    # Add full treatment sequence for high similarity ideal sequences
-                    if sequence['enhanced_data'].get('treatment_sequence_enhanced'):
-                        if similarity_pct >= 80:
-                            context_parts.append("SÉQUENCE COMPLÈTE À SUIVRE:")
-                            for appointment in sequence['enhanced_data']['treatment_sequence_enhanced']:
-                                context_parts.append(f"  RDV {appointment['rdv']}: {appointment.get('traitement_expanded', appointment.get('traitement', ''))} ({appointment.get('duree', 'N/A')})")
-                                if appointment.get('delai'):
-                                    context_parts.append(f"    Délai: {appointment['delai']}")
+                        # Provide balanced guidance
+                        if has_high_similarity_case:
+                            context_parts.append("💡 Note: Des cas cliniques pertinents sont aussi disponibles")
+                            context_parts.append("→ Considérez les deux approches pour une solution optimale\n")
                         else:
-                            context_parts.append("Séquences de traitement recommandées:")
-                            for appointment in sequence['enhanced_data']['treatment_sequence_enhanced'][:5]:  # Limit to first 5
-                                if appointment.get('traitement_expanded'):
-                                    context_parts.append(f"  - {appointment['traitement_expanded']} ({appointment.get('duree', 'N/A')})")
+                            context_parts.append("→ Excellente base pour votre séquence de traitement\n")
+                        
+                        # Show structured sequence summary
+                        if seq['enhanced_data'].get('treatment_sequence_enhanced'):
+                            appointments = seq['enhanced_data']['treatment_sequence_enhanced']
+                            total_rdv = len(appointments)
+                            
+                            # Calculate total duration
+                            duration_weeks = self._estimate_total_duration(appointments)
+                            
+                            context_parts.append(f"RÉSUMÉ: {total_rdv} RDV sur {duration_weeks}")
+                            context_parts.append("SÉQUENCE STRUCTURÉE:")
+                            
+                            for appt in appointments:
+                                rdv_num = appt['rdv']
+                                treatment = appt.get('traitement_expanded', appt.get('traitement', ''))
+                                duration = appt.get('duree', '')
+                                delay = appt.get('delai', '')
+                                
+                                # Format appointment concisely
+                                appt_line = f"  RDV {rdv_num}: {treatment}"
+                                if duration:
+                                    appt_line += f" ({duration})"
+                                if delay:
+                                    appt_line += f" → attendre {delay}"
+                                context_parts.append(appt_line)
+                
+                # Present high relevance sequences
+                elif high_relevance:
+                    context_parts.append("\n=== 📋 SÉQUENCES HAUTEMENT PERTINENTES ===")
+                    for seq in high_relevance[:2]:  # Max 2
+                        consultation = seq.get('consultation_text', seq['title'])
+                        context_parts.append(f"\nSéquence: {consultation}")
+                        context_parts.append(f"Pertinence: Très élevée")
+                        
+                        # Analyze key differences
+                        context_parts.append("Points clés:")
+                        if seq['enhanced_data'].get('treatment_sequence_enhanced'):
+                            total_rdv = len(seq['enhanced_data']['treatment_sequence_enhanced'])
+                            context_parts.append(f"  • {total_rdv} RDV au total")
+                            
+                            # Show first 3 appointments only
+                            context_parts.append("  • Début de séquence:")
+                            for appt in seq['enhanced_data']['treatment_sequence_enhanced'][:3]:
+                                treatment = appt.get('traitement_expanded', appt.get('traitement', ''))
+                                context_parts.append(f"    - {treatment}")
+                
+                # Present moderate relevance briefly
+                elif moderate_relevance:
+                    context_parts.append("\n=== 📚 RÉFÉRENCES COMPLÉMENTAIRES ===")
+                    refs = []
+                    for seq in moderate_relevance[:3]:
+                        consultation = seq.get('consultation_text', seq['title'])
+                        refs.append(consultation)
+                    context_parts.append(f"Autres séquences disponibles: {', '.join(refs)}")
+                    context_parts.append("→ Peuvent servir d'inspiration pour cas complexes")
             
             elif source_type == 'general_knowledge' and filtered_results.get('general_knowledge'):
                 context_parts.append("\n=== CONNAISSANCES PERTINENTES ===")
@@ -163,6 +221,29 @@ class SpecializedLLM:
         
         # Return both filtered results (for references) and original results (for similarity info)
         return {'filtered': filtered_results, 'original': rag_results}, context
+    
+    def _estimate_total_duration(self, appointments: List[Dict]) -> str:
+        """Estimate total treatment duration from appointments"""
+        total_days = 0
+        
+        for appt in appointments:
+            delay = appt.get('delai', '')
+            if 'sem' in delay:
+                weeks = int(''.join(filter(str.isdigit, delay)) or 1)
+                total_days += weeks * 7
+            elif 'mois' in delay:
+                months = int(''.join(filter(str.isdigit, delay)) or 1)
+                total_days += months * 30
+            elif 'jour' in delay or 'j' in delay:
+                days = int(''.join(filter(str.isdigit, delay)) or 1)
+                total_days += days
+        
+        if total_days <= 14:
+            return f"{total_days} jours"
+        elif total_days <= 60:
+            return f"{total_days // 7} semaines"
+        else:
+            return f"{total_days // 30} mois"
     
     def format_prompt(self, user_message: str, context: str) -> str:
         """Format the complete prompt with context"""
@@ -190,30 +271,55 @@ class AIService:
     
     def _initialize_specialized_llms(self) -> Dict[str, SpecializedLLM]:
         """Initialize specialized LLM for dental brain"""
-        prompt = """Vous êtes un assistant dentaire IA spécialisé dans la planification de traitements.
-                             
-                             Votre rôle principal est de générer des séquences de traitement détaillées basées sur les cas cliniques existants et les séquences idéales.
-                             
-                             RÈGLES DE PRIORITÉ CRITIQUES:
-                             
-                             1. CAS CLINIQUES EXACTS (≥ 90% similarité): Reproduire EXACTEMENT la séquence du cas clinique
-                             2. CAS CLINIQUES TRÈS SIMILAIRES (≥ 80% similarité): Suivre le cas clinique en priorité, adapter légèrement si nécessaire
-                             3. SÉQUENCES IDÉALES: Utiliser UNIQUEMENT quand aucun cas clinique n'a ≥ 80% de similarité
-                             4. NE JAMAIS mélanger un cas clinique très similaire avec une séquence idéale générique
-                             
-                             COMPRÉHENSION DES ABRÉVIATIONS:
-                             - F = Facette (traitement esthétique)
-                             - CC = Couronne céramique
-                             - TR = Traitement de racine
-                             - MA = Moignon adhésif
-                             - Cpr = Composite
-                             
-                             Quand un utilisateur décrit un traitement (ex: "12 à 22 F" = facettes de 12 à 22), vous devez:
-                             
-                             1. Identifier le traitement exact demandé
-                             2. Si un cas clinique correspond exactement ou presque (≥ 80%), l'utiliser EXCLUSIVEMENT
-                             3. Ne PAS diluer avec des séquences idéales génériques si un cas spécifique existe
-                             4. Pour "Plan de TT 12 à 22 F", utiliser le cas clinique exact qui a cette consultation
+        prompt = """Vous êtes un expert dentaire IA spécialisé dans la planification intelligente de traitements.
+
+VOTRE MISSION:
+Créer des séquences de traitement optimales en analysant intelligemment toutes les références disponibles et en utilisant votre jugement clinique.
+
+RESSOURCES À VOTRE DISPOSITION:
+- Cas cliniques réels: Séquences validées en pratique avec leurs résultats
+- Séquences idéales: Protocoles standardisés recommandés par les experts
+- Connaissances générales: Principes fondamentaux et bonnes pratiques
+
+APPROCHE DE RAISONNEMENT CLINIQUE:
+
+Pour chaque demande de traitement:
+1. Analysez la situation spécifique du patient
+2. Évaluez la pertinence de chaque référence disponible
+3. Identifiez les forces et limites de chaque approche
+4. Combinez intelligemment les meilleures pratiques
+5. Adaptez selon le contexte particulier
+
+PRINCIPES DIRECTEURS (non des règles rigides):
+
+🎯 Correspondance excellente trouvée → Utilisez comme base solide
+   MAIS questionnez: Peut-on l'améliorer? Y a-t-il des spécificités patient à considérer?
+
+📋 Cas clinique pertinent disponible → Valorisez l'expérience pratique
+   MAIS vérifiez: Couvre-t-il tous les aspects? Les durées sont-elles optimales?
+
+🔬 Séquence idéale applicable → Considérez le protocole standardisé
+   MAIS adaptez: Quels ajustements pour ce cas spécifique?
+
+🔧 Sources multiples pertinentes → Combinez intelligemment
+   Prenez: Les meilleurs timings d'une source, les techniques d'une autre, les précautions d'une troisième
+
+💡 Pas de match parfait → Construisez sur mesure
+   Utilisez: Votre compréhension des principes pour créer une séquence adaptée
+
+COMPRÉHENSION DES ABRÉVIATIONS COURANTES:
+- F = Facette
+- CC = Couronne céramique  
+- TR = Traitement de racine
+- MA = Moignon adhésif
+- Cpr = Composite
+- Les numéros (11, 21, etc.) = notation FDI des dents
+
+IMPORTANT:
+- Justifiez toujours vos choix cliniques
+- Privilégiez la sécurité et le confort patient
+- N'hésitez pas à proposer des améliorations aux protocoles existants
+- Expliquez pourquoi vous combinez ou adaptez certains éléments
                              
                              FORMAT DE RÉPONSE REQUIS:
                              

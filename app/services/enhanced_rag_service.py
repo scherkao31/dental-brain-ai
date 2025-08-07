@@ -43,36 +43,40 @@ class EnhancedRAGService:
             self._load_enhanced_knowledge_base()
             
             # Check if we need to migrate to new embedding model
-            collection_name = "enhanced_dental_knowledge_v2"  # New name for text-embedding-3-small
-            old_collection_name = "enhanced_dental_knowledge"
+            collection_name = "enhanced_dental_knowledge_v3"  # v3: consultation-only embeddings with text-embedding-3-small
+            old_collection_names = ["enhanced_dental_knowledge", "enhanced_dental_knowledge_v2"]
             
-            # Try to get existing v2 collection
+            # Try to get existing v3 collection
             try:
                 self.enhanced_collection = self.client.get_collection(
                     name=collection_name,
                     embedding_function=self.embedding_function
                 )
-                logger.info(f"✅ Loaded enhanced collection v2 with {self.enhanced_collection.count()} items")
+                logger.info(f"✅ Loaded enhanced collection v3 with {self.enhanced_collection.count()} items")
             except:
-                # Create new v2 collection
+                # Create new v3 collection
                 self.enhanced_collection = self.client.create_collection(
                     name=collection_name,
-                    embedding_function=self.embedding_function
+                    embedding_function=self.embedding_function,
+                    metadata={"hnsw:space": "cosine"}
                 )
-                logger.info("📦 Created new enhanced collection v2 with text-embedding-3-small")
+                logger.info("📦 Created new enhanced collection v3 with consultation-only embeddings")
                 
-                # Check if old collection exists and offer migration
-                try:
-                    old_collection = self.client.get_collection(name=old_collection_name)
-                    old_count = old_collection.count()
-                    if old_count > 0:
-                        logger.info(f"⚠️ Found old collection with {old_count} items. Reindexing with new embeddings...")
-                except:
-                    logger.info("No old collection found, starting fresh")
+                # Check and delete old collections
+                for old_name in old_collection_names:
+                    try:
+                        old_collection = self.client.get_collection(name=old_name)
+                        old_count = old_collection.count()
+                        if old_count > 0:
+                            logger.info(f"⚠️ Found old collection '{old_name}' with {old_count} items. Deleting...")
+                            self.client.delete_collection(old_name)
+                            logger.info(f"✅ Deleted old collection: {old_name}")
+                    except:
+                        pass  # Old collection doesn't exist
                 
-                # Index the enhanced knowledge base with new embeddings
+                # Index the enhanced knowledge base with new strategy
                 self._index_enhanced_knowledge()
-                logger.info("✅ Knowledge base indexed with text-embedding-3-small embeddings")
+                logger.info("✅ Knowledge base indexed with consultation-only embeddings")
             
             return True
             
@@ -100,7 +104,7 @@ class EnhancedRAGService:
             self.enhanced_knowledge_base = {'data': []}
     
     def _index_enhanced_knowledge(self):
-        """Index the enhanced knowledge base into ChromaDB"""
+        """Index the enhanced knowledge base into ChromaDB - OPTIMIZED for consultation text matching"""
         if not self.enhanced_knowledge_base or not self.enhanced_knowledge_base['data']:
             logger.warning("No enhanced knowledge base data to index")
             return
@@ -110,11 +114,27 @@ class EnhancedRAGService:
         ids = []
         
         for i, entry in enumerate(self.enhanced_knowledge_base['data']):
-            # Use searchable content as the document
-            document = entry.get('searchable_content', '')
+            # OPTIMIZATION: Use ONLY consultation text for embedding
+            # This ensures direct consultation-to-consultation matching
+            consultation_text = entry.get('consultation_text', entry.get('title', ''))
+            
+            if not consultation_text:
+                logger.warning(f"Skipping entry {i} - no consultation text found")
+                continue
+            
+            # Create two versions: original and expanded
+            original_consultation = consultation_text
+            expanded_consultation = self._expand_abbreviations(consultation_text)
+            
+            # Combine both for better matching flexibility
+            # This allows matching both "26 CC + TR" and "26 Couronne céramique + Traitement de racine"
+            if original_consultation != expanded_consultation:
+                document = f"{original_consultation}\n{expanded_consultation}"
+            else:
+                document = original_consultation
             
             # Create comprehensive metadata with better titles
-            title = entry.get('consultation_text', entry.get('title', 'Untitled'))
+            title = consultation_text
             
             # Make ideal sequence titles more descriptive
             if entry.get('type') == 'ideal_sequence':
@@ -129,12 +149,14 @@ class EnhancedRAGService:
                 'type': entry.get('type', 'unknown'),
                 'source': entry.get('source', 'unknown'),
                 'title': title,
-                'content_length': len(document),
+                'consultation_text': consultation_text,
+                'consultation_text_expanded': expanded_consultation,
                 'has_sequence': 'treatment_sequence' in entry,
-                'has_enhanced_sequence': 'treatment_sequence_enhanced' in entry
+                'has_enhanced_sequence': 'treatment_sequence_enhanced' in entry,
+                'entry_index': i  # Store index to retrieve full data later
             }
             
-            # Add categories if available
+            # Add categories if available (for metadata, not for embedding)
             categories = []
             if 'treatment_sequence_enhanced' in entry:
                 for appointment in entry['treatment_sequence_enhanced']:
@@ -196,17 +218,17 @@ class EnhancedRAGService:
         
         try:
             # Preprocess query to match indexed content
-            # Create a combined query with both original and expanded forms
-            original_query = query
-            expanded_query = self._expand_abbreviations(query)
+            # OPTIMIZATION: Match the new indexing strategy
+            original_query = query.strip()
+            expanded_query = self._expand_abbreviations(original_query)
             
-            # If expansion changed the query, search with both forms
+            # Match the document structure we use during indexing
             if original_query != expanded_query:
-                logger.info(f"Expanded query: '{original_query}' -> '{expanded_query}'")
-                # Create combined searchable content similar to how we index
-                searchable_query = f"Consultation: {original_query}\nConsultation étendue: {expanded_query}"
+                logger.info(f"Query expansion: '{original_query}' -> '{expanded_query}'")
+                # Use the same format as indexed documents
+                searchable_query = f"{original_query}\n{expanded_query}"
             else:
-                searchable_query = query
+                searchable_query = original_query
             
             # Search in enhanced collection
             results = self.enhanced_collection.query(
@@ -226,20 +248,26 @@ class EnhancedRAGService:
                 # Calculate similarity score (1 - distance for cosine similarity)
                 similarity_score = 1 - distance
                 
-                # Find original entry for enhanced data
-                entry_index = int(result_id.split('_')[1])
+                # Find original entry for enhanced data using stored index
+                entry_index = metadata.get('entry_index', int(result_id.split('_')[1]))
                 original_entry = self.enhanced_knowledge_base['data'][entry_index]
+                
+                # Log high similarity matches for debugging
+                if similarity_score >= 0.95:
+                    logger.info(f"🎯 High similarity match ({similarity_score:.3f}): '{metadata.get('consultation_text', '')}' for query '{query}'")
                 
                 formatted_result = {
                     'id': result_id,
                     'title': metadata['title'],
-                    'content': document,
+                    'content': document,  # This now contains only consultation text
+                    'consultation_text': metadata.get('consultation_text', ''),
+                    'consultation_text_expanded': metadata.get('consultation_text_expanded', ''),
                     'similarity_score': similarity_score,
                     'type': metadata['type'],
                     'source': metadata['source'],
                     'filename': metadata['filename'],
                     'categories': metadata['categories'].split(',') if metadata['categories'] else [],
-                    'enhanced_data': original_entry,
+                    'enhanced_data': original_entry,  # This contains the full sequence
                     'metadata': metadata
                 }
                 
@@ -276,14 +304,15 @@ class EnhancedRAGService:
             return []
         
         try:
-            # Preprocess query to match indexed content
-            original_query = query
-            expanded_query = self._expand_abbreviations(query)
+            # Preprocess query to match indexed content (same as search_enhanced_knowledge)
+            original_query = query.strip()
+            expanded_query = self._expand_abbreviations(original_query)
             
+            # Match the document structure we use during indexing
             if original_query != expanded_query:
-                searchable_query = f"Consultation: {original_query}\nConsultation étendue: {expanded_query}"
+                searchable_query = f"{original_query}\n{expanded_query}"
             else:
-                searchable_query = query
+                searchable_query = original_query
             
             results = self.enhanced_collection.query(
                 query_texts=[searchable_query],
@@ -298,16 +327,36 @@ class EnhancedRAGService:
             return []
     
     def _extract_treatment_keywords(self, query: str) -> List[str]:
-        """Extract key treatment types from query based on abbreviations"""
+        """Extract key treatment types from query"""
         keywords = []
+        query_lower = query.lower()
         
-        # Check each abbreviation in the query
+        # First, check for common treatment terms directly in the query
+        common_treatments = [
+            'facette', 'composite', 'couronne', 'onlay', 'inlay', 'extraction',
+            'implant', 'endodontie', 'traitement de racine', 'tr', 'cc', 'détartrage',
+            'blanchiment', 'prothèse', 'bridge', 'pont', 'obturation', 'scellement'
+        ]
+        
+        for treatment in common_treatments:
+            if treatment in query_lower:
+                # Add the treatment term with proper case
+                if treatment == 'cc':
+                    keywords.append('Couronne céramique')
+                elif treatment == 'tr':
+                    keywords.append('Traitement de racine')
+                else:
+                    keywords.append(treatment.title() if len(treatment) > 2 else treatment.upper())
+        
+        # Then check each abbreviation in the query
         for abbrev, full_term in self.abbreviations.items():
             pattern = r'\b' + re.escape(abbrev) + r'\b'
             if re.search(pattern, query, flags=re.IGNORECASE):
-                keywords.append(full_term)
+                if full_term not in keywords:
+                    keywords.append(full_term)
                 # Also add the abbreviation itself for better matching
-                keywords.append(abbrev)
+                if abbrev not in keywords:
+                    keywords.append(abbrev)
         
         return keywords
     
@@ -329,7 +378,8 @@ class EnhancedRAGService:
         all_ideal_sequences.extend(ideal_sequences)
         logger.info(f"Strategy 1 - Full query '{query}' found {len(ideal_sequences)} ideal sequences")
         for seq in ideal_sequences[:3]:
-            logger.info(f"  - [{seq['similarity_score']:.3f}] {seq['title']} ({seq['filename']})")
+            consultation_text = seq.get('consultation_text', seq.get('title', ''))
+            logger.info(f"  - [{seq['similarity_score']:.3f}] Consultation: '{consultation_text}' | File: {seq['filename']}")
         
         # Strategy 2: Search with extracted treatment keywords
         treatment_keywords = self._extract_treatment_keywords(query)
@@ -353,9 +403,40 @@ class EnhancedRAGService:
             logger.info(f"Strategy 2 - Priority keyword '{keyword}' found {len(keyword_results)} ideal sequences")
             for seq in keyword_results:
                 logger.info(f"  - [{seq['similarity_score']:.3f}] {seq['title']} ({seq['filename']})")
-            # Boost scores for priority keyword matches
+            
+            # SMARTER BOOSTING LOGIC
             for seq in keyword_results:
-                seq['boosted_score'] = seq['similarity_score'] * 1.2  # 20% boost
+                # Get the actual consultation text from enhanced_data
+                enhanced_data = seq.get('enhanced_data', {})
+                consultation_text = enhanced_data.get('consultation_text', '')
+                
+                # If not in enhanced_data, try the direct field
+                if not consultation_text:
+                    consultation_text = seq.get('consultation_text', '')
+                
+                consultation_text = consultation_text.lower().strip()
+                keyword_lower = keyword.lower().strip()
+                
+                # Check for exact match
+                if consultation_text == keyword_lower:
+                    # EXACT MATCH: 100% boost (2x multiplier)
+                    seq['boosted_score'] = seq['similarity_score'] * 2.0
+                    seq['boost_reason'] = 'exact_match'
+                    logger.info(f"    🎯 Exact match boost applied: {seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}")
+                
+                # Check if consultation is primarily about this treatment
+                elif keyword_lower in consultation_text and len(consultation_text.split()) <= 3:
+                    # PRIMARY TREATMENT: 50% boost (1.5x multiplier)
+                    seq['boosted_score'] = seq['similarity_score'] * 1.5
+                    seq['boost_reason'] = 'primary_treatment'
+                    logger.info(f"    ⭐ Primary treatment boost applied: {seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}")
+                
+                # Standard keyword match
+                else:
+                    # KEYWORD PRESENT: 20% boost (1.2x multiplier)
+                    seq['boosted_score'] = seq['similarity_score'] * 1.2
+                    seq['boost_reason'] = 'keyword_match'
+                    
             all_ideal_sequences.extend(keyword_results)
         
         # Then search other keywords if needed
@@ -367,16 +448,19 @@ class EnhancedRAGService:
                 seq['boosted_score'] = seq['similarity_score']  # No boost
             all_ideal_sequences.extend(keyword_results)
         
-        # Remove duplicates and sort by similarity
-        seen_ids = set()
-        unique_sequences = []
+        # Remove duplicates keeping the highest boosted score version
+        best_sequences = {}
         for seq in all_ideal_sequences:
-            if seq['id'] not in seen_ids:
-                seen_ids.add(seq['id'])
-                # Ensure all sequences have a boosted_score
-                if 'boosted_score' not in seq:
-                    seq['boosted_score'] = seq['similarity_score']
-                unique_sequences.append(seq)
+            # Ensure all sequences have a boosted_score
+            if 'boosted_score' not in seq:
+                seq['boosted_score'] = seq['similarity_score']
+            
+            # Keep the version with the highest boosted score
+            seq_id = seq['id']
+            if seq_id not in best_sequences or seq['boosted_score'] > best_sequences[seq_id]['boosted_score']:
+                best_sequences[seq_id] = seq
+        
+        unique_sequences = list(best_sequences.values())
         
         logger.info(f"Total unique ideal sequences before sorting: {len(unique_sequences)}")
         
@@ -506,7 +590,7 @@ class EnhancedRAGService:
     def reindex_all(self):
         """Reindex all enhanced knowledge"""
         try:
-            collection_name = "enhanced_dental_knowledge_v2"  # Use v2 for new embeddings
+            collection_name = "enhanced_dental_knowledge_v3"  # Use v3 for consultation-only embeddings
             
             # Delete existing collection
             if self.enhanced_collection:
