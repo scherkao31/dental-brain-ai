@@ -134,15 +134,16 @@ class EnhancedRAGService:
                 document = original_consultation
             
             # Create comprehensive metadata with better titles
-            title = consultation_text
+            # Use the entry's title if available (especially important for approved sequences)
+            title = entry.get('title', consultation_text)
             
-            # Make ideal sequence titles more descriptive
-            if entry.get('type') == 'ideal_sequence':
+            # Make ideal sequence titles more descriptive if no title provided
+            if not entry.get('title') and entry.get('type') == 'ideal_sequence':
                 filename = entry.get('filename', f'entry_{i}')
                 if 'sequence' in filename.lower():
                     # Extract meaningful part from filename
                     clean_filename = filename.replace('_', ' ').replace('.docx', '').replace('.json', '')
-                    title = f"{clean_filename} - {title}".strip(' -')
+                    title = f"{clean_filename} - {consultation_text}".strip(' -')
             
             metadata = {
                 'filename': entry.get('filename', f'entry_{i}'),

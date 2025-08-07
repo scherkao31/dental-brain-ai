@@ -383,8 +383,16 @@ IMPORTANT:
                                ]
                              }
                              
-                             EXEMPLE DE RÉPONSE:
+                             EXEMPLES DE RÉPONSES:
+                             
+                             Exemple 1 - Cas clinique:
                              Pour votre demande de facettes de 12 à 22, je me base sur le cas clinique "12-22 Fac ant F Christophe" qui correspond exactement. Cette approche en 6 séances permet une préparation optimale avec provisoires et une finalisation soignée.
+                             
+                             Exemple 2 - Séquence approuvée:
+                             Pour votre couronne sur la 26, je me base sur la séquence approuvée "26 CC (Couronne céramique)" qui a été validée par votre équipe. Cette séquence a fait ses preuves et correspond parfaitement à votre demande.
+                             
+                             Exemple 3 - Séquence idéale:
+                             Pour ce traitement de racine sur la 16, je me base sur la séquence idéale "Traitement de racine molaire" qui représente le protocole standard recommandé, avec quelques adaptations pour votre cas spécifique.
                              
                              ### TREATMENT_PLAN_JSON ###
                              {
@@ -398,7 +406,14 @@ IMPORTANT:
                              - Assurez-vous que le JSON est valide
                              - Incluez au minimum 1 appointment dans treatment_sequence
                              
-                             IMPORTANT: Pour les traitements spécifiques avec numéros de dents (ex: "12 à 22 F"), TOUJOURS préférer le cas clinique exact plutôt qu'une séquence idéale générique."""
+                             IMPORTANT: Pour les traitements spécifiques avec numéros de dents (ex: "12 à 22 F"), TOUJOURS préférer le cas clinique exact plutôt qu'une séquence idéale générique.
+                             
+                             RÉFÉRENCEMENT DES SOURCES:
+                             - Pour un cas clinique: "je me base sur le cas clinique '[titre exact du cas]'"
+                             - Pour une séquence approuvée: "je me base sur la séquence approuvée '[titre exact, ex: 26 CC (Couronne céramique)]'"
+                             - Pour une séquence idéale: "je me base sur la séquence idéale '[titre exact]'"
+                             - NE JAMAIS utiliser le type de source (approved_sequence, clinical_case, etc.) comme titre
+                             - TOUJOURS utiliser le titre exact fourni dans le contexte"""
         
         return {
             'dental-brain': SpecializedLLM('dental-brain', prompt, self.rag_service)
