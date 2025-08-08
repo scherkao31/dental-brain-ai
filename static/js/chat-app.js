@@ -233,11 +233,10 @@ function addMessageToUI(role, content, metadata = null) {
         const tabbedOutput = createTabbedOutput(content, metadata);
         contentDiv.appendChild(tabbedOutput);
         
-        // Add references if available
+        // References are now shown in the tabbed interface, not inline
+        // Just log for debugging
         if (metadata?.references && metadata.references.length > 0) {
-            console.log('Creating references element for:', metadata.references);
-            const referencesElement = createReferencesElement(metadata.references);
-            contentDiv.appendChild(referencesElement);
+            console.log('References available:', metadata.references);
         } else {
             console.log('No references to display:', metadata?.references);
         }
@@ -370,6 +369,16 @@ function createTabbedOutput(content, metadata) {
         });
     }
     
+    // Show references tab if available
+    if (metadata?.references && metadata.references.length > 0) {
+        tabs.push({
+            id: 'references',
+            label: `Références (${metadata.references.length})`,
+            content: formatReferencesForTab(metadata.references),
+            active: tabs.length === 0
+        });
+    }
+    
     // If only one tab, show content directly without tabs
     if (tabs.length <= 1) {
         const singleContent = document.createElement('div');
@@ -415,6 +424,51 @@ function switchTab(container, tabId) {
     container.querySelectorAll('.tab-content').forEach(content => {
         content.classList.toggle('active', content.id === `tab-${tabId}`);
     });
+}
+
+// Format references for tab display
+function formatReferencesForTab(references) {
+    let html = '<div class="references-tab-content">';
+    
+    references.forEach(ref => {
+        const icon = getRefTypeIcon(ref.type);
+        const typeLabel = getRefTypeLabel(ref.type);
+        let similarityDisplay = '';
+        
+        if (window.userSettings.showSimilarityScores && ref.similarity_score !== undefined) {
+            const score = Math.round(ref.similarity_score * 100);
+            const scoreClass = score >= 90 ? 'high' : score >= 70 ? 'medium' : 'low';
+            similarityDisplay = `<span class="ref-score score-${scoreClass}">${score}%</span>`;
+        }
+        
+        html += `
+            <div class="reference-tab-item">
+                <div class="ref-header">
+                    <span class="ref-icon">${icon}</span>
+                    <span class="ref-title">${escapeHtml(ref.title)}</span>
+                    ${similarityDisplay}
+                </div>
+                <div class="ref-meta">
+                    <span class="ref-type-label">${typeLabel}</span>
+                    ${ref.source ? `<span class="ref-source">${escapeHtml(ref.source)}</span>` : ''}
+                </div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    return html;
+}
+
+// Get label for reference type
+function getRefTypeLabel(type) {
+    const labels = {
+        'clinical_case': 'Cas clinique',
+        'ideal_sequence': 'Séquence idéale',
+        'general_knowledge': 'Base de connaissances',
+        'approved_sequence': 'Séquence approuvée'
+    };
+    return labels[type] || type;
 }
 
 // Format treatment plan for tab display
