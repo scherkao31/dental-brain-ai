@@ -414,9 +414,20 @@ export class InlineTreatmentDisplay {
             `;
             
             // Group references by type
+            const approvedSequences = references.filter(ref => ref.type === 'approved_sequence');
             const clinicalCases = references.filter(ref => ref.type === 'clinical_case');
             const idealSequences = references.filter(ref => ref.type === 'ideal_sequence');
             const knowledge = references.filter(ref => ref.type === 'knowledge');
+            
+            // Show approved sequences first
+            if (approvedSequences.length > 0) {
+                html += `
+                    <div class="reference-section">
+                        <h4><i class="fas fa-check-circle"></i> Séquences approuvées</h4>
+                        ${approvedSequences.map(ref => this.createReferenceCard(ref)).join('')}
+                    </div>
+                `;
+            }
             
             if (clinicalCases.length > 0) {
                 html += `
