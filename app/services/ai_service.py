@@ -35,6 +35,17 @@ class SpecializedLLM:
             knowledge_results=knowledge_results
         )
         
+        # Search discovered rules if enabled
+        discovered_rules = []
+        if settings.get('useDiscoveredRules', True):  # Default to True
+            min_confidence = settings.get('minRuleConfidence', 70)
+            rule_count = settings.get('discoveredRulesCount', 3)
+            discovered_rules = self.rag_service.search_discovered_rules(
+                user_message,
+                n_results=rule_count,
+                confidence_threshold=min_confidence
+            )
+        
         # Apply similarity threshold
         similarity_threshold = settings.get('similarityThreshold', 60) / 100.0
         rag_preference = settings.get('ragPreference', 0)
@@ -64,8 +75,13 @@ class SpecializedLLM:
             ]
         }
         
+        # Add discovered rules to filtered results
+        if discovered_rules:
+            filtered_results['discovered_rules'] = discovered_rules
+        
         # Debug: Log approved sequences after filtering
         logger.info(f"Approved sequences after filtering (threshold: {similarity_threshold:.2f}): {len(filtered_results['approved_sequences'])}")
+        logger.info(f"Discovered rules found: {len(discovered_rules)}")
         
         # Apply RAG preference weighting
         # -100 = strong preference for clinical cases
@@ -75,17 +91,49 @@ class SpecializedLLM:
         # Format context based on enhanced results
         context_parts = []
         
-        # Order based on preference
+        # Order based on preference - discovered rules always first as they're high-level patterns
         if rag_preference < -20:  # Prefer clinical cases
-            context_order = ['clinical_cases', 'approved_sequences', 'ideal_sequences', 'general_knowledge']
+            context_order = ['discovered_rules', 'clinical_cases', 'approved_sequences', 'ideal_sequences', 'general_knowledge']
         elif rag_preference > 20:  # Prefer ideal sequences
-            context_order = ['ideal_sequences', 'approved_sequences', 'clinical_cases', 'general_knowledge']
+            context_order = ['discovered_rules', 'ideal_sequences', 'approved_sequences', 'clinical_cases', 'general_knowledge']
         else:  # Balanced - approved sequences first as they're user-validated
-            context_order = ['approved_sequences', 'clinical_cases', 'ideal_sequences', 'general_knowledge']
+            context_order = ['discovered_rules', 'approved_sequences', 'clinical_cases', 'ideal_sequences', 'general_knowledge']
         
         # Build context in preferred order
         for source_type in context_order:
-            if source_type == 'approved_sequences' and filtered_results.get('approved_sequences'):
+            if source_type == 'discovered_rules' and filtered_results.get('discovered_rules'):
+                context_parts.append("=== 🧠 RÈGLES INTELLIGENTES DÉCOUVERTES ===")
+                context_parts.append("→ Patterns et best practices identifiés par analyse approfondie\n")
+                
+                # Group rules by confidence level
+                high_conf_rules = [r for r in filtered_results['discovered_rules'] if r['confidence'] >= 85]
+                med_conf_rules = [r for r in filtered_results['discovered_rules'] if 70 <= r['confidence'] < 85]
+                
+                # Present high confidence rules first
+                if high_conf_rules:
+                    for rule in high_conf_rules[:2]:  # Limit to top 2 high confidence rules
+                        context_parts.append(f"\n⭐ RÈGLE ({rule['confidence']}% confiance): {rule['title']}")
+                        context_parts.append(f"→ {rule['description']}")
+                        
+                        if rule.get('conditions'):
+                            context_parts.append(f"Conditions: {', '.join(rule['conditions'])}")
+                        
+                        if rule.get('clinical_reasoning'):
+                            context_parts.append(f"Raisonnement: {rule['clinical_reasoning']}")
+                        
+                        # Show priority rules prominently
+                        if rule.get('priority') == 'high':
+                            context_parts.append("⚠️ RÈGLE PRIORITAIRE - À RESPECTER")
+                
+                # Medium confidence rules briefly
+                if med_conf_rules:
+                    context_parts.append("\n📋 Autres règles pertinentes:")
+                    for rule in med_conf_rules[:2]:
+                        context_parts.append(f"  • {rule['title']} ({rule['confidence']}%)")
+                
+                context_parts.append("")  # Add spacing
+            
+            elif source_type == 'approved_sequences' and filtered_results.get('approved_sequences'):
                 context_parts.append("=== ✅ SÉQUENCES APPROUVÉES PAR L'UTILISATEUR ===")
                 context_parts.append("→ Ces séquences ont été validées et ajustées selon l'expérience clinique\n")
                 

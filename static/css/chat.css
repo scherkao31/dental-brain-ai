@@ -1826,6 +1826,16 @@ tr:last-child .merge-btn:hover {
     margin: 0.25rem 0 0.75rem 0;
 }
 
+.settings-divider {
+    margin: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.settings-section h4 + .setting-group {
+    margin-top: 1rem;
+}
+
 /* RAG Preference Slider */
 .rag-preference-slider {
     background: var(--bg-tertiary);
@@ -1924,6 +1934,12 @@ tr:last-child .merge-btn:hover {
     text-align: right;
     font-weight: 500;
     color: var(--primary-color);
+}
+
+.setting-unit {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-left: 0.25rem;
 }
 
 /* Results configuration */

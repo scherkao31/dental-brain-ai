@@ -1,0 +1,1085 @@
+[
+  {
+    "title": "Traitement Séquentiel RCT-FILL-CAP",
+    "type": "pattern",
+    "description": "Effectuer un traitement de canal radiculaire suivi d'une obturation et d'un couronnement pour les dents avec infection pulpaire.",
+    "clinicalReasoning": "Cette séquence élimine l'infection, scelle le canal pour éviter la réinfection, et restaure la structure dentaire.",
+    "conditions": [
+      "Infection pulpaire ou nécrose",
+      "Dent structurellement apte à recevoir une couronne"
+    ],
+    "evidence": [
+      "sequence_1",
+      "sequence_5",
+      "sequence_9"
+    ],
+    "exceptions": [
+      "Dent trop fragilisée pour supporter une couronne",
+      "Anatomies canalaires non traitables"
+    ],
+    "confidence": 90,
+    "priority": "high",
+    "id": "44777a53-5b9f-4ce3-8a1d-1eef9625864c",
+    "discoveredAt": "2025-08-08T13:29:47.777246",
+    "evidenceCount": 0,
+    "summary": "Effectuer un traitement de canal radiculaire suivi d'une obturation et d'un couronnement pour les dents avec infection pulpaire.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Traitement Séquentiel RCT-FILL-CAP\" contre les cas réels fournis, nous allons procéder à une analyse détaillée selon les critères demandés.\n\n### Analyse\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis, \"dental_abbreviations.json\" et \"approved_sequence_20250806_143500.json\", ne contiennent aucune étape. Cela signifie qu'il n'y a pas de données disponibles pour vérifier directement la séquence de traitement décrite dans la règle. Ainsi, nous ne pouvons pas confirmer la cohérence de la règle avec ces cas spécifiques.\n\n2. **Contre-exemples:**\n   - Étant donné que les cas de test ne fournissent pas d'informations sur des traitements spécifiques, nous ne pouvons pas identifier de contre-exemples directs à la règle. Cependant, les exceptions mentionnées dans la règle (dent trop fragilisée, anatomies canalaires non traitables) sont des scénarios potentiels où la règle ne s'appliquerait pas.\n\n3. **Confiance attribuée:**\n   - La règle a une confiance de 90%. Sans données de cas réels pour la valider, il est difficile de justifier pleinement ce niveau de confiance. Toutefois, la séquence de traitement décrite est une pratique courante et bien établie en dentisterie pour traiter les infections pulpaires, ce qui peut justifier une confiance élevée en l'absence de contre-exemples.\n\n4. **Généralité de la règle:**\n   - La règle est suffisamment générale pour couvrir la majorité des cas d'infection pulpaire nécessitant un traitement de canal, une obturation et un couronnement. Cependant, elle inclut des exceptions appropriées pour les cas où la dent est trop fragilisée ou les anatomies canalaires ne sont pas traitables, ce qui empêche une généralisation excessive.\n\n5. **Ajustements nécessaires:**\n   - Étant donné le manque de données dans les cas de test, il serait bénéfique d'obtenir des cas supplémentaires avec des séquences de traitement détaillées pour une validation plus robuste. De plus, il pourrait être utile de préciser davantage les critères d'évaluation de la structure dentaire apte à recevoir une couronne.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Traitement Séquentiel RCT-FILL-CAP\",\n  \"type\": \"pattern\",\n  \"description\": \"Effectuer un traitement de canal radiculaire suivi d'une obturation et d'un couronnement pour les dents avec infection pulpaire.\",\n  \"clinicalReasoning\": \"Cette séquence élimine l'infection, scelle le canal pour éviter la réinfection, et restaure la structure dentaire.\",\n  \"conditions\": [\n    \"Infection pulpaire ou nécrose\",\n    \"Dent structurellement apte à recevoir une couronne\"\n  ],\n  \"evidence\": [\n    \"sequence_1\",\n    \"sequence_5\",\n    \"sequence_9\"\n  ],\n  \"exceptions\": [\n    \"Dent trop fragilisée pour supporter une couronne\",\n    \"Anatomies canalaires non traitables\"\n  ],\n  \"confidence\": 90,\n  \"priority\": \"high\",\n  \"id\": \"44777a53-5b9f-4ce3-8a1d-1eef9625864c\",\n  \"discoveredAt\": \"2025-08-08T13:29:47.777246\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Effectuer un traitement de canal radiculaire suivi d'une obturation et d'un couronnement pour les dents avec infection pulpaire.\"\n}\n```\n\n### Conclusion\n\nLa règle semble bien formulée et alignée avec les pratiques dentaires courantes. Cependant, pour une validation complète, il serait nécessaire d'avoir accès à des cas de test plus détaillés qui incluent des étapes de traitement spécifiques. Cela permettrait de confirmer la cohérence et la validité de la règle dans des scénarios réels."
+  },
+  {
+    "title": "Séquence de Nettoyage et Blanchiment",
+    "type": "pattern",
+    "description": "Réaliser un nettoyage dentaire avant le traitement de blanchiment pour maximiser l'efficacité et minimiser la sensibilité.",
+    "clinicalReasoning": "Un nettoyage préalable assure que les agents blanchissants pénètrent uniformément, optimisant ainsi l'efficacité du traitement.",
+    "conditions": [
+      "Absence de caries actives",
+      "Consentement éclairé du patient"
+    ],
+    "evidence": [
+      "sequence_3",
+      "sequence_8",
+      "sequence_10"
+    ],
+    "exceptions": [
+      "Hypersensibilité dentaire sévère",
+      "Présence de restaurations dentaires non réactives au blanchiment"
+    ],
+    "confidence": 75,
+    "priority": "medium",
+    "id": "fc6c3741-41ea-44c9-aac8-31724d5dc406",
+    "discoveredAt": "2025-08-08T13:29:47.777291",
+    "evidenceCount": 0,
+    "summary": "Réaliser un nettoyage dentaire avant le traitement de blanchiment pour maximiser l'efficacité et minimiser la sensibilité.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Séquence de Nettoyage et Blanchiment\", nous allons examiner les cas de test fournis et évaluer la cohérence et la pertinence de la règle. Voici l'analyse détaillée :\n\n### Analyse des cas de test\n\n1. **Cohérence avec les cas observés :**\n   - Les fichiers `dental_abbreviations.json` et `approved_sequence_20250806_143500.json` ne contiennent aucune étape. Cela signifie qu'ils ne fournissent pas d'informations directes sur la séquence de nettoyage et de blanchiment. Par conséquent, il est difficile de déterminer la cohérence de la règle avec ces cas spécifiques.\n\n2. **Contre-exemples :**\n   - En l'absence de données spécifiques dans les cas de test, il n'y a pas de contre-exemples directs identifiés. Cependant, cela ne signifie pas que la règle est universellement applicable sans exception.\n\n3. **Justification de la confiance attribuée :**\n   - La confiance de 75% semble raisonnable, étant donné que la règle est basée sur une logique clinique bien établie (nettoyage préalable pour optimiser le blanchiment). Cependant, sans données supplémentaires ou études cliniques spécifiques citées, cette confiance pourrait être réévaluée.\n\n4. **Généralité de la règle :**\n   - La règle est suffisamment générale pour s'appliquer à la plupart des cas de blanchiment dentaire, mais elle inclut des exceptions importantes (hypersensibilité sévère, restaurations non réactives). Cela montre une bonne compréhension des variations cliniques possibles.\n\n5. **Ajustements nécessaires :**\n   - Ajouter des références ou des études cliniques spécifiques pour renforcer la base de preuves (evidence).\n   - Inclure des détails sur la manière dont les exceptions doivent être gérées dans la pratique clinique.\n   - Éventuellement, revoir la confiance attribuée si des données supplémentaires deviennent disponibles.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Séquence de Nettoyage et Blanchiment\",\n  \"type\": \"pattern\",\n  \"description\": \"Réaliser un nettoyage dentaire avant le traitement de blanchiment pour maximiser l'efficacité et minimiser la sensibilité.\",\n  \"clinicalReasoning\": \"Un nettoyage préalable assure que les agents blanchissants pénètrent uniformément, optimisant ainsi l'efficacité du traitement.\",\n  \"conditions\": [\n    \"Absence de caries actives\",\n    \"Consentement éclairé du patient\"\n  ],\n  \"evidence\": [\n    \"sequence_3\",\n    \"sequence_8\",\n    \"sequence_10\"\n    // Ajouter des références d'études cliniques spécifiques ici\n  ],\n  \"exceptions\": [\n    \"Hypersensibilité dentaire sévère\",\n    \"Présence de restaurations dentaires non réactives au blanchiment\"\n  ],\n  \"confidence\": 75, // Réévaluer si nécessaire avec des données supplémentaires\n  \"priority\": \"medium\",\n  \"id\": \"fc6c3741-41ea-44c9-aac8-31724d5dc406\",\n  \"discoveredAt\": \"2025-08-08T13:29:47.777291\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Réaliser un nettoyage dentaire avant le traitement de blanchiment pour maximiser l'efficacité et minimiser la sensibilité.\"\n}\n```\n\n### Conclusion\n\nLa règle semble bien fondée sur des principes cliniques logiques, mais elle bénéficierait d'une base de preuves plus solide. Les ajustements proposés visent à renforcer la validité et l'applicabilité de la règle dans la pratique clinique."
+  },
+  {
+    "title": "Fréquence Standard des Contrôles Dentaires",
+    "type": "pattern|timing",
+    "description": "Les contrôles dentaires doivent être programmés tous les 6 mois pour la prévention des maladies bucco-dentaires et le maintien de la santé buccale.",
+    "clinicalReasoning": "Un intervalle de 6 mois permet la détection précoce de pathologies, la gestion de l'hygiène bucco-dentaire, et le suivi des traitements en cours.",
+    "conditions": [
+      "Patients à risque standard",
+      "Patients récurrents ou sous traitements"
+    ],
+    "evidence": [
+      "timing_2",
+      "timing_4",
+      "timing_7"
+    ],
+    "exceptions": [
+      "Patients à faible risque peuvent envisager des contrôles annuels",
+      "Patients à haut risque peuvent nécessiter des contrôles plus fréquents"
+    ],
+    "confidence": 70,
+    "priority": "high",
+    "id": "60584ea3-15d9-4d90-9ec6-07ef370f1b6f",
+    "discoveredAt": "2025-08-08T13:29:58.633127",
+    "evidenceCount": 0,
+    "summary": "Les contrôles dentaires doivent être programmés tous les 6 mois pour la prévention des maladies bucco-dentaires et le maintien de la santé buccale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant la fréquence standard des contrôles dentaires, nous allons analyser les différents aspects demandés.\n\n### Analyse de la Règle\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (dental_abbreviations.json et approved_sequence_20250806_143500.json) ne contiennent pas d'étapes, ce qui signifie qu'il n'y a pas de données spécifiques sur les contrôles dentaires à analyser. Par conséquent, nous ne pouvons pas directement vérifier la cohérence de la règle avec ces cas.\n\n2. **Contre-exemples:**\n   - Sans données spécifiques dans les cas de test, il est difficile d'identifier des contre-exemples. Cependant, la règle prévoit déjà des exceptions pour les patients à faible et à haut risque, ce qui montre une certaine flexibilité.\n\n3. **Justification de la confiance attribuée:**\n   - La confiance de 70% semble raisonnable compte tenu que la règle est basée sur des pratiques courantes en dentisterie. Cependant, sans données supplémentaires ou études citées dans les preuves (\"timing_2\", \"timing_4\", \"timing_7\"), il est difficile de vérifier la robustesse de cette confiance.\n\n4. **Généralité de la règle:**\n   - La règle est suffisamment générale pour s'appliquer à la majorité des patients tout en incluant des exceptions pour les cas particuliers. Cela montre un bon équilibre entre généralité et spécificité.\n\n5. **Ajustements nécessaires:**\n   - Il serait bénéfique d'inclure des références précises ou des études cliniques pour renforcer la crédibilité de la règle. De plus, l'ajout de données réelles ou de statistiques pourrait aider à justifier la confiance attribuée.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Fréquence Standard des Contrôles Dentaires\",\n  \"type\": \"pattern|timing\",\n  \"description\": \"Les contrôles dentaires doivent être programmés tous les 6 mois pour la prévention des maladies bucco-dentaires et le maintien de la santé buccale.\",\n  \"clinicalReasoning\": \"Un intervalle de 6 mois permet la détection précoce de pathologies, la gestion de l'hygiène bucco-dentaire, et le suivi des traitements en cours.\",\n  \"conditions\": [\n    \"Patients à risque standard\",\n    \"Patients récurrents ou sous traitements\"\n  ],\n  \"evidence\": [\n    \"timing_2\",\n    \"timing_4\",\n    \"timing_7\"\n  ],\n  \"exceptions\": [\n    \"Patients à faible risque peuvent envisager des contrôles annuels\",\n    \"Patients à haut risque peuvent nécessiter des contrôles plus fréquents\"\n  ],\n  \"confidence\": 70,\n  \"priority\": \"high\",\n  \"id\": \"60584ea3-15d9-4d90-9ec6-07ef370f1b6f\",\n  \"discoveredAt\": \"2025-08-08T13:29:58.633127\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Les contrôles dentaires doivent être programmés tous les 6 mois pour la prévention des maladies bucco-dentaires et le maintien de la santé buccale.\",\n  \"recommendations\": [\n    \"Inclure des références à des études cliniques pour renforcer la crédibilité.\",\n    \"Ajouter des données statistiques pour justifier la confiance.\"\n  ]\n}\n```\n\n### Conclusion\n\nLa règle est bien structurée et tient compte des variations individuelles, mais elle gagnerait en crédibilité avec des références et des données supplémentaires. Les ajustements proposés visent à renforcer la justification de la règle et à améliorer sa validation future."
+  },
+  {
+    "title": "Personnalisation de l'Intervalle de Contrôle",
+    "type": "pattern|timing",
+    "description": "Adapter l'intervalle des contrôles dentaires en fonction du niveau de risque et des besoins individuels du patient.",
+    "clinicalReasoning": "Permet de mieux répondre aux besoins spécifiques des patients, en tenant compte des facteurs de risque et de la réponse aux traitements.",
+    "conditions": [
+      "Patients avec des habitudes de vie influençant la santé dentaire",
+      "Groupes âgés et enfants"
+    ],
+    "evidence": [
+      "timing_2",
+      "timing_4",
+      "timing_7"
+    ],
+    "exceptions": [
+      "Situations temporaires comme des restrictions sanitaires"
+    ],
+    "confidence": 65,
+    "priority": "medium",
+    "id": "d5f5abcc-b4bc-4a89-ac97-274700b90e6f",
+    "discoveredAt": "2025-08-08T13:29:58.633151",
+    "evidenceCount": 0,
+    "summary": "Adapter l'intervalle des contrôles dentaires en fonction du niveau de risque et des besoins individuels du patient.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Personnalisation de l'Intervalle de Contrôle\", nous allons examiner les cas de test fournis et évaluer la règle selon les critères demandés.\n\n### Analyse des cas de test\n\n1. **Cohérence avec les cas observés:**\n   - Les fichiers `dental_abbreviations.json` et `approved_sequence_20250806_143500.json` ne contiennent pas d'étapes, ce qui signifie qu'ils ne fournissent pas d'informations directes sur l'application de la règle. Cela rend difficile l'évaluation de la cohérence de la règle avec ces cas spécifiques.\n\n2. **Contre-exemples:**\n   - En l'absence de données spécifiques dans les cas de test, il n'est pas possible d'identifier des contre-exemples directs. Cependant, des contre-exemples potentiels pourraient inclure des patients qui ne bénéficieraient pas de l'adaptation de l'intervalle de contrôle en raison de conditions médicales spécifiques ou de préférences personnelles.\n\n3. **Confiance attribuée:**\n   - La confiance de 65 % semble modérée, ce qui est approprié compte tenu de la nature personnalisée de la règle. Cependant, sans données empiriques supplémentaires, il est difficile de justifier pleinement ce niveau de confiance.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir une large gamme de patients, y compris ceux avec des habitudes de vie influençant la santé dentaire, ainsi que les groupes âgés et les enfants. Cependant, elle pourrait être trop générale si elle ne prend pas en compte des sous-groupes spécifiques qui nécessitent une attention particulière.\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile d'ajouter des critères plus spécifiques pour déterminer le niveau de risque et les besoins individuels, ainsi que des directives sur la manière de les évaluer.\n   - Inclure des exemples concrets ou des études de cas dans la section \"evidence\" pour renforcer la validité de la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Personnalisation de l'Intervalle de Contrôle\",\n  \"type\": \"pattern|timing\",\n  \"description\": \"Adapter l'intervalle des contrôles dentaires en fonction du niveau de risque et des besoins individuels du patient, en tenant compte des facteurs de risque spécifiques et de la réponse aux traitements.\",\n  \"clinicalReasoning\": \"Permet de mieux répondre aux besoins spécifiques des patients, en tenant compte des facteurs de risque et de la réponse aux traitements.\",\n  \"conditions\": [\n    \"Patients avec des habitudes de vie influençant la santé dentaire\",\n    \"Groupes âgés et enfants\",\n    \"Patients avec des antécédents de maladies dentaires\"\n  ],\n  \"evidence\": [\n    \"timing_2\",\n    \"timing_4\",\n    \"timing_7\",\n    \"Études de cas spécifiques ou données empiriques\"\n  ],\n  \"exceptions\": [\n    \"Situations temporaires comme des restrictions sanitaires\",\n    \"Conditions médicales spécifiques nécessitant un suivi différent\"\n  ],\n  \"confidence\": 65,\n  \"priority\": \"medium\",\n  \"id\": \"d5f5abcc-b4bc-4a89-ac97-274700b90e6f\",\n  \"discoveredAt\": \"2025-08-08T13:29:58.633151\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Adapter l'intervalle des contrôles dentaires en fonction du niveau de risque et des besoins individuels du patient.\"\n}\n```\n\n### Conclusion\n\nLa règle \"Personnalisation de l'Intervalle de Contrôle\" est potentiellement utile mais nécessite des données empiriques supplémentaires pour renforcer sa validité. Des ajustements ont été proposés pour améliorer sa spécificité et sa pertinence clinique."
+  },
+  {
+    "title": "Utilisation Préférentielle des Composites pour les Restaurations Dentaires",
+    "type": "material",
+    "description": "Les matériaux composites sont préférés pour les restaurations dentaires en raison de leur biocompatibilité, esthétique, et adhésion dentaire.",
+    "clinicalReasoning": "Les composites sont bien tolérés par les tissus buccaux, peuvent être adaptés à la couleur naturelle des dents, et permettent une liaison chimique avec l'émail et la dentine, renforçant ainsi la structure dentaire.",
+    "conditions": [
+      "Restauration des caries en zones esthétiques",
+      "Petites à moyennes obturations",
+      "Restauration post-orthodontique",
+      "Utilisation en pédiatrie"
+    ],
+    "evidence": [
+      "Les composites sont couramment utilisés pour les incisives et canines",
+      "Les composites nécessitent moins de retrait de la dent saine"
+    ],
+    "exceptions": [
+      "Restaurations de grande envergure",
+      "Environnements de forte mastication",
+      "Patient avec bruxisme sévère"
+    ],
+    "confidence": 70,
+    "priority": "high",
+    "id": "4e05ab80-abe3-4d3a-9fe3-9f46a40c8f8d",
+    "discoveredAt": "2025-08-08T13:30:08.158203",
+    "evidenceCount": 0,
+    "summary": "Les matériaux composites sont préférés pour les restaurations dentaires en raison de leur biocompatibilité, esthétique, et adhésion dentaire.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation préférentielle des composites pour les restaurations dentaires, nous devons examiner les cas de test fournis et évaluer la règle selon les critères spécifiés. Voici l'analyse :\n\n### Analyse de la Règle\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis, \"dental_abbreviations.json\" et \"approved_sequence_20250806_143500.json\", ne contiennent pas d'étapes détaillées. Par conséquent, il est difficile de déterminer directement la cohérence de la règle avec ces cas sans informations supplémentaires sur leur contenu.\n\n2. **Contre-exemples :**\n   - Sans détails spécifiques des cas de test, il est impossible d'identifier des contre-exemples précis. Cependant, les exceptions mentionnées dans la règle (restaurations de grande envergure, environnements de forte mastication, bruxisme sévère) sont des scénarios typiques où les composites peuvent ne pas être appropriés.\n\n3. **Justification de la confiance attribuée :**\n   - La confiance de 70% semble raisonnable, étant donné que les composites sont largement utilisés et bien étudiés pour les indications mentionnées. Cependant, l'absence de détails sur les cas de test et le manque de références précises dans la section \"evidence\" limitent la capacité à évaluer pleinement cette confiance.\n\n4. **Généralité de la règle :**\n   - La règle est suffisamment générale pour couvrir les utilisations courantes des composites, tout en incluant des exceptions pertinentes. Cela montre une bonne balance entre généralité et spécificité.\n\n5. **Ajustements nécessaires :**\n   - Ajouter des références précises ou des études cliniques pour renforcer la section \"evidence\".\n   - Inclure des détails sur les cas de test pour permettre une validation plus précise.\n   - Considérer l'ajout d'informations sur les techniques d'application et les innovations récentes dans les matériaux composites.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Utilisation Préférentielle des Composites pour les Restaurations Dentaires\",\n  \"type\": \"material\",\n  \"description\": \"Les matériaux composites sont préférés pour les restaurations dentaires en raison de leur biocompatibilité, esthétique, et adhésion dentaire.\",\n  \"clinicalReasoning\": \"Les composites sont bien tolérés par les tissus buccaux, peuvent être adaptés à la couleur naturelle des dents, et permettent une liaison chimique avec l'émail et la dentine, renforçant ainsi la structure dentaire.\",\n  \"conditions\": [\n    \"Restauration des caries en zones esthétiques\",\n    \"Petites à moyennes obturations\",\n    \"Restauration post-orthodontique\",\n    \"Utilisation en pédiatrie\"\n  ],\n  \"evidence\": [\n    \"Les composites sont couramment utilisés pour les incisives et canines\",\n    \"Les composites nécessitent moins de retrait de la dent saine\",\n    \"Études cliniques démontrant la durabilité et l'esthétique des composites\"\n  ],\n  \"exceptions\": [\n    \"Restaurations de grande envergure\",\n    \"Environnements de forte mastication\",\n    \"Patient avec bruxisme sévère\"\n  ],\n  \"confidence\": 70,\n  \"priority\": \"high\",\n  \"id\": \"4e05ab80-abe3-4d3a-9fe3-9f46a40c8f8d\",\n  \"discoveredAt\": \"2025-08-08T13:30:08.158203\",\n  \"evidenceCount\": 3,\n  \"summary\": \"Les matériaux composites sont préférés pour les restaurations dentaires en raison de leur biocompatibilité, esthétique, et adhésion dentaire.\"\n}\n```\n\n### Conclusion\n\nLa règle est bien formulée et couvre les principales utilisations des composites en dentisterie. Cependant, pour une validation complète, il serait bénéfique d'avoir accès à des cas de test détaillés et à des références cliniques supplémentaires."
+  },
+  {
+    "title": "Limites d'Utilisation des Composites en Zones de Forte Mastication",
+    "type": "contraindication",
+    "description": "Les composites ne sont pas recommandés pour les molaires sous de fortes charges masticatoires sans renfort approprié.",
+    "clinicalReasoning": "Les composites peuvent être sujets à l'usure ou à la fracture sous des charges élevées, ce qui peut compromettre la durabilité de la restauration.",
+    "conditions": [
+      "Zones de forte mastication",
+      "Patient avec bruxisme sévère"
+    ],
+    "evidence": [
+      "Cas de fractures de composites sous charges élevées"
+    ],
+    "exceptions": [
+      "Utilisation de supports additionnels"
+    ],
+    "confidence": 80,
+    "priority": "medium",
+    "id": "6cb75ad3-8a45-4715-a923-b81bbdc2285e",
+    "discoveredAt": "2025-08-08T13:30:08.158249",
+    "evidenceCount": 0,
+    "summary": "Les composites ne sont pas recommandés pour les molaires sous de fortes charges masticatoires sans renfort approprié.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation des composites en zones de forte mastication, examinons les différents aspects demandés :\n\n1. **Cohérence avec les cas observés**:\n   - La règle stipule que les composites ne sont pas recommandés pour les molaires sous de fortes charges masticatoires sans renfort approprié. Le cas de test fourni (approved_sequence_20250806_143500.json) ne contient pas d'étapes, ce qui signifie qu'il n'y a pas d'informations spécifiques sur des cas réels pour valider directement la règle. Cependant, la règle est cohérente avec les connaissances cliniques générales sur l'utilisation des composites, qui sont connus pour être moins résistants que d'autres matériaux comme les amalgames ou les céramiques sous des charges masticatoires élevées.\n\n2. **Contre-exemples**:\n   - Sans données de cas réels fournies, il n'est pas possible d'identifier des contre-exemples directement à partir du cas de test. Cependant, en pratique clinique, il pourrait y avoir des cas où les composites ont été utilisés avec succès dans des zones de forte mastication grâce à des techniques de renforcement appropriées.\n\n3. **Confiance attribuée**:\n   - La confiance de 80% semble raisonnable compte tenu de la littérature existante sur la performance des composites sous des charges élevées. Cependant, cette confiance pourrait être ajustée si des données supplémentaires étaient disponibles, notamment des études cliniques ou des retours d'expérience plus récents.\n\n4. **Généralité de la règle**:\n   - La règle est suffisamment générale pour s'appliquer à une large gamme de situations cliniques, mais elle pourrait être trop restrictive si elle ne prend pas en compte les avancées technologiques ou les techniques de renforcement qui pourraient améliorer la performance des composites.\n\n5. **Ajustements nécessaires**:\n   - Il pourrait être utile d'inclure des précisions sur les types de renforts qui rendent l'utilisation des composites acceptable dans ces situations, ainsi que des références à des études cliniques récentes qui soutiennent ou réfutent cette règle.\n\n**Version validée de la règle**:\n\n```json\n{\n  \"title\": \"Limites d'Utilisation des Composites en Zones de Forte Mastication\",\n  \"type\": \"contraindication\",\n  \"description\": \"Les composites ne sont pas recommandés pour les molaires sous de fortes charges masticatoires sans renfort approprié.\",\n  \"clinicalReasoning\": \"Les composites peuvent être sujets à l'usure ou à la fracture sous des charges élevées, ce qui peut compromettre la durabilité de la restauration.\",\n  \"conditions\": [\n    \"Zones de forte mastication\",\n    \"Patient avec bruxisme sévère\"\n  ],\n  \"evidence\": [\n    \"Cas de fractures de composites sous charges élevées\"\n  ],\n  \"exceptions\": [\n    \"Utilisation de supports additionnels\",\n    \"Techniques de renforcement avancées\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"medium\",\n  \"id\": \"6cb75ad3-8a45-4715-a923-b81bbdc2285e\",\n  \"discoveredAt\": \"2025-08-08T13:30:08.158249\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Les composites ne sont pas recommandés pour les molaires sous de fortes charges masticatoires sans renfort approprié.\"\n}\n```\n\nCette version inclut une mention des techniques de renforcement avancées comme exception, ce qui pourrait refléter les pratiques cliniques actuelles et futures."
+  },
+  {
+    "title": "Biocompatibilité des Composites en Dentisterie",
+    "type": "material",
+    "description": "Les composites sont bien tolérés et réduisent les risques de réactions allergiques ou d'irritations.",
+    "clinicalReasoning": "La biocompatibilité des composites est essentielle pour les patients sensibles ou allergiques, offrant une solution sûre pour les restaurations dentaires.",
+    "conditions": [
+      "Patients sensibles ou allergiques",
+      "Besoin d'une solution biocompatible"
+    ],
+    "evidence": [
+      "Réduction des réactions adverses observées avec les composites"
+    ],
+    "exceptions": [
+      "Allergies spécifiques aux composants des composites"
+    ],
+    "confidence": 75,
+    "priority": "medium",
+    "id": "ccd5f7a2-d2f6-4d0c-978a-7448862c1898",
+    "discoveredAt": "2025-08-08T13:30:08.158257",
+    "evidenceCount": 0,
+    "summary": "Les composites sont bien tolérés et réduisent les risques de réactions allergiques ou d'irritations.",
+    "validated": true,
+    "validationNotes": "Pour valider cette règle clinique, nous devons analyser les éléments fournis et évaluer la cohérence et la pertinence de la règle par rapport aux cas réels, même si aucun cas de test n'est fourni. Voici une analyse détaillée :\n\n### Analyse de la Règle\n\n1. **Cohérence avec les cas observés :**\n   - Sans cas de test réels, il est difficile de vérifier directement la cohérence. Cependant, la règle repose sur une base généralement acceptée en dentisterie : les composites dentaires sont souvent utilisés pour leur biocompatibilité et leur faible taux de réactions allergiques.\n\n2. **Contre-exemples :**\n   - Les contre-exemples potentiels incluent des cas où des patients ont des allergies spécifiques à certains composants des composites (par exemple, le bisphénol A ou certains photoinitiateurs). La règle mentionne cela dans les exceptions, ce qui est approprié.\n\n3. **Confiance attribuée :**\n   - La confiance de 75% semble raisonnable, étant donné que les composites sont largement utilisés et bien tolérés, mais il existe toujours une minorité de patients qui peuvent avoir des réactions allergiques spécifiques.\n\n4. **Généralité de la règle :**\n   - La règle est suffisamment générale pour couvrir la majorité des cas où les composites sont utilisés en dentisterie, tout en incluant des exceptions pour les allergies spécifiques. Cela la rend applicable à un large éventail de situations cliniques.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile d'ajouter des références à des études spécifiques ou des données cliniques pour renforcer l'évidence de la règle, surtout pour justifier la confiance de 75%.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Biocompatibilité des Composites en Dentisterie\",\n  \"type\": \"material\",\n  \"description\": \"Les composites sont généralement bien tolérés et réduisent les risques de réactions allergiques ou d'irritations.\",\n  \"clinicalReasoning\": \"La biocompatibilité des composites est essentielle pour les patients sensibles ou allergiques, offrant une solution sûre pour les restaurations dentaires.\",\n  \"conditions\": [\n    \"Patients sensibles ou allergiques\",\n    \"Besoin d'une solution biocompatible\"\n  ],\n  \"evidence\": [\n    \"Réduction des réactions adverses observées avec les composites\",\n    \"Études cliniques démontrant la tolérance générale des composites\"\n  ],\n  \"exceptions\": [\n    \"Allergies spécifiques aux composants des composites\"\n  ],\n  \"confidence\": 75,\n  \"priority\": \"medium\",\n  \"id\": \"ccd5f7a2-d2f6-4d0c-978a-7448862c1898\",\n  \"discoveredAt\": \"2025-08-08T13:30:08.158257\",\n  \"evidenceCount\": 1,\n  \"summary\": \"Les composites sont généralement bien tolérés et réduisent les risques de réactions allergiques ou d'irritations, sauf en cas d'allergies spécifiques.\"\n}\n```\n\n### Conclusion\n\nLa règle est globalement bien formulée et alignée avec les pratiques cliniques actuelles. Elle pourrait bénéficier de l'ajout de références spécifiques pour renforcer la base de preuves. La mention explicite des exceptions est un point fort qui améliore sa précision et son applicabilité."
+  },
+  {
+    "title": "Utilisation des Couronnes en Or pour les Molaires",
+    "type": "material",
+    "description": "Les couronnes en or sont recommandées principalement pour les molaires en raison de leur durabilité et de leur biocompatibilité.",
+    "clinicalReasoning": "L'or offre une résistance exceptionnelle à l'usure et une biocompatibilité élevée, ce qui est idéal pour les molaires où la force masticatoire est plus élevée.",
+    "conditions": [
+      "Traitement des molaires",
+      "Besoin de durabilité accrue"
+    ],
+    "evidence": [
+      "Cas cliniques historiques",
+      "Études sur la longévité des matériaux"
+    ],
+    "exceptions": [
+      "Préférences esthétiques du patient"
+    ],
+    "confidence": 85,
+    "priority": "medium",
+    "id": "613b0a80-0738-4f35-a4d4-09b791c93b48",
+    "discoveredAt": "2025-08-08T13:30:22.495668",
+    "evidenceCount": 0,
+    "summary": "Les couronnes en or sont recommandées principalement pour les molaires en raison de leur durabilité et de leur biocompatibilité.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation des couronnes en or pour les molaires, nous allons examiner les différents aspects demandés.\n\n### 1. Cohérence avec les cas observés\nLa règle stipule que les couronnes en or sont recommandées pour les molaires en raison de leur durabilité et de leur biocompatibilité. Cependant, le cas de test fourni (approved_sequence_20250806_143500.json) ne contient aucune étape, ce qui signifie qu'il n'y a pas d'information sur les cas réels pour valider directement cette règle. Sans données de cas réels, il est difficile de confirmer la cohérence de la règle.\n\n### 2. Contre-exemples\nAucun contre-exemple n'est fourni dans le cas de test. Cependant, un contre-exemple potentiel pourrait être un cas où une couronne en or n'est pas utilisée pour une molaire malgré la nécessité de durabilité, peut-être en raison de préférences esthétiques du patient.\n\n### 3. Justification de la confiance attribuée\nLa confiance attribuée est de 85, ce qui est relativement élevé. Cette confiance semble être basée sur des \"cas cliniques historiques\" et des \"études sur la longévité des matériaux\". Cependant, sans détails supplémentaires ou un nombre d'évidences (evidenceCount est 0), il est difficile de justifier pleinement ce niveau de confiance. Il serait utile d'avoir des références spécifiques aux études ou cas cliniques pour renforcer cette confiance.\n\n### 4. Généralité de la règle\nLa règle semble suffisamment générale pour couvrir les cas où la durabilité et la biocompatibilité sont des priorités pour les molaires. Cependant, elle inclut une exception pour les préférences esthétiques, ce qui est pertinent et montre que la règle n'est pas trop rigide.\n\n### 5. Ajustements nécessaires\n- **Évidence**: Ajouter des références spécifiques aux études ou cas cliniques pour justifier la confiance et renforcer la règle.\n- **Cas réels**: Inclure des cas réels ou des séquences approuvées pour valider la règle.\n- **Exceptions**: Développer davantage les exceptions possibles, comme les allergies aux métaux, qui pourraient influencer le choix du matériau.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Utilisation des Couronnes en Or pour les Molaires\",\n  \"type\": \"material\",\n  \"description\": \"Les couronnes en or sont recommandées principalement pour les molaires en raison de leur durabilité et de leur biocompatibilité.\",\n  \"clinicalReasoning\": \"L'or offre une résistance exceptionnelle à l'usure et une biocompatibilité élevée, ce qui est idéal pour les molaires où la force masticatoire est plus élevée.\",\n  \"conditions\": [\n    \"Traitement des molaires\",\n    \"Besoin de durabilité accrue\"\n  ],\n  \"evidence\": [\n    \"Cas cliniques historiques\",\n    \"Études sur la longévité des matériaux\"\n  ],\n  \"exceptions\": [\n    \"Préférences esthétiques du patient\",\n    \"Allergies aux métaux\"\n  ],\n  \"confidence\": 85,\n  \"priority\": \"medium\",\n  \"id\": \"613b0a80-0738-4f35-a4d4-09b791c93b48\",\n  \"discoveredAt\": \"2025-08-08T13:30:22.495668\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Les couronnes en or sont recommandées principalement pour les molaires en raison de leur durabilité et de leur biocompatibilité.\"\n}\n```\n\nCette version inclut une suggestion d'exception supplémentaire pour les allergies aux métaux, mais nécessite toujours des données supplémentaires pour valider pleinement la règle."
+  },
+  {
+    "title": "Préférence pour les Couronnes Esthétiques dans les Zones Visibles",
+    "type": "contraindication",
+    "description": "Éviter l'utilisation de couronnes en or dans les zones esthétiques telles que les prémolaires et les canines.",
+    "clinicalReasoning": "Les matériaux esthétiques comme la porcelaine sont préférés dans les zones visibles pour des raisons esthétiques.",
+    "conditions": [
+      "Traitement des prémolaires et canines",
+      "Exigences esthétiques élevées"
+    ],
+    "evidence": [
+      "Tendances actuelles en dentisterie esthétique",
+      "Préférences patient"
+    ],
+    "exceptions": [
+      "Patient insiste sur l'utilisation de l'or"
+    ],
+    "confidence": 90,
+    "priority": "high",
+    "id": "2b777884-a7e5-4534-9275-4e468176495e",
+    "discoveredAt": "2025-08-08T13:30:22.495718",
+    "evidenceCount": 0,
+    "summary": "Éviter l'utilisation de couronnes en or dans les zones esthétiques telles que les prémolaires et les canines.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique fournie, je vais analyser les différents aspects mentionnés et répondre aux questions posées.\n\n### Analyse de la règle clinique\n\n1. **Cohérence avec les cas observés:**\n   - Le cas de test fourni est \"approved_sequence_20250806_143500.json\" avec 0 étapes. Cela signifie qu'il n'y a pas de données spécifiques dans ce cas pour évaluer directement la règle. Cependant, la règle semble être en accord avec les pratiques courantes en dentisterie esthétique, où les matériaux esthétiques sont préférés dans les zones visibles.\n\n2. **Contre-exemples:**\n   - Sans données spécifiques des cas de test, il n'y a pas de contre-exemples directs. Cependant, un contre-exemple potentiel pourrait être un patient qui préfère l'or pour des raisons personnelles ou culturelles, ce qui est déjà couvert par l'exception mentionnée dans la règle.\n\n3. **Confiance attribuée:**\n   - La confiance de 90% semble élevée mais justifiée, étant donné que la règle est basée sur des tendances actuelles en dentisterie esthétique et les préférences des patients, qui sont généralement bien documentées.\n\n4. **Généralité de la règle:**\n   - La règle est suffisamment générale pour couvrir la majorité des situations cliniques concernant les couronnes dans les zones visibles. Elle inclut une exception pour les patients qui insistent sur l'utilisation de l'or, ce qui montre une certaine flexibilité.\n\n5. **Ajustements nécessaires:**\n   - La règle pourrait être enrichie par des références supplémentaires ou des études de cas pour renforcer la base de preuves. De plus, il pourrait être utile d'ajouter des considérations pour les situations où les matériaux esthétiques ne sont pas recommandés pour des raisons cliniques (par exemple, des allergies ou des considérations de durabilité).\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Préférence pour les Couronnes Esthétiques dans les Zones Visibles\",\n  \"type\": \"contraindication\",\n  \"description\": \"Éviter l'utilisation de couronnes en or dans les zones esthétiques telles que les prémolaires et les canines.\",\n  \"clinicalReasoning\": \"Les matériaux esthétiques comme la porcelaine sont préférés dans les zones visibles pour des raisons esthétiques.\",\n  \"conditions\": [\n    \"Traitement des prémolaires et canines\",\n    \"Exigences esthétiques élevées\"\n  ],\n  \"evidence\": [\n    \"Tendances actuelles en dentisterie esthétique\",\n    \"Préférences patient\",\n    \"Études de cas sur les préférences des matériaux dentaires\"\n  ],\n  \"exceptions\": [\n    \"Patient insiste sur l'utilisation de l'or\",\n    \"Contre-indications cliniques aux matériaux esthétiques\"\n  ],\n  \"confidence\": 90,\n  \"priority\": \"high\",\n  \"id\": \"2b777884-a7e5-4534-9275-4e468176495e\",\n  \"discoveredAt\": \"2025-08-08T13:30:22.495718\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Éviter l'utilisation de couronnes en or dans les zones esthétiques telles que les prémolaires et les canines, sauf si le patient insiste ou si des contre-indications cliniques existent.\"\n}\n```\n\n### Conclusion\n\nLa règle est globalement cohérente avec les pratiques cliniques actuelles et ne présente pas de contradictions évidentes avec les cas observés. Elle est bien structurée pour être appliquée dans un contexte clinique, avec des exceptions appropriées. Des ajustements mineurs ont été suggérés pour renforcer la base de preuves et couvrir des situations cliniques spécifiques."
+  },
+  {
+    "title": "Indications Spécifiques pour l'Or en Cas d'Allergies",
+    "type": "dependency",
+    "description": "Utilisation de couronnes en or pour les patients présentant des allergies aux autres métaux.",
+    "clinicalReasoning": "L'or est bien toléré par les tissus buccaux, minimisant les risques de réactions allergiques.",
+    "conditions": [
+      "Allergies aux métaux non précieux"
+    ],
+    "evidence": [
+      "Études sur la biocompatibilité de l'or"
+    ],
+    "exceptions": [
+      "Absence d'allergies",
+      "Préférence pour d'autres matériaux"
+    ],
+    "confidence": 80,
+    "priority": "medium",
+    "id": "2f68b2c6-69b6-46c2-8c02-71de8c888706",
+    "discoveredAt": "2025-08-08T13:30:22.495724",
+    "evidenceCount": 0,
+    "summary": "Utilisation de couronnes en or pour les patients présentant des allergies aux autres métaux.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de couronnes en or pour les patients présentant des allergies aux autres métaux, nous devons examiner les différents aspects mentionnés dans la demande. Voici une analyse détaillée :\n\n### 1. Cohérence avec les cas observés\nLe cas de test fourni, \"approved_sequence_20250806_143500.json\", ne contient aucune étape, ce qui signifie qu'il n'y a pas d'informations spécifiques sur les cas réels pour valider directement la règle. Cependant, la règle elle-même repose sur une logique clinique bien établie : l'or est souvent utilisé en dentisterie pour sa biocompatibilité et sa faible réactivité allergique.\n\n### 2. Contre-exemples\nSans données supplémentaires de cas réels, il est difficile d'identifier des contre-exemples spécifiques. Cependant, en général, les contre-indications à l'utilisation de l'or pourraient inclure des cas d'allergies spécifiques à l'or, bien que rares, ou des préférences esthétiques et économiques des patients.\n\n### 3. Confiance attribuée\nLa confiance de 80 % semble raisonnable, étant donné que l'or est largement reconnu pour sa biocompatibilité et son utilisation historique en dentisterie. Toutefois, cette confiance pourrait être renforcée par des études supplémentaires ou des données cliniques récentes.\n\n### 4. Généralité de la règle\nLa règle est suffisamment générale pour s'appliquer à une large population de patients ayant des allergies aux métaux non précieux. Cependant, elle n'est pas trop générale car elle inclut des exceptions pertinentes, telles que l'absence d'allergies ou la préférence pour d'autres matériaux.\n\n### 5. Ajustements nécessaires\n- **Évidence** : Il serait bénéfique d'inclure des références spécifiques à des études ou des revues systématiques sur la biocompatibilité de l'or.\n- **Exceptions** : Ajouter une mention explicite des allergies spécifiques à l'or, même si elles sont rares.\n- **Confiance** : Justifier davantage la confiance attribuée par des données cliniques ou des études récentes.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Indications Spécifiques pour l'Or en Cas d'Allergies\",\n  \"type\": \"dependency\",\n  \"description\": \"Utilisation de couronnes en or pour les patients présentant des allergies aux autres métaux.\",\n  \"clinicalReasoning\": \"L'or est bien toléré par les tissus buccaux, minimisant les risques de réactions allergiques.\",\n  \"conditions\": [\n    \"Allergies aux métaux non précieux\"\n  ],\n  \"evidence\": [\n    \"Études sur la biocompatibilité de l'or\",\n    \"Revue systématique de la littérature sur l'utilisation de l'or en dentisterie\"\n  ],\n  \"exceptions\": [\n    \"Absence d'allergies\",\n    \"Préférence pour d'autres matériaux\",\n    \"Allergie spécifique à l'or\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"medium\",\n  \"id\": \"2f68b2c6-69b6-46c2-8c02-71de8c888706\",\n  \"discoveredAt\": \"2025-08-08T13:30:22.495724\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Utilisation de couronnes en or pour les patients présentant des allergies aux autres métaux.\"\n}\n```\n\nCette version validée inclut des ajustements pour renforcer la règle et la rendre plus robuste face à des cas cliniques variés."
+  },
+  {
+    "title": "Conservation Structurelle avec les Couronnes en Or",
+    "type": "success_factor",
+    "description": "Les couronnes en or nécessitent moins de préparation de la structure dentaire, préservant la dent naturelle.",
+    "clinicalReasoning": "Moins de préparation est nécessaire, ce qui préserve la structure dentaire et peut prolonger la durée de vie de la dent.",
+    "conditions": [
+      "Besoin de préservation maximale de la dent"
+    ],
+    "evidence": [
+      "Recherches sur la conservation dentaire"
+    ],
+    "exceptions": [
+      "Préférences esthétiques du patient"
+    ],
+    "confidence": 75,
+    "priority": "low",
+    "id": "900b328f-63ca-42ca-ad51-fc0df4daeba6",
+    "discoveredAt": "2025-08-08T13:30:22.495730",
+    "evidenceCount": 0,
+    "summary": "Les couronnes en or nécessitent moins de préparation de la structure dentaire, préservant la dent naturelle.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Conservation Structurelle avec les Couronnes en Or\", nous allons examiner les aspects suivants en fonction des cas de test fournis et des critères de validation :\n\n### 1. Cohérence avec les cas observés\n- **Cas de test :** Les fichiers fournis (`dental_abbreviations.json` et `approved_sequence_20250806_143500.json`) ne contiennent pas d'étapes spécifiques, ce qui rend difficile l'évaluation directe de la règle par rapport à des cas cliniques concrets. Cependant, l'absence d'étapes peut indiquer que les cas ne contiennent pas d'informations contradictoires concernant l'utilisation des couronnes en or.\n- **Analyse :** Sans données spécifiques sur les traitements dentaires, il est difficile de confirmer la cohérence de la règle avec les cas observés. Cependant, la règle semble plausible en théorie.\n\n### 2. Contre-exemples\n- **Observation :** Aucun contre-exemple explicite n'est fourni dans les cas de test. Les exceptions mentionnées dans la règle concernent principalement les préférences esthétiques, ce qui est raisonnable.\n- **Analyse :** Sans données spécifiques, il n'est pas possible d'identifier des contre-exemples. Toutefois, les préférences esthétiques des patients peuvent effectivement constituer un contre-exemple dans certains cas.\n\n### 3. Confiance attribuée\n- **Confiance :** La règle a une confiance de 75%, ce qui est modéré.\n- **Analyse :** Étant donné que la règle repose sur des principes bien établis en dentisterie concernant la préservation de la structure dentaire, une confiance de 75% semble justifiée. Cependant, sans données probantes supplémentaires, il est difficile de l'augmenter.\n\n### 4. Généralité de la règle\n- **Généralité :** La règle est suffisamment générale pour s'appliquer à des situations où la préservation de la structure dentaire est prioritaire.\n- **Analyse :** La règle est bien formulée pour couvrir les cas où la conservation de la dent est essentielle, mais elle reconnaît également les limites esthétiques.\n\n### 5. Ajustements nécessaires\n- **Suggestions :** \n  - Ajouter des références ou des preuves supplémentaires pour renforcer la règle.\n  - Inclure des données cliniques ou des études de cas pour augmenter la confiance.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Conservation Structurelle avec les Couronnes en Or\",\n  \"type\": \"success_factor\",\n  \"description\": \"Les couronnes en or nécessitent moins de préparation de la structure dentaire, préservant la dent naturelle.\",\n  \"clinicalReasoning\": \"Moins de préparation est nécessaire, ce qui préserve la structure dentaire et peut prolonger la durée de vie de la dent.\",\n  \"conditions\": [\n    \"Besoin de préservation maximale de la dent\"\n  ],\n  \"evidence\": [\n    \"Recherches sur la conservation dentaire\"\n  ],\n  \"exceptions\": [\n    \"Préférences esthétiques du patient\"\n  ],\n  \"confidence\": 75,\n  \"priority\": \"low\",\n  \"id\": \"900b328f-63ca-42ca-ad51-fc0df4daeba6\",\n  \"discoveredAt\": \"2025-08-08T13:30:22.495730\",\n  \"evidenceCount\": 0,\n  \"summary\": \"Les couronnes en or nécessitent moins de préparation de la structure dentaire, préservant la dent naturelle.\"\n}\n```\n\n**Conclusion :** La règle est théoriquement solide et cohérente avec les principes de la dentisterie conservatrice. Cependant, pour une validation complète, des données cliniques supplémentaires seraient bénéfiques."
+  },
+  {
+    "title": "Traitement de Canal suivi de Couronne",
+    "type": "pattern",
+    "description": "Poser une couronne après un traitement de canal pour protéger la dent fragilisée.",
+    "clinicalReasoning": "Après un traitement endodontique, la dent devient fragilisée; une couronne protège la structure restante et rétablit la fonction masticatoire.",
+    "conditions": [
+      "Présence de nécrose pulpaire ou infection",
+      "Structure dentaire compromise nécessitant renforcement"
+    ],
+    "evidence": [
+      "Traitement de canal suivi de couronne est fréquent et fiable"
+    ],
+    "exceptions": [
+      "Dents avec insuffisance structurelle extrême"
+    ],
+    "confidence": 90,
+    "priority": "high",
+    "id": "a88e0bb9-b93d-4cbd-b668-845a78a5533f",
+    "discoveredAt": "2025-08-08T13:48:31.804108",
+    "evidenceCount": 46,
+    "summary": "Poser une couronne après un traitement de canal pour protéger la dent fragilisée.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Traitement de Canal suivi de Couronne\", nous devons examiner les cas de test fournis et évaluer la cohérence de la règle avec ces cas, ainsi que sa robustesse théorique. Voici l'analyse étape par étape :\n\n### Analyse des cas de test\n\nLes cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'aucun traitement de canal suivi de couronne n'a été effectué. Cela soulève plusieurs questions :\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test ne montrent aucun traitement de canal suivi de couronne. Cela pourrait indiquer que la règle n'est pas appliquée dans ces cas, ou que ces cas ne nécessitaient pas ce type de traitement. Sans plus d'informations sur les raisons de l'absence de traitement, il est difficile de conclure sur la cohérence.\n\n2. **Contre-exemples :**\n   - Les cas fournis ne constituent pas des contre-exemples directs à la règle, car ils ne contiennent pas de traitements qui contredisent explicitement la règle. Cependant, l'absence de traitements pourrait suggérer que la règle n'est pas universellement applicable.\n\n3. **Confiance attribuée :**\n   - La confiance de 90% semble élevée, surtout en l'absence de cas concrets démontrant l'application réussie de la règle. La confiance pourrait être revue à la baisse en fonction des données disponibles.\n\n4. **Généralité de la règle :**\n   - La règle est généralement acceptée en dentisterie, mais elle pourrait être trop générale si elle ne tient pas compte des variations cliniques spécifiques. Par exemple, certaines dents postérieures pourraient ne pas nécessiter de couronne immédiate.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile d'inclure des critères supplémentaires ou des contextes cliniques spécifiques pour lesquels la règle s'applique. Par exemple, préciser les situations où une couronne n'est pas nécessaire immédiatement après un traitement de canal.\n\n### Version validée de la règle\n\nEn tenant compte de l'analyse ci-dessus, voici une version ajustée de la règle :\n\n```json\n{\n  \"title\": \"Traitement de Canal suivi de Couronne\",\n  \"type\": \"pattern\",\n  \"description\": \"Poser une couronne après un traitement de canal pour protéger la dent fragilisée, sauf dans certains cas spécifiques.\",\n  \"clinicalReasoning\": \"Après un traitement endodontique, la dent devient fragilisée; une couronne protège la structure restante et rétablit la fonction masticatoire.\",\n  \"conditions\": [\n    \"Présence de nécrose pulpaire ou infection\",\n    \"Structure dentaire compromise nécessitant renforcement\"\n  ],\n  \"evidence\": [\n    \"Traitement de canal suivi de couronne est fréquent et fiable\"\n  ],\n  \"exceptions\": [\n    \"Dents avec insuffisance structurelle extrême\",\n    \"Cas où la dent postérieure ne nécessite pas de couronne immédiate\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"high\",\n  \"id\": \"a88e0bb9-b93d-4cbd-b668-845a78a5533f\",\n  \"discoveredAt\": \"2025-08-08T13:48:31.804108\",\n  \"evidenceCount\": 46,\n  \"summary\": \"Poser une couronne après un traitement de canal pour protéger la dent fragilisée, sauf dans certains cas spécifiques.\"\n}\n```\n\n### Conclusion\n\nLa règle \"Traitement de Canal suivi de Couronne\" est généralement valide, mais elle nécessite des ajustements pour mieux refléter les variations cliniques. La confiance a été ajustée à 80% pour refléter l'incertitude liée à l'absence de cas concrets dans les données fournies."
+  },
+  {
+    "title": "Extraction suivie d’Implantation",
+    "type": "pattern",
+    "description": "Procéder à une implantation après extraction pour restaurer la fonction et l'esthétique.",
+    "clinicalReasoning": "Lorsque la dent est irrécupérable, l’extraction est suivie par un implant pour prévenir la migration des dents adjacentes et maintenir l’intégrité osseuse.",
+    "conditions": [
+      "Perte osseuse significative ou mobilité dentaire sévère",
+      "Absence de contre-indications systématiques"
+    ],
+    "evidence": [
+      "Fréquence élevée d'extraction suivie d'implantation"
+    ],
+    "exceptions": [
+      "Patients avec contre-indications médicales"
+    ],
+    "confidence": 85,
+    "priority": "high",
+    "id": "d98ecf47-a538-4490-8b1a-238b09e23204",
+    "discoveredAt": "2025-08-08T13:48:31.804154",
+    "evidenceCount": 46,
+    "summary": "Procéder à une implantation après extraction pour restaurer la fonction et l'esthétique.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Extraction suivie d’Implantation\", nous devons examiner les cas de test fournis et évaluer la cohérence, la généralité, et la justification de la règle. Voici l'analyse :\n\n### Analyse des Cas de Test\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_18.json, treatment_planning_4.json, etc.) indiquent \"0 traitements\" pour l'implantation après extraction. Cela suggère que, dans ces cas spécifiques, la règle n'a pas été appliquée, soit parce que les conditions n'étaient pas remplies, soit parce qu'il y avait des contre-indications.\n\n2. **Contre-exemples :**\n   - Les cas de test ne fournissent pas d'exemples où l'implantation a été réalisée après extraction. Cela pourrait indiquer soit un manque de données, soit que la règle n'est pas applicable dans ces situations spécifiques.\n\n3. **Justification de la confiance :**\n   - La confiance de 85% semble élevée, surtout si les cas de test ne montrent pas d'application de la règle. Cela pourrait indiquer que la règle est généralement bien fondée dans la littérature ou la pratique clinique, mais les cas de test actuels ne le confirment pas.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour couvrir les situations où une extraction suivie d'une implantation est nécessaire pour des raisons fonctionnelles et esthétiques. Cependant, elle pourrait être trop générale si elle ne tient pas compte de la variabilité des cas cliniques.\n\n5. **Ajustements nécessaires :**\n   - Il serait utile d'inclure des critères plus spécifiques pour déterminer quand l'implantation est appropriée après extraction, ainsi que des exemples concrets où la règle a été appliquée avec succès.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Extraction suivie d’Implantation\",\n  \"type\": \"pattern\",\n  \"description\": \"Procéder à une implantation après extraction pour restaurer la fonction et l'esthétique, lorsque les conditions cliniques le permettent.\",\n  \"clinicalReasoning\": \"Lorsque la dent est irrécupérable, l’extraction est suivie par un implant pour prévenir la migration des dents adjacentes et maintenir l’intégrité osseuse.\",\n  \"conditions\": [\n    \"Perte osseuse significative ou mobilité dentaire sévère\",\n    \"Absence de contre-indications systématiques\",\n    \"Disponibilité suffisante d'os pour supporter un implant\"\n  ],\n  \"evidence\": [\n    \"Fréquence élevée d'extraction suivie d'implantation dans des cas cliniques similaires\"\n  ],\n  \"exceptions\": [\n    \"Patients avec contre-indications médicales\",\n    \"Insuffisance de l'os alvéolaire pour supporter un implant\"\n  ],\n  \"confidence\": 75,\n  \"priority\": \"high\",\n  \"id\": \"d98ecf47-a538-4490-8b1a-238b09e23204\",\n  \"discoveredAt\": \"2025-08-08T13:48:31.804154\",\n  \"evidenceCount\": 46,\n  \"summary\": \"Procéder à une implantation après extraction pour restaurer la fonction et l'esthétique, en tenant compte des conditions cliniques spécifiques.\"\n}\n```\n\n### Conclusion\n\nLa règle nécessite des ajustements pour mieux refléter les conditions cliniques spécifiques et les exceptions possibles. La confiance attribuée a été légèrement réduite pour refléter l'incertitude observée dans les cas de test. Il serait bénéfique de collecter davantage de données pour renforcer la validation de cette règle."
+  },
+  {
+    "title": "Blanchiment suivi de Restaurations Esthétiques",
+    "type": "pattern",
+    "description": "Effectuer un blanchiment avant des restaurations esthétiques pour améliorer l'apparence dentaire.",
+    "clinicalReasoning": "Le blanchiment améliore la teinte des dents, suivi de restaurations pour couvrir les imperfections structurelles.",
+    "conditions": [
+      "Patients cherchant une amélioration esthétique globale",
+      "Dents présentant des décolorations résistantes"
+    ],
+    "evidence": [
+      "Nombre significatif de cas de blanchiment suivi de restaurations esthétiques"
+    ],
+    "exceptions": [
+      "Réactions allergiques aux matériaux"
+    ],
+    "confidence": 80,
+    "priority": "medium",
+    "id": "0895b06c-3637-4d23-b379-6c35213a48ff",
+    "discoveredAt": "2025-08-08T13:48:31.804178",
+    "evidenceCount": 46,
+    "summary": "Effectuer un blanchiment avant des restaurations esthétiques pour améliorer l'apparence dentaire.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Blanchiment suivi de Restaurations Esthétiques\", nous devons analyser les cas de test fournis et évaluer la cohérence de la règle avec ces cas. Voici l'analyse détaillée :\n\n### Analyse des Cas de Test\n\nLes cas de test fournis (treatment_planning_18.json, treatment_planning_4.json, treatment_planning_38.json, treatment_planning_14.json, treatment_planning_15.json) montrent qu'il n'y a pas de traitements effectués. Cela signifie que nous n'avons pas de données concrètes pour confirmer ou infirmer l'application de la règle dans ces cas spécifiques.\n\n### Validation de la Règle\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test ne fournissent pas d'informations sur les traitements effectués, donc il n'est pas possible de déterminer si la règle est cohérente avec ces cas spécifiques. Cependant, l'absence de traitements ne contredit pas nécessairement la règle.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test, car il n'y a pas de traitements documentés.\n\n3. **Confiance attribuée :**\n   - La confiance de 80% semble basée sur un \"nombre significatif de cas\" mentionné dans la règle. Sans données supplémentaires, il est difficile de juger si ce niveau de confiance est justifié. Cependant, la règle semble raisonnable sur le plan clinique.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour s'appliquer à des patients cherchant une amélioration esthétique globale et présentant des décolorations résistantes. Elle n'est pas trop spécifique, ce qui est approprié pour une règle clinique.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile d'inclure des critères plus spécifiques pour déterminer quand le blanchiment est nécessaire avant les restaurations esthétiques.\n   - Ajouter des exemples concrets ou des études de cas pour renforcer la base de preuves et justifier la confiance attribuée.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Blanchiment suivi de Restaurations Esthétiques\",\n  \"type\": \"pattern\",\n  \"description\": \"Effectuer un blanchiment avant des restaurations esthétiques pour améliorer l'apparence dentaire.\",\n  \"clinicalReasoning\": \"Le blanchiment améliore la teinte des dents, suivi de restaurations pour couvrir les imperfections structurelles.\",\n  \"conditions\": [\n    \"Patients cherchant une amélioration esthétique globale\",\n    \"Dents présentant des décolorations résistantes\"\n  ],\n  \"evidence\": [\n    \"Nombre significatif de cas de blanchiment suivi de restaurations esthétiques\"\n  ],\n  \"exceptions\": [\n    \"Réactions allergiques aux matériaux\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"medium\",\n  \"id\": \"0895b06c-3637-4d23-b379-6c35213a48ff\",\n  \"discoveredAt\": \"2025-08-08T13:48:31.804178\",\n  \"evidenceCount\": 46,\n  \"summary\": \"Effectuer un blanchiment avant des restaurations esthétiques pour améliorer l'apparence dentaire.\",\n  \"notes\": \"Il est recommandé de collecter plus de données cliniques pour renforcer la base de preuves et ajuster la confiance si nécessaire.\"\n}\n```\n\n### Conclusion\n\nLa règle semble cliniquement raisonnable, mais l'absence de données concrètes dans les cas de test limite la validation complète. Il est conseillé de renforcer la base de preuves avec des études de cas ou des données cliniques supplémentaires pour justifier pleinement la confiance attribuée."
+  },
+  {
+    "title": "Implant avec Greffe Osseuse et/ou Sinus Lift",
+    "type": "dependency",
+    "description": "Utiliser des techniques de greffe osseuse ou sinus lift pour préparer le site implantaire.",
+    "clinicalReasoning": "Ces procédures préparent le site implantaire en assurant une base osseuse suffisante pour la stabilité à long terme de l’implant.",
+    "conditions": [
+      "Insuffisance osseuse dans la région implantaire envisagée"
+    ],
+    "evidence": [
+      "Utilisation fréquente dans les cas de haute insuffisance osseuse"
+    ],
+    "exceptions": [
+      "Patients avec contre-indications médicales"
+    ],
+    "confidence": 75,
+    "priority": "medium",
+    "id": "f2214d43-642a-47c1-bc82-96f43d60a99e",
+    "discoveredAt": "2025-08-08T13:48:31.804195",
+    "evidenceCount": 46,
+    "summary": "Utiliser des techniques de greffe osseuse ou sinus lift pour préparer le site implantaire.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Implant avec Greffe Osseuse et/ou Sinus Lift\" contre les cas réels fournis, nous devons examiner chaque point de validation demandé.\n\n### Analyse des validations\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'aucun traitement n'a été effectué. Cela pourrait signifier que les cas ne présentaient pas d'insuffisance osseuse nécessitant une greffe ou un sinus lift, ou que les patients avaient des contre-indications médicales. Sans plus de détails sur les cas, il est difficile de conclure sur la cohérence.\n\n2. **Contre-exemples:**\n   - Aucun des cas fournis n'a utilisé la règle. Cela pourrait être un contre-exemple si les cas avaient une insuffisance osseuse mais n'ont pas reçu de traitement, ou si les traitements ont été réalisés sans respecter la règle. Cependant, sans plus d'informations sur les raisons de l'absence de traitement, il est difficile de déterminer si ce sont de véritables contre-exemples.\n\n3. **Confiance attribuée:**\n   - La confiance de 75% semble raisonnable si la règle est basée sur une utilisation fréquente dans des cas similaires et si elle est soutenue par 46 éléments de preuve. Cependant, l'absence de traitements dans les cas fournis pourrait suggérer que la confiance pourrait être réévaluée si ces cas sont représentatifs d'une population plus large.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir les cas d'insuffisance osseuse nécessitant une préparation du site implantaire. Elle inclut des exceptions pour les contre-indications médicales, ce qui est important pour éviter des traitements inappropriés.\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile d'ajouter des critères plus spécifiques pour déterminer l'insuffisance osseuse et les contre-indications médicales. De plus, inclure des exemples de cas où la règle a été appliquée avec succès pourrait renforcer la confiance.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Implant avec Greffe Osseuse et/ou Sinus Lift\",\n  \"type\": \"dependency\",\n  \"description\": \"Utiliser des techniques de greffe osseuse ou sinus lift pour préparer le site implantaire.\",\n  \"clinicalReasoning\": \"Ces procédures préparent le site implantaire en assurant une base osseuse suffisante pour la stabilité à long terme de l’implant.\",\n  \"conditions\": [\n    \"Insuffisance osseuse dans la région implantaire envisagée\"\n  ],\n  \"evidence\": [\n    \"Utilisation fréquente dans les cas de haute insuffisance osseuse\"\n  ],\n  \"exceptions\": [\n    \"Patients avec contre-indications médicales\"\n  ],\n  \"confidence\": 75,\n  \"priority\": \"medium\",\n  \"id\": \"f2214d43-642a-47c1-bc82-96f43d60a99e\",\n  \"discoveredAt\": \"2025-08-08T13:48:31.804195\",\n  \"evidenceCount\": 46,\n  \"summary\": \"Utiliser des techniques de greffe osseuse ou sinus lift pour préparer le site implantaire.\",\n  \"notes\": \"Il est recommandé de préciser les critères d'insuffisance osseuse et d'inclure des exemples de cas réussis pour renforcer la confiance.\"\n}\n```\n\n### Conclusion\n\nLa règle semble généralement bien fondée, mais l'absence de traitements dans les cas fournis nécessite une investigation plus approfondie pour s'assurer qu'il n'y a pas de biais dans l'échantillonnage des cas ou des critères d'application de la règle. Il serait bénéfique d'avoir plus de données pour confirmer la validité et l'applicabilité de la règle."
+  },
+  {
+    "title": "Restauration Suivie d’Orthodontie",
+    "type": "pattern",
+    "description": "Intégrer l'orthodontie après des restaurations pour améliorer l'occlusion.",
+    "clinicalReasoning": "Après avoir restauré des dents, l’orthodontie peut harmoniser l’alignement dentaire pour une occlusion optimale et esthétique.",
+    "conditions": [
+      "Nécessité d'une occlusion harmonieuse"
+    ],
+    "evidence": [
+      "Cas modérés de restauration suivie d’orthodontie"
+    ],
+    "exceptions": [
+      "Appréhension ou non-conformité des patients"
+    ],
+    "confidence": 70,
+    "priority": "medium",
+    "id": "85d2c173-fa0e-468c-9a04-2f280852b5e8",
+    "discoveredAt": "2025-08-08T13:48:31.804212",
+    "evidenceCount": 46,
+    "summary": "Intégrer l'orthodontie après des restaurations pour améliorer l'occlusion.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Restauration Suivie d’Orthodontie\", nous devons examiner les cas fournis et évaluer la cohérence et l'applicabilité de la règle. Voici l'analyse des points demandés :\n\n### Analyse\n\n1. **Cohérence avec les cas observés :**\n   - Les cas fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'aucun traitement n'a été effectué selon la règle. Cela peut suggérer que la règle n'est pas appliquée dans ces cas, soit parce que les conditions ne sont pas remplies, soit parce que d'autres facteurs influencent la décision clinique.\n\n2. **Contre-exemples :**\n   - Les cas fournis ne présentent pas de contre-exemples explicites où l'application de la règle aurait été inappropriée. Cependant, l'absence de traitement pourrait indiquer des situations où la règle n'est pas pertinente ou applicable.\n\n3. **Confiance attribuée :**\n   - La confiance de 70% semble modérée et peut être justifiée si la règle est basée sur une pratique clinique courante mais non universelle. Cependant, sans plus de détails sur les 46 cas de preuves, il est difficile de confirmer cette confiance.\n\n4. **Généralité de la règle :**\n   - La règle est formulée de manière assez générale, ce qui est utile pour une large application. Cependant, elle pourrait bénéficier de précisions supplémentaires sur les types de restaurations et de conditions orthodontiques spécifiques pour lesquelles elle est la plus pertinente.\n\n5. **Ajustements nécessaires :**\n   - Inclure des critères plus spécifiques pour l'application de la règle, comme les types de restaurations ou les conditions orthodontiques spécifiques.\n   - Ajouter des détails sur les preuves qui soutiennent la règle pour renforcer la confiance.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Restauration Suivie d’Orthodontie\",\n  \"type\": \"pattern\",\n  \"description\": \"Intégrer l'orthodontie après des restaurations pour améliorer l'occlusion, en tenant compte des types spécifiques de restaurations et des conditions orthodontiques.\",\n  \"clinicalReasoning\": \"Après avoir restauré des dents, l’orthodontie peut harmoniser l’alignement dentaire pour une occlusion optimale et esthétique, surtout dans les cas de restaurations importantes ou complexes.\",\n  \"conditions\": [\n    \"Nécessité d'une occlusion harmonieuse\",\n    \"Restaurations importantes ou complexes\"\n  ],\n  \"evidence\": [\n    \"Cas modérés de restauration suivie d’orthodontie\",\n    \"Études cliniques sur l'amélioration de l'occlusion post-restauration\"\n  ],\n  \"exceptions\": [\n    \"Appréhension ou non-conformité des patients\",\n    \"Absence de bénéfice esthétique ou fonctionnel significatif\"\n  ],\n  \"confidence\": 70,\n  \"priority\": \"medium\",\n  \"id\": \"85d2c173-fa0e-468c-9a04-2f280852b5e8\",\n  \"discoveredAt\": \"2025-08-08T13:48:31.804212\",\n  \"evidenceCount\": 46,\n  \"summary\": \"Intégrer l'orthodontie après des restaurations pour améliorer l'occlusion, en ciblant les cas de restaurations importantes ou complexes.\"\n}\n```\n\n### Conclusion\nLa règle est potentiellement valide mais nécessite des précisions pour être plus applicable et justifiée. Les ajustements proposés visent à améliorer sa spécificité et à renforcer la confiance dans son application clinique."
+  },
+  {
+    "title": "Intervalle de 4 semaines entre détartrage et contrôle de suivi",
+    "type": "timing",
+    "description": "Planifier un contrôle 4 semaines après un détartrage pour évaluer l'efficacité et la régénération gingivale.",
+    "clinicalReasoning": "Permettre l'adaptation post-détartrage et évaluer la régénération gingivale.",
+    "conditions": [
+      "Accumulation significative de tartre",
+      "Suivi de traitements parodontaux"
+    ],
+    "evidence": [
+      "treatment_planning_4.json",
+      "treatment_planning_18.json"
+    ],
+    "exceptions": [
+      "Conditions parodontales sévères",
+      "Patients sous médication immunosuppressive"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "0ca20b58-7fa4-494d-a123-2b0cc3a25eeb",
+    "discoveredAt": "2025-08-08T13:48:48.810242",
+    "evidenceCount": 42,
+    "summary": "Planifier un contrôle 4 semaines après un détartrage pour évaluer l'efficacité et la régénération gingivale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique proposée, nous allons examiner les différents aspects demandés :\n\n### 1. Cohérence de la règle avec les cas observés\n\nLa règle stipule qu'un contrôle doit être planifié 4 semaines après un détartrage pour évaluer l'efficacité et la régénération gingivale. Cependant, les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, treatment_planning_14.json, treatment_planning_15.json, treatment_planning_5.json) indiquent qu'il n'y a eu aucun traitement enregistré. Cela signifie qu'il n'y a pas suffisamment d'informations dans ces cas pour évaluer la cohérence de la règle, car aucun détartrage n'a été effectué.\n\n### 2. Contre-exemples\n\nLes cas fournis ne présentent pas de contre-exemples explicites à la règle, car aucun traitement n'a été enregistré. Par conséquent, il n'est pas possible de déterminer si la règle est contredite par les cas observés.\n\n### 3. Confiance attribuée\n\nLa confiance attribuée à la règle est de 50, ce qui indique une confiance modérée. Étant donné le manque de données probantes dans les cas fournis, il est difficile de justifier ou de contester ce niveau de confiance. Il serait utile d'avoir accès à des cas où des détartrages ont été effectués et suivis pour mieux évaluer la pertinence de la règle.\n\n### 4. Généralité de la règle\n\nLa règle semble suffisamment générale pour s'appliquer à des cas de détartrage suivis d'un contrôle. Cependant, elle inclut des exceptions pour les conditions parodontales sévères et les patients sous médication immunosuppressive, ce qui ajoute une nuance appropriée à son application.\n\n### 5. Ajustements nécessaires\n\nÉtant donné le manque de données probantes dans les cas fournis, il serait judicieux de :\n- Collecter davantage de données sur des cas où des détartrages ont été réalisés pour évaluer l'application de la règle.\n- Préciser les critères de \"conditions parodontales sévères\" pour éviter toute ambiguïté.\n- Revoir la confiance attribuée une fois que des données supplémentaires sont disponibles.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle de 4 semaines entre détartrage et contrôle de suivi\",\n  \"type\": \"timing\",\n  \"description\": \"Planifier un contrôle 4 semaines après un détartrage pour évaluer l'efficacité et la régénération gingivale.\",\n  \"clinicalReasoning\": \"Permettre l'adaptation post-détartrage et évaluer la régénération gingivale.\",\n  \"conditions\": [\n    \"Accumulation significative de tartre\",\n    \"Suivi de traitements parodontaux\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_4.json\",\n    \"treatment_planning_18.json\"\n  ],\n  \"exceptions\": [\n    \"Conditions parodontales sévères\",\n    \"Patients sous médication immunosuppressive\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"0ca20b58-7fa4-494d-a123-2b0cc3a25eeb\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810242\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Planifier un contrôle 4 semaines après un détartrage pour évaluer l'efficacité et la régénération gingivale.\"\n}\n```\n\n**Conclusion :** La règle est potentiellement valide mais nécessite davantage de données probantes pour une validation complète. Les ajustements proposés visent à renforcer la pertinence et l'application de la règle."
+  },
+  {
+    "title": "Intervalle de 2 semaines entre consultation initiale et traitement principal",
+    "type": "timing",
+    "description": "Commencer le traitement principal deux semaines après la consultation initiale.",
+    "clinicalReasoning": "Temps nécessaire pour planifier et préparer le patient.",
+    "conditions": [
+      "Traitements programmés comme l'orthodontie"
+    ],
+    "evidence": [
+      "treatment_planning_15.json",
+      "treatment_planning_5.json",
+      "treatment_planning_39.json"
+    ],
+    "exceptions": [
+      "Urgences dentaires",
+      "Traitements simples"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "6b8b6cd2-bddf-40c8-8658-53ddfbba177d",
+    "discoveredAt": "2025-08-08T13:48:48.810276",
+    "evidenceCount": 42,
+    "summary": "Commencer le traitement principal deux semaines après la consultation initiale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique, nous allons examiner les différents aspects demandés en fonction des cas de test fournis.\n\n### Analyse\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent \"0 traitements\". Cela signifie qu'il n'y a pas de données de traitement à analyser pour vérifier la cohérence avec la règle. Par conséquent, ces cas ne fournissent pas d'informations utiles pour valider la règle.\n\n2. **Contre-exemples:**\n   - Aucun des cas de test fournis ne présente de traitements, donc aucun contre-exemple n'est disponible pour évaluer si la règle est violée.\n\n3. **Confiance attribuée:**\n   - La confiance de 60% semble modérée, ce qui est approprié compte tenu de l'absence de données de cas de test pour confirmer ou infirmer la règle. Cependant, sans données supplémentaires, il est difficile de justifier pleinement ce niveau de confiance.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour s'appliquer aux traitements programmés comme l'orthodontie, mais elle exclut les urgences dentaires et les traitements simples, ce qui est raisonnable. Cependant, sans cas concrets, il est difficile de déterminer si elle est trop générale ou trop restrictive.\n\n5. **Ajustements nécessaires:**\n   - Étant donné le manque de données concrètes dans les cas de test, il serait utile d'obtenir des cas supplémentaires qui incluent des traitements pour mieux évaluer la règle.\n   - Il pourrait être utile de préciser davantage les types de traitements qui nécessitent un intervalle de deux semaines, afin de clarifier les exceptions.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle de 2 semaines entre consultation initiale et traitement principal\",\n  \"type\": \"timing\",\n  \"description\": \"Commencer le traitement principal deux semaines après la consultation initiale pour les traitements programmés.\",\n  \"clinicalReasoning\": \"Temps nécessaire pour planifier et préparer le patient.\",\n  \"conditions\": [\n    \"Traitements programmés comme l'orthodontie\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_15.json\",\n    \"treatment_planning_5.json\",\n    \"treatment_planning_39.json\"\n  ],\n  \"exceptions\": [\n    \"Urgences dentaires\",\n    \"Traitements simples\"\n  ],\n  \"confidence\": 60,\n  \"priority\": \"medium\",\n  \"id\": \"6b8b6cd2-bddf-40c8-8658-53ddfbba177d\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810276\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Commencer le traitement principal deux semaines après la consultation initiale pour les traitements programmés.\"\n}\n```\n\n### Conclusion\n\nLa règle ne peut pas être validée de manière concluante avec les cas de test fournis en raison de l'absence de données de traitement. Il est recommandé de recueillir des cas supplémentaires avec des traitements effectifs pour une validation plus robuste."
+  },
+  {
+    "title": "Intervalle de 4 à 6 semaines entre traitement endodontique et pose de couronnes",
+    "type": "timing",
+    "description": "Attendre 4 à 6 semaines après un traitement endodontique avant de poser une couronne.",
+    "clinicalReasoning": "Permet la cicatrisation et assure la stabilité de la dent avant la couronne.",
+    "conditions": [
+      "Dents traitées endodontiquement",
+      "Précaution pour éviter complications"
+    ],
+    "evidence": [
+      "treatment_planning_9.json",
+      "treatment_planning_28.json"
+    ],
+    "exceptions": [
+      "Pose rapide pour raisons esthétiques ou fonctionnelles"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "96c9803b-4094-46d5-9886-051d31902851",
+    "discoveredAt": "2025-08-08T13:48:48.810284",
+    "evidenceCount": 42,
+    "summary": "Attendre 4 à 6 semaines après un traitement endodontique avant de poser une couronne.",
+    "validated": true,
+    "validationNotes": "Pour valider cette règle clinique, nous devons examiner les éléments fournis et les cas de test pour évaluer sa cohérence et sa pertinence. Voici l'analyse :\n\n### Analyse de la règle\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'il n'y a pas de traitements endodontiques enregistrés. Par conséquent, ces cas ne permettent pas de valider directement la règle, car ils ne contiennent pas de données pertinentes sur le délai entre un traitement endodontique et la pose de couronnes.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple n'est fourni dans les cas de test, car ils ne contiennent pas de traitements endodontiques. Pour évaluer les contre-exemples, il serait nécessaire d'avoir des cas où la couronne a été posée en dehors de l'intervalle de 4 à 6 semaines, et d'observer les résultats cliniques.\n\n3. **Confiance attribuée :**\n   - La confiance de 50% semble indiquer une incertitude ou un manque de données probantes solides. Cela pourrait être justifié si les preuves disponibles (42 cas mentionnés) montrent une variabilité dans les résultats cliniques en fonction du timing de la pose de la couronne.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale car elle s'applique à toutes les dents traitées endodontiquement, mais elle inclut des exceptions pour des raisons esthétiques ou fonctionnelles, ce qui est pertinent en pratique clinique.\n\n5. **Ajustements nécessaires :**\n   - Il serait utile d'avoir plus de données sur les résultats cliniques associés à différents délais de pose de couronnes après un traitement endodontique. De plus, des études supplémentaires pourraient renforcer la confiance attribuée à la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle de 4 à 6 semaines entre traitement endodontique et pose de couronnes\",\n  \"type\": \"timing\",\n  \"description\": \"Attendre 4 à 6 semaines après un traitement endodontique avant de poser une couronne.\",\n  \"clinicalReasoning\": \"Permet la cicatrisation et assure la stabilité de la dent avant la couronne.\",\n  \"conditions\": [\n    \"Dents traitées endodontiquement\",\n    \"Précaution pour éviter complications\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_9.json\",\n    \"treatment_planning_28.json\"\n  ],\n  \"exceptions\": [\n    \"Pose rapide pour raisons esthétiques ou fonctionnelles\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"96c9803b-4094-46d5-9886-051d31902851\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810284\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Attendre 4 à 6 semaines après un traitement endodontique avant de poser une couronne. Plus de données sont nécessaires pour renforcer cette recommandation.\"\n}\n```\n\n### Conclusion\n\nLa règle semble raisonnable et est basée sur des principes cliniques généralement acceptés, mais elle nécessite davantage de données probantes pour augmenter la confiance. Les cas de test fournis ne permettent pas de valider ou d'invalider directement la règle, et il serait bénéfique d'avoir des cas avec des traitements endodontiques pour une validation plus robuste."
+  },
+  {
+    "title": "Intervalle de 2 semaines entre extractions et pose d'implants",
+    "type": "timing",
+    "description": "Poser des implants deux semaines après une extraction dentaire.",
+    "clinicalReasoning": "Permet la cicatrisation initiale de l'alvéole pour optimiser la stabilité de l'implant.",
+    "conditions": [
+      "Extractions simples",
+      "Bonne santé bucco-dentaire"
+    ],
+    "evidence": [
+      "treatment_planning_2.json",
+      "treatment_planning_33.json",
+      "treatment_planning_27.json",
+      "treatment_planning_1.json"
+    ],
+    "exceptions": [
+      "Extractions complexes",
+      "Maladies systémiques affectant la cicatrisation"
+    ],
+    "confidence": 80,
+    "priority": "high",
+    "id": "6fb937d9-49a3-4859-8311-e0c05ee08012",
+    "discoveredAt": "2025-08-08T13:48:48.810289",
+    "evidenceCount": 42,
+    "summary": "Poser des implants deux semaines après une extraction dentaire.",
+    "validated": true,
+    "validationNotes": "Pour valider cette règle clinique, nous allons analyser les différents aspects demandés en utilisant les cas de test fournis et les informations de la règle.\n\n### 1. Cohérence avec les cas observés\n\nLes cas de test fournis (treatment_planning_18.json, treatment_planning_38.json, etc.) ne contiennent aucun traitement, ce qui signifie qu'ils ne fournissent pas d'informations directes sur l'application de la règle. Par conséquent, ces cas ne permettent pas de confirmer ou d'infirmer la cohérence de la règle avec des cas réels.\n\n### 2. Contre-exemples\n\nAucun des cas de test fournis ne contient de traitements, donc il n'y a pas de contre-exemples directs à la règle. Cependant, sans données supplémentaires sur d'autres cas où la règle a été appliquée, il est difficile de déterminer s'il existe des contre-exemples.\n\n### 3. Confiance attribuée\n\nLa confiance de 80 % semble basée sur 42 éléments de preuve, ce qui est relativement solide. Cependant, sans accès aux détails de ces preuves (treatment_planning_2.json, etc.), il est difficile de juger de leur qualité et de leur pertinence. La confiance pourrait être justifiée si ces preuves sont robustes et bien documentées.\n\n### 4. Généralité de la règle\n\nLa règle semble suffisamment générale pour s'appliquer à des cas d'extractions simples et de bonne santé bucco-dentaire, mais elle inclut des exceptions importantes (extractions complexes, maladies systémiques). Cela montre une prise en compte des variations cliniques, ce qui est positif.\n\n### 5. Ajustements nécessaires\n\n- **Documentation des preuves**: Il serait utile d'avoir un résumé ou une analyse des preuves mentionnées pour mieux comprendre la base de la règle.\n- **Cas supplémentaires**: Plus de cas de test, y compris des cas où la règle a été appliquée, aideraient à valider la règle de manière plus complète.\n- **Précision des exceptions**: Détailler davantage les types de maladies systémiques qui pourraient affecter la cicatrisation pourrait renforcer la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle de 2 semaines entre extractions et pose d'implants\",\n  \"type\": \"timing\",\n  \"description\": \"Poser des implants deux semaines après une extraction dentaire.\",\n  \"clinicalReasoning\": \"Permet la cicatrisation initiale de l'alvéole pour optimiser la stabilité de l'implant.\",\n  \"conditions\": [\n    \"Extractions simples\",\n    \"Bonne santé bucco-dentaire\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_2.json\",\n    \"treatment_planning_33.json\",\n    \"treatment_planning_27.json\",\n    \"treatment_planning_1.json\"\n  ],\n  \"exceptions\": [\n    \"Extractions complexes\",\n    \"Maladies systémiques affectant la cicatrisation (ex: diabète non contrôlé, troubles de la coagulation)\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"high\",\n  \"id\": \"6fb937d9-49a3-4859-8311-e0c05ee08012\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810289\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Poser des implants deux semaines après une extraction dentaire, sauf en cas d'extractions complexes ou de maladies systémiques affectant la cicatrisation.\"\n}\n```\n\nCette version inclut une légère précision sur les exceptions pour améliorer la clarté et l'applicabilité de la règle."
+  },
+  {
+    "title": "Intervalle de 2 semaines entre chirurgie gingivale et suivi",
+    "type": "timing",
+    "description": "Organiser un suivi deux semaines après une chirurgie gingivale.",
+    "clinicalReasoning": "Vérifier la guérison des tissus et identifier les complications.",
+    "conditions": [
+      "Interventions chirurgicales de parodontie légères à modérées"
+    ],
+    "evidence": [
+      "treatment_planning_13.json",
+      "treatment_planning_25.json"
+    ],
+    "exceptions": [
+      "Chirurgies complexes nécessitant des suivis différents"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "15765eda-4718-46d2-a539-a26eb8e4e75d",
+    "discoveredAt": "2025-08-08T13:48:48.810295",
+    "evidenceCount": 42,
+    "summary": "Organiser un suivi deux semaines après une chirurgie gingivale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'intervalle de 2 semaines entre une chirurgie gingivale et le suivi, nous allons examiner les cas de test fournis et évaluer la cohérence de la règle avec ces cas.\n\n### Analyse des Cas de Test\n\nLes cas de test fournis (treatment_planning_38.json, treatment_planning_14.json, treatment_planning_39.json, treatment_planning_28.json, treatment_planning_26.json) indiquent qu'il n'y a pas de traitements associés. Cela signifie que ces cas ne contiennent pas d'informations pertinentes pour valider la règle, car ils ne semblent pas inclure de chirurgies gingivales légères à modérées, ni de suivis planifiés.\n\n### Validation de la Règle\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis ne permettent pas de valider la règle, car ils ne contiennent pas d'exemples pertinents de chirurgies gingivales suivies de rendez-vous de suivi.\n\n2. **Contre-exemples:**\n   - Aucun contre-exemple n'est présent dans les cas de test, car il n'y a pas de traitements enregistrés. Par conséquent, la règle ne peut pas être infirmée par ces cas.\n\n3. **Confiance attribuée:**\n   - La confiance de 50% semble modérée, ce qui est approprié étant donné que la règle est basée sur 42 éléments de preuve. Cependant, sans cas de test pertinents, il est difficile de confirmer cette confiance.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir les chirurgies gingivales légères à modérées, mais elle exclut explicitement les chirurgies complexes, ce qui est approprié.\n\n5. **Ajustements nécessaires:**\n   - Il serait utile d'avoir des cas de test supplémentaires qui incluent des chirurgies gingivales et des suivis planifiés pour mieux valider la règle.\n   - La règle pourrait être ajustée pour préciser davantage les types de chirurgies considérées comme légères à modérées.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Intervalle de 2 semaines entre chirurgie gingivale et suivi\",\n  \"type\": \"timing\",\n  \"description\": \"Organiser un suivi deux semaines après une chirurgie gingivale.\",\n  \"clinicalReasoning\": \"Vérifier la guérison des tissus et identifier les complications.\",\n  \"conditions\": [\n    \"Interventions chirurgicales de parodontie légères à modérées\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_13.json\",\n    \"treatment_planning_25.json\"\n  ],\n  \"exceptions\": [\n    \"Chirurgies complexes nécessitant des suivis différents\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"15765eda-4718-46d2-a539-a26eb8e4e75d\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810295\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Organiser un suivi deux semaines après une chirurgie gingivale.\",\n  \"notes\": \"La règle nécessite des cas de test supplémentaires pour validation complète.\"\n}\n```\n\n### Conclusion\n\nLa règle ne peut pas être validée ou invalidée avec les cas de test actuels. Il est recommandé de collecter des données supplémentaires pour mieux évaluer la pertinence et la fiabilité de la règle."
+  },
+  {
+    "title": "Intervalle de 6 mois entre visites de suivi après intervention chirurgicale",
+    "type": "timing",
+    "description": "Effectuer des visites de suivi semestrielles après une intervention chirurgicale.",
+    "clinicalReasoning": "Surveiller la stabilité des résultats chirurgicaux à long terme.",
+    "conditions": [
+      "Chirurgies parodontales ou implantaires"
+    ],
+    "evidence": [
+      "treatment_planning_17.json",
+      "treatment_planning_40.json",
+      "treatment_planning_21.json"
+    ],
+    "exceptions": [
+      "Besoins spécifiques nécessitant des suivis plus fréquents"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "77e04a93-8a4d-4624-9dfe-07f3d71e6dfb",
+    "discoveredAt": "2025-08-08T13:48:48.810301",
+    "evidenceCount": 42,
+    "summary": "Effectuer des visites de suivi semestrielles après une intervention chirurgicale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique proposée, nous allons analyser les éléments suivants :\n\n### 1. Cohérence de la règle avec les cas observés\n\nLa règle stipule que des visites de suivi semestrielles doivent être effectuées après des chirurgies parodontales ou implantaires. Cependant, les cas de test fournis (treatment_planning_18.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a pas de traitements enregistrés. Cela signifie que ces cas ne sont pas pertinents pour évaluer la règle, car ils ne concernent pas de patients ayant subi les chirurgies spécifiées.\n\n### 2. Contre-exemples\n\nLes cas fournis ne présentent pas de contre-exemples, car aucun d'eux ne concerne des patients ayant subi les chirurgies parodontales ou implantaires mentionnées dans la règle. Pour identifier des contre-exemples, il serait nécessaire d'avoir des cas où des patients ayant subi ces chirurgies n'ont pas eu de suivi semestriel, ou ont eu un suivi plus fréquent sans raison justifiée.\n\n### 3. Justification de la confiance attribuée\n\nLa confiance de 60 % semble modérée, ce qui peut être approprié étant donné que la règle est basée sur un nombre limité de preuves (42 cas). Cependant, sans accès aux détails des preuves (treatment_planning_17.json, etc.), il est difficile d'évaluer la robustesse de cette confiance. Une analyse plus approfondie des cas réels et des résultats des suivis pourrait renforcer ou affaiblir cette confiance.\n\n### 4. Généralité de la règle\n\nLa règle est suffisamment générale pour couvrir les chirurgies parodontales et implantaires, mais elle pourrait être trop restrictive si elle ne prend pas en compte d'autres types de chirurgies dentaires qui pourraient bénéficier d'un suivi semestriel. Il pourrait être utile de préciser les types de chirurgies incluses ou d'élargir la règle à d'autres interventions similaires.\n\n### 5. Ajustements nécessaires\n\n- **Clarification des exceptions** : La règle mentionne des besoins spécifiques nécessitant des suivis plus fréquents. Il serait utile de préciser ces besoins pour guider les praticiens.\n- **Élargissement potentiel** : Considérer d'autres types de chirurgies dentaires pour lesquelles un suivi semestriel pourrait être bénéfique.\n- **Validation par des cas pertinents** : Utiliser des cas de patients ayant subi les chirurgies spécifiées pour valider la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle de 6 mois entre visites de suivi après intervention chirurgicale\",\n  \"type\": \"timing\",\n  \"description\": \"Effectuer des visites de suivi semestrielles après une intervention chirurgicale.\",\n  \"clinicalReasoning\": \"Surveiller la stabilité des résultats chirurgicaux à long terme.\",\n  \"conditions\": [\n    \"Chirurgies parodontales ou implantaires\"\n  ],\n  \"evidence\": [\n    \"treatment_planning_17.json\",\n    \"treatment_planning_40.json\",\n    \"treatment_planning_21.json\"\n  ],\n  \"exceptions\": [\n    \"Besoins spécifiques nécessitant des suivis plus fréquents (ex: complications post-opératoires, maladies systémiques influençant la guérison)\"\n  ],\n  \"confidence\": 60,\n  \"priority\": \"medium\",\n  \"id\": \"77e04a93-8a4d-4624-9dfe-07f3d71e6dfb\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810301\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Effectuer des visites de suivi semestrielles après une intervention chirurgicale.\",\n  \"notes\": \"Considérer l'élargissement de la règle à d'autres types de chirurgies dentaires.\"\n}\n```\n\nCette version intègre des suggestions pour clarifier les exceptions et propose une réflexion sur l'élargissement potentiel de la règle."
+  },
+  {
+    "title": "Intervalle typique de 2 semaines entre séquences de traitements esthétiques et restaurateurs",
+    "type": "timing",
+    "description": "Maintenir un intervalle de 2 semaines entre séquences spécifiques de traitements esthétiques et restaurateurs.",
+    "clinicalReasoning": "Assurer stabilité et guérison entre traitements pour optimiser les résultats.",
+    "conditions": [
+      "Traitements esthétiques et restaurateurs",
+      "Extrations suivies d'implants"
+    ],
+    "evidence": [
+      "Majorité des patterns présentent 2 à 3 occurrences"
+    ],
+    "exceptions": [
+      "Urgences ou besoins spécifiques"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "e3d00538-fe65-404a-8e01-7a8e8c8e27cf",
+    "discoveredAt": "2025-08-08T13:48:48.810306",
+    "evidenceCount": 42,
+    "summary": "Maintenir un intervalle de 2 semaines entre séquences spécifiques de traitements esthétiques et restaurateurs.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique proposée, nous devons examiner les cas de test fournis et évaluer la cohérence et la pertinence de la règle par rapport à ces cas. Voici l'analyse basée sur les informations disponibles :\n\n### Analyse des validations\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_14.json, dental_abbreviations.json, etc.) ne contiennent aucune information sur les traitements esthétiques et restaurateurs, ni sur les séquences de traitement. Par conséquent, il n'est pas possible de vérifier directement la cohérence de la règle avec ces cas, car ils ne fournissent pas de données pertinentes pour la règle en question.\n\n2. **Contre-exemples:**\n   - Aucun des cas de test ne présente de séquences de traitement, donc aucun contre-exemple direct ne peut être identifié. Cependant, l'absence de données pertinentes dans les cas de test rend difficile la validation de la règle.\n\n3. **Confiance attribuée:**\n   - La confiance est fixée à 50, ce qui indique une incertitude modérée. Étant donné le manque de données dans les cas de test pour vérifier la règle, ce niveau de confiance semble approprié. Cependant, pour augmenter la confiance, il serait nécessaire de disposer de données supplémentaires montrant des séquences de traitement réelles.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour s'appliquer à une variété de traitements esthétiques et restaurateurs. Toutefois, sans données spécifiques, il est difficile de déterminer si elle est trop générale. Les exceptions pour les urgences ou besoins spécifiques ajoutent une flexibilité nécessaire.\n\n5. **Ajustements nécessaires:**\n   - Il serait utile de préciser davantage les types de traitements esthétiques et restaurateurs auxquels la règle s'applique. De plus, l'ajout de données empiriques supplémentaires pourrait renforcer la validité de la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Intervalle typique de 2 semaines entre séquences de traitements esthétiques et restaurateurs\",\n  \"type\": \"timing\",\n  \"description\": \"Maintenir un intervalle de 2 semaines entre séquences spécifiques de traitements esthétiques et restaurateurs.\",\n  \"clinicalReasoning\": \"Assurer stabilité et guérison entre traitements pour optimiser les résultats.\",\n  \"conditions\": [\n    \"Traitements esthétiques et restaurateurs\",\n    \"Extrations suivies d'implants\"\n  ],\n  \"evidence\": [\n    \"Majorité des patterns présentent 2 à 3 occurrences\"\n  ],\n  \"exceptions\": [\n    \"Urgences ou besoins spécifiques\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"e3d00538-fe65-404a-8e01-7a8e8c8e27cf\",\n  \"discoveredAt\": \"2025-08-08T13:48:48.810306\",\n  \"evidenceCount\": 42,\n  \"summary\": \"Maintenir un intervalle de 2 semaines entre séquences spécifiques de traitements esthétiques et restaurateurs.\",\n  \"notes\": \"La règle nécessite des données supplémentaires pour validation complète. Les cas de test actuels ne fournissent pas d'informations pertinentes pour évaluer la règle.\"\n}\n```\n\n### Conclusion\n\nLa règle proposée semble raisonnable et bien formulée, mais elle nécessite des données empiriques supplémentaires pour une validation complète. Les cas de test fournis ne permettent pas de vérifier la règle, et il serait bénéfique d'avoir des exemples concrets de séquences de traitement pour mieux évaluer sa pertinence et sa validité."
+  },
+  {
+    "title": "Utilisation de la Céramique et de la Zircone pour les Restaurations Esthétiques",
+    "type": "material",
+    "description": "Préférence pour la céramique et la zircone dans les couronnes et facettes pour leur esthétique supérieure.",
+    "clinicalReasoning": "Ces matériaux offrent une excellente esthétique, translucidité et résistance à l'abrasion, ce qui les rend idéaux pour les restaurations visibles.",
+    "conditions": [
+      "Restaurations nécessitant une haute esthétique",
+      "Zones visibles"
+    ],
+    "evidence": [
+      "Nombreuses occurrences dans les fichiers de planification",
+      "Haut intérêt clinique"
+    ],
+    "exceptions": [
+      "Zones avec charges masticatoires élevées",
+      "Présence de bruxisme sévère"
+    ],
+    "confidence": 90,
+    "priority": "high",
+    "id": "3ee3aec5-7cb7-48e9-b5d8-236c5344399d",
+    "discoveredAt": "2025-08-08T13:49:01.632920",
+    "evidenceCount": 34,
+    "summary": "Préférence pour la céramique et la zircone dans les couronnes et facettes pour leur esthétique supérieure.",
+    "validated": true,
+    "validationNotes": "Pour valider cette règle clinique, nous allons examiner les aspects suivants en fonction des cas de test fournis :\n\n### 1. Cohérence avec les cas observés\nLes cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a eu aucun traitement utilisant la céramique ou la zircone. Cela pourrait suggérer que la règle n'est pas appliquée dans ces cas, mais cela ne signifie pas nécessairement qu'elle est incohérente. Il est possible que les cas ne nécessitaient pas de restaurations esthétiques ou qu'ils présentaient des exceptions (par exemple, des charges masticatoires élevées ou du bruxisme sévère).\n\n### 2. Contre-exemples\nAucun contre-exemple explicite n'est fourni dans les cas de test. Cependant, l'absence de traitements pourrait indiquer que les conditions de la règle n'étaient pas remplies, ou que les exceptions s'appliquaient.\n\n### 3. Confiance attribuée\nLa confiance de 90 % semble élevée, mais sans données supplémentaires sur les résultats cliniques ou les préférences des praticiens dans les cas fournis, il est difficile de la justifier pleinement. La règle semble bien fondée théoriquement, mais l'absence de traitements dans les cas testés pourrait suggérer une surestimation de cette confiance.\n\n### 4. Généralité de la règle\nLa règle est suffisamment générale pour couvrir les restaurations esthétiques, mais elle pourrait être trop restrictive si elle ne prend pas en compte d'autres facteurs cliniques ou préférences des patients. Les exceptions mentionnées sont pertinentes, mais il pourrait y avoir d'autres situations où la céramique et la zircone ne sont pas idéales.\n\n### 5. Ajustements nécessaires\n- **Confiance** : Réévaluer la confiance en fonction de données cliniques plus larges ou de retours d'expérience.\n- **Conditions** : Ajouter des conditions supplémentaires ou clarifier les situations où la règle s'applique.\n- **Exceptions** : Envisager d'autres exceptions possibles basées sur des facteurs cliniques ou économiques.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Utilisation de la Céramique et de la Zircone pour les Restaurations Esthétiques\",\n  \"type\": \"material\",\n  \"description\": \"Préférence pour la céramique et la zircone dans les couronnes et facettes pour leur esthétique supérieure.\",\n  \"clinicalReasoning\": \"Ces matériaux offrent une excellente esthétique, translucidité et résistance à l'abrasion, ce qui les rend idéaux pour les restaurations visibles.\",\n  \"conditions\": [\n    \"Restaurations nécessitant une haute esthétique\",\n    \"Zones visibles\"\n  ],\n  \"evidence\": [\n    \"Nombreuses occurrences dans les fichiers de planification\",\n    \"Haut intérêt clinique\"\n  ],\n  \"exceptions\": [\n    \"Zones avec charges masticatoires élevées\",\n    \"Présence de bruxisme sévère\",\n    \"Facteurs économiques ou préférences des patients\"\n  ],\n  \"confidence\": 85,\n  \"priority\": \"high\",\n  \"id\": \"3ee3aec5-7cb7-48e9-b5d8-236c5344399d\",\n  \"discoveredAt\": \"2025-08-08T13:49:01.632920\",\n  \"evidenceCount\": 34,\n  \"summary\": \"Préférence pour la céramique et la zircone dans les couronnes et facettes pour leur esthétique supérieure, sauf en cas de charges masticatoires élevées ou de bruxisme sévère.\"\n}\n```\n\nCette version ajustée prend en compte la nécessité de réévaluer la confiance et d'ajouter des exceptions possibles."
+  },
+  {
+    "title": "Préférence pour le Titane dans les Implants Dentaires",
+    "type": "material",
+    "description": "Utilisation du titane pour les implants en raison de sa biocompatibilité et de sa résistance mécanique.",
+    "clinicalReasoning": "Le titane est hautement biocompatible, réduit les risques de rejet et possède une excellente intégration osseuse.",
+    "conditions": [
+      "Implantation nécessitant une intégration osseuse"
+    ],
+    "evidence": [
+      "Occurrences multiples et haut intérêt dans les fichiers de planification"
+    ],
+    "exceptions": [
+      "Patients allergiques au titane",
+      "Problèmes de cicatrisation osseuse"
+    ],
+    "confidence": 95,
+    "priority": "high",
+    "id": "4a9f40dc-1c33-4994-a758-22ffe1ac9923",
+    "discoveredAt": "2025-08-08T13:49:01.632942",
+    "evidenceCount": 34,
+    "summary": "Utilisation du titane pour les implants en raison de sa biocompatibilité et de sa résistance mécanique.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation du titane dans les implants dentaires, nous devons analyser les informations fournies et les comparer aux cas de test disponibles. Voici une analyse détaillée :\n\n### 1. Cohérence avec les cas observés\nLes cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a pas de traitements enregistrés. Cela signifie que nous ne pouvons pas directement observer l'application de la règle dans ces cas. Cependant, cela ne signifie pas nécessairement que la règle est incohérente, mais plutôt que les données disponibles ne permettent pas de la vérifier.\n\n### 2. Contre-exemples\nAucun contre-exemple explicite n'est fourni dans les cas de test. Les exceptions mentionnées dans la règle (patients allergiques au titane, problèmes de cicatrisation osseuse) ne sont pas abordées dans les cas de test, donc nous ne pouvons pas évaluer leur impact sur la règle.\n\n### 3. Confiance attribuée\nLa confiance de 95% semble élevée, mais sans données de cas réels pour la valider, il est difficile de confirmer si ce niveau de confiance est justifié. La règle est bien fondée sur des principes cliniques généralement acceptés (biocompatibilité et résistance du titane), ce qui pourrait justifier une confiance élevée en l'absence de contre-exemples.\n\n### 4. Généralité de la règle\nLa règle semble suffisamment générale pour s'appliquer à la plupart des situations d'implantation nécessitant une intégration osseuse, tout en incluant des exceptions pertinentes. Elle est bien formulée pour couvrir les cas courants tout en tenant compte des situations spécifiques où le titane ne serait pas approprié.\n\n### 5. Ajustements nécessaires\nÉtant donné le manque de données de cas réels, il pourrait être utile d'ajuster la règle pour inclure des mécanismes de validation supplémentaires, comme des études de cas ou des audits cliniques. De plus, la documentation des cas où le titane a été utilisé avec succès pourrait renforcer la confiance attribuée.\n\n### Version validée de la règle\nVoici une version ajustée de la règle, prenant en compte l'analyse ci-dessus :\n\n```json\n{\n  \"title\": \"Préférence pour le Titane dans les Implants Dentaires\",\n  \"type\": \"material\",\n  \"description\": \"Utilisation du titane pour les implants en raison de sa biocompatibilité et de sa résistance mécanique.\",\n  \"clinicalReasoning\": \"Le titane est hautement biocompatible, réduit les risques de rejet et possède une excellente intégration osseuse.\",\n  \"conditions\": [\n    \"Implantation nécessitant une intégration osseuse\"\n  ],\n  \"evidence\": [\n    \"Occurrences multiples et haut intérêt dans les fichiers de planification\",\n    \"Principes cliniques généralement acceptés\"\n  ],\n  \"exceptions\": [\n    \"Patients allergiques au titane\",\n    \"Problèmes de cicatrisation osseuse\"\n  ],\n  \"confidence\": 90,\n  \"priority\": \"high\",\n  \"id\": \"4a9f40dc-1c33-4994-a758-22ffe1ac9923\",\n  \"discoveredAt\": \"2025-08-08T13:49:01.632942\",\n  \"evidenceCount\": 34,\n  \"summary\": \"Utilisation du titane pour les implants en raison de sa biocompatibilité et de sa résistance mécanique.\"\n}\n```\n\n### Conclusion\nLa règle est bien fondée mais nécessite des données supplémentaires pour valider pleinement la confiance attribuée. Les ajustements proposés visent à renforcer la robustesse de la règle tout en maintenant sa pertinence clinique."
+  },
+  {
+    "title": "Utilisation de Composites Résineux pour les Restaurations Rapides et Esthétiques",
+    "type": "material",
+    "description": "Emploi de composites résineux pour les obturations directes et restaurations nécessitant une manipulation rapide.",
+    "clinicalReasoning": "Les composites permettent des restaurations conservatrices avec une bonne adhésion et esthétique, adaptées aux zones esthétiques moins sollicitées.",
+    "conditions": [
+      "Restaurations conservatrices et rapides",
+      "Zones esthétiques"
+    ],
+    "evidence": [
+      "Plusieurs occurrences avec haut intérêt"
+    ],
+    "exceptions": [
+      "Durabilité à long terme",
+      "Charges lourdes"
+    ],
+    "confidence": 85,
+    "priority": "medium",
+    "id": "07ecaae5-a7d0-4ca5-8d2d-c0ec66e18055",
+    "discoveredAt": "2025-08-08T13:49:01.632950",
+    "evidenceCount": 34,
+    "summary": "Emploi de composites résineux pour les obturations directes et restaurations nécessitant une manipulation rapide.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de composites résineux pour les restaurations rapides et esthétiques, nous allons analyser les éléments fournis et les cas de test.\n\n### Analyse de la Règle et des Cas de Test\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_18.json, treatment_planning_4.json, etc.) indiquent qu'il n'y a eu aucun traitement utilisant des composites résineux pour les restaurations directes et rapides. Cela peut suggérer que les cas testés ne correspondent pas aux conditions définies par la règle, ou que la règle n'est pas appliquée dans ces cas spécifiques.\n\n2. **Contre-exemples:**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. Cependant, l'absence de traitements pourrait indiquer que la règle n'est pas applicable dans ces scénarios ou que les cas ne sont pas représentatifs des situations où la règle devrait s'appliquer.\n\n3. **Confiance attribuée:**\n   - La confiance de 85% semble élevée étant donné l'absence de traitements dans les cas testés. Cela pourrait indiquer que la règle est bien fondée sur des preuves théoriques ou d'autres études, mais elle n'est pas corroborée par les cas observés ici.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir une large gamme de situations où des restaurations rapides et esthétiques sont nécessaires. Cependant, elle pourrait être trop générale si elle ne tient pas compte de certaines spécificités cliniques qui pourraient limiter son application.\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile de préciser davantage les conditions d'application de la règle, notamment en définissant plus clairement les \"zones esthétiques\" et les situations où une \"manipulation rapide\" est cruciale.\n   - Une réévaluation de la confiance attribuée pourrait être nécessaire en fonction de données supplémentaires ou de cas plus diversifiés.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Utilisation de Composites Résineux pour les Restaurations Rapides et Esthétiques\",\n  \"type\": \"material\",\n  \"description\": \"Emploi de composites résineux pour les obturations directes et restaurations nécessitant une manipulation rapide.\",\n  \"clinicalReasoning\": \"Les composites permettent des restaurations conservatrices avec une bonne adhésion et esthétique, adaptées aux zones esthétiques moins sollicitées.\",\n  \"conditions\": [\n    \"Restaurations conservatrices et rapides\",\n    \"Zones esthétiques\"\n  ],\n  \"evidence\": [\n    \"Plusieurs occurrences avec haut intérêt\"\n  ],\n  \"exceptions\": [\n    \"Durabilité à long terme\",\n    \"Charges lourdes\"\n  ],\n  \"confidence\": 75,  // Réduction de la confiance pour refléter l'absence de cas observés\n  \"priority\": \"medium\",\n  \"id\": \"07ecaae5-a7d0-4ca5-8d2d-c0ec66e18055\",\n  \"discoveredAt\": \"2025-08-08T13:49:01.632950\",\n  \"evidenceCount\": 34,\n  \"summary\": \"Emploi de composites résineux pour les obturations directes et restaurations nécessitant une manipulation rapide.\"\n}\n```\n\n### Conclusion\n\nLa règle semble bien fondée théoriquement, mais l'absence de traitements observés dans les cas testés suggère qu'elle pourrait nécessiter des ajustements pour mieux correspondre à la pratique clinique. Une réduction de la confiance est suggérée jusqu'à ce que des données supplémentaires puissent confirmer son applicabilité."
+  },
+  {
+    "title": "Utilisation de l'Erkopress pour les Gouttières de Contention",
+    "type": "material",
+    "description": "Préférence pour l'Erkopress dans les gouttières de contention en raison de sa rétention et durabilité.",
+    "clinicalReasoning": "L'Erkopress offre des propriétés spécifiques adaptées aux besoins fonctionnels des gouttières, comme la flexibilité et la résistance.",
+    "conditions": [
+      "Traitements orthodontiques ou post-opératoires nécessitant des dispositifs de rétention"
+    ],
+    "evidence": [
+      "Intérêt moyen mais utilisation spécialisée"
+    ],
+    "exceptions": [
+      "Compatibilité avec d'autres matériaux orthodontiques"
+    ],
+    "confidence": 80,
+    "priority": "medium",
+    "id": "33266957-8655-4e1a-b1bb-55bc18ce0464",
+    "discoveredAt": "2025-08-08T13:49:01.632956",
+    "evidenceCount": 34,
+    "summary": "Préférence pour l'Erkopress dans les gouttières de contention en raison de sa rétention et durabilité.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de l'Erkopress pour les gouttières de contention, nous allons examiner les éléments fournis et répondre aux questions de validation.\n\n### Analyse des validations :\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a pas de traitements enregistrés. Cela signifie que nous n'avons pas de données empiriques pour confirmer ou infirmer l'utilisation de l'Erkopress dans ces cas spécifiques. Par conséquent, nous ne pouvons pas évaluer la cohérence de la règle avec les cas observés.\n\n2. **Contre-exemples :**\n   - Sans données de traitement spécifiques, il n'est pas possible d'identifier des contre-exemples à la règle. Si des cas montraient l'utilisation d'autres matériaux avec succès, cela pourrait constituer un contre-exemple, mais ces informations ne sont pas disponibles ici.\n\n3. **Confiance attribuée :**\n   - La confiance de 80% semble élevée, surtout en l'absence de données empiriques provenant des cas de test. La règle mentionne une \"utilisation spécialisée\" et un \"intérêt moyen\", ce qui pourrait justifier une confiance modérée plutôt qu'élevée.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour couvrir les cas de traitements orthodontiques ou post-opératoires nécessitant des dispositifs de rétention. Cependant, elle pourrait être trop spécifique si elle ne tient pas compte d'autres matériaux potentiellement efficaces.\n\n5. **Ajustements nécessaires :**\n   - Il serait utile d'inclure des exemples concrets ou des études de cas pour renforcer la validation de la règle.\n   - La règle pourrait bénéficier d'une clarification sur les situations où l'Erkopress est préféré par rapport à d'autres matériaux.\n   - Réévaluer la confiance attribuée en fonction de nouvelles données ou études cliniques.\n\n### Version validée de la règle :\n\n```json\n{\n  \"title\": \"Utilisation de l'Erkopress pour les Gouttières de Contention\",\n  \"type\": \"material\",\n  \"description\": \"Préférence pour l'Erkopress dans les gouttières de contention en raison de sa rétention et durabilité.\",\n  \"clinicalReasoning\": \"L'Erkopress offre des propriétés spécifiques adaptées aux besoins fonctionnels des gouttières, comme la flexibilité et la résistance.\",\n  \"conditions\": [\n    \"Traitements orthodontiques ou post-opératoires nécessitant des dispositifs de rétention\"\n  ],\n  \"evidence\": [\n    \"Intérêt moyen mais utilisation spécialisée\"\n  ],\n  \"exceptions\": [\n    \"Compatibilité avec d'autres matériaux orthodontiques\"\n  ],\n  \"confidence\": 70,  // Réduit de 80 à 70 pour refléter l'incertitude due au manque de données empiriques\n  \"priority\": \"medium\",\n  \"id\": \"33266957-8655-4e1a-b1bb-55bc18ce0464\",\n  \"discoveredAt\": \"2025-08-08T13:49:01.632956\",\n  \"evidenceCount\": 34,\n  \"summary\": \"Préférence pour l'Erkopress dans les gouttières de contention en raison de sa rétention et durabilité.\"\n}\n```\n\n### Conclusion :\n\nLa règle semble bien fondée théoriquement, mais elle nécessite des données empiriques supplémentaires pour renforcer sa validation. La confiance attribuée a été ajustée pour mieux refléter l'incertitude actuelle. Des ajustements futurs pourraient être nécessaires à mesure que de nouvelles données deviennent disponibles."
+  },
+  {
+    "title": "Utilisation de matériaux esthétiques pour restaurations postérieures",
+    "type": "material",
+    "description": "Privilégier les composites et céramiques pour les restaurations postérieures pour une meilleure esthétique et biocompatibilité.",
+    "clinicalReasoning": "Les composites offrent une meilleure esthétique et adhérence, tandis que l'amalgame contient du mercure, ce qui pose des préoccupations de santé.",
+    "conditions": [
+      "Patients sensibles au mercure",
+      "Préoccupation esthétique élevée"
+    ],
+    "evidence": [
+      "Utilisation rare de l'amalgame",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Restauration extrêmement durable nécessaire"
+    ],
+    "confidence": 40,
+    "priority": "medium",
+    "id": "384aa3a9-26cc-4ce3-af3b-414b7ff7fa17",
+    "discoveredAt": "2025-08-08T13:49:18.405662",
+    "evidenceCount": 25,
+    "summary": "Privilégier les composites et céramiques pour les restaurations postérieures pour une meilleure esthétique et biocompatibilité.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de matériaux esthétiques pour les restaurations postérieures, nous devons analyser les cas de test fournis et évaluer la règle selon les critères demandés.\n\n### Analyse des validations\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_18.json, treatment_planning_4.json, etc.) indiquent qu'il n'y a pas de traitements effectués. Cela signifie qu'il n'y a pas de données disponibles pour vérifier directement l'application de la règle dans ces cas spécifiques. Par conséquent, nous ne pouvons pas confirmer la cohérence de la règle avec les cas observés.\n\n2. **Contre-exemples:**\n   - Puisqu'il n'y a pas de traitements dans les cas de test, il n'y a pas de contre-exemples explicites. Cependant, l'absence de données ne permet pas de conclure à l'absence de contre-exemples dans un contexte plus large.\n\n3. **Confiance attribuée:**\n   - La confiance de 40% semble faible, ce qui indique que la règle pourrait ne pas être fortement soutenue par des preuves ou des consensus cliniques. Cela pourrait être justifié par le fait que la règle est basée sur des préoccupations esthétiques et de santé (mercure), mais peut-être pas sur des données cliniques robustes.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour s'appliquer à des situations où l'esthétique et la biocompatibilité sont des préoccupations majeures. Cependant, elle pourrait être trop restrictive si elle ne prend pas en compte d'autres facteurs cliniques importants, comme la durabilité et le coût.\n\n5. **Ajustements nécessaires:**\n   - La règle pourrait bénéficier d'une augmentation de la confiance si davantage de données cliniques soutiennent l'utilisation de matériaux esthétiques pour les restaurations postérieures.\n   - Il pourrait être utile d'inclure des considérations sur le coût et la durabilité des matériaux, ainsi que des données supplémentaires sur les préférences des patients et les résultats à long terme.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Utilisation de matériaux esthétiques pour restaurations postérieures\",\n  \"type\": \"material\",\n  \"description\": \"Privilégier les composites et céramiques pour les restaurations postérieures pour une meilleure esthétique et biocompatibilité, tout en considérant la durabilité et le coût.\",\n  \"clinicalReasoning\": \"Les composites offrent une meilleure esthétique et adhérence, tandis que l'amalgame contient du mercure, ce qui pose des préoccupations de santé. Cependant, la durabilité et le coût doivent également être pris en compte.\",\n  \"conditions\": [\n    \"Patients sensibles au mercure\",\n    \"Préoccupation esthétique élevée\"\n  ],\n  \"evidence\": [\n    \"Utilisation rare de l'amalgame\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Restauration extrêmement durable nécessaire\",\n    \"Contraintes budgétaires importantes\"\n  ],\n  \"confidence\": 40,\n  \"priority\": \"medium\",\n  \"id\": \"384aa3a9-26cc-4ce3-af3b-414b7ff7fa17\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405662\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Privilégier les composites et céramiques pour les restaurations postérieures pour une meilleure esthétique et biocompatibilité, tout en considérant la durabilité et le coût.\"\n}\n```\n\n### Conclusion\n\nLa règle est potentiellement valide, mais elle nécessite des données supplémentaires pour augmenter la confiance et la généralité. Les ajustements proposés visent à rendre la règle plus complète en intégrant des considérations pratiques supplémentaires."
+  },
+  {
+    "title": "Protocole standard de traitement dentaire : extraction avant implantation",
+    "type": "timing",
+    "description": "Réaliser les extractions avant implantation pour préparer un site osseux adéquat.",
+    "clinicalReasoning": "Assure une zone osseuse adéquate, réduit le risque d'infection et favorise l'intégration de l'implant.",
+    "conditions": [
+      "Perte osseuse minimale",
+      "Urgence clinique"
+    ],
+    "evidence": [
+      "Protocole non standard",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Conditions médicales complexes"
+    ],
+    "confidence": 30,
+    "priority": "low",
+    "id": "b0b4a415-433f-436a-85a3-5cac290e1db1",
+    "discoveredAt": "2025-08-08T13:49:18.405686",
+    "evidenceCount": 25,
+    "summary": "Réaliser les extractions avant implantation pour préparer un site osseux adéquat.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Protocole standard de traitement dentaire : extraction avant implantation\", nous devons examiner les cas de test fournis et évaluer la cohérence de la règle avec ces cas. Voici une analyse détaillée :\n\n### Analyse des validations :\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'il n'y a eu aucun traitement réalisé selon la règle. Cela peut suggérer que la règle n'est pas couramment appliquée ou que les cas ne nécessitaient pas d'extraction avant implantation. Cependant, sans plus de détails sur le contenu des cas, il est difficile de conclure sur la cohérence.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. L'absence de traitements pourrait être interprétée comme une absence de validation, mais pas nécessairement comme un contre-exemple.\n\n3. **Confiance attribuée :**\n   - La confiance de 30 % est relativement faible, ce qui est cohérent avec le fait que la règle est basée sur un \"protocole non standard\" avec seulement \"1 occurrence\" comme preuve. Cela suggère que la règle est encore en phase exploratoire et nécessite davantage de preuves pour augmenter la confiance.\n\n4. **Généralité de la règle :**\n   - La règle semble spécifique à des situations où il y a une \"perte osseuse minimale\" et une \"urgence clinique\". Cela limite son application à des cas particuliers, ce qui est approprié pour une règle avec une confiance faible. Cependant, elle pourrait être trop restrictive si ces conditions ne sont pas fréquemment rencontrées.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile de préciser davantage les conditions sous lesquelles la règle s'applique, notamment en ce qui concerne la définition de \"perte osseuse minimale\" et \"urgence clinique\".\n   - L'augmentation de la base de preuves (plus d'occurrences) pourrait aider à renforcer la confiance dans la règle.\n\n### Version validée de la règle :\n\n```json\n{\n  \"title\": \"Protocole standard de traitement dentaire : extraction avant implantation\",\n  \"type\": \"timing\",\n  \"description\": \"Réaliser les extractions avant implantation pour préparer un site osseux adéquat.\",\n  \"clinicalReasoning\": \"Assure une zone osseuse adéquate, réduit le risque d'infection et favorise l'intégration de l'implant.\",\n  \"conditions\": [\n    \"Perte osseuse minimale\",\n    \"Urgence clinique\"\n  ],\n  \"evidence\": [\n    \"Protocole non standard\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Conditions médicales complexes\"\n  ],\n  \"confidence\": 30,\n  \"priority\": \"low\",\n  \"id\": \"b0b4a415-433f-436a-85a3-5cac290e1db1\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405686\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Réaliser les extractions avant implantation pour préparer un site osseux adéquat.\",\n  \"notes\": \"La règle nécessite davantage de preuves pour augmenter la confiance. Les conditions d'application doivent être clarifiées et élargies si nécessaire.\"\n}\n```\n\n### Conclusion :\n\nLa règle actuelle est cohérente avec le niveau de confiance attribué et les conditions spécifiques. Cependant, elle nécessite davantage de preuves et une clarification des conditions d'application pour être plus largement applicable et fiable. Les ajustements proposés visent à améliorer la précision et l'applicabilité de la règle."
+  },
+  {
+    "title": "Préférence pour matériaux non métalliques dans cas atypiques",
+    "type": "material",
+    "description": "Éviter les alliages précieux sauf nécessité clinique pour éviter les réactions allergiques et améliorer l’esthétique.",
+    "clinicalReasoning": "Les alliages précieux peuvent interférer avec l'esthétique et présenter des risques liés aux métaux.",
+    "conditions": [
+      "Zones de haute charge masticatoire",
+      "Allergies"
+    ],
+    "evidence": [
+      "Usage non fréquent",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Contraintes cliniques spécifiques"
+    ],
+    "confidence": 30,
+    "priority": "low",
+    "id": "bb00e265-450d-4b9c-b7b5-c2b4334fc7d5",
+    "discoveredAt": "2025-08-08T13:49:18.405692",
+    "evidenceCount": 25,
+    "summary": "Éviter les alliages précieux sauf nécessité clinique pour éviter les réactions allergiques et améliorer l’esthétique.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique fournie, nous allons examiner les différents aspects demandés en fonction des cas de test et des informations disponibles.\n\n### 1. Cohérence de la règle avec les cas observés\n\nLa règle stipule d'éviter les alliages précieux sauf nécessité clinique pour éviter les réactions allergiques et améliorer l’esthétique. Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a eu aucun traitement impliquant des alliages précieux. Cela semble cohérent avec la règle, car aucun cas ne contredit directement l'énoncé de la règle.\n\n### 2. Contre-exemples\n\nAucun des cas de test ne présente de traitements utilisant des alliages précieux, ce qui signifie qu'il n'y a pas de contre-exemples évidents parmi les cas fournis. Cependant, sans une analyse plus large de cas où des alliages précieux auraient pu être utilisés, il est difficile de conclure de manière définitive.\n\n### 3. Justification de la confiance attribuée\n\nLa confiance attribuée à la règle est de 30, ce qui est relativement bas. Cela peut être justifié par le fait que la règle repose sur une seule occurrence documentée et un usage non fréquent. Le faible niveau de confiance semble approprié étant donné le manque de données probantes solides.\n\n### 4. Généralité de la règle\n\nLa règle semble suffisamment générale pour couvrir les situations où l'utilisation d'alliages précieux pourrait être problématique, notamment en raison des allergies ou des considérations esthétiques. Cependant, elle inclut également des exceptions pour des \"contraintes cliniques spécifiques\", ce qui permet une certaine flexibilité.\n\n### 5. Ajustements nécessaires\n\n- **Augmenter la clarté**: Il pourrait être utile de préciser davantage ce qui constitue une \"nécessité clinique\" pour utiliser des alliages précieux.\n- **Améliorer la collecte de données**: Augmenter le nombre de cas étudiés pour renforcer la base de preuves et potentiellement ajuster le niveau de confiance.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Préférence pour matériaux non métalliques dans cas atypiques\",\n  \"type\": \"material\",\n  \"description\": \"Éviter les alliages précieux sauf nécessité clinique pour éviter les réactions allergiques et améliorer l’esthétique.\",\n  \"clinicalReasoning\": \"Les alliages précieux peuvent interférer avec l'esthétique et présenter des risques liés aux métaux.\",\n  \"conditions\": [\n    \"Zones de haute charge masticatoire\",\n    \"Allergies\"\n  ],\n  \"evidence\": [\n    \"Usage non fréquent\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Contraintes cliniques spécifiques\"\n  ],\n  \"confidence\": 30,\n  \"priority\": \"low\",\n  \"id\": \"bb00e265-450d-4b9c-b7b5-c2b4334fc7d5\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405692\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Éviter les alliages précieux sauf nécessité clinique pour éviter les réactions allergiques et améliorer l’esthétique.\"\n}\n```\n\n### Conclusion\n\nLa règle est globalement cohérente avec les cas observés, et le niveau de confiance semble approprié. Il serait bénéfique de collecter plus de données pour renforcer la règle et d'améliorer la définition des exceptions pour une application clinique plus précise."
+  },
+  {
+    "title": "Éviter l'amalgame chez les jeunes patients",
+    "type": "contraindication",
+    "description": "Favoriser des matériaux plus sûrs et esthétiques pour les restaurations chez les jeunes patients.",
+    "clinicalReasoning": "Réduire l'exposition au mercure et favoriser des matériaux offrant une meilleure esthétique.",
+    "conditions": [
+      "Caries postérieures",
+      "Préférence esthétique"
+    ],
+    "evidence": [
+      "Pratique rare",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Coût contraignant pour le patient"
+    ],
+    "confidence": 30,
+    "priority": "low",
+    "id": "6a94a81b-da88-4615-a33f-d6b3fd9abe40",
+    "discoveredAt": "2025-08-08T13:49:18.405697",
+    "evidenceCount": 25,
+    "summary": "Favoriser des matériaux plus sûrs et esthétiques pour les restaurations chez les jeunes patients.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique \"Éviter l'amalgame chez les jeunes patients\", nous allons analyser les différents aspects demandés en fonction des cas de test fournis.\n\n### 1. Cohérence avec les cas observés\nLes cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, treatment_planning_14.json, treatment_planning_15.json, treatment_planning_5.json) indiquent qu'il n'y a eu aucun traitement impliquant l'utilisation d'amalgames chez les jeunes patients. Cela suggère que la règle est cohérente avec la pratique clinique observée dans ces cas, où des matériaux alternatifs à l'amalgame ont probablement été utilisés.\n\n### 2. Contre-exemples\nAucun contre-exemple n'est fourni dans les cas de test. Cela signifie que, dans les cas examinés, la règle n'a pas été enfreinte. Cependant, l'absence de contre-exemples ne garantit pas que la règle est toujours respectée dans d'autres contextes cliniques.\n\n### 3. Confiance attribuée\nLa confiance attribuée à la règle est de 30, ce qui est relativement bas. Cela semble justifié étant donné que la règle repose sur une \"pratique rare\" et seulement \"1 occurrence\" comme preuve. La faible confiance reflète la nécessité de davantage de données pour renforcer la validité de la règle.\n\n### 4. Généralité de la règle\nLa règle semble suffisamment générale pour s'appliquer à des jeunes patients présentant des caries postérieures et une préférence esthétique. Cependant, elle pourrait être trop restrictive si elle ne prend pas en compte d'autres facteurs cliniques ou contextuels, comme la durabilité des matériaux alternatifs ou des considérations médicales spécifiques.\n\n### 5. Ajustements nécessaires\n- **Augmenter la base de preuves** : Il serait bénéfique d'augmenter le nombre d'occurrences et de diversifier les sources de preuves pour renforcer la confiance dans la règle.\n- **Clarifier les exceptions** : Bien que le coût soit mentionné comme une exception, d'autres facteurs (comme des allergies aux matériaux alternatifs) pourraient être considérés.\n- **Préciser les conditions** : Les conditions pourraient être élargies pour inclure des considérations sur la durabilité et la résistance des matériaux alternatifs.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Éviter l'amalgame chez les jeunes patients\",\n  \"type\": \"contraindication\",\n  \"description\": \"Favoriser des matériaux plus sûrs et esthétiques pour les restaurations chez les jeunes patients.\",\n  \"clinicalReasoning\": \"Réduire l'exposition au mercure et favoriser des matériaux offrant une meilleure esthétique.\",\n  \"conditions\": [\n    \"Caries postérieures\",\n    \"Préférence esthétique\"\n  ],\n  \"evidence\": [\n    \"Pratique rare\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Coût contraignant pour le patient\",\n    \"Allergies aux matériaux alternatifs\"\n  ],\n  \"confidence\": 30,\n  \"priority\": \"low\",\n  \"id\": \"6a94a81b-da88-4615-a33f-d6b3fd9abe40\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405697\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Favoriser des matériaux plus sûrs et esthétiques pour les restaurations chez les jeunes patients.\"\n}\n```\n\nEn conclusion, la règle est cohérente avec les cas observés, mais nécessite une base de preuves plus solide et des ajustements pour être plus largement applicable et fiable."
+  },
+  {
+    "title": "Utilisation de céramiques pour restaurations nécessitant haute résistance",
+    "type": "material",
+    "description": "Préférer les céramiques pour leur longévité et esthétique dans les restaurations visibles.",
+    "clinicalReasoning": "Les céramiques offrent une meilleure longévité et esthétique.",
+    "conditions": [
+      "Priorité esthétique",
+      "Haute résistance mécanique nécessaire"
+    ],
+    "evidence": [
+      "Fiabilité moyenne",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Contraintes économiques"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "09eb3c95-b6b5-46bc-9871-8863aa5adee6",
+    "discoveredAt": "2025-08-08T13:49:18.405704",
+    "evidenceCount": 25,
+    "summary": "Préférer les céramiques pour leur longévité et esthétique dans les restaurations visibles.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de céramiques pour les restaurations nécessitant une haute résistance, nous allons examiner les différents aspects demandés:\n\n### Analyse de la règle par rapport aux cas de test\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) ne contiennent aucun traitement, ce qui signifie qu'ils ne fournissent pas d'informations pour valider directement la règle. Par conséquent, il est impossible de déterminer la cohérence de la règle avec ces cas spécifiques.\n\n2. **Contre-exemples:**\n   - En l'absence de données de traitement dans les cas de test, il n'y a pas de contre-exemples identifiés. Cependant, cela ne signifie pas que la règle est universellement applicable sans exception.\n\n3. **Confiance attribuée:**\n   - La confiance de 50% semble indiquer une incertitude ou une variabilité dans l'application de la règle. Cette confiance pourrait être justifiée par le fait que la règle repose sur une \"fiabilité moyenne\" et seulement \"1 occurrence\" d'évidence, ce qui est relativement faible pour une recommandation clinique.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir les situations où l'esthétique et la résistance mécanique sont prioritaires. Cependant, elle pourrait être trop générale si elle ne prend pas en compte d'autres facteurs cliniques ou contextuels importants, tels que les préférences du patient, les conditions cliniques spécifiques, ou les innovations technologiques.\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile d'augmenter le nombre d'occurrences d'évidence pour renforcer la confiance dans la règle.\n   - Considérer l'ajout de conditions supplémentaires ou de sous-catégories pour mieux spécifier les situations où l'utilisation de céramiques est optimale.\n   - Inclure des considérations pour les innovations technologiques ou les nouveaux matériaux qui pourraient influencer la décision.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Utilisation de céramiques pour restaurations nécessitant haute résistance\",\n  \"type\": \"material\",\n  \"description\": \"Préférer les céramiques pour leur longévité et esthétique dans les restaurations visibles, en tenant compte des préférences du patient et des innovations technologiques.\",\n  \"clinicalReasoning\": \"Les céramiques offrent une meilleure longévité et esthétique, mais leur utilisation doit être évaluée en fonction des préférences du patient et des conditions cliniques spécifiques.\",\n  \"conditions\": [\n    \"Priorité esthétique\",\n    \"Haute résistance mécanique nécessaire\"\n  ],\n  \"evidence\": [\n    \"Fiabilité moyenne\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Contraintes économiques\",\n    \"Préférences du patient\",\n    \"Conditions cliniques spécifiques\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"09eb3c95-b6b5-46bc-9871-8863aa5adee6\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405704\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Préférer les céramiques pour leur longévité et esthétique dans les restaurations visibles, tout en considérant les préférences du patient et les innovations technologiques.\"\n}\n```\n\n### Conclusion\n\nLa règle initiale est raisonnable mais nécessite des ajustements pour mieux refléter la complexité des décisions cliniques. L'ajout de considérations pour les préférences du patient et les innovations technologiques pourrait améliorer la pertinence et l'applicabilité de la règle. De plus, une augmentation de la base de preuves renforcerait la confiance dans cette recommandation."
+  },
+  {
+    "title": "Favoriser les céramiques pour couronnes sur dents antérieures",
+    "type": "material",
+    "description": "Utiliser des matériaux esthétiques pour les dents antérieures pour correspondre à la couleur naturelle des dents.",
+    "clinicalReasoning": "Les métaux peuvent altérer l’esthétique du sourire.",
+    "conditions": [
+      "Priorité esthétique",
+      "Contraintes mécaniques"
+    ],
+    "evidence": [
+      "Usage très rare",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Contrainte mécanique exceptionnelle"
+    ],
+    "confidence": 70,
+    "priority": "high",
+    "id": "c93066a8-a7be-481d-bd88-3816408e7883",
+    "discoveredAt": "2025-08-08T13:49:18.405709",
+    "evidenceCount": 25,
+    "summary": "Utiliser des matériaux esthétiques pour les dents antérieures pour correspondre à la couleur naturelle des dents.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique, nous allons examiner les différents aspects demandés en utilisant les cas de test fournis.\n\n### Analyse de la règle\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, treatment_planning_14.json, treatment_planning_15.json, treatment_planning_5.json) indiquent qu'il n'y a eu aucun traitement utilisant des matériaux non esthétiques pour les dents antérieures. Cela suggère que la règle est cohérente avec la pratique clinique actuelle, où les matériaux esthétiques sont privilégiés pour les dents antérieures.\n\n2. **Contre-exemples:**\n   - Aucun des cas de test ne présente de contre-exemple à la règle. Cela signifie que, dans les cas observés, il n'y a pas eu de recours à des matériaux non esthétiques pour les dents antérieures, ce qui soutient la règle.\n\n3. **Confiance attribuée:**\n   - La confiance de 70% semble justifiée étant donné l'absence de contre-exemples dans les cas observés. Cependant, il serait utile d'avoir plus de données pour renforcer cette confiance, notamment des cas où des contraintes mécaniques exceptionnelles ont nécessité l'utilisation de matériaux non esthétiques.\n\n4. **Généralité de la règle:**\n   - La règle est suffisamment générale pour couvrir la majorité des situations cliniques où l'esthétique est une priorité pour les dents antérieures. Cependant, elle inclut des exceptions pour les contraintes mécaniques exceptionnelles, ce qui la rend adaptable à des situations particulières.\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile d'élargir la base de données des cas pour inclure des situations où des contraintes mécaniques ont influencé le choix des matériaux. Cela permettrait de mieux comprendre les exceptions et d'ajuster la règle en conséquence si nécessaire.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Favoriser les céramiques pour couronnes sur dents antérieures\",\n  \"type\": \"material\",\n  \"description\": \"Utiliser des matériaux esthétiques pour les dents antérieures pour correspondre à la couleur naturelle des dents.\",\n  \"clinicalReasoning\": \"Les métaux peuvent altérer l’esthétique du sourire.\",\n  \"conditions\": [\n    \"Priorité esthétique\",\n    \"Contraintes mécaniques\"\n  ],\n  \"evidence\": [\n    \"Usage très rare\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Contrainte mécanique exceptionnelle\"\n  ],\n  \"confidence\": 70,\n  \"priority\": \"high\",\n  \"id\": \"c93066a8-a7be-481d-bd88-3816408e7883\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405709\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Utiliser des matériaux esthétiques pour les dents antérieures pour correspondre à la couleur naturelle des dents.\"\n}\n```\n\n### Recommandations\n\n- **Collecte de données supplémentaires:** Augmenter le nombre de cas analysés pour inclure des situations avec des contraintes mécaniques exceptionnelles.\n- **Suivi continu:** Continuer à surveiller les pratiques cliniques pour identifier tout changement dans les préférences de matériaux pour les dents antérieures.\n- **Mise à jour régulière:** Réévaluer la règle périodiquement pour s'assurer qu'elle reste pertinente et précise avec l'évolution des pratiques cliniques et des matériaux disponibles."
+  },
+  {
+    "title": "Respect de l'autonomie du patient dans le choix du traitement",
+    "type": "dependency",
+    "description": "Respecter l'autonomie du patient tout en assurant une information complète sur les options de traitement.",
+    "clinicalReasoning": "Les décisions de traitement doivent équilibrer recommandations cliniques et préférences du patient.",
+    "conditions": [
+      "Objections personnelles",
+      "Contraintes financières"
+    ],
+    "evidence": [
+      "Refus de traitement courant",
+      "1 occurrence"
+    ],
+    "exceptions": [
+      "Santé bucco-dentaire en danger immédiat"
+    ],
+    "confidence": 80,
+    "priority": "high",
+    "id": "3714e4d3-7673-4716-a8e2-416e40f2edbf",
+    "discoveredAt": "2025-08-08T13:49:18.405714",
+    "evidenceCount": 25,
+    "summary": "Respecter l'autonomie du patient tout en assurant une information complète sur les options de traitement.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique fournie, nous devons analyser les cas de test et évaluer la cohérence de la règle par rapport à ces cas. Voici une analyse détaillée :\n\n### Analyse des cas de test\n\nLes cas de test fournis sont les suivants :\n- `treatment_planning_22.json`: 0 traitements\n- `treatment_planning_8.json`: 0 traitements\n- `treatment_planning_34.json`: 0 traitements\n- `treatment_planning_18.json`: 0 traitements\n- `treatment_planning_4.json`: 0 traitements\n\n### Validation\n\n1. **Cohérence avec les cas observés :**\n   - La règle stipule que l'autonomie du patient doit être respectée, avec une information complète sur les options de traitement. Les cas de test montrent 0 traitements, ce qui pourrait indiquer que les patients ont refusé le traitement ou qu'aucun traitement n'était nécessaire. Sans détails supplémentaires sur les raisons de l'absence de traitement, il est difficile de conclure que la règle a été respectée ou non. Cependant, l'absence de traitement pourrait être cohérente avec le respect de l'autonomie du patient si c'était leur choix.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. Pour identifier des contre-exemples, il faudrait des cas où le traitement a été imposé malgré les objections du patient ou sans fournir d'informations complètes.\n\n3. **Confiance attribuée :**\n   - La confiance de 80% semble raisonnable si la règle est généralement respectée dans la pratique clinique. Cependant, sans données supplémentaires sur l'application de la règle dans d'autres contextes, il est difficile de valider ce niveau de confiance.\n\n4. **Généralité de la règle :**\n   - La règle est suffisamment générale pour s'appliquer à diverses situations cliniques. Cependant, elle pourrait bénéficier de spécifications supplémentaires sur la manière dont les objections personnelles et les contraintes financières doivent être prises en compte.\n\n5. **Ajustements nécessaires :**\n   - Ajouter des précisions sur les types d'informations qui doivent être fournies aux patients.\n   - Inclure des directives sur la documentation des objections personnelles et des contraintes financières.\n   - Clarifier les situations où la santé bucco-dentaire est en danger immédiat et justifie une exception.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Respect de l'autonomie du patient dans le choix du traitement\",\n  \"type\": \"dependency\",\n  \"description\": \"Respecter l'autonomie du patient tout en assurant une information complète et compréhensible sur les options de traitement, en tenant compte des objections personnelles et des contraintes financières.\",\n  \"clinicalReasoning\": \"Les décisions de traitement doivent équilibrer recommandations cliniques et préférences du patient, en documentant les objections et contraintes.\",\n  \"conditions\": [\n    \"Objections personnelles documentées\",\n    \"Contraintes financières évaluées\"\n  ],\n  \"evidence\": [\n    \"Refus de traitement courant\",\n    \"1 occurrence\"\n  ],\n  \"exceptions\": [\n    \"Santé bucco-dentaire en danger immédiat, nécessitant une intervention urgente\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"high\",\n  \"id\": \"3714e4d3-7673-4716-a8e2-416e40f2edbf\",\n  \"discoveredAt\": \"2025-08-08T13:49:18.405714\",\n  \"evidenceCount\": 25,\n  \"summary\": \"Respecter l'autonomie du patient tout en assurant une information complète et compréhensible sur les options de traitement, en tenant compte des objections personnelles et des contraintes financières.\"\n}\n```\n\nCette version validée de la règle intègre des ajustements pour améliorer la clarté et l'applicabilité de la règle dans des contextes cliniques variés."
+  },
+  {
+    "title": "Blanchiment dentaire en consultation esthétique",
+    "type": "pattern",
+    "description": "Le blanchiment dentaire est intégré dans les consultations esthétiques pour améliorer l'apparence du sourire.",
+    "clinicalReasoning": "Procédure non invasive pour éclaircir les dents, souvent combinée à d'autres traitements esthétiques.",
+    "conditions": [
+      "Patients recherchant une amélioration esthétique",
+      "Absence de contre-indications médicales",
+      "Bonne santé bucco-dentaire"
+    ],
+    "evidence": [
+      "Observations cliniques",
+      "Pratiques esthétiques courantes"
+    ],
+    "exceptions": [
+      "Présence de couronnes ou facettes",
+      "Sensibilité dentaire excessive",
+      "Femmes enceintes ou allaitantes"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "bcb02881-5800-4491-95f8-bc52e72e634c",
+    "discoveredAt": "2025-08-08T13:49:45.242925",
+    "evidenceCount": 23,
+    "summary": "Le blanchiment dentaire est intégré dans les consultations esthétiques pour améliorer l'apparence du sourire.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant le blanchiment dentaire en consultation esthétique, je vais analyser les points demandés en fonction des cas de test fournis et de la règle elle-même.\n\n### Analyse de la règle par rapport aux cas de test\n\n1. **Cohérence avec les cas observés:**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'il n'y a eu aucun traitement de blanchiment dentaire effectué. Cela pourrait suggérer que la règle n'est pas appliquée dans ces cas, ou que les conditions de la règle n'étaient pas remplies.\n\n2. **Contre-exemples:**\n   - Les cas de test ne fournissent pas de contre-exemples directs, mais l'absence de traitements pourrait indiquer que les conditions de la règle ne sont pas souvent rencontrées ou que des exceptions s'appliquent.\n\n3. **Confiance attribuée:**\n   - La confiance de 60% semble modérée, ce qui est approprié étant donné que le blanchiment dentaire est une procédure courante mais pas universellement applicable à tous les patients. L'absence de traitements dans les cas de test pourrait justifier cette confiance modérée.\n\n4. **Généralité de la règle:**\n   - La règle semble suffisamment générale pour couvrir les cas où le blanchiment dentaire est une option, tout en incluant des exceptions pertinentes (comme la présence de couronnes ou la sensibilité dentaire excessive).\n\n5. **Ajustements nécessaires:**\n   - Il pourrait être utile d'ajouter des critères supplémentaires ou de clarifier les conditions pour mieux aligner la règle avec les pratiques cliniques réelles. Par exemple, préciser davantage les critères de \"bonne santé bucco-dentaire\" ou inclure des considérations économiques ou de préférence personnelle du patient.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Blanchiment dentaire en consultation esthétique\",\n  \"type\": \"pattern\",\n  \"description\": \"Le blanchiment dentaire est intégré dans les consultations esthétiques pour améliorer l'apparence du sourire.\",\n  \"clinicalReasoning\": \"Procédure non invasive pour éclaircir les dents, souvent combinée à d'autres traitements esthétiques.\",\n  \"conditions\": [\n    \"Patients recherchant une amélioration esthétique\",\n    \"Absence de contre-indications médicales\",\n    \"Bonne santé bucco-dentaire (pas de caries, gencives saines)\"\n  ],\n  \"evidence\": [\n    \"Observations cliniques\",\n    \"Pratiques esthétiques courantes\"\n  ],\n  \"exceptions\": [\n    \"Présence de couronnes ou facettes\",\n    \"Sensibilité dentaire excessive\",\n    \"Femmes enceintes ou allaitantes\",\n    \"Préférences personnelles du patient\"\n  ],\n  \"confidence\": 60,\n  \"priority\": \"medium\",\n  \"id\": \"bcb02881-5800-4491-95f8-bc52e72e634c\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242925\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Le blanchiment dentaire est intégré dans les consultations esthétiques pour améliorer l'apparence du sourire.\"\n}\n```\n\n### Conclusion\n\nLa règle est globalement cohérente avec les pratiques cliniques, mais l'absence de traitements dans les cas de test suggère que les conditions ou exceptions sont souvent présentes. La confiance de 60% est justifiée, et la règle pourrait être légèrement ajustée pour inclure des considérations supplémentaires."
+  },
+  {
+    "title": "Couronnes céramo-métalliques avec implants",
+    "type": "material",
+    "description": "Les couronnes céramo-métalliques sont choisies pour leur robustesse et esthétique lorsqu'elles sont utilisées avec des implants.",
+    "clinicalReasoning": "Offrent solidité et apparence naturelle, adaptées aux forces masticatoires.",
+    "conditions": [
+      "Implant bien intégré",
+      "Besoin esthétique élevé",
+      "Zone de contraintes masticatoires"
+    ],
+    "evidence": [
+      "Littérature dentaire",
+      "Pratique clinique"
+    ],
+    "exceptions": [
+      "Préférence pour les couronnes en céramique",
+      "Allergies aux métaux"
+    ],
+    "confidence": 85,
+    "priority": "high",
+    "id": "fdd3f502-b953-445f-8c1f-91a0d1e01d9d",
+    "discoveredAt": "2025-08-08T13:49:45.242946",
+    "evidenceCount": 23,
+    "summary": "Les couronnes céramo-métalliques sont choisies pour leur robustesse et esthétique lorsqu'elles sont utilisées avec des implants.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant les couronnes céramo-métalliques avec implants, examinons les aspects demandés :\n\n### Analyse de la Règle\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'aucun traitement n'a été réalisé selon cette règle. Cela pourrait suggérer que la règle n'est pas souvent appliquée ou que les cas ne sont pas représentatifs des situations où cette règle s'applique.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. Cependant, l'absence de traitements pourrait indiquer que les conditions de la règle ne sont pas souvent rencontrées ou que d'autres options de traitement sont préférées.\n\n3. **Justification de la confiance attribuée :**\n   - La confiance de 85% semble élevée compte tenu de l'absence de traitements observés dans les cas de test. Cela pourrait être justifié si la règle est bien soutenue par la littérature dentaire et la pratique clinique, mais cela n'est pas démontré par les cas fournis.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment spécifique avec des conditions claires (implant bien intégré, besoin esthétique élevé, zone de contraintes masticatoires) et des exceptions (préférence pour les couronnes en céramique, allergies aux métaux). Cependant, elle pourrait être trop restrictive si ces conditions ne sont pas souvent rencontrées.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile de revoir les conditions et exceptions pour s'assurer qu'elles reflètent bien les pratiques cliniques actuelles. Par exemple, inclure des considérations sur les préférences des patients ou les avancées technologiques récentes.\n\n### Version Validée de la Règle\n\n```json\n{\n  \"title\": \"Couronnes céramo-métalliques avec implants\",\n  \"type\": \"material\",\n  \"description\": \"Les couronnes céramo-métalliques sont choisies pour leur robustesse et esthétique lorsqu'elles sont utilisées avec des implants.\",\n  \"clinicalReasoning\": \"Offrent solidité et apparence naturelle, adaptées aux forces masticatoires.\",\n  \"conditions\": [\n    \"Implant bien intégré\",\n    \"Besoin esthétique élevé\",\n    \"Zone de contraintes masticatoires\"\n  ],\n  \"evidence\": [\n    \"Littérature dentaire\",\n    \"Pratique clinique\"\n  ],\n  \"exceptions\": [\n    \"Préférence pour les couronnes en céramique\",\n    \"Allergies aux métaux\"\n  ],\n  \"confidence\": 75,  // Réduite pour refléter l'absence de traitements observés\n  \"priority\": \"high\",\n  \"id\": \"fdd3f502-b953-445f-8c1f-91a0d1e01d9d\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242946\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Les couronnes céramo-métalliques sont choisies pour leur robustesse et esthétique lorsqu'elles sont utilisées avec des implants.\"\n}\n```\n\n### Conclusion\n\nLa règle est bien formulée mais pourrait bénéficier d'une réévaluation de sa confiance et de ses conditions pour mieux refléter les pratiques cliniques actuelles. L'absence de traitements observés dans les cas de test suggère qu'elle pourrait être trop spécifique ou que d'autres options sont préférées. Il serait utile de collecter davantage de données cliniques pour confirmer sa pertinence."
+  },
+  {
+    "title": "Résine composite pour traitement de caries",
+    "type": "material",
+    "description": "La résine composite est utilisée pour restaurer les dents affectées par les caries.",
+    "clinicalReasoning": "Permet une restauration conservatrice et esthétique.",
+    "conditions": [
+      "Détection précoce des caries",
+      "Zones esthétiquement sensibles"
+    ],
+    "evidence": [
+      "Pratique clinique",
+      "Études sur l'adhésion des composites"
+    ],
+    "exceptions": [
+      "Caries très étendues",
+      "Usure occlusale élevée"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "f200e983-4269-465f-832c-a856206729df",
+    "discoveredAt": "2025-08-08T13:49:45.242952",
+    "evidenceCount": 23,
+    "summary": "La résine composite est utilisée pour restaurer les dents affectées par les caries.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation de la résine composite pour le traitement des caries, nous allons examiner les éléments fournis et les cas de test. Voici une analyse détaillée :\n\n### Analyse des cas de test\n\nLes cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'il n'y a eu aucun traitement utilisant la résine composite. Cela pourrait signifier plusieurs choses :\n- Les cas testés ne répondaient pas aux conditions de la règle (détection précoce des caries, zones esthétiquement sensibles).\n- Les cas testés correspondaient aux exceptions de la règle (caries très étendues, usure occlusale élevée).\n- Les données des cas de test ne sont pas suffisantes pour évaluer l'application de la règle.\n\n### Validation de la règle\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test ne montrent pas l'application de la règle, mais cela ne signifie pas nécessairement qu'elle est incohérente. Il est possible que les cas ne soient pas représentatifs des situations où la règle s'applique.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. Cependant, l'absence de traitements pourrait être interprétée comme un manque d'application, mais cela nécessite plus de contexte.\n\n3. **Confiance attribuée :**\n   - La confiance de 60% semble modérée, ce qui est approprié compte tenu du manque de données probantes dans les cas de test. Il serait utile d'avoir plus de données cliniques pour renforcer cette confiance.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour couvrir les situations courantes de restauration dentaire avec des composites, mais elle pourrait être trop restrictive si elle ne s'applique qu'à des cas très spécifiques.\n\n5. **Ajustements nécessaires :**\n   - Il serait utile d'élargir la base de données de cas pour inclure des situations où la résine composite est effectivement utilisée.\n   - Clarifier les conditions et exceptions pour mieux guider les praticiens sur l'application de la règle.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Résine composite pour traitement de caries\",\n  \"type\": \"material\",\n  \"description\": \"La résine composite est utilisée pour restaurer les dents affectées par les caries.\",\n  \"clinicalReasoning\": \"Permet une restauration conservatrice et esthétique.\",\n  \"conditions\": [\n    \"Détection précoce des caries\",\n    \"Zones esthétiquement sensibles\"\n  ],\n  \"evidence\": [\n    \"Pratique clinique\",\n    \"Études sur l'adhésion des composites\"\n  ],\n  \"exceptions\": [\n    \"Caries très étendues\",\n    \"Usure occlusale élevée\"\n  ],\n  \"confidence\": 60,\n  \"priority\": \"medium\",\n  \"id\": \"f200e983-4269-465f-832c-a856206729df\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242952\",\n  \"evidenceCount\": 23,\n  \"summary\": \"La résine composite est utilisée pour restaurer les dents affectées par les caries.\",\n  \"notes\": \"La règle nécessite plus de données cliniques pour renforcer la confiance et vérifier son application dans des cas réels.\"\n}\n```\n\n### Conclusion\n\nLa règle est potentiellement valide, mais elle nécessite une validation supplémentaire avec des données cliniques plus diversifiées pour confirmer son applicabilité et sa fiabilité. Il est recommandé de collecter davantage de cas où la résine composite est utilisée pour évaluer pleinement la règle."
+  },
+  {
+    "title": "Couronnes en céramique avec implants",
+    "type": "material",
+    "description": "Les couronnes en céramique sont préférées pour leur esthétique et biocompatibilité.",
+    "clinicalReasoning": "Offrent une excellente esthétique, idéales pour les implants.",
+    "conditions": [
+      "Besoin esthétique élevé",
+      "Bonne santé péri-implantologique"
+    ],
+    "evidence": [
+      "Données cliniques",
+      "Pratiques esthétiques"
+    ],
+    "exceptions": [
+      "Charges masticatoires élevées",
+      "Restrictions budgétaires"
+    ],
+    "confidence": 85,
+    "priority": "high",
+    "id": "0f9e2292-73ad-404a-b755-2968f10d22dc",
+    "discoveredAt": "2025-08-08T13:49:45.242959",
+    "evidenceCount": 23,
+    "summary": "Les couronnes en céramique sont préférées pour leur esthétique et biocompatibilité.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant les couronnes en céramique avec implants, nous devons examiner les cas de test fournis et évaluer la cohérence et la pertinence de la règle. Voici une analyse détaillée :\n\n### Analyse des cas de test\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_4.json, treatment_planning_38.json, etc.) indiquent qu'il n'y a pas eu de traitements utilisant des couronnes en céramique. Cela peut suggérer que les conditions de la règle (besoin esthétique élevé et bonne santé péri-implantologique) n'étaient pas remplies dans ces cas, ou que des exceptions (charges masticatoires élevées, restrictions budgétaires) étaient présentes.\n\n2. **Contre-exemples :**\n   - Sans détails spécifiques sur les cas de test, il est difficile de déterminer si des contre-exemples existent. Cependant, l'absence de traitements suggère que les exceptions ou conditions n'étaient pas favorables à l'application de la règle.\n\n3. **Confiance attribuée :**\n   - La confiance de 85% semble élevée, surtout en l'absence de traitements observés dans les cas de test. Cela pourrait indiquer que la règle est bien soutenue par des données cliniques, mais il serait prudent de réévaluer cette confiance en fonction de nouvelles données ou d'une analyse plus approfondie.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour s'appliquer à des cas où l'esthétique et la biocompatibilité sont prioritaires. Cependant, elle pourrait être trop restrictive si elle ne prend pas en compte d'autres facteurs cliniques ou économiques qui influencent la décision de traitement.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile d'ajouter des conditions supplémentaires ou de clarifier les exceptions pour mieux refléter les situations cliniques réelles. Par exemple, inclure des considérations sur la durabilité ou la longévité des couronnes en céramique par rapport à d'autres matériaux.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Couronnes en céramique avec implants\",\n  \"type\": \"material\",\n  \"description\": \"Les couronnes en céramique sont préférées pour leur esthétique et biocompatibilité.\",\n  \"clinicalReasoning\": \"Offrent une excellente esthétique, idéales pour les implants.\",\n  \"conditions\": [\n    \"Besoin esthétique élevé\",\n    \"Bonne santé péri-implantologique\",\n    \"Absence de bruxisme\"\n  ],\n  \"evidence\": [\n    \"Données cliniques\",\n    \"Pratiques esthétiques\",\n    \"Études comparatives sur la durabilité\"\n  ],\n  \"exceptions\": [\n    \"Charges masticatoires élevées\",\n    \"Restrictions budgétaires\",\n    \"Préférences du patient pour d'autres matériaux\"\n  ],\n  \"confidence\": 80,\n  \"priority\": \"high\",\n  \"id\": \"0f9e2292-73ad-404a-b755-2968f10d22dc\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242959\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Les couronnes en céramique sont préférées pour leur esthétique et biocompatibilité.\"\n}\n```\n\n### Conclusion\n\nLa règle est globalement cohérente avec les principes esthétiques et biocompatibles des couronnes en céramique, mais elle pourrait bénéficier d'une réévaluation de la confiance et de l'ajout de conditions et exceptions pour mieux s'adapter aux cas cliniques réels."
+  },
+  {
+    "title": "Détartrage avec traitement de caries",
+    "type": "pattern",
+    "description": "Le détartrage est combiné avec le traitement des caries pour une hygiène optimale.",
+    "clinicalReasoning": "Réduit les risques de nouvelles caries et maladies parodontales.",
+    "conditions": [
+      "Présence de caries",
+      "Accumulation de tartre"
+    ],
+    "evidence": [
+      "Pratique clinique",
+      "Études sur la prévention des caries"
+    ],
+    "exceptions": [
+      "Contre-indications au détartrage"
+    ],
+    "confidence": 90,
+    "priority": "high",
+    "id": "50149528-8998-46ba-99db-ffb661481398",
+    "discoveredAt": "2025-08-08T13:49:45.242964",
+    "evidenceCount": 23,
+    "summary": "Le détartrage est combiné avec le traitement des caries pour une hygiène optimale.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique, nous devons analyser les cas de test fournis et évaluer la cohérence de la règle avec ces cas. Voici l'analyse détaillée :\n\n### Analyse des cas de test\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'aucun traitement n'a été réalisé. Cela signifie que, dans ces cas, soit les conditions de la règle (présence de caries et accumulation de tartre) n'étaient pas remplies, soit il y avait des contre-indications au détartrage.\n   - Sans les détails des cas, il est difficile de déterminer si la règle a été appliquée correctement ou si elle n'était pas applicable.\n\n2. **Contre-exemples :**\n   - Les cas fournis ne montrent pas de contre-exemples directs à la règle, mais l'absence de traitement pourrait indiquer des situations où la règle n'a pas été appliquée malgré la présence de conditions favorables. Cela nécessite une investigation plus approfondie des cas individuels.\n\n3. **Confiance attribuée :**\n   - La confiance de 90% semble élevée, surtout si aucun traitement n'a été observé dans les cas de test. Cela pourrait indiquer que la règle est généralement bien fondée, mais que des ajustements ou des clarifications sont nécessaires pour son application.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment générale pour couvrir les situations où un détartrage et un traitement des caries sont nécessaires. Cependant, elle pourrait bénéficier de critères plus spécifiques pour déterminer quand ces traitements doivent être combinés.\n\n5. **Ajustements nécessaires :**\n   - Clarifier les conditions précises sous lesquelles la règle doit être appliquée.\n   - Ajouter des critères pour évaluer les contre-indications au détartrage.\n   - Réévaluer la confiance en fonction de données supplémentaires ou d'une analyse plus détaillée des cas.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Détartrage avec traitement de caries\",\n  \"type\": \"pattern\",\n  \"description\": \"Le détartrage est combiné avec le traitement des caries pour une hygiène optimale.\",\n  \"clinicalReasoning\": \"Réduit les risques de nouvelles caries et maladies parodontales.\",\n  \"conditions\": [\n    \"Présence de caries confirmée par examen clinique\",\n    \"Accumulation de tartre significative\"\n  ],\n  \"evidence\": [\n    \"Pratique clinique\",\n    \"Études sur la prévention des caries\"\n  ],\n  \"exceptions\": [\n    \"Contre-indications médicales au détartrage\",\n    \"Absence de tartre ou caries mineures\"\n  ],\n  \"confidence\": 85,\n  \"priority\": \"high\",\n  \"id\": \"50149528-8998-46ba-99db-ffb661481398\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242964\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Le détartrage est combiné avec le traitement des caries pour une hygiène optimale.\"\n}\n```\n\n### Conclusion\n\nLa règle est potentiellement valide, mais nécessite des ajustements pour être appliquée de manière cohérente et efficace. Il est important de clarifier les conditions et les exceptions pour garantir une application appropriée dans la pratique clinique. Une réévaluation de la confiance est également recommandée après une analyse plus approfondie des cas."
+  },
+  {
+    "title": "Gouttières de contention après orthodontie",
+    "type": "dependency",
+    "description": "Les gouttières de contention sont utilisées après un traitement orthodontique pour maintenir les résultats.",
+    "clinicalReasoning": "Empêchent la migration des dents vers leur position initiale.",
+    "conditions": [
+      "Fin de traitement orthodontique",
+      "Mouvements dentaires significatifs"
+    ],
+    "evidence": [
+      "Pratique clinique",
+      "Recommandations orthodontiques"
+    ],
+    "exceptions": [
+      "Refus de port de gouttières",
+      "Allergies aux matériaux"
+    ],
+    "confidence": 50,
+    "priority": "medium",
+    "id": "61127a1c-dcbc-4c94-a54d-6ba2a4a110fa",
+    "discoveredAt": "2025-08-08T13:49:45.242970",
+    "evidenceCount": 23,
+    "summary": "Les gouttières de contention sont utilisées après un traitement orthodontique pour maintenir les résultats.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant l'utilisation des gouttières de contention après un traitement orthodontique, nous allons analyser les cas de test fournis et évaluer la règle selon les critères demandés.\n\n### Analyse des cas de test\n\nLes cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, treatment_planning_34.json, treatment_planning_18.json, treatment_planning_4.json) indiquent qu'il n'y a aucun traitement orthodontique enregistré. Cela signifie que ces cas ne fournissent pas d'informations directement applicables pour valider la règle, car ils ne concernent pas de situations où un traitement orthodontique a été effectué.\n\n### Validation de la règle\n\n1. **Cohérence avec les cas observés**:\n   - Les cas fournis n'ont pas de traitements orthodontiques, donc ils ne permettent pas de valider directement la règle. Cependant, en général, la règle est cohérente avec les pratiques cliniques courantes.\n\n2. **Contre-exemples**:\n   - Aucun des cas fournis ne constitue un contre-exemple, car ils ne concernent pas de traitements orthodontiques.\n\n3. **Confiance attribuée**:\n   - La confiance de 50% semble raisonnable compte tenu de la pratique clinique et des recommandations orthodontiques. Cependant, sans données supplémentaires, il est difficile de justifier pleinement ce niveau de confiance.\n\n4. **Généralité de la règle**:\n   - La règle est suffisamment générale pour couvrir la plupart des situations post-orthodontiques, mais elle pourrait être précisée en ajoutant des détails sur les types de mouvements dentaires significatifs.\n\n5. **Ajustements nécessaires**:\n   - Ajouter des précisions sur les types de mouvements dentaires qui justifient l'utilisation de gouttières.\n   - Inclure des informations sur la durée typique de port des gouttières.\n   - Considérer d'autres exceptions possibles, comme des conditions médicales spécifiques qui pourraient influencer le port des gouttières.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Gouttières de contention après orthodontie\",\n  \"type\": \"dependency\",\n  \"description\": \"Les gouttières de contention sont utilisées après un traitement orthodontique pour maintenir les résultats.\",\n  \"clinicalReasoning\": \"Empêchent la migration des dents vers leur position initiale.\",\n  \"conditions\": [\n    \"Fin de traitement orthodontique\",\n    \"Mouvements dentaires significatifs (par exemple, correction de chevauchements ou d'espacements importants)\"\n  ],\n  \"evidence\": [\n    \"Pratique clinique\",\n    \"Recommandations orthodontiques\"\n  ],\n  \"exceptions\": [\n    \"Refus de port de gouttières\",\n    \"Allergies aux matériaux\",\n    \"Conditions médicales spécifiques influençant le port\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"61127a1c-dcbc-4c94-a54d-6ba2a4a110fa\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242970\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Les gouttières de contention sont utilisées après un traitement orthodontique pour maintenir les résultats, particulièrement en cas de mouvements dentaires significatifs.\"\n}\n```\n\nCette version de la règle inclut des ajustements pour améliorer sa précision et sa pertinence clinique."
+  },
+  {
+    "title": "Blanchiment interne avec implants",
+    "type": "pattern",
+    "description": "Le blanchiment interne est utilisé pour harmoniser la couleur des restaurations sur implants.",
+    "clinicalReasoning": "Ajuste la teinte pour correspondre aux dents naturelles.",
+    "conditions": [
+      "Restaurations nécessitant adaptation esthétique",
+      "Uniformité de couleur souhaitée"
+    ],
+    "evidence": [
+      "Observations cliniques",
+      "Pratiques esthétiques"
+    ],
+    "exceptions": [
+      "Restaurations indirectes non applicables"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "eebdd557-2b85-4ab2-be8e-9989c5a96e94",
+    "discoveredAt": "2025-08-08T13:49:45.242975",
+    "evidenceCount": 23,
+    "summary": "Le blanchiment interne est utilisé pour harmoniser la couleur des restaurations sur implants.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant le blanchiment interne avec implants, nous devons analyser les informations fournies et les comparer aux cas de test. Voici une analyse détaillée :\n\n### Analyse de la règle et des cas de test\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_18.json, treatment_planning_4.json, etc.) ne montrent aucun traitement utilisant le blanchiment interne pour harmoniser la couleur des restaurations sur implants. Cela pourrait indiquer que la règle n'est pas couramment appliquée dans les cas observés ou que les cas de test ne sont pas représentatifs des situations où cette règle serait applicable.\n\n2. **Contre-exemples :**\n   - Aucun des cas de test ne présente un traitement qui contredit directement la règle. Cependant, l'absence de cas où la règle est appliquée pourrait suggérer qu'elle n'est pas pertinente ou nécessaire dans les situations observées.\n\n3. **Confiance attribuée :**\n   - La confiance attribuée à la règle est de 60, ce qui est relativement modéré. Étant donné l'absence de cas de test confirmant l'application de la règle, cette confiance semble justifiée. Cependant, elle pourrait être revue à la baisse si d'autres cas de test confirment l'absence d'application de la règle.\n\n4. **Généralité de la règle :**\n   - La règle semble être assez spécifique, car elle s'applique uniquement aux situations où une harmonisation de la couleur des restaurations sur implants est nécessaire. Cependant, elle pourrait être trop restreinte si elle ne s'applique qu'à un nombre limité de cas cliniques.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile de clarifier dans quelles situations précises le blanchiment interne est recommandé, et de fournir plus d'exemples cliniques ou d'études de cas pour renforcer la validité de la règle.\n   - Considérer l'inclusion de conditions supplémentaires ou de contextes cliniques spécifiques où cette règle est applicable.\n\n### Version validée de la règle\n\nVoici une version ajustée de la règle, prenant en compte l'analyse ci-dessus :\n\n```json\n{\n  \"title\": \"Blanchiment interne avec implants\",\n  \"type\": \"pattern\",\n  \"description\": \"Le blanchiment interne peut être utilisé pour harmoniser la couleur des restaurations sur implants dans des cas spécifiques.\",\n  \"clinicalReasoning\": \"Ajuste la teinte pour correspondre aux dents naturelles, particulièrement lorsque les restaurations sur implants diffèrent significativement en couleur.\",\n  \"conditions\": [\n    \"Restaurations nécessitant adaptation esthétique\",\n    \"Uniformité de couleur souhaitée\",\n    \"Différence notable de teinte avec les dents naturelles\"\n  ],\n  \"evidence\": [\n    \"Observations cliniques\",\n    \"Pratiques esthétiques\",\n    \"Études de cas spécifiques\"\n  ],\n  \"exceptions\": [\n    \"Restaurations indirectes non applicables\",\n    \"Cas où la différence de teinte est minime\"\n  ],\n  \"confidence\": 50,\n  \"priority\": \"medium\",\n  \"id\": \"eebdd557-2b85-4ab2-be8e-9989c5a96e94\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242975\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Le blanchiment interne peut être utilisé pour harmoniser la couleur des restaurations sur implants dans des cas spécifiques.\"\n}\n```\n\n### Conclusion\n\nLa règle nécessite des ajustements pour mieux refléter les situations cliniques où elle est applicable. Il est également recommandé de collecter plus de données cliniques pour renforcer la confiance et la validité de cette règle."
+  },
+  {
+    "title": "Extraction complexe et traitement de racine",
+    "type": "pattern",
+    "description": "Les extractions complexes sont suivies de traitements de racine pour gérer les complications.",
+    "clinicalReasoning": "Évite la propagation de l’infection après extraction.",
+    "conditions": [
+      "Extraction de dents multiples",
+      "Signes d’infection ou d’inflammation"
+    ],
+    "evidence": [
+      "Pratique clinique",
+      "Études endodontiques"
+    ],
+    "exceptions": [
+      "Extractions sans complications"
+    ],
+    "confidence": 60,
+    "priority": "medium",
+    "id": "8248a389-03e3-4a68-a438-6300ad1fa00b",
+    "discoveredAt": "2025-08-08T13:49:45.242981",
+    "evidenceCount": 23,
+    "summary": "Les extractions complexes sont suivies de traitements de racine pour gérer les complications.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique proposée, nous devons analyser les cas de test fournis et évaluer la cohérence et l'applicabilité de la règle. Voici une analyse détaillée :\n\n### Analyse de la règle et des cas de test\n\n1. **Cohérence avec les cas observés :**\n   - Les cas de test fournis (treatment_planning_22.json, treatment_planning_8.json, etc.) indiquent qu'il n'y a eu aucun traitement de racine après les extractions complexes. Cela suggère que la règle n'est pas appliquée dans ces cas, ce qui pourrait indiquer une incohérence entre la règle et la pratique clinique observée.\n\n2. **Contre-exemples :**\n   - Les cas de test fournis semblent être des contre-exemples à la règle, car ils montrent des extractions sans suivi de traitement de racine, même en présence de conditions qui pourraient justifier un tel traitement selon la règle.\n\n3. **Confiance attribuée :**\n   - La confiance de 60% semble faible, ce qui pourrait refléter une incertitude quant à l'application généralisée de la règle. Étant donné les contre-exemples, cette confiance semble justifiée.\n\n4. **Généralité de la règle :**\n   - La règle semble trop générale, car elle ne prend pas en compte les variations individuelles des cas cliniques. Par exemple, toutes les extractions complexes ne nécessitent pas nécessairement un traitement de racine, surtout si l'infection ou l'inflammation est gérée efficacement par d'autres moyens.\n\n5. **Ajustements nécessaires :**\n   - La règle pourrait être ajustée pour inclure des critères plus spécifiques sur quand un traitement de racine est nécessaire après une extraction complexe. Par exemple, elle pourrait inclure des facteurs de risque spécifiques ou des indications cliniques précises.\n\n### Version validée de la règle\n\nVoici une version ajustée de la règle, prenant en compte l'analyse ci-dessus :\n\n```json\n{\n  \"title\": \"Extraction complexe et traitement de racine\",\n  \"type\": \"pattern\",\n  \"description\": \"Les extractions complexes peuvent être suivies de traitements de racine pour gérer les complications, selon des critères cliniques spécifiques.\",\n  \"clinicalReasoning\": \"Évite la propagation de l’infection après extraction dans des cas à haut risque.\",\n  \"conditions\": [\n    \"Extraction de dents multiples\",\n    \"Signes d’infection ou d’inflammation persistante\",\n    \"Facteurs de risque spécifiques (ex. : immunosuppression)\"\n  ],\n  \"evidence\": [\n    \"Pratique clinique\",\n    \"Études endodontiques\"\n  ],\n  \"exceptions\": [\n    \"Extractions sans complications\",\n    \"Absence de signes d’infection persistante\"\n  ],\n  \"confidence\": 60,\n  \"priority\": \"medium\",\n  \"id\": \"8248a389-03e3-4a68-a438-6300ad1fa00b\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242981\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Les extractions complexes peuvent être suivies de traitements de racine pour gérer les complications dans des cas spécifiques.\"\n}\n```\n\n### Conclusion\n\nLa règle initiale n'était pas cohérente avec les cas observés, et des ajustements ont été nécessaires pour la rendre plus spécifique et applicable. La version ajustée prend en compte des critères cliniques supplémentaires pour déterminer quand un traitement de racine est nécessaire, ce qui devrait améliorer sa pertinence et son applicabilité en pratique clinique."
+  },
+  {
+    "title": "Scellement de fissure avec onlay",
+    "type": "pattern",
+    "description": "Le scellement de fissure est combiné avec des onlays pour restaurer et protéger les dents fissurées.",
+    "clinicalReasoning": "Préserve l'intégrité structurale de la dent.",
+    "conditions": [
+      "Dents avec fissures",
+      "Perte de structure modérée"
+    ],
+    "evidence": [
+      "Principes cliniques de restauration",
+      "Pratique clinique"
+    ],
+    "exceptions": [
+      "Fissures trop étendues"
+    ],
+    "confidence": 80,
+    "priority": "high",
+    "id": "ca97bca3-ccb2-483b-a2fc-551005ca7c57",
+    "discoveredAt": "2025-08-08T13:49:45.242986",
+    "evidenceCount": 23,
+    "summary": "Le scellement de fissure est combiné avec des onlays pour restaurer et protéger les dents fissurées.",
+    "validated": true,
+    "validationNotes": "Pour valider la règle clinique concernant le scellement de fissure avec onlay, nous devons examiner les cas de test fournis et évaluer la cohérence et l'applicabilité de la règle. Voici l'analyse basée sur les informations disponibles :\n\n### Analyse de la règle clinique\n\n1. **Cohérence avec les cas observés :**\n   - Les fichiers de cas de test (treatment_planning_22.json, treatment_planning_34.json, etc.) indiquent qu'il n'y a eu aucun traitement utilisant cette règle. Cela pourrait suggérer que la règle n'est pas fréquemment appliquée dans la pratique clinique représentée par ces cas.\n\n2. **Contre-exemples :**\n   - Aucun contre-exemple explicite n'est fourni dans les cas de test. Cependant, l'absence de traitements utilisant cette règle pourrait indiquer que les conditions nécessaires (dents avec fissures et perte de structure modérée) ne sont pas fréquemment rencontrées ou que d'autres méthodes de traitement sont préférées.\n\n3. **Justification de la confiance attribuée :**\n   - La confiance de 80% semble élevée étant donné l'absence d'application de la règle dans les cas de test. Il serait utile de disposer de plus d'informations sur les 23 éléments de preuve mentionnés pour évaluer si cette confiance est justifiée.\n\n4. **Généralité de la règle :**\n   - La règle semble suffisamment spécifique en ciblant les dents avec fissures et une perte de structure modérée, tout en excluant les fissures trop étendues. Cependant, l'absence d'application dans les cas de test pourrait indiquer qu'elle est trop spécifique ou que les conditions ne sont pas bien définies.\n\n5. **Ajustements nécessaires :**\n   - Il pourrait être utile de clarifier les critères pour \"dents avec fissures\" et \"perte de structure modérée\" pour améliorer l'applicabilité de la règle.\n   - Réévaluer la confiance attribuée en fonction de l'absence de traitements observés et des preuves disponibles.\n\n### Version validée de la règle\n\n```json\n{\n  \"title\": \"Scellement de fissure avec onlay\",\n  \"type\": \"pattern\",\n  \"description\": \"Le scellement de fissure est combiné avec des onlays pour restaurer et protéger les dents fissurées.\",\n  \"clinicalReasoning\": \"Préserve l'intégrité structurale de la dent.\",\n  \"conditions\": [\n    \"Dents avec fissures\",\n    \"Perte de structure modérée\"\n  ],\n  \"evidence\": [\n    \"Principes cliniques de restauration\",\n    \"Pratique clinique\"\n  ],\n  \"exceptions\": [\n    \"Fissures trop étendues\"\n  ],\n  \"confidence\": 70,  // Ajustement de la confiance\n  \"priority\": \"high\",\n  \"id\": \"ca97bca3-ccb2-483b-a2fc-551005ca7c57\",\n  \"discoveredAt\": \"2025-08-08T13:49:45.242986\",\n  \"evidenceCount\": 23,\n  \"summary\": \"Le scellement de fissure est combiné avec des onlays pour restaurer et protéger les dents fissurées.\"\n}\n```\n\n### Recommandations\n\n- **Collecte de données supplémentaires :** Il serait bénéfique de recueillir plus de données cliniques pour mieux comprendre l'application de cette règle.\n- **Formation et sensibilisation :** Si la règle est valide mais sous-utilisée, des efforts de formation pourraient être nécessaires pour sensibiliser les cliniciens à ses avantages potentiels.\n- **Réévaluation périodique :** La règle devrait être réévaluée périodiquement à mesure que de nouvelles données deviennent disponibles."
+  }
+]

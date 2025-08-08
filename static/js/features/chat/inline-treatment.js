@@ -260,6 +260,7 @@ export class InlineTreatmentDisplay {
                     <select class="treatment-dropdown-select" id="${instanceId}-select" onchange="window.inlineTreatment.switchTabMobile('${instanceId}', this.value)">
                         <option value="sequence">📋 Séquence de traitement</option>
                         <option value="references">📚 Références RAG</option>
+                        <option value="rules">🧠 Règles appliquées</option>
                     </select>
                 </div>
             ` : `
@@ -271,6 +272,9 @@ export class InlineTreatmentDisplay {
                     <button class="inline-treatment-tab" data-tab="references" onclick="window.inlineTreatment.switchTab('references')">
                         <i class="fas fa-book"></i> Références
                     </button>
+                    <button class="inline-treatment-tab" data-tab="rules" onclick="window.inlineTreatment.switchTab('rules')">
+                        <i class="fas fa-brain"></i> Règles
+                    </button>
                 </div>
             `}
             
@@ -281,6 +285,10 @@ export class InlineTreatmentDisplay {
                 
                 <div class="inline-tab-content" id="inline-references-tab" style="display: none;">
                     ${this.generateReferencesContent(plan, references)}
+                </div>
+                
+                <div class="inline-tab-content" id="inline-rules-tab" style="display: none;">
+                    ${this.generateRulesContent(references)}
                 </div>
             </div>
         `;
@@ -497,6 +505,68 @@ export class InlineTreatmentDisplay {
                 </div>
             </div>
         `;
+    }
+    
+    generateRulesContent(references) {
+        let html = '<div class="inline-rules-content">';
+        
+        // Filter for discovered rules from references
+        const discoveredRules = references ? references.filter(ref => ref.type === 'discovered_rule') : [];
+        
+        if (discoveredRules.length > 0) {
+            html += `
+                <h3 style="margin-bottom: 20px;">🧠 Règles découvertes appliquées</h3>
+                <p class="rules-description">Ces patterns ont été identifiés par l'analyse Brain et appliqués à ce plan de traitement.</p>
+                <div class="rules-list">
+            `;
+            
+            discoveredRules.forEach(rule => {
+                const confidence = Math.round(rule.confidence || 0);
+                const confidenceClass = confidence >= 85 ? 'high' : confidence >= 70 ? 'medium' : 'low';
+                
+                html += `
+                    <div class="rule-card">
+                        <div class="rule-header">
+                            <span class="rule-icon">🔍</span>
+                            <span class="rule-title">${this.escapeHtml(rule.title || 'Règle découverte')}</span>
+                            <span class="rule-confidence confidence-${confidenceClass}">${confidence}% de confiance</span>
+                        </div>
+                        <div class="rule-content">
+                            ${rule.content ? `<p class="rule-description">${this.escapeHtml(rule.content)}</p>` : ''}
+                            ${rule.pattern ? `
+                                <div class="rule-pattern">
+                                    <strong>Pattern:</strong> ${this.escapeHtml(rule.pattern)}
+                                </div>
+                            ` : ''}
+                            ${rule.evidence && rule.evidence.length > 0 ? `
+                                <div class="rule-evidence">
+                                    <strong>Basé sur:</strong>
+                                    <ul>
+                                        ${rule.evidence.map(e => `<li>${this.escapeHtml(e)}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+        } else {
+            html += `
+                <p class="no-data">
+                    <i class="fas fa-info-circle"></i> 
+                    Aucune règle découverte n'a été appliquée à ce plan de traitement.
+                </p>
+                <p class="rules-info">
+                    Les règles découvertes sont des patterns identifiés par l'analyse Brain sur l'ensemble des cas cliniques. 
+                    Elles sont appliquées automatiquement lorsqu'elles sont pertinentes pour améliorer la qualité des recommandations.
+                </p>
+            `;
+        }
+        
+        html += '</div>';
+        return html;
     }
     
     // REMOVED: Financial analysis functionality

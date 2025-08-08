@@ -1,14 +1,15 @@
 import os
 import json
 import logging
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Tuple
-from collections import defaultdict, Counter
+import threading
+import uuid
+from datetime import datetime
+from typing import Dict, List, Optional, Any
+from collections import defaultdict
 import re
 from openai import OpenAI
-from app.services.enhanced_rag_service import EnhancedRAGService
-from app.services.data_service import DataService
 from dotenv import load_dotenv
+import time
 
 # Load environment variables
 load_dotenv()
@@ -16,1033 +17,710 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 class BrainService:
-    """AI Brain Service - Provides introspection into AI's dental knowledge and reasoning"""
+    """Multi-Agent AI Brain Service for Deep Dental Knowledge Analysis"""
     
-    def __init__(self, rag_service: EnhancedRAGService, data_service: DataService):
-        self.rag_service = rag_service
-        self.data_service = data_service
+    def __init__(self):
         self.client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-        self._knowledge_cache = {}
-        self._last_analysis = None
+        self.analyses = {}  # Store ongoing analyses
+        self.discovered_rules = []  # Persistent rule storage
+        self.agent_memory = defaultdict(list)  # Memory for each agent
+        logger.info("Multi-agent Brain service initialized")
         
-    def analyze_knowledge_base(self) -> Dict:
-        """Comprehensive analysis of the AI's knowledge base"""
+        # Load saved rules if they exist
+        self._load_saved_rules()
+        
+    def _load_saved_rules(self):
+        """Load previously discovered rules from storage"""
         try:
-            # Get all data categories
-            clinical_cases = self._get_clinical_cases()
-            ideal_sequences = self._get_ideal_sequences()
-            approved_sequences = self._get_approved_sequences()
-            
-            # Extract patterns and insights
-            patterns = self._extract_treatment_patterns(clinical_cases, ideal_sequences, approved_sequences)
-            rules = self._extract_clinical_rules(patterns)
-            confidence_map = self._generate_confidence_map(patterns)
-            knowledge_gaps = self._identify_knowledge_gaps(patterns)
-            
-            # Generate timeline of learning
-            learning_timeline = self._generate_learning_timeline(approved_sequences)
-            
-            # Clinical correlations
-            correlations = self._extract_clinical_correlations(clinical_cases, approved_sequences)
-            
-            # Treatment decision trees
-            decision_trees = self._build_decision_trees(patterns)
-            
-            # Convert sets to lists for JSON serialization
-            patterns_serializable = self._make_patterns_serializable(patterns)
-            
-            # Cache the analysis
-            self._last_analysis = {
-                'timestamp': datetime.now().isoformat(),
-                'summary': {
-                    'total_clinical_cases': len(clinical_cases),
-                    'total_ideal_sequences': len(ideal_sequences),
-                    'total_approved_sequences': len(approved_sequences),
-                    'high_quality_sequences': sum(1 for s in approved_sequences if s.get('rating', 0) >= 9),
-                    'unique_conditions_covered': len(set(self._extract_conditions(clinical_cases + approved_sequences))),
-                    'confidence_score': self._calculate_overall_confidence(confidence_map)
-                },
-                'patterns': patterns_serializable,
-                'rules': rules,
-                'confidence_map': confidence_map,
-                'knowledge_gaps': knowledge_gaps,
-                'learning_timeline': learning_timeline,
-                'correlations': correlations,
-                'decision_trees': decision_trees
-            }
-            
-            return self._last_analysis
-            
+            rules_file = os.path.join(os.path.dirname(__file__), '../../DATA/discovered_rules.json')
+            if os.path.exists(rules_file):
+                with open(rules_file, 'r', encoding='utf-8') as f:
+                    self.discovered_rules = json.load(f)
+                logger.info(f"Loaded {len(self.discovered_rules)} saved rules")
         except Exception as e:
-            logger.error(f"Error analyzing knowledge base: {str(e)}")
-            import traceback
-            logger.error(f"Traceback: {traceback.format_exc()}")
-            error_msg = str(e) if str(e) != "0" else "An error occurred during analysis"
-            return {'error': error_msg}
+            logger.error(f"Error loading saved rules: {e}")
+            
+    def _save_rules(self):
+        """Save discovered rules to persistent storage"""
+        try:
+            rules_file = os.path.join(os.path.dirname(__file__), '../../DATA/discovered_rules.json')
+            os.makedirs(os.path.dirname(rules_file), exist_ok=True)
+            with open(rules_file, 'w', encoding='utf-8') as f:
+                json.dump(self.discovered_rules, f, ensure_ascii=False, indent=2)
+            logger.info(f"Saved {len(self.discovered_rules)} rules")
+        except Exception as e:
+            logger.error(f"Error saving rules: {e}")
     
-    def _extract_treatment_patterns(self, clinical_cases: List, ideal_sequences: List, approved_sequences: List) -> Dict:
-        """Extract common treatment patterns from all sources"""
-        patterns = {
-            'common_sequences': defaultdict(list),
-            'treatment_dependencies': defaultdict(set),
-            'timing_patterns': defaultdict(list),
-            'material_preferences': defaultdict(lambda: defaultdict(int)),
-            'contraindications': [],
-            'success_factors': defaultdict(list)
+    def start_analysis(self) -> Dict:
+        """Start a new multi-agent analysis"""
+        analysis_id = str(uuid.uuid4())
+        
+        self.analyses[analysis_id] = {
+            'id': analysis_id,
+            'status': 'running',
+            'progress': {
+                'percentage': 0,
+                'stage': 'Initialisation de l\'analyse...'
+            },
+            'thoughts': [],
+            'new_rules': [],
+            'start_time': datetime.now()
         }
         
-        # Analyze all sequences
-        all_sequences = []
-        for case in clinical_cases:
-            if 'treatment_sequence' in case:
-                all_sequences.append({
-                    'source': 'clinical',
-                    'sequence': case['treatment_sequence'],
-                    'condition': case.get('consultation_text', ''),
-                    'rating': None
-                })
+        # Start analysis in background thread
+        analysis_thread = threading.Thread(target=self._run_analysis, args=(analysis_id,))
+        analysis_thread.daemon = True
+        analysis_thread.start()
         
-        for seq in ideal_sequences:
-            if 'treatment_sequence' in seq:
-                all_sequences.append({
-                    'source': 'ideal',
-                    'sequence': seq['treatment_sequence'],
-                    'condition': seq.get('title', ''),
-                    'rating': None
-                })
+        return {
+            'status': 'success',
+            'analysisId': analysis_id,
+            'message': 'Analyse multi-agents démarrée'
+        }
+    
+    def _run_analysis(self, analysis_id: str):
+        """Run the complete multi-agent analysis pipeline"""
+        try:
+            analysis = self.analyses[analysis_id]
+            
+            # Stage 1: Data Collection
+            self._update_progress(analysis_id, 5, "Collecte des données...")
+            data_chunks = self._collect_data_chunks()
+            
+            # Stage 2: Scanner Agent - Quick pattern identification
+            self._update_progress(analysis_id, 15, "Scanner Agent: Identification des patterns...")
+            patterns = self._scanner_agent(analysis_id, data_chunks)
+            
+            # Stage 3: Analyzer Agent - Deep analysis of patterns
+            self._update_progress(analysis_id, 40, "Analyzer Agent: Analyse approfondie...")
+            deep_insights = self._analyzer_agent(analysis_id, patterns, data_chunks)
+            
+            # Stage 4: Synthesizer Agent - Rule generation
+            self._update_progress(analysis_id, 65, "Synthesizer Agent: Génération des règles...")
+            rules = self._synthesizer_agent(analysis_id, deep_insights)
+            
+            # Stage 5: Validator Agent - Rule validation
+            self._update_progress(analysis_id, 85, "Validator Agent: Validation des règles...")
+            validated_rules = self._validator_agent(analysis_id, rules, data_chunks)
+            
+            # Stage 6: Save and complete
+            self._update_progress(analysis_id, 95, "Sauvegarde des résultats...")
+            self._save_analysis_results(analysis_id, validated_rules)
+            
+            # Complete
+            self._update_progress(analysis_id, 100, "Analyse terminée")
+            analysis['status'] = 'complete'
+            
+        except Exception as e:
+            logger.error(f"Error in analysis {analysis_id}: {e}")
+            analysis['status'] = 'error'
+            analysis['error'] = str(e)
+    
+    def _collect_data_chunks(self) -> List[Dict]:
+        """Collect and organize data into analyzable chunks"""
+        chunks = []
         
-        for seq in approved_sequences:
-            if 'sequence' in seq:
-                # Handle both dict and direct list formats
-                sequence_data = seq['sequence']
-                if isinstance(sequence_data, dict):
-                    treatment_seq = sequence_data.get('treatment_sequence', [])
-                elif isinstance(sequence_data, list):
-                    treatment_seq = sequence_data
+        try:
+            # Load from TRAITEMENTS_JSON (actual clinical cases)
+            cases_dir = os.path.join(os.path.dirname(__file__), '../../DATA/TRAITEMENTS_JSON')
+            if os.path.exists(cases_dir):
+                for filename in os.listdir(cases_dir):
+                    if filename.endswith('.json'):
+                        with open(os.path.join(cases_dir, filename), 'r', encoding='utf-8') as f:
+                            case = json.load(f)
+                            chunks.append({
+                                'type': 'clinical_case',
+                                'name': filename,
+                                'content': case
+                            })
+            
+            # Load ideal sequences
+            sequences_dir = os.path.join(os.path.dirname(__file__), '../../DATA/IDEAL_SEQUENCES')
+            if os.path.exists(sequences_dir):
+                for filename in os.listdir(sequences_dir):
+                    if filename.endswith('.json'):
+                        with open(os.path.join(sequences_dir, filename), 'r', encoding='utf-8') as f:
+                            sequence = json.load(f)
+                            chunks.append({
+                                'type': 'ideal_sequence',
+                                'name': filename,
+                                'content': sequence
+                            })
+            
+            # Load approved sequences
+            approved_dir = os.path.join(os.path.dirname(__file__), '../../DATA/APPROVED_SEQUENCES')
+            if os.path.exists(approved_dir):
+                for filename in os.listdir(approved_dir):
+                    if filename.endswith('.json'):
+                        with open(os.path.join(approved_dir, filename), 'r', encoding='utf-8') as f:
+                            sequence = json.load(f)
+                            chunks.append({
+                                'type': 'approved_sequence',
+                                'name': filename,
+                                'content': sequence
+                            })
+            
+            # Load from IDEAL_SEQUENCES_JSON (ideal cases given by dentist - very important!)
+            ideal_cases_dir = os.path.join(os.path.dirname(__file__), '../../DATA/IDEAL_SEQUENCES_JSON')
+            if os.path.exists(ideal_cases_dir):
+                for filename in os.listdir(ideal_cases_dir):
+                    if filename.endswith('.json'):
+                        with open(os.path.join(ideal_cases_dir, filename), 'r', encoding='utf-8') as f:
+                            ideal_case = json.load(f)
+                            chunks.append({
+                                'type': 'dentist_ideal_case',
+                                'name': filename,
+                                'content': ideal_case
+                            })
+            
+            # Load from IDEAL_SEQUENCES_ENHANCED
+            enhanced_dir = os.path.join(os.path.dirname(__file__), '../../DATA/IDEAL_SEQUENCES_ENHANCED')
+            if os.path.exists(enhanced_dir):
+                for filename in os.listdir(enhanced_dir):
+                    if filename.endswith('.json'):
+                        with open(os.path.join(enhanced_dir, filename), 'r', encoding='utf-8') as f:
+                            enhanced = json.load(f)
+                            chunks.append({
+                                'type': 'enhanced_sequence',
+                                'name': filename,
+                                'content': enhanced
+                            })
+            
+            logger.info(f"Collected {len(chunks)} data chunks from multiple sources")
+            logger.info(f"Types: {dict([(t, sum(1 for c in chunks if c['type'] == t)) for t in set(c['type'] for c in chunks)])}")
+            return chunks
+            
+        except Exception as e:
+            logger.error(f"Error collecting data chunks: {e}")
+            return []
+    
+    def _scanner_agent(self, analysis_id: str, data_chunks: List[Dict]) -> List[Dict]:
+        """Scanner Agent: Quickly identify interesting patterns"""
+        patterns = []
+        
+        # Process chunks in batches
+        batch_size = 5
+        for i in range(0, len(data_chunks), batch_size):
+            batch = data_chunks[i:i+batch_size]
+            
+            # Prepare batch summary
+            batch_summary = []
+            for chunk in batch:
+                if chunk['type'] == 'clinical_case':
+                    summary = f"Cas clinique {chunk['name']}: {chunk['content'].get('consultation', '')}"
+                elif chunk['type'] in ['ideal_sequence', 'approved_sequence']:
+                    treatments = [t.get('traitement', '') for t in chunk['content'].get('steps', [])]
+                    summary = f"Séquence {chunk['name']}: {' → '.join(treatments[:5])}"
                 else:
-                    treatment_seq = []
-                    
-                all_sequences.append({
-                    'source': 'approved',
-                    'sequence': treatment_seq,
-                    'condition': seq.get('original_prompt', ''),
-                    'rating': seq.get('rating', 0)
-                })
-        
-        # Extract patterns
-        for seq_data in all_sequences:
-            sequence = seq_data['sequence']
-            condition = seq_data['condition'].lower() if seq_data['condition'] else ''
+                    summary = f"{chunk['type']}: {chunk['name']}"
+                batch_summary.append(summary)
             
-            # Common sequences for conditions
-            if condition:
-                simplified_condition = self._simplify_condition(condition)
-                patterns['common_sequences'][simplified_condition].append(sequence)
-            
-            # Treatment dependencies (what comes before what)
-            if isinstance(sequence, list) and len(sequence) > 1:
-                for i in range(len(sequence) - 1):
-                    if isinstance(sequence[i], dict) and isinstance(sequence[i + 1], dict):
-                        current = self._extract_treatment_type(sequence[i].get('traitement', ''))
-                        next_treatment = self._extract_treatment_type(sequence[i + 1].get('traitement', ''))
-                        if current and next_treatment:
-                            patterns['treatment_dependencies'][current].add(next_treatment)
-            
-            # Timing patterns
-            if isinstance(sequence, list):
-                for appointment in sequence:
-                    if isinstance(appointment, dict) and 'delai' in appointment and appointment['delai']:
-                        treatment = self._extract_treatment_type(appointment.get('traitement', ''))
-                        if treatment:
-                            patterns['timing_patterns'][treatment].append(appointment['delai'])
-            
-            # Material preferences
-            if isinstance(sequence, list):
-                for appointment in sequence:
-                    if isinstance(appointment, dict):
-                        treatment_text = appointment.get('traitement', '').lower()
-                        treatment_type = self._extract_treatment_type(treatment_text)
-                        material = self._extract_material(treatment_text)
-                        if treatment_type and material:
-                            patterns['material_preferences'][treatment_type][material] += 1
+            prompt = f"""En tant que Scanner Agent spécialisé en analyse dentaire, identifie rapidement les patterns intéressants dans ces données:
+
+{chr(10).join(batch_summary)}
+
+Recherche spécifiquement:
+1. Séquences de traitement récurrentes
+2. Associations de traitements fréquentes
+3. Timings caractéristiques entre rendez-vous
+4. Préférences de matériaux
+5. Patterns inhabituels ou exceptions
+
+Format de réponse JSON:
+{{
+  "patterns_found": [
+    {{
+      "type": "sequence|timing|material|exception",
+      "description": "description courte",
+      "occurrences": ["ref1", "ref2"],
+      "interest_level": "high|medium|low"
+    }}
+  ],
+  "quick_insights": ["insight1", "insight2"]
+}}"""
+
+            try:
+                response = self.client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format={"type": "json_object"},
+                    temperature=0.7
+                )
+                
+                result = json.loads(response.choices[0].message.content)
+                patterns.extend(result.get('patterns_found', []))
+                
+                # Log agent thought
+                self._add_agent_thought(analysis_id, 'scanner', 
+                    f"Analysé {len(batch)} éléments, trouvé {len(result.get('patterns_found', []))} patterns intéressants")
+                
+                # Small delay to avoid rate limits
+                time.sleep(0.5)
+                
+            except Exception as e:
+                logger.error(f"Scanner agent error: {e}")
         
         return patterns
     
-    def _extract_clinical_rules(self, patterns: Dict) -> List[Dict]:
-        """Extract clinical rules from patterns"""
+    def _analyzer_agent(self, analysis_id: str, patterns: List[Dict], data_chunks: List[Dict]) -> List[Dict]:
+        """Analyzer Agent: Deep dive into identified patterns"""
+        deep_insights = []
+        
+        # Group patterns by type for efficient analysis
+        patterns_by_type = defaultdict(list)
+        for pattern in patterns:
+            patterns_by_type[pattern.get('type', 'unknown')].append(pattern)
+        
+        for pattern_type, type_patterns in patterns_by_type.items():
+            # Find relevant data chunks for this pattern type
+            relevant_chunks = self._find_relevant_chunks(type_patterns, data_chunks)
+            
+            prompt = f"""En tant qu'Analyzer Agent expert en dentisterie, effectue une analyse approfondie de ces patterns de type '{pattern_type}':
+
+Patterns identifiés:
+{json.dumps(type_patterns, ensure_ascii=False, indent=2)}
+
+Données pertinentes:
+{self._summarize_chunks(relevant_chunks[:10])}  
+
+Analyse demandée:
+1. Identifie les règles cliniques sous-jacentes
+2. Explique le raisonnement médical
+3. Trouve les conditions d'application
+4. Identifie les exceptions et cas limites
+5. Évalue la fiabilité (basée sur le nombre d'occurrences)
+
+Pense étape par étape et sois très précis dans ton analyse."""
+
+            try:
+                # Use o1-mini for deep thinking
+                response = self.client.chat.completions.create(
+                    model="o1-mini",
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                
+                insight = {
+                    'pattern_type': pattern_type,
+                    'analysis': response.choices[0].message.content,
+                    'patterns': type_patterns,
+                    'evidence_count': len(relevant_chunks)
+                }
+                deep_insights.append(insight)
+                
+                # Log agent thought
+                self._add_agent_thought(analysis_id, 'analyzer',
+                    f"Analyse approfondie du pattern '{pattern_type}' avec {len(relevant_chunks)} preuves")
+                
+                time.sleep(1)  # Rate limiting
+                
+            except Exception as e:
+                logger.error(f"Analyzer agent error: {e}")
+        
+        return deep_insights
+    
+    def _synthesizer_agent(self, analysis_id: str, deep_insights: List[Dict]) -> List[Dict]:
+        """Synthesizer Agent: Generate clinical rules from insights"""
         rules = []
         
-        # Dependency rules
-        for treatment, next_treatments in patterns['treatment_dependencies'].items():
-            if len(next_treatments) == 1:  # Strong pattern
-                rules.append({
-                    'type': 'sequence',
-                    'rule': f"{treatment} is always followed by {list(next_treatments)[0]}",
-                    'confidence': 0.95,
-                    'evidence_count': len([1 for seq in patterns['common_sequences'].values() for s in seq])
-                })
-            elif len(next_treatments) > 1:
-                most_common = Counter(next_treatments).most_common(1)[0]
-                rules.append({
-                    'type': 'sequence',
-                    'rule': f"{treatment} is usually followed by {most_common[0]}",
-                    'confidence': 0.75,
-                    'alternatives': list(next_treatments - {most_common[0]})
-                })
-        
-        # Timing rules
-        for treatment, delays in patterns['timing_patterns'].items():
-            if delays:
-                avg_delay = self._calculate_average_delay(delays)
-                rules.append({
-                    'type': 'timing',
-                    'rule': f"{treatment} typically requires {avg_delay} before next appointment",
-                    'confidence': 0.8,
-                    'variations': list(set(delays))
-                })
-        
-        # Material preference rules
-        for treatment, materials in patterns['material_preferences'].items():
-            if materials:
-                preferred = max(materials.items(), key=lambda x: x[1])
-                total = sum(materials.values())
-                confidence = preferred[1] / total
-                rules.append({
-                    'type': 'material',
-                    'rule': f"{treatment} preferably uses {preferred[0]}",
-                    'confidence': confidence,
-                    'alternatives': {m: c/total for m, c in materials.items() if m != preferred[0]}
-                })
-        
-        return sorted(rules, key=lambda x: x['confidence'], reverse=True)
-    
-    def _generate_confidence_map(self, patterns: Dict) -> Dict:
-        """Generate confidence scores for different treatment scenarios"""
-        confidence_map = {
-            'by_condition': {},
-            'by_treatment_type': {},
-            'by_complexity': {},
-            'overall_areas': []
-        }
-        
-        # Confidence by condition
-        for condition, sequences in patterns['common_sequences'].items():
-            if sequences:
-                # More examples = higher confidence
-                confidence = min(0.95, 0.5 + (len(sequences) * 0.1))
-                consistency = self._calculate_sequence_consistency(sequences)
-                confidence_map['by_condition'][condition] = {
-                    'confidence': confidence,
-                    'consistency': consistency,
-                    'sample_size': len(sequences)
-                }
-        
-        # Identify high and low confidence areas
-        high_confidence = [c for c, data in confidence_map['by_condition'].items() 
-                          if data['confidence'] > 0.8]
-        low_confidence = [c for c, data in confidence_map['by_condition'].items() 
-                         if data['confidence'] < 0.6]
-        
-        confidence_map['overall_areas'] = [
-            {'area': 'High Confidence', 'conditions': high_confidence},
-            {'area': 'Low Confidence', 'conditions': low_confidence}
-        ]
-        
-        return confidence_map
-    
-    def _identify_knowledge_gaps(self, patterns: Dict) -> List[Dict]:
-        """Identify areas where AI lacks knowledge or confidence"""
-        gaps = []
-        
-        # Conditions with few examples
-        for condition, sequences in patterns['common_sequences'].items():
-            if len(sequences) < 3:
-                gaps.append({
-                    'type': 'insufficient_data',
-                    'area': f"Treatment for {condition}",
-                    'current_examples': len(sequences),
-                    'recommendation': f"Need at least 5 more examples of {condition} treatments"
-                })
-        
-        # Treatments with high variation
-        for treatment, delays in patterns['timing_patterns'].items():
-            if len(set(delays)) > 5:  # High variation in timing
-                gaps.append({
-                    'type': 'inconsistent_pattern',
-                    'area': f"Timing for {treatment}",
-                    'issue': "High variation in recommended delays",
-                    'recommendation': "Establish clearer timing guidelines"
-                })
-        
-        # Missing common dental procedures
-        common_procedures = ['implant', 'extraction', 'root canal', 'crown', 'bridge', 'denture']
-        covered_procedures = set()
-        for sequences in patterns['common_sequences'].values():
-            for seq in sequences:
-                if isinstance(seq, list):
-                    for appt in seq:
-                        if isinstance(appt, dict):
-                            treatment = self._extract_treatment_type(appt.get('traitement', ''))
-                            if treatment:
-                                covered_procedures.add(treatment.lower())
-        
-        for proc in common_procedures:
-            if proc not in covered_procedures:
-                gaps.append({
-                    'type': 'missing_procedure',
-                    'area': proc.capitalize(),
-                    'issue': "No examples in knowledge base",
-                    'recommendation': f"Add clinical cases involving {proc}"
-                })
-        
-        return gaps
-    
-    def explore_knowledge(self, query: str, exploration_type: str = 'general') -> Dict:
-        """Conversational exploration of AI's knowledge"""
-        try:
-            if exploration_type == 'general':
-                return self._general_exploration(query)
-            elif exploration_type == 'clinical':
-                return self._clinical_exploration(query)
-            elif exploration_type == 'confidence':
-                return self._confidence_exploration(query)
-            elif exploration_type == 'learning':
-                return self._learning_exploration(query)
-            else:
-                return {'error': 'Unknown exploration type'}
-                
-        except Exception as e:
-            logger.error(f"Error in knowledge exploration: {str(e)}")
-            return {'error': str(e)}
-    
-    def _general_exploration(self, query: str) -> Dict:
-        """General exploration of AI knowledge"""
-        # Get latest analysis
-        if not self._last_analysis:
-            self.analyze_knowledge_base()
-        
-        # Create a prompt that explores the knowledge base
-        prompt = f"""
-        Based on our dental knowledge base analysis, answer this question: {query}
-        
-        Knowledge base summary:
-        - {self._last_analysis['summary']['total_clinical_cases']} clinical cases
-        - {self._last_analysis['summary']['total_approved_sequences']} approved sequences
-        - {self._last_analysis['summary']['unique_conditions_covered']} unique conditions covered
-        
-        Key patterns identified:
-        {json.dumps(self._last_analysis['rules'][:5], indent=2)}
-        
-        Provide a detailed, insightful answer that demonstrates deep understanding of our knowledge base.
-        """
-        
-        response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You are an AI that introspects on dental knowledge patterns."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.7,
-            max_tokens=1000
-        )
-        
-        return {
-            'response': response.choices[0].message.content,
-            'context': {
-                'knowledge_base_size': self._last_analysis['summary'],
-                'related_patterns': self._find_related_patterns(query)
-            }
-        }
-    
-    def _clinical_exploration(self, query: str) -> Dict:
-        """Explore clinical decision-making process"""
-        # Search for relevant clinical cases
-        relevant_cases = self.rag_service.search_enhanced_knowledge(query, n_results=5)
-        
-        prompt = f"""
-        Explain the clinical decision-making process for: {query}
-        
-        Based on these relevant cases:
-        {self._format_cases_for_prompt(relevant_cases[:3])}
-        
-        Break down:
-        1. Key decision points
-        2. Factors to consider
-        3. Common approaches
-        4. Potential complications
-        5. Success indicators
-        """
-        
-        response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You are a dental AI explaining clinical reasoning."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.6,
-            max_tokens=1200
-        )
-        
-        return {
-            'response': response.choices[0].message.content,
-            'supporting_cases': [
-                {
-                    'title': case['title'],
-                    'similarity': case['similarity_score'],
-                    'type': case['type']
-                } for case in relevant_cases[:3]
-            ]
-        }
-    
-    def get_learning_insights(self) -> Dict:
-        """Get insights about AI's learning progression"""
-        approved_sequences = self._get_approved_sequences()
-        
-        if not approved_sequences:
-            return {'status': 'no_data', 'message': 'No approved sequences yet'}
-        
-        # Sort by date
-        approved_sequences.sort(key=lambda x: x.get('approved_date', ''))
-        
-        # Analyze progression
-        insights = {
-            'total_sequences': len(approved_sequences),
-            'average_rating': sum(s.get('rating', 0) for s in approved_sequences) / len(approved_sequences),
-            'quality_trend': self._calculate_quality_trend(approved_sequences),
-            'complexity_progression': self._analyze_complexity_progression(approved_sequences),
-            'common_improvements': self._identify_common_improvements(approved_sequences)
-        }
-        
-        return insights
-    
-    def generate_clinical_dashboard(self) -> Dict:
-        """Generate data for clinical dashboard visualization"""
-        if not self._last_analysis:
-            self.analyze_knowledge_base()
-        
-        dashboard_data = {
-            'knowledge_overview': {
-                'total_knowledge_items': sum([
-                    self._last_analysis['summary']['total_clinical_cases'],
-                    self._last_analysis['summary']['total_ideal_sequences'],
-                    self._last_analysis['summary']['total_approved_sequences']
-                ]),
-                'high_quality_percentage': (
-                    self._last_analysis['summary']['high_quality_sequences'] / 
-                    max(1, self._last_analysis['summary']['total_approved_sequences']) * 100
-                ),
-                'coverage_score': self._calculate_coverage_score()
-            },
-            'top_patterns': self._get_top_patterns(),
-            'confidence_heatmap': self._generate_confidence_heatmap(),
-            'decision_trees': self._simplify_decision_trees(),
-            'knowledge_gaps': self._last_analysis['knowledge_gaps'][:5],
-            'recent_learnings': self._get_recent_learnings()
-        }
-        
-        return dashboard_data
-    
-    # Helper methods
-    def _get_clinical_cases(self) -> List[Dict]:
-        """Get all clinical cases from data service"""
-        try:
-            items = self.data_service.get_items_by_category('clinical_cases')
-            full_cases = []
-            for item in items:
-                # Get full data for each item
-                full_data = self.data_service.get_item('clinical_cases', item['id'])
-                if full_data:
-                    full_cases.append(full_data)
-            return full_cases
-        except Exception as e:
-            logger.error(f"Error getting clinical cases: {e}")
-            return []
-    
-    def _get_ideal_sequences(self) -> List[Dict]:
-        """Get all ideal sequences from data service"""
-        try:
-            items = self.data_service.get_items_by_category('ideal_sequences')
-            full_sequences = []
-            for item in items:
-                # Get full data for each item
-                full_data = self.data_service.get_item('ideal_sequences', item['id'])
-                if full_data:
-                    full_sequences.append(full_data)
-            return full_sequences
-        except Exception as e:
-            logger.error(f"Error getting ideal sequences: {e}")
-            return []
-    
-    def _get_approved_sequences(self) -> List[Dict]:
-        """Get all approved sequences from data service"""
-        try:
-            items = self.data_service.get_items_by_category('approved_sequences')
-            full_sequences = []
-            for item in items:
-                # Get full data for each item
-                full_data = self.data_service.get_item('approved_sequences', item['id'])
-                if full_data:
-                    full_sequences.append(full_data)
-            return full_sequences
-        except Exception as e:
-            logger.error(f"Error getting approved sequences: {e}")
-            return []
-    
-    def _simplify_condition(self, condition: str) -> str:
-        """Simplify condition text for pattern matching"""
-        # Extract key treatment indicators
-        patterns = [
-            (r'\d+\s*à\s*\d+\s*[A-Z]', 'multiple_teeth_treatment'),
-            (r'facette|fac\.', 'facette'),
-            (r'couronne|CC', 'couronne'),
-            (r'implant', 'implant'),
-            (r'TR|traitement.*racine', 'root_canal'),
-            (r'composite|cpr', 'composite'),
-            (r'extraction|ext\.', 'extraction')
-        ]
-        
-        for pattern, label in patterns:
-            if re.search(pattern, condition, re.IGNORECASE):
-                return label
-        
-        return 'other'
-    
-    def _extract_treatment_type(self, treatment_text: str) -> Optional[str]:
-        """Extract standardized treatment type from text"""
-        treatment_map = {
-            'facette': ['facette', 'fac.', 'F'],
-            'couronne': ['couronne', 'CC', 'crown'],
-            'composite': ['composite', 'cpr', 'comp'],
-            'root_canal': ['TR', 'traitement racine', 'endo'],
-            'implant': ['implant', 'impl'],
-            'extraction': ['extraction', 'ext.', 'avulsion']
-        }
-        
-        treatment_lower = treatment_text.lower()
-        for standard_name, variations in treatment_map.items():
-            if any(var.lower() in treatment_lower for var in variations):
-                return standard_name
-        
-        return None
-    
-    def _extract_material(self, treatment_text: str) -> Optional[str]:
-        """Extract material from treatment text"""
-        materials = {
-            'ceramic': ['céramique', 'ceramic', 'porcelain'],
-            'composite': ['composite', 'comp'],
-            'zirconia': ['zircone', 'zirconia'],
-            'metal': ['métal', 'metal', 'chrome'],
-            'gold': ['or', 'gold']
-        }
-        
-        treatment_lower = treatment_text.lower()
-        for material, variations in materials.items():
-            if any(var in treatment_lower for var in variations):
-                return material
-        
-        return None
-    
-    def _make_patterns_serializable(self, patterns: Dict) -> Dict:
-        """Convert sets in patterns to lists for JSON serialization"""
-        serializable = {}
-        for key, value in patterns.items():
-            if key == 'treatment_dependencies':
-                serializable[key] = {
-                    treatment: list(dependencies) 
-                    for treatment, dependencies in value.items()
-                }
-            else:
-                serializable[key] = value
-        return serializable
-    
-    def _extract_conditions(self, data_list: List[Dict]) -> List[str]:
-        """Extract unique conditions from data"""
-        conditions = set()
-        for item in data_list:
-            if 'consultation_text' in item:
-                conditions.add(self._simplify_condition(item['consultation_text']))
-            elif 'original_prompt' in item:
-                conditions.add(self._simplify_condition(item['original_prompt']))
-        return list(conditions)
-    
-    def _calculate_overall_confidence(self, confidence_map: Dict) -> float:
-        """Calculate overall confidence score"""
-        if not confidence_map.get('by_condition'):
-            return 0.0
-        
-        confidences = [data['confidence'] for data in confidence_map['by_condition'].values()]
-        return sum(confidences) / len(confidences) if confidences else 0.0
-    
-    def _calculate_sequence_consistency(self, sequences: List) -> float:
-        """Calculate how consistent sequences are for a condition"""
-        if len(sequences) < 2:
-            return 1.0
-        
-        # Compare sequence lengths
-        lengths = [len(seq) for seq in sequences]
-        avg_length = sum(lengths) / len(lengths)
-        length_variance = sum((l - avg_length) ** 2 for l in lengths) / len(lengths)
-        
-        # Lower variance = higher consistency
-        consistency = max(0, 1 - (length_variance / avg_length if avg_length > 0 else 0))
-        return consistency
-    
-    def _calculate_average_delay(self, delays: List[str]) -> str:
-        """Calculate average delay from list of delay strings"""
-        # Simple implementation - could be enhanced
-        if not delays:
-            return "variable"
-        
-        # Count most common delay
-        delay_counter = Counter(delays)
-        most_common = delay_counter.most_common(1)[0][0]
-        return most_common
-    
-    def _generate_learning_timeline(self, approved_sequences: List[Dict]) -> List[Dict]:
-        """Generate timeline of AI learning milestones"""
-        timeline = []
-        
-        # Sort by date
-        sorted_sequences = sorted(
-            approved_sequences, 
-            key=lambda x: x.get('approved_date', ''),
-            reverse=False
-        )
-        
-        # Identify milestones
-        if sorted_sequences:
-            # First approved sequence
-            timeline.append({
-                'date': sorted_sequences[0].get('approved_date', ''),
-                'milestone': 'First Approved Sequence',
-                'details': f"Rating: {sorted_sequences[0].get('rating', 'N/A')}/10"
-            })
-            
-            # First high-quality sequence
-            for seq in sorted_sequences:
-                if seq.get('rating', 0) >= 9:
-                    timeline.append({
-                        'date': seq.get('approved_date', ''),
-                        'milestone': 'First High-Quality Sequence',
-                        'details': f"Achieved 9+/10 rating"
-                    })
-                    break
-            
-            # Complexity milestones
-            complex_conditions = ['implant', 'multiple_teeth', 'full_mouth']
-            for condition in complex_conditions:
-                for seq in sorted_sequences:
-                    if condition in seq.get('original_prompt', '').lower():
-                        timeline.append({
-                            'date': seq.get('approved_date', ''),
-                            'milestone': f'First {condition.title()} Case',
-                            'details': f"Expanded to complex {condition} treatments"
-                        })
-                        break
-        
-        return sorted(timeline, key=lambda x: x['date'])
-    
-    def _extract_clinical_correlations(self, clinical_cases: List, approved_sequences: List) -> Dict:
-        """Extract correlations between conditions and treatments"""
-        correlations = {
-            'condition_treatment': defaultdict(lambda: defaultdict(int)),
-            'treatment_success': defaultdict(list),
-            'material_condition': defaultdict(lambda: defaultdict(int))
-        }
-        
-        # Analyze all sequences
-        all_data = clinical_cases + [s for s in approved_sequences if 'sequence' in s]
-        
-        for data in all_data:
-            condition = self._simplify_condition(
-                data.get('consultation_text', data.get('original_prompt', ''))
-            )
-            
-            # Handle different data structures
-            sequence = data.get('treatment_sequence', [])
-            if not sequence and 'sequence' in data:
-                seq_data = data['sequence']
-                if isinstance(seq_data, dict):
-                    sequence = seq_data.get('treatment_sequence', [])
-                elif isinstance(seq_data, list):
-                    sequence = seq_data
-            rating = data.get('rating', 8)  # Default rating for clinical cases
-            
-            if isinstance(sequence, list):
-                for appointment in sequence:
-                    if isinstance(appointment, dict):
-                        treatment = self._extract_treatment_type(appointment.get('traitement', ''))
-                        if treatment:
-                            correlations['condition_treatment'][condition][treatment] += 1
-                            correlations['treatment_success'][treatment].append(rating)
-                            
-                            material = self._extract_material(appointment.get('traitement', ''))
-                            if material:
-                                correlations['material_condition'][condition][material] += 1
-        
-        return correlations
-    
-    def _build_decision_trees(self, patterns: Dict) -> Dict:
-        """Build simplified decision trees for common scenarios"""
-        decision_trees = {}
-        
-        # Build tree for each common condition
-        for condition, sequences in patterns['common_sequences'].items():
-            if len(sequences) >= 3:  # Need enough data
-                tree = {
-                    'condition': condition,
-                    'decision_points': [],
-                    'common_paths': []
-                }
-                
-                # Identify decision points
-                first_treatments = []
-                for seq in sequences:
-                    if isinstance(seq, list) and len(seq) > 0 and isinstance(seq[0], dict):
-                        first_treatments.append(seq[0].get('traitement', ''))
-                
-                if len(set(first_treatments)) > 1:
-                    tree['decision_points'].append({
-                        'question': 'Initial treatment approach?',
-                        'options': list(set(first_treatments)),
-                        'factors': self._identify_decision_factors(condition)
-                    })
-                
-                # Common treatment paths
-                for seq in sequences[:3]:  # Top 3 examples
-                    path = []
-                    if isinstance(seq, list):
-                        for appt in seq:
-                            if isinstance(appt, dict):
-                                treatment_type = self._extract_treatment_type(appt.get('traitement', ''))
-                                if treatment_type:
-                                    path.append(treatment_type)
-                    if path:
-                        tree['common_paths'].append(path)
-                
-                decision_trees[condition] = tree
-        
-        return decision_trees
-    
-    def _identify_decision_factors(self, condition: str) -> List[str]:
-        """Identify factors that influence treatment decisions"""
-        # This could be enhanced with ML analysis
-        common_factors = {
-            'facette': ['Patient smoker status', 'Budget constraints', 'Aesthetic expectations'],
-            'couronne': ['Remaining tooth structure', 'Occlusion', 'Material preference'],
-            'implant': ['Bone density', 'Patient age', 'Healing capacity'],
-            'root_canal': ['Number of canals', 'Infection severity', 'Previous treatments']
-        }
-        
-        return common_factors.get(condition, ['Patient preference', 'Clinical presentation', 'Cost considerations'])
-    
-    def _format_cases_for_prompt(self, cases: List[Dict]) -> str:
-        """Format cases for LLM prompt"""
-        formatted = []
-        for case in cases:
-            formatted.append(f"- {case['title']} (Type: {case['type']}, Score: {case['similarity_score']:.2f})")
-        return '\n'.join(formatted)
-    
-    def _calculate_quality_trend(self, sequences: List[Dict]) -> str:
-        """Calculate quality trend over time"""
-        if len(sequences) < 3:
-            return "insufficient_data"
-        
-        # Get last 10 sequences
-        recent = sequences[-10:]
-        older = sequences[-20:-10] if len(sequences) > 10 else sequences[:len(sequences)//2]
-        
-        recent_avg = sum(s.get('rating', 0) for s in recent) / len(recent)
-        older_avg = sum(s.get('rating', 0) for s in older) / len(older) if older else recent_avg
-        
-        if recent_avg > older_avg + 0.5:
-            return "improving"
-        elif recent_avg < older_avg - 0.5:
-            return "declining"
-        else:
-            return "stable"
-    
-    def _analyze_complexity_progression(self, sequences: List[Dict]) -> Dict:
-        """Analyze how complexity of cases has progressed"""
-        complexity_over_time = []
-        
-        for seq in sequences:
-            sequence_data = seq.get('sequence', {}).get('treatment_sequence', [])
-            complexity_score = len(sequence_data)  # Simple metric: number of appointments
-            
-            complexity_over_time.append({
-                'date': seq.get('approved_date', ''),
-                'complexity': complexity_score,
-                'rating': seq.get('rating', 0)
-            })
-        
-        return {
-            'progression': complexity_over_time,
-            'trend': 'increasing' if complexity_over_time and 
-                    complexity_over_time[-1]['complexity'] > complexity_over_time[0]['complexity'] 
-                    else 'stable'
-        }
-    
-    def _identify_common_improvements(self, sequences: List[Dict]) -> List[str]:
-        """Identify common improvements in approved sequences"""
-        improvements = []
-        
-        # Analyze high-rated sequences
-        high_rated = [s for s in sequences if s.get('rating', 0) >= 9]
-        
-        if high_rated:
-            # Common patterns in high-rated sequences
-            common_elements = []
-            for seq in high_rated:
-                # Handle different sequence structures
-                sequence_data = seq.get('sequence', [])
-                if isinstance(sequence_data, dict):
-                    sequence_data = sequence_data.get('treatment_sequence', [])
-                
-                if isinstance(sequence_data, list):
-                    for appt in sequence_data:
-                        if isinstance(appt, dict):
-                            if 'delai' in appt and appt['delai']:
-                                common_elements.append('proper_timing')
-                            if 'remarque' in appt and appt['remarque']:
-                                common_elements.append('detailed_notes')
-            
-            element_counts = Counter(common_elements)
-            for element, count in element_counts.most_common(3):
-                if count > len(high_rated) / 2:
-                    improvements.append(f"Consistent {element.replace('_', ' ')}")
-        
-        return improvements
-    
-    def _calculate_coverage_score(self) -> float:
-        """Calculate how well the knowledge base covers dental procedures"""
-        common_procedures = [
-            'facette', 'couronne', 'implant', 'root_canal', 'composite',
-            'extraction', 'bridge', 'orthodontics', 'cleaning', 'surgery'
-        ]
-        
-        covered = 0
-        if self._last_analysis and 'patterns' in self._last_analysis:
-            for proc in common_procedures:
-                if proc in str(self._last_analysis['patterns']).lower():
-                    covered += 1
-        
-        return (covered / len(common_procedures)) * 100
-    
-    def _get_top_patterns(self) -> List[Dict]:
-        """Get top clinical patterns"""
-        if not self._last_analysis or 'rules' not in self._last_analysis:
-            return []
-        
-        return self._last_analysis['rules'][:10]
-    
-    def _generate_confidence_heatmap(self) -> Dict:
-        """Generate data for confidence heatmap visualization"""
-        if not self._last_analysis or 'confidence_map' not in self._last_analysis:
-            return {}
-        
-        heatmap_data = []
-        for condition, data in self._last_analysis['confidence_map']['by_condition'].items():
-            heatmap_data.append({
-                'condition': condition,
-                'confidence': data['confidence'],
-                'samples': data['sample_size']
-            })
-        
-        return {
-            'data': sorted(heatmap_data, key=lambda x: x['confidence'], reverse=True),
-            'scale': {
-                'low': 0.0,
-                'medium': 0.6,
-                'high': 0.8,
-                'very_high': 0.9
-            }
-        }
-    
-    def _simplify_decision_trees(self) -> List[Dict]:
-        """Simplify decision trees for visualization"""
-        if not self._last_analysis or 'decision_trees' not in self._last_analysis:
-            return []
-        
-        simplified = []
-        for condition, tree in self._last_analysis['decision_trees'].items():
-            if tree['common_paths']:
-                simplified.append({
-                    'condition': condition,
-                    'paths': tree['common_paths'][:3],  # Top 3 paths
-                    'decision_count': len(tree['decision_points'])
-                })
-        
-        return simplified[:5]  # Top 5 conditions
-    
-    def _get_recent_learnings(self) -> List[Dict]:
-        """Get recent learning insights"""
-        approved_sequences = self._get_approved_sequences()
-        
-        if not approved_sequences:
-            return []
-        
-        # Get sequences from last 30 days
-        recent_date = datetime.now() - timedelta(days=30)
-        recent_sequences = []
-        
-        for seq in approved_sequences:
+        for insight in deep_insights:
+            prompt = f"""En tant que Synthesizer Agent, transforme cette analyse en règles cliniques claires et applicables:
+
+Type de pattern: {insight['pattern_type']}
+Analyse: {insight['analysis']}
+Nombre de preuves: {insight['evidence_count']}
+
+Génère des règles au format JSON:
+{{
+  "rules": [
+    {{
+      "title": "Titre court et descriptif",
+      "type": "pattern|timing|material|dependency|contraindication|success_factor",
+      "description": "Description claire de la règle",
+      "clinicalReasoning": "Explication du raisonnement clinique",
+      "conditions": ["condition1", "condition2"],
+      "evidence": ["exemple1", "exemple2"],
+      "exceptions": ["exception1"],
+      "confidence": 0-100,
+      "priority": "high|medium|low"
+    }}
+  ]
+}}
+
+Assure-toi que chaque règle est:
+- Claire et actionnable
+- Basée sur des preuves solides
+- Cliniquement pertinente
+- Facilement applicable en pratique"""
+
             try:
-                approved_date = datetime.fromisoformat(seq.get('approved_date', '').replace('Z', '+00:00'))
-                if approved_date.replace(tzinfo=None) > recent_date:
-                    recent_sequences.append(seq)
+                response = self.client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format={"type": "json_object"},
+                    temperature=0.5
+                )
+                
+                result = json.loads(response.choices[0].message.content)
+                generated_rules = result.get('rules', [])
+                
+                # Add metadata to each rule
+                for rule in generated_rules:
+                    rule['id'] = str(uuid.uuid4())
+                    rule['discoveredAt'] = datetime.now().isoformat()
+                    rule['evidenceCount'] = insight['evidence_count']
+                    rule['summary'] = rule['description'][:150] + '...' if len(rule['description']) > 150 else rule['description']
+                
+                rules.extend(generated_rules)
+                
+                # Log agent thought
+                self._add_agent_thought(analysis_id, 'synthesizer',
+                    f"Généré {len(generated_rules)} règles à partir du pattern '{insight['pattern_type']}'")
+                
+                time.sleep(0.5)
+                
+            except Exception as e:
+                logger.error(f"Synthesizer agent error: {e}")
+        
+        return rules
+    
+    def _validator_agent(self, analysis_id: str, rules: List[Dict], data_chunks: List[Dict]) -> List[Dict]:
+        """Validator Agent: Test and validate generated rules"""
+        validated_rules = []
+        
+        for rule in rules:
+            # Find test cases for validation
+            test_cases = self._find_test_cases(rule, data_chunks)
+            
+            prompt = f"""En tant que Validator Agent, valide cette règle clinique contre des cas réels:
+
+Règle à valider:
+{json.dumps(rule, ensure_ascii=False, indent=2)}
+
+Cas de test ({len(test_cases)} cas):
+{self._summarize_test_cases(test_cases[:5])}
+
+Effectue les validations suivantes:
+1. La règle est-elle cohérente avec les cas observés?
+2. Y a-t-il des contre-exemples?
+3. La confiance attribuée est-elle justifiée?
+4. La règle est-elle suffisamment générale mais pas trop?
+5. Y a-t-il des ajustements nécessaires?
+
+Retourne ton analyse et une version validée de la règle."""
+
+            try:
+                response = self.client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.3
+                )
+                
+                validation_result = response.choices[0].message.content
+                
+                # Update rule based on validation
+                if "valide" in validation_result.lower() or "confirmé" in validation_result.lower():
+                    rule['validated'] = True
+                    rule['validationNotes'] = validation_result
+                    validated_rules.append(rule)
+                    
+                    # Log agent thought
+                    self._add_agent_thought(analysis_id, 'validator',
+                        f"✓ Règle validée: '{rule['title']}' avec {len(test_cases)} cas de test")
+                else:
+                    # Log rejection
+                    self._add_agent_thought(analysis_id, 'validator',
+                        f"✗ Règle rejetée: '{rule['title']}' - validation échouée")
+                
+                time.sleep(0.5)
+                
+            except Exception as e:
+                logger.error(f"Validator agent error: {e}")
+        
+        return validated_rules
+    
+    def _update_progress(self, analysis_id: str, percentage: int, stage: str):
+        """Update analysis progress"""
+        if analysis_id in self.analyses:
+            self.analyses[analysis_id]['progress'] = {
+                'percentage': percentage,
+                'stage': stage
+            }
+            logger.info(f"Analysis {analysis_id}: {percentage}% - {stage}")
+    
+    def _add_agent_thought(self, analysis_id: str, agent: str, content: str):
+        """Add a thought from an agent"""
+        if analysis_id in self.analyses:
+            thought = {
+                'agent': agent,
+                'content': content,
+                'timestamp': datetime.now().isoformat()
+            }
+            self.analyses[analysis_id]['thoughts'].append(thought)
+            
+            # Also store in agent memory for future reference
+            self.agent_memory[agent].append({
+                'content': content,
+                'timestamp': datetime.now().isoformat(),
+                'analysis_id': analysis_id
+            })
+    
+    def _find_relevant_chunks(self, patterns: List[Dict], data_chunks: List[Dict]) -> List[Dict]:
+        """Find data chunks relevant to given patterns"""
+        relevant = []
+        
+        for pattern in patterns:
+            pattern_refs = pattern.get('occurrences', [])
+            for chunk in data_chunks:
+                # Check if chunk is referenced in pattern
+                if chunk['name'] in str(pattern_refs) or any(ref in chunk['name'] for ref in pattern_refs):
+                    relevant.append(chunk)
+        
+        return list({chunk['name']: chunk for chunk in relevant}.values())  # Remove duplicates
+    
+    def _find_test_cases(self, rule: Dict, data_chunks: List[Dict]) -> List[Dict]:
+        """Find test cases for rule validation"""
+        test_cases = []
+        
+        # Search for cases that might match rule conditions
+        rule_keywords = self._extract_keywords(rule)
+        
+        for chunk in data_chunks:
+            chunk_text = json.dumps(chunk['content'], ensure_ascii=False).lower()
+            if any(keyword.lower() in chunk_text for keyword in rule_keywords):
+                test_cases.append(chunk)
+        
+        return test_cases[:10]  # Limit to 10 test cases
+    
+    def _extract_keywords(self, rule: Dict) -> List[str]:
+        """Extract keywords from a rule for matching"""
+        keywords = []
+        
+        # Extract from title and description
+        text_fields = [rule.get('title', ''), rule.get('description', '')]
+        
+        for text in text_fields:
+            # Extract dental terms
+            words = re.findall(r'\b[a-zA-ZÀ-ÿ]+\b', text)
+            keywords.extend([w for w in words if len(w) > 3])
+        
+        return list(set(keywords))
+    
+    def _summarize_chunks(self, chunks: List[Dict]) -> str:
+        """Create a summary of data chunks"""
+        summaries = []
+        
+        for chunk in chunks[:5]:  # Limit to 5 for brevity
+            if chunk['type'] == 'clinical_case':
+                summary = f"- Cas {chunk['name']}: {chunk['content'].get('consultation', 'N/A')[:100]}..."
+            else:
+                summary = f"- {chunk['type']} {chunk['name']}"
+            summaries.append(summary)
+        
+        return "\n".join(summaries)
+    
+    def _summarize_test_cases(self, test_cases: List[Dict]) -> str:
+        """Summarize test cases for validation"""
+        summaries = []
+        
+        for case in test_cases:
+            if case['type'] == 'clinical_case':
+                treatments = case['content'].get('treatments', [])
+                summary = f"- {case['name']}: {len(treatments)} traitements"
+            else:
+                steps = case['content'].get('steps', [])
+                summary = f"- {case['name']}: {len(steps)} étapes"
+            summaries.append(summary)
+        
+        return "\n".join(summaries)
+    
+    def _save_analysis_results(self, analysis_id: str, validated_rules: List[Dict]):
+        """Save analysis results"""
+        if analysis_id in self.analyses:
+            # Prepare rules for RAG indexing
+            for rule in validated_rules:
+                # Extract keywords for better search
+                rule['keywords'] = self._extract_rule_keywords(rule)
+                # Format for ChromaDB
+                rule['rag_text'] = self._format_rule_for_rag(rule)
+            
+            # Add new rules to persistent storage
+            self.discovered_rules.extend(validated_rules)
+            
+            # Remove duplicates based on title
+            seen_titles = set()
+            unique_rules = []
+            for rule in self.discovered_rules:
+                if rule['title'] not in seen_titles:
+                    seen_titles.add(rule['title'])
+                    unique_rules.append(rule)
+            
+            self.discovered_rules = unique_rules
+            
+            # Save to disk
+            self._save_rules()
+            
+            # Index rules in ChromaDB for RAG
+            self._index_rules_in_chromadb(unique_rules)
+            
+            # Update analysis
+            self.analyses[analysis_id]['new_rules'] = validated_rules
+    
+    def get_analysis_progress(self, analysis_id: str) -> Dict:
+        """Get current progress of an analysis"""
+        if analysis_id not in self.analyses:
+            return {
+                'status': 'error',
+                'message': 'Analysis not found'
+            }
+        
+        analysis = self.analyses[analysis_id]
+        
+        # Get new thoughts since last check
+        new_thoughts = analysis['thoughts'][-5:]  # Last 5 thoughts
+        
+        # Get new rules since last check
+        new_rules = analysis['new_rules'][-5:]  # Last 5 rules
+        
+        return {
+            'status': 'success',
+            'progress': analysis['progress'],
+            'isComplete': analysis['status'] == 'complete',
+            'newThoughts': new_thoughts,
+            'newRules': new_rules
+        }
+    
+    def check_saved_analysis(self) -> Dict:
+        """Check if there are saved analysis results"""
+        return {
+            'status': 'success',
+            'hasAnalysis': len(self.discovered_rules) > 0,
+            'rules': self.discovered_rules
+        }
+    
+    def get_status(self) -> Dict:
+        """Get current status of brain service"""
+        return {
+            'status': 'ready',
+            'discovered_rules_count': len(self.discovered_rules),
+            'active_analyses': len([a for a in self.analyses.values() if a['status'] == 'running']),
+            'agent_memory_size': {agent: len(memories) for agent, memories in self.agent_memory.items()}
+        }
+    
+    def _extract_rule_keywords(self, rule: Dict) -> List[str]:
+        """Extract keywords from rule for better search"""
+        keywords = []
+        
+        # Extract from title, description, conditions
+        text_sources = [
+            rule.get('title', ''),
+            rule.get('description', ''),
+            ' '.join(rule.get('conditions', [])),
+            rule.get('clinicalReasoning', '')
+        ]
+        
+        for text in text_sources:
+            # Extract meaningful dental terms
+            words = re.findall(r'\b[a-zA-ZÀ-ÿ]+\b', text.lower())
+            keywords.extend([w for w in words if len(w) > 3 and w not in ['pour', 'dans', 'avec', 'sans']])
+        
+        # Add type as keyword
+        if rule.get('type'):
+            keywords.append(rule['type'])
+        
+        return list(set(keywords))
+    
+    def _format_rule_for_rag(self, rule: Dict) -> str:
+        """Format rule for optimal RAG retrieval"""
+        parts = []
+        
+        # Title is most important for retrieval
+        parts.append(f"RÈGLE: {rule.get('title', '')}")
+        
+        # Type and confidence
+        parts.append(f"Type: {rule.get('type', '')} | Confiance: {rule.get('confidence', 0)}%")
+        
+        # Description
+        if rule.get('description'):
+            parts.append(f"Description: {rule['description']}")
+        
+        # Conditions
+        if rule.get('conditions'):
+            parts.append(f"Conditions: {', '.join(rule['conditions'])}")
+        
+        # Clinical reasoning
+        if rule.get('clinicalReasoning'):
+            parts.append(f"Raisonnement: {rule['clinicalReasoning']}")
+        
+        # Keywords for better matching
+        if rule.get('keywords'):
+            parts.append(f"Mots-clés: {', '.join(rule['keywords'][:10])}")
+        
+        return '\n'.join(parts)
+    
+    def _index_rules_in_chromadb(self, rules: List[Dict]):
+        """Index discovered rules in ChromaDB for RAG"""
+        try:
+            # Import here to avoid circular imports
+            from app.services import rag_service
+            
+            if rag_service is None:
+                logger.warning("RAG service not available for rule indexing")
+                return
+            
+            # Get or create discovered_rules collection
+            collection_name = "discovered_rules"
+            
+            # Check if collection exists, create if not
+            try:
+                collection = rag_service.client.get_collection(collection_name)
+                # Clear existing rules to avoid duplicates
+                collection.delete(where={})
             except:
-                continue
-        
-        learnings = []
-        if recent_sequences:
-            # New conditions learned
-            new_conditions = set()
-            for seq in recent_sequences:
-                condition = self._simplify_condition(seq.get('original_prompt', ''))
-                new_conditions.add(condition)
+                collection = rag_service.client.create_collection(
+                    name=collection_name,
+                    embedding_function=rag_service.embedding_function
+                )
             
-            if new_conditions:
-                learnings.append({
-                    'type': 'new_conditions',
-                    'description': f"Learned {len(new_conditions)} new treatment patterns",
-                    'details': list(new_conditions)[:3]
-                })
+            # Prepare documents for indexing
+            documents = []
+            metadatas = []
+            ids = []
             
-            # Quality improvements
-            avg_rating = sum(s.get('rating', 0) for s in recent_sequences) / len(recent_sequences)
-            if avg_rating >= 8.5:
-                learnings.append({
-                    'type': 'quality',
-                    'description': f"Maintaining high quality with {avg_rating:.1f}/10 average",
-                    'details': f"{len([s for s in recent_sequences if s.get('rating', 0) >= 9])} sequences rated 9+/10"
-                })
-        
-        return learnings
-    
-    def _analyze_response_confidence(self, ai_response: Dict) -> Dict:
-        """Analyze confidence in AI's response"""
-        confidence_factors = {
-            'has_treatment_plan': ai_response.get('is_treatment_plan', False),
-            'references_count': len(ai_response.get('references', [])),
-            'high_similarity_refs': 0,
-            'average_similarity': 0.0
-        }
-        
-        # Analyze reference quality
-        references = ai_response.get('references', [])
-        if references:
-            similarities = [ref.get('similarity_score', 0) for ref in references if 'similarity_score' in ref]
-            if similarities:
-                confidence_factors['average_similarity'] = sum(similarities) / len(similarities)
-                confidence_factors['high_similarity_refs'] = sum(1 for s in similarities if s >= 0.8)
-        
-        # Calculate overall confidence
-        confidence_score = 0.5  # Base confidence
-        if confidence_factors['has_treatment_plan']:
-            confidence_score += 0.2
-        if confidence_factors['references_count'] >= 3:
-            confidence_score += 0.1
-        if confidence_factors['high_similarity_refs'] >= 1:
-            confidence_score += 0.2
-        
-        confidence_factors['overall_confidence'] = min(1.0, confidence_score)
-        
-        return confidence_factors
-    
-    def _find_related_patterns(self, query: str) -> List[Dict]:
-        """Find patterns related to the query"""
-        if not self._last_analysis or 'patterns' not in self._last_analysis:
-            return []
-        
-        related = []
-        query_lower = query.lower()
-        
-        # Search through rules
-        for rule in self._last_analysis.get('rules', []):
-            if query_lower in rule.get('rule', '').lower():
-                related.append({
-                    'type': 'rule',
-                    'content': rule['rule'],
-                    'confidence': rule.get('confidence', 0)
-                })
-        
-        # Search through patterns
-        for condition, sequences in self._last_analysis['patterns']['common_sequences'].items():
-            if query_lower in condition.lower() and sequences:
-                related.append({
-                    'type': 'pattern',
-                    'content': f"{len(sequences)} examples of {condition} treatments",
-                    'confidence': 0.8
-                })
-        
-        return related[:5]
-    
-    def _confidence_exploration(self, query: str) -> Dict:
-        """Explore AI's confidence in specific areas"""
-        # Get confidence data
-        if not self._last_analysis:
-            self.analyze_knowledge_base()
-        
-        confidence_data = self._last_analysis.get('confidence_map', {})
-        
-        prompt = f"""
-        Analyze confidence levels for: {query}
-        
-        Current confidence map shows:
-        {json.dumps(confidence_data.get('overall_areas', []), indent=2)}
-        
-        Explain:
-        1. Current confidence level for this query
-        2. Why confidence is at this level
-        3. What data would improve confidence
-        4. Similar areas with higher/lower confidence
-        """
-        
-        response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You are analyzing AI confidence in dental procedures."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.5,
-            max_tokens=800
-        )
-        
-        return {
-            'response': response.choices[0].message.content,
-            'confidence_data': confidence_data
-        }
-    
-    def _learning_exploration(self, query: str) -> Dict:
-        """Explore what the AI has learned recently"""
-        insights = self.get_learning_insights()
-        
-        prompt = f"""
-        Based on learning insights, answer: {query}
-        
-        Recent learning data:
-        - Total sequences learned: {insights.get('total_sequences', 0)}
-        - Average quality: {insights.get('average_rating', 0):.1f}/10
-        - Quality trend: {insights.get('quality_trend', 'unknown')}
-        
-        Common improvements identified:
-        {json.dumps(insights.get('common_improvements', []), indent=2)}
-        
-        Provide insights about the learning process and knowledge evolution.
-        """
-        
-        response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You are analyzing AI learning progression in dentistry."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.6,
-            max_tokens=800
-        )
-        
-        return {
-            'response': response.choices[0].message.content,
-            'learning_metrics': insights
-        }
+            for rule in rules:
+                # Document text for embedding
+                doc_text = rule.get('rag_text', self._format_rule_for_rag(rule))
+                documents.append(doc_text)
+                
+                # Metadata for filtering and display
+                metadata = {
+                    'type': 'discovered_rule',
+                    'rule_type': rule.get('type', 'general'),
+                    'confidence': rule.get('confidence', 0),
+                    'title': rule.get('title', ''),
+                    'description': rule.get('description', ''),
+                    'clinical_reasoning': rule.get('clinicalReasoning', ''),
+                    'conditions': json.dumps(rule.get('conditions', [])),
+                    'exceptions': json.dumps(rule.get('exceptions', [])),
+                    'evidence_count': rule.get('evidenceCount', 0),
+                    'priority': rule.get('priority', 'medium'),
+                    'discovered_at': rule.get('discoveredAt', ''),
+                    'keywords': json.dumps(rule.get('keywords', [])[:20])  # Limit keywords
+                }
+                metadatas.append(metadata)
+                
+                # Unique ID
+                ids.append(rule.get('id', str(uuid.uuid4())))
+            
+            # Add to ChromaDB
+            if documents:
+                collection.add(
+                    documents=documents,
+                    metadatas=metadatas,
+                    ids=ids
+                )
+                logger.info(f"Indexed {len(documents)} discovered rules in ChromaDB")
+            
+        except Exception as e:
+            logger.error(f"Error indexing rules in ChromaDB: {e}")
+            # Don't fail the whole analysis if indexing fails
+            pass

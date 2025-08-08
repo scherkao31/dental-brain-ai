@@ -372,6 +372,37 @@
                         </label>
                         <p class="setting-description">Inclure des explications sur le choix des références</p>
                     </div>
+
+                    <!-- Discovered Rules Settings -->
+                    <div class="settings-divider"></div>
+                    <h4>Règles découvertes par l'IA</h4>
+                    
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="useDiscoveredRules" checked>
+                            Utiliser les règles découvertes
+                        </label>
+                        <p class="setting-description">Appliquer les patterns identifiés par l'analyse Brain</p>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Nombre de règles à utiliser</label>
+                        <p class="setting-description">Règles les plus pertinentes pour chaque génération</p>
+                        <div class="inline-setting">
+                            <input type="number" id="discoveredRulesCount" min="1" max="5" value="3" class="small-input">
+                            <span class="setting-unit">règles</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Confiance minimale des règles</label>
+                        <p class="setting-description">Seuil de fiabilité pour inclure une règle (60-95%)</p>
+                        <div class="inline-setting">
+                            <input type="range" id="minRuleConfidence" min="60" max="95" value="70" step="5"
+                                   oninput="updateRuleConfidenceDisplay(this.value)">
+                            <span class="setting-value" id="ruleConfidenceValue">70%</span>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 

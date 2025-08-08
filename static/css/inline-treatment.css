@@ -1108,3 +1108,119 @@
         padding: 12px;
     }
 }
+
+/* Rules Tab Styles */
+.inline-rules-content {
+    padding: 10px 0;
+}
+
+.rules-description {
+    color: var(--text-secondary, #888);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.rules-info {
+    color: var(--text-secondary, #888);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rule-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.2s ease;
+}
+
+.rule-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary, #667eea);
+}
+
+.rule-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.rule-icon {
+    font-size: 20px;
+}
+
+.rule-title {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary, #fff);
+}
+
+.rule-confidence {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.rule-confidence.confidence-high {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.rule-confidence.confidence-medium {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.rule-confidence.confidence-low {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.rule-content {
+    font-size: 14px;
+}
+
+.rule-description {
+    color: var(--text-primary, #fff);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.rule-pattern {
+    background: rgba(102, 126, 234, 0.1);
+    border-left: 3px solid var(--primary, #667eea);
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.rule-evidence {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.rule-evidence strong {
+    color: var(--text-secondary, #888);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rule-evidence ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-secondary, #888);
+}
+
+.rule-evidence li {
+    margin-bottom: 3px;
+}

@@ -197,6 +197,11 @@ class DentalBrainApp {
         document.getElementById('showSimilarityScores').checked = settings.showSimilarityScores;
         document.getElementById('explainReasoning').checked = settings.explainReasoning;
         
+        // Discovered rules settings
+        document.getElementById('useDiscoveredRules').checked = settings.useDiscoveredRules;
+        document.getElementById('discoveredRulesCount').value = settings.discoveredRulesCount;
+        document.getElementById('minRuleConfidence').value = settings.minRuleConfidence;
+        
         // Display settings
         document.getElementById('autoExpandTreatment').checked = settings.autoExpandTreatment;
         document.getElementById('compactView').checked = settings.compactView;
@@ -206,6 +211,7 @@ class DentalBrainApp {
         // Update displays
         this.updateRagPreferenceDisplay(settings.ragPreference);
         this.updateSimilarityDisplay(settings.similarityThreshold);
+        this.updateRuleConfidenceDisplay(settings.minRuleConfidence);
     }
     
     async saveSettings() {
@@ -219,6 +225,11 @@ class DentalBrainApp {
             reasoningMode: document.getElementById('reasoningMode').value,
             showSimilarityScores: document.getElementById('showSimilarityScores').checked,
             explainReasoning: document.getElementById('explainReasoning').checked,
+            
+            // Discovered rules settings
+            useDiscoveredRules: document.getElementById('useDiscoveredRules').checked,
+            discoveredRulesCount: parseInt(document.getElementById('discoveredRulesCount').value),
+            minRuleConfidence: parseInt(document.getElementById('minRuleConfidence').value),
             
             // Display settings
             autoExpandTreatment: document.getElementById('autoExpandTreatment').checked,
@@ -253,6 +264,9 @@ class DentalBrainApp {
                 reasoningMode: 'adaptive',
                 showSimilarityScores: true,
                 explainReasoning: true,
+                useDiscoveredRules: true,
+                discoveredRulesCount: 3,
+                minRuleConfidence: 70,
                 autoExpandTreatment: true,
                 compactView: false,
                 // REMOVED: showFinancialAnalysis
@@ -303,6 +317,16 @@ class DentalBrainApp {
         
         // Make this global for HTML handlers
         window.updateSimilarityDisplay = (value) => this.updateSimilarityDisplay(value);
+    }
+    
+    updateRuleConfidenceDisplay(value) {
+        const display = document.getElementById('ruleConfidenceValue');
+        if (display) {
+            display.textContent = `${value}%`;
+        }
+        
+        // Make this global for HTML handlers
+        window.updateRuleConfidenceDisplay = (value) => this.updateRuleConfidenceDisplay(value);
     }
     
     showUserProfile() {

@@ -211,6 +211,52 @@ class EnhancedRAGService:
         
         return expanded
     
+    def search_discovered_rules(self, query: str, n_results: int = 5,
+                              confidence_threshold: int = 60) -> List[Dict]:
+        """Search discovered rules from Brain analysis"""
+        try:
+            # Get discovered rules collection
+            collection = self.client.get_collection("discovered_rules")
+            
+            # Preprocess query
+            searchable_query = self._expand_abbreviations(query.strip())
+            
+            # Search with confidence filter
+            results = collection.query(
+                query_texts=[searchable_query],
+                n_results=n_results * 2,  # Get more to filter by confidence
+                where={"confidence": {"$gte": confidence_threshold}}
+            )
+            
+            # Format and sort by confidence
+            formatted_results = []
+            if results['ids'] and results['ids'][0]:
+                for idx in range(len(results['ids'][0])):
+                    metadata = results['metadatas'][0][idx]
+                    formatted_results.append({
+                        'id': results['ids'][0][idx],
+                        'type': 'discovered_rule',
+                        'rule_type': metadata.get('rule_type', 'general'),
+                        'title': metadata.get('title', ''),
+                        'description': metadata.get('description', ''),
+                        'clinical_reasoning': metadata.get('clinical_reasoning', ''),
+                        'confidence': metadata.get('confidence', 0),
+                        'conditions': json.loads(metadata.get('conditions', '[]')),
+                        'exceptions': json.loads(metadata.get('exceptions', '[]')),
+                        'priority': metadata.get('priority', 'medium'),
+                        'score': 1 - results['distances'][0][idx],
+                        'document': results['documents'][0][idx]
+                    })
+            
+            # Sort by relevance score * confidence
+            formatted_results.sort(key=lambda x: x['score'] * (x['confidence'] / 100), reverse=True)
+            
+            return formatted_results[:n_results]
+            
+        except Exception as e:
+            logger.error(f"Error searching discovered rules: {e}")
+            return []
+    
     def search_enhanced_knowledge(self, query: str, n_results: int = 5) -> List[Dict]:
         """Search enhanced knowledge base with similarity scoring"""
         if not self.enhanced_collection:

@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Brain - Intelligence Dentaire</title>
+    <title>AI Brain - Intelligence Analysis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/brain.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -18,309 +16,139 @@
             <div class="header-left">
                 <button class="back-btn" onclick="window.location.href='/'">
                     <i class="fas fa-arrow-left"></i>
-                    Retour au chat
+                    Retour
                 </button>
-                <h1><i class="fas fa-brain"></i> AI Brain - Centre d'Intelligence</h1>
+                <h1><i class="fas fa-brain"></i> AI Brain - Analyse Intelligente</h1>
             </div>
             <div class="header-right">
-                <button class="analyze-btn" onclick="analyzeKnowledge()" id="analyzeBtn">
-                    <i class="fas fa-sync-alt"></i>
-                    Analyser
+                <button class="start-analysis-btn" id="startAnalysisBtn" onclick="startSmartAnalysis()">
+                    <i class="fas fa-microscope"></i>
+                    Lancer l'Analyse Intelligente
                 </button>
-                <div class="last-analysis" id="lastAnalysis">
-                    <i class="fas fa-clock"></i>
-                    <span>Jamais analysé</span>
-                </div>
+                <button class="reset-analysis-btn" id="resetAnalysisBtn" onclick="resetAnalysis()" style="display:none;">
+                    <i class="fas fa-redo"></i>
+                    Nouvelle Analyse
+                </button>
             </div>
         </div>
 
-        <!-- Main Content Wrapper -->
+        <!-- Main Content -->
         <div class="brain-main">
-            <!-- Navigation Tabs -->
-            <div class="brain-tabs">
-                <button class="tab-btn active" onclick="switchTab('dashboard')" data-tab="dashboard">
-                    <i class="fas fa-chart-line"></i>
-                    Tableau de Bord
-                </button>
-                <button class="tab-btn" onclick="switchTab('patterns')" data-tab="patterns">
-                    <i class="fas fa-project-diagram"></i>
-                    Patterns & Règles
-                </button>
-                <button class="tab-btn" onclick="switchTab('confidence')" data-tab="confidence">
-                    <i class="fas fa-thermometer-half"></i>
-                    Carte de Confiance
-                </button>
-                <button class="tab-btn" onclick="switchTab('explore')" data-tab="explore">
-                    <i class="fas fa-comments"></i>
-                    Explorer
-                </button>
-                <button class="tab-btn" onclick="switchTab('timeline')" data-tab="timeline">
-                    <i class="fas fa-history"></i>
-                    Évolution
-                </button>
-                <button class="tab-btn" onclick="switchTab('graph')" data-tab="graph">
-                    <i class="fas fa-network-wired"></i>
-                    Graphe de Connaissances
-                </button>
-            </div>
-
-            <!-- Content Area -->
-            <div class="brain-content">
-            <!-- Dashboard Tab -->
-            <div class="tab-content active" id="dashboard-tab">
-                <div class="dashboard-grid">
-                    <!-- Knowledge Overview Card -->
-                    <div class="dashboard-card">
-                        <h3><i class="fas fa-database"></i> Vue d'ensemble</h3>
-                        <div class="stats-grid" id="knowledgeOverview">
-                            <div class="stat-item">
-                                <div class="stat-value">-</div>
-                                <div class="stat-label">Éléments totaux</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">-</div>
-                                <div class="stat-label">Qualité moyenne</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">-</div>
-                                <div class="stat-label">Couverture</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">-</div>
-                                <div class="stat-label">Confiance globale</div>
-                            </div>
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <i class="fas fa-brain welcome-icon"></i>
+                    <h2>Analyse Intelligente Multi-Agents</h2>
+                    <p>Ce système utilise plusieurs agents IA spécialisés pour analyser en profondeur vos données dentaires et découvrir des patterns, règles et insights cliniques.</p>
+                    <div class="agents-preview">
+                        <div class="agent-card scanner">
+                            <i class="fas fa-search"></i>
+                            <h4>Scanner</h4>
+                            <p>Identifie les patterns intéressants</p>
                         </div>
-                    </div>
-
-                    <!-- Top Patterns Card -->
-                    <div class="dashboard-card">
-                        <div class="section-header">
-                            <h3><i class="fas fa-lightbulb"></i> Patterns Principaux</h3>
-                            <button class="info-btn">
-                                <i class="fas fa-info"></i>
-                                <div class="tooltip">
-                                    Règles cliniques extraites automatiquement des données. Ces patterns représentent les pratiques récurrentes identifiées dans les traitements réussis.
-                                </div>
-                            </button>
+                        <div class="agent-card analyzer">
+                            <i class="fas fa-microscope"></i>
+                            <h4>Analyzer</h4>
+                            <p>Analyse en profondeur</p>
                         </div>
-                        <div class="patterns-list" id="topPatterns">
-                            <div class="loading">Chargement...</div>
+                        <div class="agent-card synthesizer">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Synthesizer</h4>
+                            <p>Génère des règles cliniques</p>
                         </div>
-                    </div>
-
-                    <!-- Knowledge Gaps Card -->
-                    <div class="dashboard-card">
-                        <div class="section-header">
-                            <h3><i class="fas fa-exclamation-triangle"></i> Lacunes Identifiées</h3>
-                            <button class="info-btn">
-                                <i class="fas fa-info"></i>
-                                <div class="tooltip">
-                                    Zones où le système manque de données ou présente des incohérences. Ces lacunes indiquent où des données supplémentaires amélioreraient la fiabilité.
-                                </div>
-                            </button>
-                        </div>
-                        <div class="gaps-list" id="knowledgeGaps">
-                            <div class="loading">Chargement...</div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Learnings Card -->
-                    <div class="dashboard-card">
-                        <div class="section-header">
-                            <h3><i class="fas fa-graduation-cap"></i> Apprentissages Récents</h3>
-                            <button class="info-btn">
-                                <i class="fas fa-info"></i>
-                                <div class="tooltip">
-                                    Nouvelles connaissances acquises lors des dernières analyses. Montre l'évolution et l'amélioration continue du système.
-                                </div>
-                            </button>
-                        </div>
-                        <div class="learnings-list" id="recentLearnings">
-                            <div class="loading">Chargement...</div>
+                        <div class="agent-card validator">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Validator</h4>
+                            <p>Valide les découvertes</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Patterns Tab -->
-            <div class="tab-content" id="patterns-tab">
-                <div class="patterns-container">
-                    <div class="section-header">
-                        <h3><i class="fas fa-project-diagram"></i> Règles Cliniques Extraites</h3>
-                        <button class="info-btn">
-                            <i class="fas fa-info"></i>
-                            <div class="tooltip">
-                                Ensemble complet des règles cliniques identifiées par l'IA. Filtrez par type pour explorer les patterns de traitement, timing, matériaux et séquences.
-                            </div>
-                        </button>
+            <!-- Analysis Progress -->
+            <div class="analysis-container" id="analysisContainer" style="display:none;">
+                <!-- Progress Bar -->
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <h3>Progression de l'Analyse</h3>
+                        <span class="progress-percentage">0%</span>
                     </div>
-                    <div class="pattern-filters">
-                        <button class="filter-btn active" onclick="filterPatterns('all')">Tous</button>
-                        <button class="filter-btn" onclick="filterPatterns('sequence')">Séquences</button>
-                        <button class="filter-btn" onclick="filterPatterns('timing')">Timing</button>
-                        <button class="filter-btn" onclick="filterPatterns('material')">Matériaux</button>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="current-stage" id="currentStage">Initialisation...</div>
+                </div>
+
+                <!-- Agent Thinking Visualization -->
+                <div class="thinking-section">
+                    <h3><i class="fas fa-brain"></i> Processus de Réflexion des Agents</h3>
+                    <div class="thinking-container" id="thinkingContainer">
+                        <!-- Agent thoughts will appear here in real-time -->
+                    </div>
+                </div>
+
+                <!-- Discovered Rules -->
+                <div class="discoveries-section">
+                    <div class="discoveries-header">
+                        <h3><i class="fas fa-lightbulb"></i> Règles et Insights Découverts</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterRules('all')">Tous</button>
+                            <button class="filter-btn" onclick="filterRules('high')">Haute Confiance</button>
+                            <button class="filter-btn" onclick="filterRules('pattern')">Patterns</button>
+                            <button class="filter-btn" onclick="filterRules('timing')">Timing</button>
+                            <button class="filter-btn" onclick="filterRules('material')">Matériaux</button>
+                        </div>
                     </div>
                     <div class="rules-grid" id="rulesGrid">
-                        <div class="loading">Chargement...</div>
+                        <!-- Rule cards will appear here as discovered -->
                     </div>
                 </div>
             </div>
 
-            <!-- Confidence Tab -->
-            <div class="tab-content" id="confidence-tab">
-                <div class="confidence-container">
-                    <div class="section-header">
-                        <h3><i class="fas fa-thermometer-half"></i> Carte de Confiance par Condition</h3>
-                        <button class="info-btn">
-                            <i class="fas fa-info"></i>
-                            <div class="tooltip">
-                                Visualisation du niveau de confiance pour chaque type de traitement. Les couleurs indiquent la fiabilité des recommandations basée sur le nombre d'exemples et leur cohérence.
-                            </div>
-                        </button>
-                    </div>
-                    <div class="confidence-legend">
-                        <span class="legend-item"><span class="legend-color very-high"></span>Très élevée (90%+)</span>
-                        <span class="legend-item"><span class="legend-color high"></span>Élevée (80-90%)</span>
-                        <span class="legend-item"><span class="legend-color medium"></span>Moyenne (60-80%)</span>
-                        <span class="legend-item"><span class="legend-color low"></span>Faible (<60%)</span>
-                    </div>
-                    <div class="confidence-heatmap" id="confidenceHeatmap">
-                        <div class="loading">Chargement...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Explore Tab -->
-            <div class="tab-content" id="explore-tab">
-                <div class="explore-container">
-                    <div class="explore-header">
-                        <div class="section-header">
-                            <h3><i class="fas fa-comments"></i> Explorer les Connaissances de l'IA</h3>
-                            <button class="info-btn">
-                                <i class="fas fa-info"></i>
-                                <div class="tooltip">
-                                    Interface conversationnelle pour interroger l'IA sur ses connaissances. Posez des questions spécifiques pour comprendre le raisonnement et les données sous-jacentes.
-                                </div>
-                            </button>
-                        </div>
-                        <div class="explore-type-selector">
-                            <label>Type d'exploration:</label>
-                            <select id="exploreType">
-                                <option value="general">Général</option>
-                                <option value="clinical">Clinique</option>
-                                <option value="confidence">Confiance</option>
-                                <option value="learning">Apprentissage</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="explore-chat">
-                        <div class="explore-messages" id="exploreMessages">
-                            <div class="explore-message assistant">
-                                <i class="fas fa-brain"></i>
-                                <div class="message-content">
-                                    Bonjour! Je suis l'interface d'introspection de l'IA. Posez-moi des questions sur:
-                                    <ul>
-                                        <li>Ma compréhension des traitements dentaires</li>
-                                        <li>Les patterns que j'ai identifiés</li>
-                                        <li>Ma confiance dans différents domaines</li>
-                                        <li>Ce que j'ai appris récemment</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="explore-input-container">
-                            <input type="text" id="exploreInput" placeholder="Ex: Que sais-tu des facettes pour patients fumeurs?" 
-                                   onkeypress="handleExploreKeyPress(event)">
-                            <button onclick="sendExploreQuery()">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Timeline Tab -->
-            <div class="tab-content" id="timeline-tab">
-                <div class="timeline-container">
-                    <div class="section-header">
-                        <h3><i class="fas fa-history"></i> Chronologie d'Apprentissage</h3>
-                        <button class="info-btn">
-                            <i class="fas fa-info"></i>
-                            <div class="tooltip">
-                                Historique de l'évolution du système montrant les étapes clés et la progression de la complexité des traitements maîtrisés.
-                            </div>
-                        </button>
-                    </div>
-                    <div class="timeline" id="learningTimeline">
-                        <div class="loading">Chargement...</div>
-                    </div>
-                    <div class="progression-chart">
-                        <div class="section-header">
-                            <h3><i class="fas fa-chart-line"></i> Progression de la Complexité</h3>
-                            <button class="info-btn">
-                                <i class="fas fa-info"></i>
-                                <div class="tooltip">
-                                    Graphique montrant l'évolution de la capacité du système à gérer des cas complexes et la qualité des séquences générées au fil du temps.
-                                </div>
-                            </button>
-                        </div>
-                        <canvas id="progressionChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Knowledge Graph Tab -->
-            <div class="tab-content" id="graph-tab">
-                <div class="graph-container">
-                    <div class="section-header">
-                        <h3><i class="fas fa-network-wired"></i> Graphe de Connaissances</h3>
-                        <button class="info-btn">
-                            <i class="fas fa-info"></i>
-                            <div class="tooltip">
-                                Représentation visuelle des relations entre conditions, traitements et matériaux. Les connexions montrent les dépendances et séquences communes.
-                            </div>
-                        </button>
-                    </div>
-                    <div class="graph-controls">
-                        <button onclick="resetGraph()"><i class="fas fa-compress"></i> Réinitialiser</button>
-                        <button onclick="toggleGraphLabels()"><i class="fas fa-tag"></i> Labels</button>
-                        <label>
-                            <input type="checkbox" id="showOnlyConnected" onchange="updateGraphFilter()">
-                            Afficher seulement les nœuds connectés
-                        </label>
-                    </div>
-                    <div id="knowledgeGraph" class="knowledge-graph">
-                        <div class="loading">Chargement...</div>
-                    </div>
+            <!-- Analysis Complete -->
+            <div class="analysis-complete" id="analysisComplete" style="display:none;">
+                <div class="complete-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Analyse Terminée</h2>
+                    <p>L'analyse intelligente a découvert <span id="totalRules">0</span> règles et insights</p>
                 </div>
             </div>
         </div>
 
-        <!-- Test Scenario Modal -->
-        <div class="modal" id="testScenarioModal">
+        <!-- Rule Detail Modal -->
+        <div class="modal" id="ruleModal" style="display:none;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Tester un Scénario Clinique</h3>
-                    <button class="close-btn" onclick="closeTestModal()">&times;</button>
+                    <h3 id="ruleTitle">Titre de la Règle</h3>
+                    <button class="close-btn" onclick="closeRuleModal()">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <textarea id="scenarioInput" placeholder="Décrivez un scénario clinique..."></textarea>
-                    <button class="test-btn" onclick="testScenario()">
-                        <i class="fas fa-flask"></i> Tester
-                    </button>
-                    <div id="scenarioResults" class="scenario-results"></div>
+                    <div class="rule-detail">
+                        <h4>Description</h4>
+                        <p id="ruleDescription"></p>
+                    </div>
+                    <div class="rule-detail">
+                        <h4>Raisonnement Clinique</h4>
+                        <p id="ruleClinicalReasoning"></p>
+                    </div>
+                    <div class="rule-detail">
+                        <h4>Preuves</h4>
+                        <div id="ruleEvidence"></div>
+                    </div>
+                    <div class="rule-detail">
+                        <h4>Exceptions</h4>
+                        <div id="ruleExceptions"></div>
+                    </div>
+                    <div class="rule-confidence">
+                        <span>Niveau de Confiance:</span>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="ruleConfidenceFill"></div>
+                        </div>
+                        <span id="ruleConfidenceValue">0%</span>
+                    </div>
                 </div>
             </div>
-            </div>
         </div>
-    </div>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-        <p>Analyse en cours...</p>
     </div>
 
     <!-- Scripts -->

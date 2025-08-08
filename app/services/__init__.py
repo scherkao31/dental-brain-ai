@@ -51,14 +51,10 @@ def init_services(app):
                 app.logger.exception("DataService initialization error:")
                 data_service = None
         
-        # Initialize Brain service (requires RAG and Data services)
-        if rag_service and data_service:
-            app.logger.info("Initializing Brain service...")
-            brain_service = BrainService(rag_service, data_service)
-            app.logger.info("Brain service initialized successfully")
-        else:
-            app.logger.warning("Brain service not initialized due to missing dependencies")
-            brain_service = None
+        # Initialize Brain service (simplified - no dependencies)
+        app.logger.info("Initializing Brain service...")
+        brain_service = BrainService()
+        app.logger.info("Brain service initialized successfully")
         
         app.logger.info("All services initialization completed")
         
