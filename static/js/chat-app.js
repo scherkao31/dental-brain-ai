@@ -369,15 +369,7 @@ function createTabbedOutput(content, metadata) {
         });
     }
     
-    // Show references tab if available
-    if (metadata?.references && metadata.references.length > 0) {
-        tabs.push({
-            id: 'references',
-            label: `Références (${metadata.references.length})`,
-            content: formatReferencesForTab(metadata.references),
-            active: tabs.length === 0
-        });
-    }
+    // References are shown in the main References tab, not in message tabs
     
     // If only one tab, show content directly without tabs
     if (tabs.length <= 1) {
