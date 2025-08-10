@@ -66,6 +66,7 @@ def create_app(config_name=None):
     from app.api.data import data_bp
     from app.api.brain import brain_bp
     from app.api.test_rag import test_rag_bp
+    from app.api.evaluation import evaluation_bp
     
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
@@ -74,6 +75,7 @@ def create_app(config_name=None):
     app.register_blueprint(data_bp, url_prefix='/api/data')
     app.register_blueprint(brain_bp, url_prefix='/api/brain')
     app.register_blueprint(test_rag_bp)
+    app.register_blueprint(evaluation_bp, url_prefix='')
     
     # Initialize services
     with app.app_context():

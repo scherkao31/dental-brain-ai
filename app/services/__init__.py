@@ -2,6 +2,7 @@ from app.services.ai_service import AIService
 from app.services.enhanced_rag_service import EnhancedRAGService
 from app.services.data_service import DataService
 from app.services.brain_service import BrainService
+from app.services.evaluation_service import EvaluationService
 import os
 
 # Service instances
@@ -9,10 +10,11 @@ ai_service = None
 rag_service = None
 data_service = None
 brain_service = None
+evaluation_service = None
 
 def init_services(app):
     """Initialize AI services with app context"""
-    global ai_service, rag_service, data_service, brain_service
+    global ai_service, rag_service, data_service, brain_service, evaluation_service
     
     app.logger.info("Starting services initialization...")
     
@@ -56,6 +58,11 @@ def init_services(app):
         brain_service = BrainService()
         app.logger.info("Brain service initialized successfully")
         
+        # Initialize Evaluation service
+        app.logger.info("Initializing Evaluation service...")
+        evaluation_service = EvaluationService()
+        app.logger.info("Evaluation service initialized successfully")
+        
         app.logger.info("All services initialization completed")
         
     except Exception as e:
@@ -64,7 +71,7 @@ def init_services(app):
         raise
 
 __all__ = [
-    'AIService', 'EnhancedRAGService', 'DataService', 'BrainService',
+    'AIService', 'EnhancedRAGService', 'DataService', 'BrainService', 'EvaluationService',
     'init_services',
-    'ai_service', 'rag_service', 'data_service', 'brain_service'
+    'ai_service', 'rag_service', 'data_service', 'brain_service', 'evaluation_service'
 ]
