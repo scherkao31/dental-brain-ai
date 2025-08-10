@@ -1224,3 +1224,63 @@
 .rule-evidence li {
     margin-bottom: 3px;
 }
+
+/* Similarity threshold notice */
+.similarity-notice {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.similarity-notice i {
+    color: var(--primary, #667eea);
+    font-size: 16px;
+}
+
+.similarity-notice strong {
+    color: var(--primary, #667eea);
+    font-weight: 600;
+}
+
+.notice-detail {
+    color: var(--text-secondary, #888);
+    font-size: 13px;
+    margin-left: auto;
+}
+
+/* Below threshold indicators */
+.score-percentage.below-threshold {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.threshold-indicator {
+    margin-left: 4px;
+    font-size: 14px;
+    cursor: help;
+}
+
+/* Add visual cue to cards below threshold */
+.rag-source-item:has(.below-threshold) {
+    opacity: 0.85;
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+@media (max-width: 768px) {
+    .similarity-notice {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .notice-detail {
+        margin-left: 0;
+    }
+}

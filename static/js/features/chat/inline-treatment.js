@@ -416,8 +416,16 @@ export class InlineTreatmentDisplay {
         let html = '<div class="inline-references-content">';
         
         if (references && references.length > 0) {
+            // Get similarity threshold from user settings
+            const similarityThreshold = window.userSettings?.similarityThreshold || 60;
+            
             html += `
                 <h3 style="margin-bottom: 20px;">📚 Références utilisées</h3>
+                <div class="similarity-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Seuil de similarité actuel: <strong>${similarityThreshold}%</strong></span>
+                    <span class="notice-detail">Les références avec un score inférieur sont affichées pour transparence mais ne sont pas incluses dans le contexte de l'IA.</span>
+                </div>
                 <div class="references-grid">
             `;
             
@@ -478,6 +486,10 @@ export class InlineTreatmentDisplay {
         const scoreClass = score >= 90 ? 'high' : score >= 70 ? 'medium' : 'low';
         const typeIcon = ref.type === 'clinical_case' ? '🏥' : ref.type === 'ideal_sequence' ? '📋' : '📚';
         
+        // Get similarity threshold
+        const similarityThreshold = window.userSettings?.similarityThreshold || 60;
+        const isBelowThreshold = score < similarityThreshold;
+        
         // Build score section with gauge
         const scoreSection = `
             <div class="rag-source-score">
@@ -485,7 +497,8 @@ export class InlineTreatmentDisplay {
                 <div class="score-bar-container">
                     <div class="score-bar score-${scoreClass}" style="width: ${score}%"></div>
                 </div>
-                <span class="score-percentage">${score}%</span>
+                <span class="score-percentage ${isBelowThreshold ? 'below-threshold' : ''}">${score}%</span>
+                ${isBelowThreshold ? '<span class="threshold-indicator" title="En dessous du seuil">⚠️</span>' : ''}
             </div>
         `;
         

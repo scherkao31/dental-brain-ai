@@ -40,20 +40,39 @@ class SpecializedLLM:
         if settings.get('useDiscoveredRules', True):  # Default to True
             min_confidence = settings.get('minRuleConfidence', 70)
             rule_count = settings.get('discoveredRulesCount', 3)
+            logger.info(f"🔍 Searching for discovered rules: enabled=True, min_confidence={min_confidence}, count={rule_count}")
             discovered_rules = self.rag_service.search_discovered_rules(
                 user_message,
                 n_results=rule_count,
                 confidence_threshold=min_confidence
             )
+            logger.info(f"✅ Found {len(discovered_rules)} discovered rules")
+            for rule in discovered_rules:
+                logger.info(f"  - Rule: {rule.get('title', 'Unknown')} (confidence: {rule.get('confidence', 0)}%, similarity: {rule.get('similarity_score', 0):.2f})")
         
         # Apply similarity threshold
         similarity_threshold = settings.get('similarityThreshold', 60) / 100.0
         rag_preference = settings.get('ragPreference', 0)
         
-        # Debug: Log approved sequences before filtering
+        # Debug: Log all sequences before filtering with their scores
+        logger.info(f"Similarity threshold: {similarity_threshold:.2f}")
         logger.info(f"Approved sequences before filtering: {len(rag_results.get('approved_sequences', []))}")
         for seq in rag_results.get('approved_sequences', []):
-            logger.info(f"  - {seq.get('title', 'No title')} (score: {seq.get('similarity_score', 0):.3f})")
+            score = seq.get('similarity_score', 0)
+            will_pass = "✓" if score >= similarity_threshold else "✗"
+            logger.info(f"  {will_pass} {seq.get('title', 'No title')} (score: {score:.3f})")
+        
+        logger.info(f"Ideal sequences before filtering: {len(rag_results.get('ideal_sequences', []))}")
+        for seq in rag_results.get('ideal_sequences', []):
+            score = seq.get('similarity_score', 0)
+            will_pass = "✓" if score >= similarity_threshold else "✗"
+            logger.info(f"  {will_pass} {seq.get('title', 'No title')} (score: {score:.3f})")
+        
+        logger.info(f"Clinical cases before filtering: {len(rag_results.get('clinical_cases', []))}")
+        for case in rag_results.get('clinical_cases', [])[:3]:  # Limit to 3 for brevity
+            score = case.get('similarity_score', 0)
+            will_pass = "✓" if score >= similarity_threshold else "✗"
+            logger.info(f"  {will_pass} {case.get('title', 'No title')} (score: {score:.3f})")
         
         # Filter results based on similarity threshold
         filtered_results = {
@@ -81,7 +100,20 @@ class SpecializedLLM:
         
         # Debug: Log approved sequences after filtering
         logger.info(f"Approved sequences after filtering (threshold: {similarity_threshold:.2f}): {len(filtered_results['approved_sequences'])}")
+        logger.info(f"Clinical cases after filtering: {len(filtered_results['clinical_cases'])}")
+        logger.info(f"Ideal sequences after filtering: {len(filtered_results['ideal_sequences'])}")
         logger.info(f"Discovered rules found: {len(discovered_rules)}")
+        
+        # Log specific sequence titles if any
+        if filtered_results['approved_sequences']:
+            logger.info("Approved sequences found:")
+            for seq in filtered_results['approved_sequences'][:3]:
+                logger.info(f"  - {seq.get('title', 'Unknown')} (score: {seq.get('similarity_score', 0):.2f})")
+        
+        if filtered_results['ideal_sequences']:
+            logger.info("Ideal sequences found:")
+            for seq in filtered_results['ideal_sequences'][:3]:
+                logger.info(f"  - {seq.get('title', 'Unknown')} (score: {seq.get('similarity_score', 0):.2f})")
         
         # Apply RAG preference weighting
         # -100 = strong preference for clinical cases
@@ -100,6 +132,10 @@ class SpecializedLLM:
             context_order = ['discovered_rules', 'approved_sequences', 'clinical_cases', 'ideal_sequences', 'general_knowledge']
         
         # Build context in preferred order
+        # IMPORTANT: Use filtered results for context - only include references above threshold
+        # This ensures the AI only uses relevant information in its reasoning
+        # The references tab will still show ALL results for transparency
+        
         for source_type in context_order:
             if source_type == 'discovered_rules' and filtered_results.get('discovered_rules'):
                 context_parts.append("=== 🧠 RÈGLES INTELLIGENTES DÉCOUVERTES ===")
@@ -310,7 +346,9 @@ class SpecializedLLM:
         
         context = "\n".join(context_parts) if context_parts else ""
         
-        # Return both filtered results (for references) and original results (for similarity info)
+        # Return both filtered results (for context building) and original results (for references display)
+        # Note: We return original results to show ALL references the AI had access to, 
+        # not just those that passed the similarity threshold
         return {'filtered': filtered_results, 'original': rag_results}, context
     
     def _estimate_total_duration(self, appointments: List[Dict]) -> str:
@@ -899,13 +937,27 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
         """Format enhanced RAG results as references with similarity scores"""
         references = []
         
-        # Use filtered results if available, otherwise use original
-        results_to_use = rag_results.get('filtered', rag_results)
-        original_results = rag_results.get('original', rag_results)
+        # IMPORTANT: Use original results to show ALL references the AI had access to,
+        # not just the filtered ones. This ensures transparency - users see everything
+        # the AI could potentially use, regardless of similarity threshold
+        results_to_use = rag_results.get('original', rag_results)
+        
+        # Keep filtered results for potential future use
+        filtered_results = rag_results.get('filtered', rag_results)
         
         # Debug logging
-        logger.info(f"Formatting references - RAG results keys: {list(results_to_use.keys())}")
+        logger.info(f"Formatting references - Using ORIGINAL results (not filtered)")
         logger.info(f"Approved sequences count: {len(results_to_use.get('approved_sequences', []))}")
+        logger.info(f"Clinical cases count: {len(results_to_use.get('clinical_cases', []))}")
+        logger.info(f"Ideal sequences count: {len(results_to_use.get('ideal_sequences', []))}")
+        logger.info(f"Discovered rules count: {len(results_to_use.get('discovered_rules', []))}")
+        
+        # Show what would have been filtered
+        if 'filtered' in rag_results and 'original' in rag_results:
+            logger.info("Comparison - filtered vs original:")
+            logger.info(f"  - Approved: {len(filtered_results.get('approved_sequences', []))} filtered / {len(results_to_use.get('approved_sequences', []))} original")
+            logger.info(f"  - Clinical: {len(filtered_results.get('clinical_cases', []))} filtered / {len(results_to_use.get('clinical_cases', []))} original")
+            logger.info(f"  - Ideal: {len(filtered_results.get('ideal_sequences', []))} filtered / {len(results_to_use.get('ideal_sequences', []))} original")
         
         # Add clinical cases
         for case in results_to_use.get('clinical_cases', []):
@@ -933,7 +985,8 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
                 'categories': seq.get('categories', [])
             }
             if settings.get('showSimilarityScores', True):
-                ref['similarity_score'] = seq['similarity_score']
+                # Use boosted score if available, otherwise use similarity score
+                ref['similarity_score'] = seq.get('boosted_score', seq['similarity_score'])
             references.append(ref)
         
         # Add ideal sequences
@@ -947,7 +1000,8 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
                 'categories': sequence.get('categories', [])
             }
             if settings.get('showSimilarityScores', True):
-                ref['similarity_score'] = sequence['similarity_score']
+                # Use boosted score if available, otherwise use similarity score
+                ref['similarity_score'] = sequence.get('boosted_score', sequence['similarity_score'])
             references.append(ref)
         
         # Add general knowledge
@@ -962,6 +1016,26 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
             }
             if settings.get('showSimilarityScores', True):
                 ref['similarity_score'] = knowledge['similarity_score']
+            references.append(ref)
+        
+        # Add discovered rules
+        # Note: Discovered rules are only in filtered results, not original
+        discovered_rules = filtered_results.get('discovered_rules', []) if 'filtered' in rag_results else results_to_use.get('discovered_rules', [])
+        for rule in discovered_rules:
+            ref = {
+                'type': 'discovered_rule',
+                'title': rule.get('title', 'Règle découverte'),
+                'id': rule.get('id', f"rule-{hash(rule.get('description', ''))}"),
+                'source': 'Analyse Brain IA',
+                'filename': 'discovered_rules.json',
+                'categories': rule.get('categories', []),
+                'confidence': rule.get('confidence', 0),
+                'content': rule.get('description', ''),
+                'pattern': rule.get('pattern', ''),
+                'evidence': rule.get('evidence', [])
+            }
+            if settings.get('showSimilarityScores', True):
+                ref['similarity_score'] = rule.get('similarity_score', 0.8)  # Default high score for rules
             references.append(ref)
         
         # Sort by similarity score (highest first) if scores are shown

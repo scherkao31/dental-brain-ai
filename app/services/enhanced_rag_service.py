@@ -233,6 +233,7 @@ class EnhancedRAGService:
             if results['ids'] and results['ids'][0]:
                 for idx in range(len(results['ids'][0])):
                     metadata = results['metadatas'][0][idx]
+                    similarity_score = 1 - results['distances'][0][idx]
                     formatted_results.append({
                         'id': results['ids'][0][idx],
                         'type': 'discovered_rule',
@@ -243,8 +244,11 @@ class EnhancedRAGService:
                         'confidence': metadata.get('confidence', 0),
                         'conditions': json.loads(metadata.get('conditions', '[]')),
                         'exceptions': json.loads(metadata.get('exceptions', '[]')),
+                        'evidence': json.loads(metadata.get('evidence', '[]')),  # Add evidence
+                        'pattern': metadata.get('pattern', ''),  # Add pattern
                         'priority': metadata.get('priority', 'medium'),
-                        'score': 1 - results['distances'][0][idx],
+                        'score': similarity_score,
+                        'similarity_score': similarity_score,  # Add for consistency
                         'document': results['documents'][0][idx]
                     })
             
@@ -411,11 +415,110 @@ class EnhancedRAGService:
                                     ideal_results: int = 2, knowledge_results: int = 2) -> Dict:
         """Search across all sources with detailed similarity scoring"""
         
+        # Extract treatment keywords first (needed for all searches)
+        treatment_keywords = self._extract_treatment_keywords(query)
+        if treatment_keywords:
+            logger.info(f"Extracted treatment keywords from '{query}': {treatment_keywords}")
+        
+        # For queries like "26 CC", also add the tooth+treatment combination
+        tooth_pattern = re.match(r'^(\d{1,2})\s+(\w+)', query)
+        if tooth_pattern:
+            tooth_num = tooth_pattern.group(1)
+            treatment_code = tooth_pattern.group(2)
+            combined_keyword = f"{tooth_num} {treatment_code}"
+            if combined_keyword not in treatment_keywords:
+                treatment_keywords.insert(0, combined_keyword)  # Priority to exact combination
+                logger.info(f"Added tooth+treatment combination: '{combined_keyword}'")
+        
         # Search clinical cases
         clinical_cases = self.search_by_type('clinical_case', query, case_results)
         
-        # Search approved sequences (user-validated sequences)
+        # Search approved sequences with enhanced multi-strategy approach
+        all_approved_sequences = []
+        
+        # Strategy 1: Search with full query
         approved_sequences = self.search_by_type('approved_sequence', query, case_results)
+        for seq in approved_sequences:
+            # Apply boosting based on exact match with query or keywords
+            consultation_text = seq.get('consultation_text', '').lower().strip()
+            query_lower = query.lower().strip()
+            
+            # Check for exact matches with query or its components
+            if consultation_text == query_lower:
+                seq['boosted_score'] = seq['similarity_score'] * 2.0
+                seq['boost_reason'] = 'exact_query_match'
+            elif any(keyword.lower() == consultation_text for keyword in treatment_keywords):
+                seq['boosted_score'] = seq['similarity_score'] * 2.0
+                seq['boost_reason'] = 'exact_keyword_match'
+            elif any(keyword.lower() in consultation_text for keyword in treatment_keywords[:2]):
+                # Check if this is a primary treatment (short consultation text with keyword)
+                if len(consultation_text.split()) <= 5:
+                    seq['boosted_score'] = seq['similarity_score'] * 1.5
+                    seq['boost_reason'] = 'primary_treatment'
+                else:
+                    seq['boosted_score'] = seq['similarity_score'] * 1.2
+                    seq['boost_reason'] = 'keyword_present'
+            else:
+                seq['boosted_score'] = seq['similarity_score']
+                
+        all_approved_sequences.extend(approved_sequences)
+        logger.info(f"Approved sequences - Strategy 1 (full query) found {len(approved_sequences)} results")
+        
+        # Strategy 2: Search with extracted keywords (especially important for compound queries)
+        if treatment_keywords:
+            seen_ids = {seq['id'] for seq in approved_sequences}
+            
+            for keyword in treatment_keywords[:2]:  # Top 2 keywords
+                keyword_results = self.search_by_type('approved_sequence', keyword, 3)
+                logger.info(f"Approved sequences - Strategy 2 (keyword '{keyword}') found {len(keyword_results)} results")
+                
+                for seq in keyword_results:
+                    if seq['id'] not in seen_ids:
+                        # Boost scores for keyword matches
+                        consultation_text = seq.get('consultation_text', '').lower().strip()
+                        keyword_lower = keyword.lower().strip()
+                        
+                        # Also check with expanded version of keyword
+                        keyword_expanded = self._expand_abbreviations(keyword).lower().strip()
+                        
+                        # Check various exact match patterns
+                        exact_match_patterns = [
+                            consultation_text == keyword_lower,
+                            consultation_text == keyword_expanded,
+                            consultation_text == f"{keyword_lower} ({keyword_expanded})",
+                            consultation_text.startswith(f"{keyword_lower} (") and ")" in consultation_text,
+                            # Check if it's a tooth number + keyword pattern (e.g., "26 CC")
+                            re.match(r'^\d{1,2}\s+' + re.escape(keyword_lower) + r'(\s|$)', consultation_text) is not None,
+                            # Also check with expanded abbreviation (e.g., "26 couronne céramique")
+                            re.match(r'^\d{1,2}\s+' + re.escape(keyword_expanded) + r'(\s|$)', consultation_text) is not None
+                        ]
+                        
+                        if any(exact_match_patterns):
+                            seq['boosted_score'] = seq['similarity_score'] * 2.0  # Exact match
+                            seq['boost_reason'] = 'exact_match'
+                            logger.info(f"  🎯 Exact match boost: '{consultation_text}' matches '{keyword_lower}'")
+                        elif keyword_lower in consultation_text and len(consultation_text.split()) <= 5:
+                            seq['boosted_score'] = seq['similarity_score'] * 1.5  # Primary treatment
+                            seq['boost_reason'] = 'primary_treatment'
+                            logger.info(f"  ⭐ Primary treatment boost: '{keyword_lower}' in '{consultation_text}'")
+                        else:
+                            seq['boosted_score'] = seq['similarity_score'] * 1.2  # Keyword match
+                            seq['boost_reason'] = 'keyword_match'
+                        
+                        logger.info(f"    - [{seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}] {seq.get('title', 'Unknown')}")
+                        all_approved_sequences.append(seq)
+                        seen_ids.add(seq['id'])
+        
+        # Sort by boosted score and take top results
+        approved_sequences = sorted(all_approved_sequences, 
+                                  key=lambda x: x.get('boosted_score', x['similarity_score']), 
+                                  reverse=True)[:case_results]
+        
+        # Log final approved sequences with their scores
+        logger.info(f"Final approved sequences after multi-strategy search:")
+        for seq in approved_sequences:
+            boost_info = f" (boosted from {seq['similarity_score']:.3f})" if seq.get('boosted_score') != seq['similarity_score'] else ""
+            logger.info(f"  - [{seq.get('boosted_score', seq['similarity_score']):.3f}{boost_info}] {seq['title']}")
         
         # Search ideal sequences with multiple strategies
         all_ideal_sequences = []
@@ -431,10 +534,7 @@ class EnhancedRAGService:
             consultation_text = seq.get('consultation_text', seq.get('title', ''))
             logger.info(f"  - [{seq['similarity_score']:.3f}] Consultation: '{consultation_text}' | File: {seq['filename']}")
         
-        # Strategy 2: Search with extracted treatment keywords
-        treatment_keywords = self._extract_treatment_keywords(query)
-        if treatment_keywords:
-            logger.info(f"Extracted treatment keywords from '{query}': {treatment_keywords}")
+        # Strategy 2: Search with extracted treatment keywords (already extracted above)
         
         # Prioritize specific treatment types (like Facette) over generic terms
         priority_keywords = []
@@ -575,7 +675,8 @@ class EnhancedRAGService:
                 'filename': metadata['filename'],
                 'categories': metadata['categories'].split(',') if metadata['categories'] else [],
                 'enhanced_data': original_entry,
-                'metadata': metadata
+                'metadata': metadata,
+                'consultation_text': metadata.get('consultation_text', '')  # Add for consistency
             }
             
             formatted_results.append(formatted_result)

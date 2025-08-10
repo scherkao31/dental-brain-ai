@@ -701,6 +701,8 @@ Retourne ton analyse et une version validée de la règle."""
                     'clinical_reasoning': rule.get('clinicalReasoning', ''),
                     'conditions': json.dumps(rule.get('conditions', [])),
                     'exceptions': json.dumps(rule.get('exceptions', [])),
+                    'evidence': json.dumps(rule.get('evidence', [])),  # Add evidence list
+                    'pattern': rule.get('pattern', ''),  # Add pattern
                     'evidence_count': rule.get('evidenceCount', 0),
                     'priority': rule.get('priority', 'medium'),
                     'discovered_at': rule.get('discoveredAt', ''),
