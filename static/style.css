@@ -10333,3 +10333,52 @@ textarea.form-control {
     font-size: 14px;
 }
 
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-button i {
+    font-size: 16px;
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+/* Header info styling */
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
