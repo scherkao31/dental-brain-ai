@@ -443,23 +443,28 @@ class EnhancedRAGService:
             consultation_text = seq.get('consultation_text', '').lower().strip()
             query_lower = query.lower().strip()
             
-            # Check for exact matches with query or its components
+            # Store original similarity for display
+            seq['original_similarity'] = seq['similarity_score']
+            
+            # Calculate ranking score for internal use only
             if consultation_text == query_lower:
-                seq['boosted_score'] = seq['similarity_score'] * 2.0
+                seq['ranking_score'] = 1.0  # Perfect match
+                seq['similarity_score'] = 1.0  # Display 100% for exact matches
                 seq['boost_reason'] = 'exact_query_match'
             elif any(keyword.lower() == consultation_text for keyword in treatment_keywords):
-                seq['boosted_score'] = seq['similarity_score'] * 2.0
+                seq['ranking_score'] = 0.95  # Very high priority
+                seq['similarity_score'] = 1.0  # Display 100% for exact keyword matches
                 seq['boost_reason'] = 'exact_keyword_match'
             elif any(keyword.lower() in consultation_text for keyword in treatment_keywords[:2]):
                 # Check if this is a primary treatment (short consultation text with keyword)
                 if len(consultation_text.split()) <= 5:
-                    seq['boosted_score'] = seq['similarity_score'] * 1.5
+                    seq['ranking_score'] = seq['original_similarity'] * 1.5
                     seq['boost_reason'] = 'primary_treatment'
                 else:
-                    seq['boosted_score'] = seq['similarity_score'] * 1.2
+                    seq['ranking_score'] = seq['original_similarity'] * 1.2
                     seq['boost_reason'] = 'keyword_present'
             else:
-                seq['boosted_score'] = seq['similarity_score']
+                seq['ranking_score'] = seq['original_similarity']
                 
         all_approved_sequences.extend(approved_sequences)
         logger.info(f"Approved sequences - Strategy 1 (full query) found {len(approved_sequences)} results")
@@ -493,41 +498,45 @@ class EnhancedRAGService:
                             re.match(r'^\d{1,2}\s+' + re.escape(keyword_expanded) + r'(\s|$)', consultation_text) is not None
                         ]
                         
+                        # Store original similarity
+                        seq['original_similarity'] = seq['similarity_score']
+                        
                         if any(exact_match_patterns):
-                            seq['boosted_score'] = seq['similarity_score'] * 2.0  # Exact match
+                            seq['ranking_score'] = 1.0  # Perfect match for ranking
+                            seq['similarity_score'] = 1.0  # Display 100%
                             seq['boost_reason'] = 'exact_match'
-                            logger.info(f"  🎯 Exact match boost: '{consultation_text}' matches '{keyword_lower}'")
+                            logger.info(f"  🎯 Exact match: '{consultation_text}' matches '{keyword_lower}'")
                         elif keyword_lower in consultation_text and len(consultation_text.split()) <= 5:
-                            seq['boosted_score'] = seq['similarity_score'] * 1.5  # Primary treatment
+                            seq['ranking_score'] = seq['original_similarity'] * 1.5  # Boost for ranking
                             seq['boost_reason'] = 'primary_treatment'
-                            logger.info(f"  ⭐ Primary treatment boost: '{keyword_lower}' in '{consultation_text}'")
+                            logger.info(f"  ⭐ Primary treatment: '{keyword_lower}' in '{consultation_text}'")
                         else:
-                            seq['boosted_score'] = seq['similarity_score'] * 1.2  # Keyword match
+                            seq['ranking_score'] = seq['original_similarity'] * 1.2  # Small boost for ranking
                             seq['boost_reason'] = 'keyword_match'
                         
-                        logger.info(f"    - [{seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}] {seq.get('title', 'Unknown')}")
+                        logger.info(f"    - [Display: {seq['similarity_score']:.3f}, Ranking: {seq['ranking_score']:.3f}] {seq.get('title', 'Unknown')}")
                         all_approved_sequences.append(seq)
                         seen_ids.add(seq['id'])
         
-        # Sort by boosted score and take top results
+        # Sort by ranking score and take top results
         approved_sequences = sorted(all_approved_sequences, 
-                                  key=lambda x: x.get('boosted_score', x['similarity_score']), 
+                                  key=lambda x: x.get('ranking_score', x['original_similarity']), 
                                   reverse=True)[:case_results]
         
         # Log final approved sequences with their scores
         logger.info(f"Final approved sequences after multi-strategy search:")
         for seq in approved_sequences:
-            boost_info = f" (boosted from {seq['similarity_score']:.3f})" if seq.get('boosted_score') != seq['similarity_score'] else ""
-            logger.info(f"  - [{seq.get('boosted_score', seq['similarity_score']):.3f}{boost_info}] {seq['title']}")
+            logger.info(f"  - [Display: {seq['similarity_score']:.3f}, Ranking: {seq.get('ranking_score', seq['original_similarity']):.3f}] {seq['title']}")
         
         # Search ideal sequences with multiple strategies
         all_ideal_sequences = []
         
         # Strategy 1: Search with full query
         ideal_sequences = self.search_by_type('ideal_sequence', query, ideal_results)
-        # No boost for full query results
+        # Store original similarity and ranking score
         for seq in ideal_sequences:
-            seq['boosted_score'] = seq['similarity_score']
+            seq['original_similarity'] = seq['similarity_score']
+            seq['ranking_score'] = seq['similarity_score']
         all_ideal_sequences.extend(ideal_sequences)
         logger.info(f"Strategy 1 - Full query '{query}' found {len(ideal_sequences)} ideal sequences")
         for seq in ideal_sequences[:3]:
@@ -567,24 +576,28 @@ class EnhancedRAGService:
                 consultation_text = consultation_text.lower().strip()
                 keyword_lower = keyword.lower().strip()
                 
+                # Store original similarity
+                seq['original_similarity'] = seq['similarity_score']
+                
                 # Check for exact match
                 if consultation_text == keyword_lower:
-                    # EXACT MATCH: 100% boost (2x multiplier)
-                    seq['boosted_score'] = seq['similarity_score'] * 2.0
+                    # EXACT MATCH: Display 100%, max ranking
+                    seq['similarity_score'] = 1.0
+                    seq['ranking_score'] = 1.0
                     seq['boost_reason'] = 'exact_match'
-                    logger.info(f"    🎯 Exact match boost applied: {seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}")
+                    logger.info(f"    🎯 Exact match: '{consultation_text}' = '{keyword_lower}'")
                 
                 # Check if consultation is primarily about this treatment
                 elif keyword_lower in consultation_text and len(consultation_text.split()) <= 3:
-                    # PRIMARY TREATMENT: 50% boost (1.5x multiplier)
-                    seq['boosted_score'] = seq['similarity_score'] * 1.5
+                    # PRIMARY TREATMENT: Keep display score, boost ranking
+                    seq['ranking_score'] = seq['original_similarity'] * 1.5
                     seq['boost_reason'] = 'primary_treatment'
-                    logger.info(f"    ⭐ Primary treatment boost applied: {seq['similarity_score']:.3f} → {seq['boosted_score']:.3f}")
+                    logger.info(f"    ⭐ Primary treatment: '{keyword_lower}' in '{consultation_text}'")
                 
                 # Standard keyword match
                 else:
-                    # KEYWORD PRESENT: 20% boost (1.2x multiplier)
-                    seq['boosted_score'] = seq['similarity_score'] * 1.2
+                    # KEYWORD PRESENT: Keep display score, small ranking boost
+                    seq['ranking_score'] = seq['original_similarity'] * 1.2
                     seq['boost_reason'] = 'keyword_match'
                     
             all_ideal_sequences.extend(keyword_results)
@@ -595,30 +608,31 @@ class EnhancedRAGService:
             logger.info(f"Strategy 2 - Other keyword '{keyword}' found {len(keyword_results)} ideal sequences")
             for seq in keyword_results:
                 logger.info(f"  - [{seq['similarity_score']:.3f}] {seq['title']} ({seq['filename']})")
-                seq['boosted_score'] = seq['similarity_score']  # No boost
+                seq['original_similarity'] = seq['similarity_score']
+                seq['ranking_score'] = seq['similarity_score']  # No boost
             all_ideal_sequences.extend(keyword_results)
         
-        # Remove duplicates keeping the highest boosted score version
+        # Remove duplicates keeping the highest ranking score version
         best_sequences = {}
         for seq in all_ideal_sequences:
-            # Ensure all sequences have a boosted_score
-            if 'boosted_score' not in seq:
-                seq['boosted_score'] = seq['similarity_score']
+            # Ensure all sequences have a ranking_score
+            if 'ranking_score' not in seq:
+                seq['ranking_score'] = seq.get('original_similarity', seq['similarity_score'])
             
-            # Keep the version with the highest boosted score
+            # Keep the version with the highest ranking score
             seq_id = seq['id']
-            if seq_id not in best_sequences or seq['boosted_score'] > best_sequences[seq_id]['boosted_score']:
+            if seq_id not in best_sequences or seq['ranking_score'] > best_sequences[seq_id]['ranking_score']:
                 best_sequences[seq_id] = seq
         
         unique_sequences = list(best_sequences.values())
         
         logger.info(f"Total unique ideal sequences before sorting: {len(unique_sequences)}")
         
-        # Sort by boosted score and keep top results
-        ideal_sequences = sorted(unique_sequences, key=lambda x: x.get('boosted_score', x['similarity_score']), reverse=True)[:ideal_results]
+        # Sort by ranking score and keep top results
+        ideal_sequences = sorted(unique_sequences, key=lambda x: x.get('ranking_score', x['similarity_score']), reverse=True)[:ideal_results]
         logger.info(f"Final ideal sequences after sorting and limiting to {ideal_results}:")
         for seq in ideal_sequences:
-            logger.info(f"  - [{seq['similarity_score']:.3f}] (boosted: {seq.get('boosted_score', seq['similarity_score']):.3f}) {seq['title']} ({seq['filename']})")
+            logger.info(f"  - [Display: {seq['similarity_score']:.3f}, Ranking: {seq.get('ranking_score', seq['similarity_score']):.3f}] {seq['title']} ({seq['filename']})")
         
         # Search general knowledge (excluding clinical cases and ideal sequences to avoid duplicates)
         general_knowledge = []

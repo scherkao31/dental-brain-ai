@@ -985,8 +985,8 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
                 'categories': seq.get('categories', [])
             }
             if settings.get('showSimilarityScores', True):
-                # Use boosted score if available, otherwise use similarity score
-                ref['similarity_score'] = seq.get('boosted_score', seq['similarity_score'])
+                # Use the display similarity score (which is 100% for exact matches)
+                ref['similarity_score'] = seq['similarity_score']
             references.append(ref)
         
         # Add ideal sequences
@@ -1000,8 +1000,8 @@ IMPORTANT: Fournissez un protocole que même un jeune dentiste pourrait suivre a
                 'categories': sequence.get('categories', [])
             }
             if settings.get('showSimilarityScores', True):
-                # Use boosted score if available, otherwise use similarity score
-                ref['similarity_score'] = sequence.get('boosted_score', sequence['similarity_score'])
+                # Use the display similarity score (which is 100% for exact matches)
+                ref['similarity_score'] = sequence['similarity_score']
             references.append(ref)
         
         # Add general knowledge
