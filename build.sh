@@ -36,6 +36,12 @@ with app.app_context():
     python init_db.py
 }
 
+# Run database migrations
+echo "Running database migrations..."
+python run_migrations.py || {
+    echo "Migrations failed, but continuing..."
+}
+
 # Initialize RAG system if needed
 echo "Initializing RAG system..."
 python -c "
