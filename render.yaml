@@ -12,7 +12,7 @@ services:
     region: oregon # Same region as database
     plan: starter # Free tier
     buildCommand: "./build.sh"
-    startCommand: "gunicorn run:app --bind 0.0.0.0:$PORT"
+    startCommand: "python quick_fix_columns.py && gunicorn run:app --bind 0.0.0.0:$PORT"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
