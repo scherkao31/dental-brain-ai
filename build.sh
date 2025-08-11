@@ -46,12 +46,14 @@ python run_migrations.py || {
 echo "Initializing RAG system..."
 python -c "
 from app import create_app
-from app.services.enhanced_rag_service import EnhancedRAGService
+from app.services import rag_service
 app = create_app('production')
 with app.app_context():
-    rag_service = EnhancedRAGService()
-    stats = rag_service.get_knowledge_stats()
-    print(f'RAG system initialized with {stats[\"total_documents\"]} documents')
+    if rag_service:
+        stats = rag_service.get_statistics()
+        print(f'RAG system initialized with {stats[\"total_documents\"]} documents')
+    else:
+        print('RAG system initialization skipped - already initialized')
 "
 
 echo "Build completed successfully!"

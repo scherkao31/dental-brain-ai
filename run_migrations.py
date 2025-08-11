@@ -21,12 +21,8 @@ def run_migrations():
             tables = inspector.get_table_names()
             
             if 'alembic_version' not in tables:
-                print("Initializing migration system...")
-                init()
-                
-                # Create initial migration if needed
-                print("Creating initial migration...")
-                migrate(message="Initial migration")
+                print("Migration system not initialized, skipping migrations...")
+                # Don't try to initialize - it may already exist from git
             
             # Run all pending migrations
             print("Running pending migrations...")
