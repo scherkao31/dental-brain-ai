@@ -73,7 +73,7 @@ class APIClient {
                 knowledgeCount: 2,
                 showSimilarityScores: true,
                 ragPreference: 0,
-                aiModel: 'gpt-4o'
+                aiModel: 'o4-mini'
             };
             return await this.post('/api/ai/chat', { message, history, tab, settings: userSettings });
         }

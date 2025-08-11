@@ -1376,7 +1376,7 @@ window.window.userSettings = {
     idealSequencesCount: 2,
     knowledgeCount: 2,
     reasoningMode: 'adaptive',
-    aiModel: 'gpt-4o', // Default to standard model
+    aiModel: 'o4-mini', // Default to thinking model
     showSimilarityScores: true,
     explainReasoning: true,
     autoExpandTreatment: true,
@@ -1397,7 +1397,7 @@ function showSettings() {
         // Set AI model with fallback
         const aiModelSelect = document.getElementById('aiModel');
         if (aiModelSelect) {
-            aiModelSelect.value = window.userSettings.aiModel || 'gpt-4o';
+            aiModelSelect.value = window.userSettings.aiModel || 'o4-mini';
             // Force the select to update its display
             aiModelSelect.dispatchEvent(new Event('change'));
         }
@@ -1517,7 +1517,7 @@ function resetSettings() {
     document.getElementById('idealSequencesCount').value = 2;
     document.getElementById('knowledgeCount').value = 2;
     document.getElementById('reasoningMode').value = 'adaptive';
-    document.getElementById('aiModel').value = 'gpt-4o';
+    document.getElementById('aiModel').value = 'o4-mini';
     document.getElementById('showSimilarityScores').checked = true;
     document.getElementById('explainReasoning').checked = true;
     document.getElementById('autoExpandTreatment').checked = true;
