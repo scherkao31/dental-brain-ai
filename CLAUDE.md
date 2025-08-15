@@ -1,242 +1,172 @@
-# CLAUDE.md - Dental Brain AI Application
+# CLAUDE.md - AI Assistant Guide for Dental Office AI
 
-## 🧠 Overview
-
-This is a comprehensive dental practice management system with AI-powered treatment planning, patient management, and financial optimization. The application uses advanced RAG (Retrieval-Augmented Generation) with clinical cases and ideal treatment sequences.
-
-## 🚀 Quick Start
+## 🚀 Quick Start Commands
 
 ```bash
-# 1. Create and activate virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# 2. Install dependencies
-pip install -r requirements.txt
-pip install -r requirements-dev.txt  # For development
-
-# 3. Set up environment variables
-echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
-
-# 4. Initialize/upgrade database
-flask db upgrade
-
-# 5. Seed with sample data (optional)
-python3 seed_database.py
-
-# 6. Start the application
+# Start the application
 python3 run.py
 # OR
 ./start.sh
 
-# 7. Access at http://localhost:5010
-```
+# Run tests (when implemented)
+pytest
 
-## 📁 Architecture
+# Lint and format code
+flake8 app/
+black app/
 
-```
-dental-app/
-├── app/                      # Flask application
-│   ├── __init__.py          # App factory pattern
-│   ├── config.py            # Configuration
-│   ├── models/              # SQLAlchemy models
-│   │   ├── patient.py       # Patient records
-│   │   ├── conversation.py  # Chat/case management
-│   │   └── message.py       # Chat messages
-│   ├── api/                 # API endpoints
-│   │   ├── ai.py           # AI chat & search
-│   │   ├── patient.py      # Patient management
-│   │   └── main.py         # Core endpoints
-│   └── services/            # Business logic
-│       ├── ai_service.py    # LLM orchestration
-│       └── enhanced_rag_service.py  # RAG system
-├── static/                  # Frontend assets
-│   ├── js/
-│   │   ├── core/           # Core utilities
-│   │   ├── features/       # Feature modules
-│   │   └── chat-app.js     # Main chat interface
-│   ├── css/
-│   │   ├── chat.css        # Chat interface styles
-│   │   ├── patients.css    # Patient page styles
-│   │   └── enhanced-schedule.css  # Schedule styles
-│   └── style.css           # Global styles
-├── templates/              # HTML templates
-│   ├── index.html         # Main chat interface
-│   └── patients.html      # Patient management
-└── DATA/                  # Knowledge base
-    ├── TRAITEMENTS_JSON/  # Clinical cases
-    └── IDEAL_SEQUENCES_ENHANCED/  # Templates
-```
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-## 🦷 Key Features
+# Install dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt  # For development
 
-### 1. AI-Powered Treatment Planning
-- **Smart Title Generation**: Uses GPT-4o-mini to create descriptive conversation titles
-- **Clinical Case Matching**: ≥80% similarity threshold for accurate plans
-- **Treatment Modifications**: Continuous plan updates through chat
-- **Protocol Generation**: Detailed clinical protocols on demand
+# Seed database with sample data
+python3 seed_database.py
 
-### 2. Patient Management
-- **Simplified Creation**: Only patient number required (auto-generation available)
-- **Flexible Records**: Optional first/last names
-- **Case Linking**: Conversations linked to patient records
-- **Smart Display**: Graceful handling of incomplete data
-
-### 3. Chat Interface Enhancements
-- **Collapsible Filters**: Save space with persistent state
-- **No Timestamps**: Cleaner conversation list
-- **Case Metadata**: Type, status, approval tracking
-- **Green Approve Button**: Visual indicator for approvals
-
-### 4. Financial Optimization
-- **Optimization Slider**: Adjust treatment sequencing
-- **Visual Indicators**: See optimized changes
-- **Original vs Optimized**: Track both versions
-
-## 🤖 AI Models (Optimized July 2025)
-
-- **Main LLM**: GPT-4o (faster, cheaper, better than GPT-4-turbo)
-- **Title Generation**: GPT-4o-mini (50% cheaper than GPT-3.5-turbo)
-- **Temperature**: 0.7 for chat, 0.3 for protocols
-
-## 🔧 Common Tasks
-
-### Database Management
-```bash
-# Create new migration
-flask db migrate -m "Description of changes"
-
-# Apply migrations
+# Database migrations
 flask db upgrade
 
-# Generate unique patient number
-curl http://localhost:5010/api/patients/generate-number
+# Fix production database columns (Render deployment)
+python quick_fix_columns.py
 ```
 
-### Adding Features
-1. Create/update models in `app/models/`
-2. Create migration: `flask db migrate -m "Add feature X"`
-3. Apply migration: `flask db upgrade`
-4. Add service logic in `app/services/`
-5. Create API endpoints in `app/api/`
-6. Update frontend in `static/js/`
+## 🏗️ Architecture Overview
 
-### CSS Organization
-- `chat.css`: Main chat interface and treatment panels
-- `patients.css`: Patient management page (light theme)
-- `enhanced-schedule.css`: Schedule and calendar views
-- Avoid loading conflicting themes together
+This is a refactored Flask-based dental practice management system with AI capabilities. The codebase was recently restructured from a monolithic 5000+ line app.py into a modular architecture.
 
-## 🎨 UI/UX Guidelines
-
-### Color Scheme
-```css
-/* Primary colors */
---primary-color: #2563eb;  /* Blue */
---accent-primary: #3b82f6; /* Lighter blue */
---success-color: #10b981;  /* Green for approvals */
-
-/* Background colors */
---bg-primary: #ffffff;     /* White */
---bg-secondary: #f8fafc;   /* Light gray */
-
-/* Text colors */
---text-primary: #1e293b;   /* Dark gray */
---text-secondary: #64748b; /* Medium gray */
+### Directory Structure
+```
+dental-app/
+├── app/                      # Flask application package
+│   ├── __init__.py          # App factory pattern
+│   ├── config.py            # Configuration management
+│   ├── models/              # SQLAlchemy ORM models
+│   ├── services/            # Business logic layer
+│   ├── api/                 # Flask blueprints (routes)
+│   └── utils/               # Utilities
+├── static/                  # Frontend assets
+│   ├── app.js              # Main frontend (being modularized)
+│   ├── js/                 # New modular JS structure
+│   └── styles.css          # Main stylesheet
+├── templates/               # HTML templates
+├── DATA/                    # Knowledge base for RAG
+├── migrations/              # Database migrations
+└── run.py                   # Application entry point
 ```
 
-### Component Patterns
-- **Cards**: White background with subtle shadows
-- **Buttons**: Rounded corners, hover effects
-- **Inputs**: Clean borders, focus states
-- **Animations**: Smooth transitions (0.2s)
+### Key Architectural Decisions
 
-## 🐛 Recent Fixes & Improvements
+1. **Service Layer Pattern**: All business logic is in `app/services/`, keeping routes thin
+2. **SQLAlchemy ORM**: Replaced raw SQL queries for better maintainability
+3. **Flask Blueprints**: Routes organized by domain (patients, appointments, financial, AI)
+4. **Import Guards**: Services check for None to handle initialization order
+5. **Frontend Modularization**: Migrating from monolithic app.js to ES6 modules
 
-### July 2025 Updates
-1. **Fixed Patients Page**: Removed dark theme contamination
-2. **Removed Chat Timestamps**: More space for content
-3. **Smart Titles**: LLM-generated descriptive names
-4. **Collapsible Filters**: Better sidebar organization
-5. **Simplified Patient Creation**: Only number required
-6. **Model Upgrades**: GPT-4o and GPT-4o-mini
-7. **Green Approve Button**: Better visual feedback
+## 🤖 AI Integration
 
-### Known Issues
-- Frontend needs further modularization
-- No automated tests yet
-- Some CSS duplication between files
+### AI Models
+- **Default Model**: O4-mini (thinking mode) - provides deeper analysis
+- **Alternative**: GPT-4o (standard mode) - faster responses
+- **Smart Title Generation**: Automatic descriptive conversation titles
 
-## 🔑 Environment Variables
+### Specialized AI Features
+- **Dental Brain**: Clinical decision support and treatment planning
+- **Multi-Strategy Search**: Enhanced RAG with keyword extraction and boosting
+- **Brain Analysis**: Multi-agent system for discovering clinical patterns
+- **Evaluation System**: Dual evaluation (manual + automatic) for quality assurance
 
-```env
-# Required
-OPENAI_API_KEY=your_key_here
+### RAG System
+- ChromaDB for vector storage
+- 51+ dental knowledge articles
+- Enhanced search with:
+  - Exact match detection (shows 100% similarity)
+  - Multi-strategy search for compound queries
+  - Separate ranking scores from display scores
+  - Visual indicators for similarity thresholds
 
-# Optional
-FLASK_ENV=development
-DATABASE_URL=sqlite:///dental_ai.db
-SECRET_KEY=your-secret-key
-```
+## 🔧 Common Development Tasks
 
-## 📊 Database Schema
+### Adding a New Feature
+1. Create model in `app/models/`
+2. Add service methods in `app/services/`
+3. Create API endpoints in `app/api/`
+4. Update frontend in `static/js/`
 
-### Core Models
-- **User**: Authentication and practice info
-- **Patient**: Basic info, contacts, medical notes
-- **Conversation**: Cases with metadata
-- **Message**: Chat history with treatment plans
-- **TreatmentPlan**: Structured sequences
-- **TarmedPricing**: Swiss pricing codes
-
-### Relationships
-- User → many Patients
-- Patient → many Conversations
-- Conversation → many Messages
-- Message → optional TreatmentPlan
-
-## 🚀 Performance Tips
-
-1. **RAG Optimization**
-   - Adjust similarity thresholds
-   - Limit result counts in settings
-   - Use RAG preference slider
-
-2. **Frontend Performance**
-   - Lazy load conversation history
-   - Debounce search inputs
-   - Cache API responses
-
-3. **Database Queries**
-   - Use eager loading for relationships
-   - Index frequently queried fields
-   - Paginate large result sets
-
-## 🔒 Security Notes
-
-- Never commit `.env` file
-- Patient data stays local
-- No PHI sent to OpenAI (only treatment descriptions)
-- Use environment variables for all secrets
-- Regular database backups recommended
-
-## 📈 Future Improvements
-
-1. **Testing Suite**: Add pytest with coverage
-2. **Frontend Modularization**: Complete ES6 migration
-3. **Real-time Updates**: WebSocket for live changes
-4. **Advanced Analytics**: Treatment success tracking
-5. **Multi-language**: French/German/Italian support
-6. **Mobile App**: React Native companion
-
-## 🛠 Development Workflow
-
+### Database Changes
 ```bash
-# Before committing
-flake8 app/              # Lint Python
-black app/               # Format Python
+flask db migrate -m "Description"
+flask db upgrade
+```
 
-# Git workflow
+### Testing AI Features
+The AI chat expects requests to `/api/ai/chat` with:
+```json
+{
+  "message": "user question",
+  "history": [],
+  "tab": "dental-brain",
+  "settings": {
+    "aiModel": "o4-mini",
+    "similarityThreshold": 60,
+    "showSimilarityScores": true
+  }
+}
+```
+
+## ⚠️ Important Notes
+
+### API Response Format
+All API endpoints return:
+```json
+{
+  "status": "success|error",
+  "data": {},
+  "message": "optional message"
+}
+```
+
+### Frontend Conventions
+- Check `data.status === 'success'` (not `data.success`)
+- API endpoints may need trailing slashes
+- Use the centralized API client in `static/js/core/api.js`
+
+### Service Initialization
+Services may be None during initialization. Always check:
+```python
+from app.services import patient_service
+if patient_service is None:
+    return jsonify({'status': 'error', 'message': 'Service not initialized'}), 500
+```
+
+### Current Features Status
+- ✅ Backend fully modularized
+- ✅ Enhanced RAG with multi-strategy search
+- ✅ Rule-based enhancement from Brain discoveries
+- ✅ Comprehensive evaluation system
+- ✅ Production deployment on Render
+- 🚧 Frontend modularization in progress
+- ❌ No automated tests yet
+
+## 🐛 Common Issues
+
+1. **"Service not initialized" errors**: Check import order in `app/__init__.py`
+2. **No data showing**: Run `python seed_database.py`
+3. **Chat errors**: Ensure OPENAI_API_KEY is set in .env
+4. **Import errors**: Activate virtual environment first
+5. **Production column errors**: Run `python quick_fix_columns.py`
+
+## 📝 Git Workflow
+
+Use the automated commit script:
+```bash
+cursor-commit  # Stages all files and commits with smart message
+```
+
+Or manually:
+```bash
 git add .
 git commit -m "Your message
 
@@ -245,9 +175,66 @@ git commit -m "Your message
 Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
+## 🔑 Environment Variables
+
+Required in `.env`:
+```
+OPENAI_API_KEY=your_key_here
+FLASK_ENV=development
+DATABASE_URL=sqlite:///dental_ai.db
+```
+
+For production (Render):
+```
+DATABASE_URL=postgres://...  # Auto-configured by Render
+OPENAI_API_KEY=your_key_here
+FLASK_ENV=production
+```
+
+## 📊 Database Schema
+
+Key models:
+- **User**: Authentication with conversations and messages
+- **Conversation**: Chat sessions with treatment plans
+- **Message**: Individual messages with metadata
+- **EvaluationTestCase**: Test cases for quality evaluation
+- **GeneratedSequence**: AI-generated treatment sequences
+- **ManualEvaluation**: Human evaluation scores
+- **AutomaticEvaluation**: AI evaluation scores
+
+## 🚀 Performance Considerations
+
+- Frontend app.js is 6000+ lines (needs modularization)
+- RAG queries optimized with multi-strategy search
+- Similarity scores capped at 100% for clarity
+- Database queries use eager loading where appropriate
+
+## 🔒 Security Notes
+
+- Never commit API keys
+- Patient data stays local
+- No PHI sent to external APIs
+- CORS configured for local development only
+
+## 📱 Key UI Pages
+
+- **/** - Main chat interface (dental-brain)
+- **/data** - Knowledge base management
+- **/brain** - AI pattern discovery system
+- **/evaluator** - Sequence evaluation system
+
+## 🆕 Recent Major Updates
+
+1. **Enhanced RAG Search**: Multi-strategy with proper similarity scoring
+2. **Rule-Based Enhancement**: Brain-discovered patterns enhance generation
+3. **Evaluation System**: Comprehensive quality assessment tools
+4. **Production Deployment**: Full Render.com integration
+5. **Default AI Model**: O4-mini (thinking mode) for deeper analysis
+
 ## 📚 Additional Resources
 
-- Original Flask docs: https://flask.palletsprojects.com/
-- SQLAlchemy: https://www.sqlalchemy.org/
-- OpenAI API: https://platform.openai.com/docs
-- Swiss Tarmed: https://www.tarmed-browser.ch/
+- Original README.md has feature documentation
+- Check `DATA/` for knowledge base structure
+- Review `app/services/ai_service.py` for LLM prompts
+- See `static/js/core/api.js` for frontend API integration
+- Visit `/evaluator` for quality testing tools
